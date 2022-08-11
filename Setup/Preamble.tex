@@ -33,5 +33,9 @@
 \usepackage[nomain,acronym,toc]{glossaries-extra}		% Abbreviations with hyperlinks
 \usepackage{glossary-longextra} % Not sure about this
 \usepackage[numbib]{tocbibind} % Lists of... in toc
-\usepackage{svg} 			% Include svg vector files
-\usepackage{circuitikz}		% Tikz with circuits
+
+% Drawing
+\usepackage{tikz}					% Create graphics
+\usetikzlibrary{arrows,backgrounds,positioning,fit,petri}
+\usepackage{xstring}				% For manipulating strings. Required by CircuiTikZ
+\usepackage[american,arrowmos,nooldvoltagedirection]{circuitikz}	% Create circuit graphics (using TikZ)
