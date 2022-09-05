@@ -1,0 +1,27 @@
+\begin{tikzpicture}
+    [outer sep=0,
+    >=latex,
+    align=center]
+    % Draw nodes
+    \node[place]		(aud_in)	[draw=none]											{Audio\\input};
+    \node[place]		(in_filt)	[inner sep=1mm,rectangle,right=4.5mm of aud_in]		{Input\\filter};
+    \node[place]		(PI)		[inner sep=1mm,rectangle,right=4.5mm of in_filt]	{PI};
+    \node[place]		(mod)		[inner sep=1mm,rectangle,right=4.5mm of PI]			{Modulator \&\\State feedback};
+    \node[place]		(gate_drv)	[inner sep=1mm,rectangle,right=4.5mm of mod]		{Gate\\driver};
+    \node[place]		(pwr_stg)	[inner sep=1mm,rectangle,right=4.5mm of gate_drv]	{Power\\stage};
+    \node[place]		(LP_filt)	[inner sep=1mm,rectangle,right=4.5mm of pwr_stg]	{LPF};
+    \node[place]		(spk)		[inner sep=1mm,rectangle,right=4.5mm of LP_filt]	{Speaker};
+    \node[place]		(acq)		[inner sep=1mm,rectangle,below=4.5mm of mod]		{Acquisition\\circuits};
+    % Draw lines between nodes
+    \draw [|->] 		(aud_in) 		to 		(in_filt);
+    \draw [->] 			(in_filt) 		to 		(PI);
+    \draw [->]			(PI)			to		(mod);
+    \draw [->]			(mod)			to		(gate_drv);
+    \draw [->]			(gate_drv)		to		(pwr_stg);
+    \draw [->]			(pwr_stg)		to		(LP_filt);
+    \draw [->]			(LP_filt)		to		(spk);
+    \draw [->]			(acq)			to		(mod);
+    \draw [->]			(LP_filt)		|-		(acq);
+    \draw [-]			(spk)			|-		(acq);
+    \draw [->]			(acq)			-|		(PI);
+\end{tikzpicture}
