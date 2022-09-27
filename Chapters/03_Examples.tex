@@ -342,22 +342,21 @@ upper quartile=46, upper whisker=47,
 
 \section{Tables and figures}
 
-%\begin{table}[H]
-%\centering
-%\caption{This is a \texttt{booktabs} table. Go to \url{http://www.tablesgenerator.com/} and use the booktabs table style}
-%\label{tab:tableExample}
-%\begin{tabular}{@{}llS@{}}
-%\toprule
-%\multicolumn{2}{c}{Item} &            \\ \cmidrule(r){1-2}
-%Animal     & Description & Price (\$) \\ \midrule
-%Gnat       & per gram    & 13.65      \\
-%           & each        & 0.01       \\
-%Gnu        & stuffed     & 92.50      \\
-%Emu        & stuffed     & 33.33      \\
-%Armadillo  & frozen      & 8.99       \\ \bottomrule
-%\end{tabular}
-%\end{table}
-%\texttt{Booktabs} tables don't use any vertical lines. Only horizontal lines are used. \Cref{tab:tableExample} begins with a \textbackslash \texttt{toprule}, ends with a \textbackslash \texttt{bottomrule} with \textbackslash \texttt{midrule} in between. The table has 3 columns formatted as \texttt{@\{\}llS@\{\}}. \texttt{@\{\}} is cropping the horizontal lines of the table to fit the content (removes column spacing at the left and right edges). \texttt{l} aligns the column to the left and \texttt{S} aligns the column according to the decimal point (\texttt{siunitx} package). You can of course also use \texttt{r} to align right or \texttt{c} to center the contents of the column. 
+\begin{table}[H]
+\centering
+\caption{This is a \texttt{booktabs} table. Go to \url{http://www.tablesgenerator.com/} and use the booktabs table style}
+\label{tab:tableExample}
+\begin{tabular}{@{}llS@{}}
+\toprule
+Animal     & Description & {Price (\$)} \\ \midrule
+Gnat       & per gram    & 13.65      \\
+           & each        & 0.01       \\
+Gnu        & stuffed     & 92.50      \\
+Emu        & stuffed     & 33.33      \\
+Armadillo  & frozen      & 8.99       \\ \bottomrule
+\end{tabular}
+\end{table}
+\texttt{Booktabs} tables don't use any vertical lines. Only horizontal lines are used. \Cref{tab:tableExample} begins with a \textbackslash \texttt{toprule}, ends with a \textbackslash \texttt{bottomrule} with \textbackslash \texttt{midrule} in between. The table has 3 columns formatted as \texttt{@\{\}llS@\{\}}. \texttt{@\{\}} is cropping the horizontal lines of the table to fit the content (removes column spacing at the left and right edges). \texttt{l} aligns the column to the left and \texttt{S} aligns the column according to the decimal point (\texttt{siunitx} package). You can of course also use \texttt{r} to align right or \texttt{c} to center the contents of the column. 
 
 \begin{table}[H]
 \centering
@@ -396,8 +395,6 @@ Efficiency          &           &           & \SI{60}{\percent} \\ \bottomrule
 \label{fig:figure}
 \end{figure}
 
-
-
 \begin{figure}[H]
 \centering
 \begin{subfigure}{.5\textwidth}
@@ -415,8 +412,6 @@ Efficiency          &           &           & \SI{60}{\percent} \\ \bottomrule
 \caption{A figure with two subfigures}
 \label{fig:twosubfigures}
 \end{figure}
-
-
 
 \begin{figure}[H]
 \centering
