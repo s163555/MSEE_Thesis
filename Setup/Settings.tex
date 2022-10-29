@@ -92,8 +92,8 @@ purple,         fill=purple         \\%
 \renewcommand{\chaptermark}[1]{%
 	\markboth{#1}{}}
 % Horizontal lines in header and footer, default 0pt
-%\renewcommand{\headrulewidth}{0.4pt}
-%\renewcommand{\footrulewidth}{0.4pt}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
 \renewcommand{\chaptermark}[1]{%
 	
 %	\markboth{\MakeUppercase \chaptername\ \thechapter\ \textbullet\ #1}{}% 
@@ -101,9 +101,7 @@ purple,         fill=purple         \\%
 }
 
 % Setup header and footer
-\fancypagestyle{front}{% All normal pages
-	\renewcommand{\headrulewidth}{0.0pt}
-	\renewcommand{\footrulewidth}{0.0pt}
+\fancypagestyle{front}{% Front pages
 	\fancyhead{}
 	\fancyfoot{}
 	\fancyfoot[LE,RO]{\footnotesize \thepage}
@@ -111,18 +109,14 @@ purple,         fill=purple         \\%
 }
 
 \fancypagestyle{main}{% All normal pages
-	\renewcommand{\headrulewidth}{0.4pt}
-	\renewcommand{\footrulewidth}{0.4pt}
 	\fancyhead{}
 	\fancyfoot{}
 	\fancyhead[RE,LO]{\footnotesize \MakeUppercase \thesistitle}
 	\fancyfoot[LE,RO]{\footnotesize \thepage}
-	\fancyfoot[RE,LO]{\footnotesize \MakeUppercase \rightmark} % - \rightmark
+	\fancyfoot[RE,LO]{\footnotesize \MakeUppercase \leftmark} % - \rightmark
 	\fancyhfoffset[E,O]{0pt}
 }
 \fancypagestyle{plain}{% Chapter pages
-	\renewcommand{\headrulewidth}{0.4pt}
-	\renewcommand{\footrulewidth}{0.4pt}
 	\fancyhead{}
 	\fancyfoot{}
 	\fancyhead[RE,LO]{\footnotesize \MakeUppercase \thesistitle}

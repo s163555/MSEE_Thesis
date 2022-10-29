@@ -1,4 +1,3 @@
-\usepackage[protrusion=true,expansion=true,final,babel]{microtype} % Better text appearance
 %\usepackage[utf8]{inputenc}
 \usepackage{fontspec}       % Package for custom fonts
 \usepackage[T1]{fontenc}
@@ -28,19 +27,20 @@
 \usepackage{tabularx}       % for ability to adjust column spacing in tabular better
 \usepackage{booktabs}       % for better tables
 \usepackage{float}          % floating figures in correct places
-\usepackage{calc}           % Adds ability for latex to calculate (3pt+2pt) 
-\usepackage{blindtext}
+%\usepackage{calc}           % Adds ability for latex to calculate (3pt+2pt) 
+%\usepackage{blindtext}
 \usepackage{nth}			% 1st, 2nd, etc
 
 % Localization
 \usepackage{kotex}
 
 % Extras
+\let\ordinal\relax          % Remove warning from ordinal definition (datetime package)
 \usepackage{datetime}		% For dates and time functions
-\usepackage{glossaries}
-\usepackage[nomain,acronym,toc]{glossaries-extra}		% Abbreviations with hyperlinks
-\usepackage{glossary-longextra} % Not sure about this
+\usepackage{glossaries-extra}   % Abbreviations with hyperlinks
+\usepackage{glossary-longextra} % Long booktabs table style
 \usepackage[numbib]{tocbibind} % Lists of... in toc
+\usepackage[protrusion=true,expansion=true,final,babel]{microtype} % Better text appearance
 
 % Drawing
 \usepackage{tikz}					% Create graphics
