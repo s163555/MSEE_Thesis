@@ -7,32 +7,32 @@
 \begin{document}
 
 \pagenumbering{Roman}
-%\input{Frontmatter/Frontpage.tex}
+\input{Frontmatter/Frontpage.tex}
 \pagecolor{white}
 \newgeometry{top=2.81cm, bottom=2.75cm, outer=2.5cm, inner=3.5cm}
 \pagestyle{empty}
-%\cleardoublepage 
+\cleardoublepage 
 \input{Frontmatter/Copyright.tex}
 \clearpage 
-%\pagestyle{front}
-%\input{Frontmatter/Approval.tex}
-%\clearpage 
-%\input{Frontmatter/Abstract.tex}
-%\clearpage 
-%\input{Frontmatter/Acknowledgements.tex}
-%\cleardoublepage
+\pagestyle{front}
+\input{Frontmatter/Approval.tex}
+\clearpage 
+\input{Frontmatter/Abstract.tex}
+\clearpage 
+%\input{Frontmatter/Acknowledgements.tex} % Do not enable
+%\cleardoublepage % Not needed
 \tableofcontents
 \cleardoublepage
-%\listoffigures
-%\listoftables
-%\printglossary[type=\acronymtype,title=Acronyms,toctitle=Acronyms, style=long-booktabs]
+\listoffigures
+\listoftables
+
+%%%%%%%%%%%%%%%%Glossaries and acronyms%%%%%%%%%%%%%%%%
 \renewcommand{\printunsrtglossaryentryprocesshook}[1]{%
     \glsifcategory{#1}{glosscat}%
     {\printunsrtglossaryskipentry}%
     {}%
 }
 \printglossary[type=\acronymtype,title=Acronyms,toctitle=Acronyms, style=long-booktabs]
-%\printglossary[type=main, title={Glossary}, style=long-booktabs]
 \renewcommand{\printunsrtglossaryentryprocesshook}[1]{%
     \glsifcategory{#1}{acronymcat}%
     {\printunsrtglossaryskipentry}%
@@ -40,7 +40,7 @@
 }
 \printunsrtglossary[type=main, title={Glossary}, style=long-booktabs]
 \cleardoublepage
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%Chapters%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \pagenumbering{arabic}
 \pagestyle{main}
 \input{Chapters/01_Introduction.tex}
@@ -49,13 +49,13 @@
 \cleardoublepage
 \input{Chapters/03_Examples.tex}
 \cleardoublepage
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%Backmatter%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \printbibliography[heading=bibintoc,title={Bibliography}]
-%\cleardoublepage 
-%\appendix
-%\input{Backmatter/Appendix.tex}
-%\cleartoleftpage
-%\input{Backmatter/Backpage.tex}
+\cleardoublepage 
+\appendix
+\input{Backmatter/Appendix.tex}
+\cleartoleftpage
+\input{Backmatter/Backpage.tex}
 
 \end{document}

@@ -190,7 +190,7 @@ tick label style={/pgf/number format/assume math mode}, % To apply main font to 
 \newcommand{\namesigdatehrule}[1]{\par\tikz \draw [black, densely dotted, very thick] (0.04,0) -- (#1,0);\par}
 \newcommand{\namesigdate}[2][]{%
 \settowidth{\myl}{#2}
-\setlength{\myl}{\myl+10pt}
+\setlength{\myl}{\myl}%+10pt}
 \begin{minipage}{\myl}%
 \begin{center}
     #2  % Insert name from the command eg. \namesigdate{\authorname}
@@ -209,3 +209,7 @@ tick label style={/pgf/number format/assume math mode}, % To apply main font to 
   \clearpage
   \ifodd\value{page}\hbox{}\newpage\fi
 }
+
+% Multiple abstracts on the same page
+\patchcmd{\abstract}{\titlepage}{\thispagestyle{empty}}{}{}
+\patchcmd{\endabstract}{\endtitlepage}{}{}{}
