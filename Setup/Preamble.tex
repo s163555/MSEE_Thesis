@@ -3,7 +3,7 @@
 %\ifluatex 
 	\usepackage{fontspec}       % Package for custom fonts
 %\else
-	\usepackage[utf8]{inputenc}
+%	\usepackage[utf8]{inputenc}
 	\usepackage[T1]{fontenc}
 %\fi	
 
@@ -49,8 +49,7 @@
 % Extras
 \let\ordinal\relax          % Remove warning from ordinal definition (datetime package)
 \usepackage{datetime}		% For dates and time functions
-%\usepackage{glossaries-extra}   % Abbreviations with hyperlinks
-\usepackage[automake=immediate,toc,
+\usepackage[automake=immediate,toc, % Abbreviations and glossary lists
 abbreviations,
 symbols,
 postdot, 
@@ -61,8 +60,8 @@ nopostdot=true, nonumberlist=true
 \usepackage[numbib]{tocbibind} % Lists of... in toc
 %\usepackage{calc}           % Adds ability for latex to calculate (3pt+2pt) 
 \usepackage{blindtext}
-\usepackage{etoolbox} % provides \patchcmd
-\patchcmd{\endabstract}{\null}{}{}{} % replaces \null with third argument (empty)
+%\usepackage{etoolbox} % provides \patchcmd
+%\patchcmd{\endabstract}{\null}{}{}{} % replaces \null with third argument (empty)
 
 % Drawing
 \usepackage{tikz}					% Create graphics
@@ -71,3 +70,4 @@ nopostdot=true, nonumberlist=true
 \usepackage[american,arrowmos,nooldvoltagedirection]{circuitikz}	% Create circuit graphics (using TikZ)
 
 \usepackage[protrusion=true,expansion=true,final,babel]{microtype} % Better text appearance
+%\DeclareMicrotypeAlias{Latin Modern}{TU-basic}
