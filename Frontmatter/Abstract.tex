@@ -1,8 +1,28 @@
+
+% Multiple abstracts on the same page
+\newenvironment{abstractpage}
+%{\cleardoublepage\vspace*{\fill}\thispagestyle{empty}}
+%{\clearpage\vspace*{\fill}\thispagestyle{empty}}
+{\vspace*{\fill}\thispagestyle{empty}}
+{\vfill\clearpage}
+\renewenvironment{abstract}[1]
+{\bigskip\selectlanguage{#1}%
+	\begin{center}\bfseries\abstractname\end{center}}
+{\par\bigskip}
+
 \chapter*{Abstract}
 \addcontentsline{toc}{chapter}{Abstract}
-\blindtext
 
-
-
-
-
+\begin{abstractpage}
+	\begin{abstract}{english}
+		Hello, here is some text without a meaning. This text should show what a printed text will look like at this place. If you read this text, you will get no information. Really? Is there no information? Is there a difference between this text and some nonsense like “Huardest gefburn”? Kjift – not at all! A blind text like this gives you information about the selected font, how the letters are written and an impression of the look. This text should contain all letters of the alphabet and it should be written in of the original language. There is no need for special content, but the length of words should match the language.
+	\end{abstract}
+	
+	\begin{abstract}{danish}
+		Hej, her er noget tekst uden mening. Denne tekst skal vise, hvordan en trykt tekst vil se ud på dette sted. Hvis du læser denne tekst, får du ingen information. Virkelig? Er der ingen information? Er der forskel på denne tekst og noget nonsens som "Huardest gefburn"? Kjift – slet ikke! En blindtekst som denne giver dig information om den valgte skrifttype, hvordan bogstaverne er skrevet og et indtryk af udseendet. Denne tekst skal indeholde alle bogstaver i alfabetet, og den skal være skrevet på originalsproget. Der er ikke behov for særligt indhold, men længden af ord skal passe til sproget.
+	\end{abstract}
+	
+	\begin{abstract}{korean}
+		안녕하세요, 여기 의미 없는 문자가 있습니다. 이 텍스트는 이 플레이스에서 인쇄된 텍스트의 모양을 보여줘야 합니다. 이 텍스트를 읽으면 정보를 얻을 수 없습니다. 정말? 정보가 없나요? 이 텍스트와 "Huardest gefburn"과 같은 말도 안 되는 내용 사이에 차이가 있나요? Kjift – 전혀 그렇지 않습니다! 이와 같은 블라인드 텍스트는 선택한 글꼴, 글자의 작성 방법 및 모양에 대한 정보를 제공합니다. 이 텍스트는 알파벳의 모든 문자를 포함해야 하며 원래 언어로 작성되어야 합니다. 특별한 내용은 필요 없지만, 단어의 길이는 언어와 일치해야 합니다.
+	\end{abstract}
+\end{abstractpage}

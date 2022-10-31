@@ -1,0 +1,72 @@
+\chapter*{Nomenclature} \label{cha:denotation}
+\addcontentsline{toc}{chapter}{Nomenclature}
+\begin{longtable}{@{}llll@{}}
+	\toprule
+	\textbf{Category } & \textbf{Name}    & \textbf{Unit}        & \textbf{Description} \\ \midrule
+	\endhead
+	\multirow{8}{*}{Preamplifier}       & $V_{\mathrm{ref}}$ & $\si{\volt}$ & Reference voltage \\
+	& $C_{\mathrm{hp}}$ & $\si{\farad}$ & High pass filter capacitor \\
+	& $R_{\mathrm{hp}}$ & $\si{\ohm}$ & High pass filter resistor \\
+	& $f_{\mathrm{hp}}$ & $\si{\hertz}$ & High pass cut-off frequency \\
+	& $C_{\mathrm{lp}}$ & $\si{\farad}$ & Low pass filter capacitor \\
+	& $R_{\mathrm{lp}}$ & $\si{\ohm}$ & Low pass filter resistor \\
+	& $f_{\mathrm{lp}}$ & $\si{\hertz}$ & Low pass cut-off frequency \\
+	& $A_{v}$ & $1$ & Amplification factor \\ \midrule
+	\multirow{27}{*}{Modulator} & $R_{1}$ & $\si{\ohm}$ & AIM voltage divider resistor \\
+	& $R_{2}$ & $\si{\ohm}$ & AIM voltage divider resistor \\
+	& $R_{\mathrm{in}}$ & $\si{\ohm}$ & AIM input resistor \\
+	& $R_{\mathrm{fb}}$ & $\si{\ohm}$ & AIM feedback resistor \\
+	& $C_{1}$ & $\si{\farad}$ & AIM capacitor \\
+	& $V_{\mathrm{in}}$ & $\si{\volt}$ & Input signal voltage \\
+	& $V_{\mathrm{span}}$ & $\si{\volt}$ & Voltage range of input signal \\ %Måske slet denne
+	& $V_{\mathrm{pwm}}$ & $\si{\volt}$ & PWM signal \\
+	& $V_{H}$ & $\si{\volt}$ & $V_{\mathrm{pwm}}$ high level voltage \\
+	& $V_{L}$ & $\si{\volt}$ & $V_{\mathrm{pwm}}$ low level voltage \\
+	& $V_{\mathrm{out}}$ & $\si{\volt}$ & $V_{\mathrm{pwm}}$ voltage range $\left( V_{H} - V_{L} \right) $ \\
+	& $V_{\mathrm{hys}}$ & $\si{\volt}$ & Hysteresis voltage \\
+	& $V_{\mathrm{hw}}$ & $\si{\volt}$ & Hysteresis width \\
+	& $V_{\mathrm{th}_{H}}$ & $\si{\volt}$ & Hysteresis threshold upper voltage \\
+	& $V_{\mathrm{th}_{L}}$ & $\si{\volt}$ & Hysteresis threshold lower voltage \\
+	& $V_{c}$ & $\si{\volt}$ & PWM carrier voltage \\
+	& $V_{c_{H}}$ & $\si{\volt}$ & PWM carrier upper voltage \\
+	& $V_{c_{L}}$ & $\si{\volt}$ & PWM carrier lower voltage \\
+	& $f_{sw}$ & $\si{\hertz}$ & PWM signal frequency \\
+	& $D$ & $1$ & PWM signal duty cycle \\
+	& $t_{H}$ & $\si{\second}$ & PWM carrier charge time \\
+	& $t_{L}$ & $\si{\second}$ & PWM carrier discharge time \\
+	& $\tau$ & $1$ & PWM carrier charge constant \\
+	& $R_{\mathrm{th}}$ & $\si{\ohm}$ & PWM carrier thevenin resistance \\
+	& $f_{\mathrm{idle}}$ & $\si{\hertz}$ & PWM signal idle switching frequency \\
+	& $k_{2}$ & $1$ & $R_{\mathrm{fb}}$, $R_{\mathrm{in}}$ voltage divider \\ \midrule
+	\multirow{6}{*}{Gate driver}  & $D_{dt}$ & $1$ & Dead-time circuit diode \\
+	& $R_{dt}$ & $\si{\ohm}$ & Dead-time circuit resistor \\
+	& $C_{dt}$ & $\si{\farad}$ & Dead-time circuit capacitor \\
+	& $V_{C}$ & $\si{\volt}$ & Dead-time circuit supply voltage \\
+	& $V_{s}$ & $\si{\volt}$ & IC supply voltage \\
+	& $t_{c}$ & $\si{\second}$ & Charging circuit time \\ \midrule
+	\multirow{5}{*}{Power stage}  & $V_{DD}$ & $\si{\volt}$ & Power supply voltage \\
+	& $Q_{1}, Q_{2}, Q_{3}, Q_{4}$ & $1$ & Power stage switches \\
+	& $V_{g}$ & $\si{\volt}$ & Gate driver signal \\
+	& $V_{o}$ & $\si{\volt}$ & Output voltage \\
+	& $I_{o}$ & $\si{\ampere}$ & Output current \\
+	& $R_{\mathrm{BTL}}$ & $\si{\ohm}$ & Speaker equivalent load resistance \\ \midrule
+	\multirow{7}{*}{Output filter}  & $R_{f}$ & $\si{\ohm}$ & Output filter single-ended load \\
+	& $C_{\mathrm{BTL}}$ & $\si{\farad}$ & Output filter differential capacitance \\
+	& $C_{f}$ & $\si{\farad}$ & Output filter single-ended capacitance \\
+	& $L_{f}$ & $\si{\henry}$ & Output filter inductance \\
+	& $\Delta I_{L}$ & $\si{\ampere}$ & Output filter ripple current \\
+	& $Q$ & $1$ & Output filter quality factor \\
+	& $f_{c}$ & $\si{\hertz}$ & Output filter cut-off frequency \\ 
+	& $\omega_{n}$ & $\si{\radian\per\second}$ & Output filter natural frequency \\
+	& $\zeta$ & $1$ & Output filter damping ratio \\ \midrule
+	\multirow{9}{*}{Shunt regulator}  & $R_{sh}$ & $\si{\ohm}$ & Shunt current limiting resistor \\
+	& $I_{K}$ & $\si{\ampere}$ & Shunt cathode current \\
+	& $I_{K_{\mathrm{max}}}$ & $\si{\ampere}$ & Shunt maximum cathode current \\
+	& $I_{K_{\mathrm{min}}}$ & $\si{\ampere}$ & Shunt minimum cathode current \\
+	& $I_{\mathrm{su}}$ & $\si{\ampere}$ & Shunt supply current \\
+	& $R_{A1}$ & $\si{\ohm}$ & Shunt adjust resistor 1 \\
+	& $R_{A2}$ & $\si{\ohm}$ & Shunt adjust resistor 2 \\
+	& $C_{L}$ & $\si{\farad}$ & Shunt load capacitance \\
+	& $V_{\mathrm{ref}_{\mathrm{IC}}}$ & \si{\volt} & Shunt internal reference voltage
+	\label{tab:denotation}
+\end{longtable}

@@ -7,38 +7,37 @@
 \begin{document}
 
 \pagenumbering{Roman}
-%\input{Frontmatter/Frontpage.tex}
+\input{Frontmatter/Frontpage.tex}
 \pagecolor{white}
 \newgeometry{top=2.81cm, bottom=2.75cm, outer=2.5cm, inner=3.5cm}
 \pagestyle{empty}
 %\cleardoublepage 
 \input{Frontmatter/Copyright.tex}
 \clearpage 
-%\pagestyle{front}
-%\input{Frontmatter/Approval.tex}
-%\clearpage 
-%\input{Frontmatter/Abstract.tex}
-%\clearpage 
+\pagestyle{front}
+\input{Frontmatter/Approval.tex}
+\clearpage 
+\input{Frontmatter/Abstract.tex}
+\clearpage 
 %\input{Frontmatter/Acknowledgements.tex}
 %\cleardoublepage
 \tableofcontents
 \cleardoublepage
-%\listoffigures
-%\listoftables
-%\printglossary[type=\acronymtype,title=Acronyms,toctitle=Acronyms, style=long-booktabs]
+\listoffigures
+\listoftables
 \renewcommand{\printunsrtglossaryentryprocesshook}[1]{%
     \glsifcategory{#1}{glosscat}%
     {\printunsrtglossaryskipentry}%
     {}%
 }
 \printglossary[type=\acronymtype,title=Acronyms,toctitle=Acronyms, style=long-booktabs]
-%\printglossary[type=main, title={Glossary}, style=long-booktabs]
 \renewcommand{\printunsrtglossaryentryprocesshook}[1]{%
     \glsifcategory{#1}{acronymcat}%
     {\printunsrtglossaryskipentry}%
     {}%
 }
 \printunsrtglossary[type=main, title={Glossary}, style=long-booktabs]
+\input{Frontmatter/Nomenclature.tex}
 \cleardoublepage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \pagenumbering{arabic}
@@ -52,10 +51,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \printbibliography[heading=bibintoc,title={Bibliography}]
-%\cleardoublepage 
-%\appendix
-%\input{Backmatter/Appendix.tex}
-%\cleartoleftpage
-%\input{Backmatter/Backpage.tex}
+\cleardoublepage 
+\appendix
+\input{Backmatter/Appendix.tex}
+\cleartoleftpage
+\input{Backmatter/Backpage.tex}
 
 \end{document}

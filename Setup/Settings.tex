@@ -39,31 +39,42 @@ purple,         fill=purple         \\%
 % Font
 % There is no corporate serif font in the DTU design guide. The DTU design team has proposed to use Neo Sans for headings - and Arial for the body text.
 % To change heading font to NeoSans Pro please upload both NeoSansPro-Regular.otf and NeoSansPro-Medium.otf to the root directory.
-\setmainfont{Arial}
-\renewcommand\thepart{Part \Roman{part}}
-\IfFontExistsTF{NeoSansPro-Medium.otf}
-{ %If True set headings to NeoSans Pro
-\newfontface\NeoSansProReg{NeoSansPro-Regular.otf}
-\newfontface\NeoSansProMed{NeoSansPro-Medium.otf}
-\titleformat{\part}[display]{\NeoSansProMed \huge \centering}{\NeoSansProMed \Huge \thepart}{1em}{\thispagestyle{empty}}{}
-\titleformat{\chapter}{\NeoSansProMed\huge}{\thechapter}{1em}{\raggedright}
-\titleformat{\section}{\NeoSansProMed\Large}{\thesection}{1em}{\raggedright}
-\titleformat{\subsection}{\NeoSansProMed\large}{\thesubsection}{1em}{\raggedright}
-\titleformat{\subsubsection}{\NeoSansProMed\normalsize}{\thesubsubsection}{1em}{\raggedright}
-\newcommand\TitleFont[1]{{\NeoSansProMed #1}}
-\newcommand\titlefont[1]{{\NeoSansProReg #1}}
-}
-{ % If false
-\titleformat{\part}[display]{\bfseries\huge \centering}{\bfseries\Huge \thepart}{1em}{\thispagestyle{empty}}{}
-\titleformat{\chapter}{\bfseries\huge}{\thechapter}{1em}{\raggedright}
-\titleformat{\section}{\bfseries\Large}{\thesection}{1em}{\raggedright}
-\titleformat{\subsection}{\bfseries\large}{\thesubsection}{1em}{\raggedright}
-\titleformat{\subsubsection}{\bfseries\normalsize}{\thesubsubsection}{1em}{\raggedright}
-\newcommand\TitleFont[1]{{\bfseries #1}}
-\newcommand\titlefont[1]{{#1}}
-}
-\urlstyle{sf}
+%\setmainfont{Arial}
+%\renewcommand\thepart{Part \Roman{part}}
+%\IfFontExistsTF{NeoSansPro-Medium.otf}
+%{ %If True set headings to NeoSans Pro
+%\newfontface\NeoSansProReg{NeoSansPro-Regular.otf}
+%\newfontface\NeoSansProMed{NeoSansPro-Medium.otf}
+%\titleformat{\part}[display]{\NeoSansProMed \huge \centering}{\NeoSansProMed \Huge \thepart}{1em}{\thispagestyle{empty}}{}
+%\titleformat{\chapter}{\NeoSansProMed\huge}{\thechapter}{1em}{\raggedright}
+%\titleformat{\section}{\NeoSansProMed\Large}{\thesection}{1em}{\raggedright}
+%\titleformat{\subsection}{\NeoSansProMed\large}{\thesubsection}{1em}{\raggedright}
+%\titleformat{\subsubsection}{\NeoSansProMed\normalsize}{\thesubsubsection}{1em}{\raggedright}
+%\newcommand\TitleFont[1]{{\NeoSansProMed #1}}
+%\newcommand\titlefont[1]{{\NeoSansProReg #1}}
+%}
+%{ % If false
+%\titleformat{\part}[display]{\bfseries\huge \centering}{\bfseries\Huge \thepart}{1em}{\thispagestyle{empty}}{}
+%\titleformat{\chapter}{\bfseries\huge}{\thechapter}{1em}{\raggedright}
+%\titleformat{\section}{\bfseries\Large}{\thesection}{1em}{\raggedright}
+%\titleformat{\subsection}{\bfseries\large}{\thesubsection}{1em}{\raggedright}
+%\titleformat{\subsubsection}{\bfseries\normalsize}{\thesubsubsection}{1em}{\raggedright}
+%\newcommand\TitleFont[1]{{\bfseries #1}}
+%\newcommand\titlefont[1]{{#1}}
+%}
+%\urlstyle{sf}
 %\def\UrlFont{\NeoSansProReg}
+
+\renewcommand\thepart{Part \Roman{part}}
+	\titleformat{\part}[display]{\huge \centering}{\Huge \thepart}{1em}{\thispagestyle{empty}}{}
+	\titleformat{\chapter}{\Huge}{\thechapter}{1em}{\raggedright}
+	\titleformat{\section}{\huge}{\thesection}{1em}{\raggedright}
+	\titleformat{\subsection}{\Large}{\thesubsection}{1em}{\raggedright}
+	\titleformat{\subsubsection}{\large}{\thesubsubsection}{1em}{\raggedright}
+	\newcommand\TitleFont[1]{{#1}}
+	\newcommand\titlefont[1]{{#1}}
+\renewcommand{\familydefault}{\sfdefault}
+\urlstyle{sf}
 
 
 % If you wish to use the pdflatex compiler, sans-serif Helvetica can be used as a replacement for Arial. In this way you will be able to use the microtype package. Remember to add \usepackage[utf8]{inputenc} and disable the fontspec package. 
@@ -190,7 +201,7 @@ tick label style={/pgf/number format/assume math mode}, % To apply main font to 
 \newcommand{\namesigdatehrule}[1]{\par\tikz \draw [black, densely dotted, very thick] (0.04,0) -- (#1,0);\par}
 \newcommand{\namesigdate}[2][]{%
 \settowidth{\myl}{#2}
-\setlength{\myl}{\myl+10pt}
+\setlength{\myl}{\myl}%+10pt}
 \begin{minipage}{\myl}%
 \begin{center}
     #2  % Insert name from the command eg. \namesigdate{\authorname}
@@ -209,3 +220,13 @@ tick label style={/pgf/number format/assume math mode}, % To apply main font to 
   \clearpage
   \ifodd\value{page}\hbox{}\newpage\fi
 }
+
+% The per-unit entry counting can be used for other purposes. In the following example document, the trigger value is set to zero, which means the index suppression won’t be triggered, but the unit entry count is used to automatically suppress the hyperlink for commands like \gls by modifying the \glslinkcheckfirsthyperhook which is used at the end of the macro the determines whether or not to suppress the hyperlink.
+%\GlsXtrEnableEntryUnitCounting{general}{0}{chapter}
+%\GlsXtrEnableEntryUnitCounting{abbreviation}{0}{chapter}
+%
+%\renewcommand*{\glslinkcheckfirsthyperhook}{%
+%	\ifnum\glsentrycurrcount\glslabel>0
+%	\setkeys{glslink}{hyper=false}%
+%	\fi
+%}
