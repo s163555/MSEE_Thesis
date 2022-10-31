@@ -7,6 +7,8 @@
 	\usepackage[T1]{fontenc}
 %\fi	
 
+\usepackage{mlmodern}		% Latin Modern font type
+
 % Localization
 \usepackage{kotex}			% Korean typesetting
 \usepackage[bidi=default]{babel}
@@ -14,7 +16,7 @@
 	\babelprovide[import=ko]{korean}
 \babelprovide[import=da]{danish}
 
-\usepackage{mlmodern}		% Latin Modern font type
+% Basic thesis packages
 \usepackage[]{geometry}     % Package for changing page margins (before fancyhdr) 
 \usepackage{fancyhdr}       % Package to change header and footer
 \usepackage{parskip}        % Package to tweak paragraph skipping (instead of indents a small skip is added after every paragraph)
@@ -34,7 +36,7 @@
 \usepackage{csquotes}       % For biblatex with babel
 %\usepackage[backend=biber,style=numeric,sorting=none]{biblatex} % Package for bibliography (citing)
 \usepackage[backend=biber,style=ieee,backref=false,abbreviate=true,dateabbrev=false,alldates=long,sorting=ynt,dashed=false,block=space]{biblatex} % Package for bibliography (citing)
-\bibliography{bibliography.bib}
+\bibliography{bibliography_bibertool.bib}
 
 % Tables
 \usepackage{tabularx}       % for ability to adjust column spacing in tabular better

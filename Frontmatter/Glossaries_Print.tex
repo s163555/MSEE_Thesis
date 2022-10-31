@@ -1,0 +1,12 @@
+\renewcommand{\printunsrtglossaryentryprocesshook}[1]{%
+	\glsifcategory{#1}{glosscat}%
+	{\printunsrtglossaryskipentry}%
+	{}%
+}
+\printglossary[type=\acronymtype,title=Acronyms,toctitle=Acronyms, style=long-booktabs]
+\renewcommand{\printunsrtglossaryentryprocesshook}[1]{%
+	\glsifcategory{#1}{acronymcat}%
+	{\printunsrtglossaryskipentry}%
+	{}%
+}
+\printunsrtglossary[type=main, title={Glossary}, style=long-booktabs]
