@@ -19,13 +19,12 @@
 \clearpage 
 \input{Frontmatter/Abstract.tex}
 \clearpage 
-%\input{Frontmatter/Acknowledgements.tex} % Do not enable
-%\cleardoublepage % Not needed
+%\input{Frontmatter/Acknowledgements.tex}
+%\cleardoublepage
 \tableofcontents
 \cleardoublepage
 \listoffigures
 \listoftables
-
 %%%%%%%%%%%%%%%%Glossaries and acronyms%%%%%%%%%%%%%%%%
 \renewcommand{\printunsrtglossaryentryprocesshook}[1]{%
     \glsifcategory{#1}{glosscat}%
@@ -39,6 +38,7 @@
     {}%
 }
 \printunsrtglossary[type=main, title={Glossary}, style=long-booktabs]
+\input{Frontmatter/Nomenclature.tex}
 \cleardoublepage
 %%%%%%%%%%%%%%%%%Chapters%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \pagenumbering{arabic}
