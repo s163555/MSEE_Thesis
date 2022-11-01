@@ -1,51 +1,106 @@
-\chapter{Introduction}
-The progress of imaging internal organs has advanced significantly during the \nth{20} century. Three major technologies used are X-ray, \gls{mri}, and ultrasound. Each of the technologies have distinct advantages and disadvantages in biomedical imaging, thus are still relevant for modern medicine. With x-rays, an important drawback is that patients are exposed to ionizing radiation 
-\cite{ShungUltrasound_Book,Shung1976,JensenUltrasoundBook,Jensen_Algorithms}
-\cite{1999_SummerSchool_Notes,Szabo_UltrasoundBook_2}
-This template complies with the DTU Design Guide \url{https://www.designguide.dtu.dk/}. DTU holds all rights to the design program including all copyrights. It is intended for two-sided printing. The \textbackslash \texttt{cleardoublepage} command can be used to ensure that new sections and the table of contents begins on a right-hand page. The back page always ends as an odd page. \cite{Jensen_Analysis_PW_1996}
+\chapter*{Report Structure} \label{cha:report_structure}
+\addcontentsline{toc}{chapter}{Report Structure}
+This section of the report will explain to the reader how to reference this document and explain the fundamental structure of the project as well as the report. Throughout the report, the reader will be assumed to be knowledgeable of basic circuit analysis and familiar with standard abbreviations typically used in electrical engineering. If not, readers can refer to the denotation section at the beginning of the report.
 
-All document settings have been collected in Setup/Settings.tex. These are global settings, meaning the settings will affect the whole document. Defining the title for example will change the title on the front page, the copyright page, and the footer. A watermark can be enabled or disabled in Setup/Premeable.tex. You can edit the watermark to display draft, review, approve, confidential, or anything else. By default, the watermark is printed on top of the document's contents and has a transparent gray color. Here I am just testing the synchronization functionality of Overleaf and Github. Now, that the first synchronization finished successfully, I want to test that the reverse direction process is also functional. Hopefully, this will end up on Overleaf.
+Please refer to \hyperref[cha:acronyms]{Acronyms}, \hyperref[cha:glossary]{Glossary}, and \hyperref[cha:nomenclature]{Nomenclature} pages for explanations to terms found within the report.
 
-\section{This is a section}
-Every chapter is numbered and the sections inherit the chapter number followed by a dot and a section number. Figures, equations, tables, etc. also inherit the chapter numbering. 
+Furthermore, as a notation convention, large-signal \gls{dc} quantities are denoted by uppercase letters with uppercase subscripts. Small-signal quantities are denoted using lowercase letters with lowercase subscripts. Quantities composed of both large-signal and small-signal elements are denoted using lowercase letters and uppercase subscripts.
 
-\subsection{This is a sub section}
-Sub-sections are also numbered. In general, try not to use a deep hierarchy of sub-sections (\texttt{\textbackslash paragraph\{\}} and the like). The document will become segmented, which will make the document appear less coherent. 
+\section*{Sources}
+Calculus expressions present in the report will typically have a reference explaining their origin. All references are prominently displayed with square brackets and a number, directing to the appendix in the last section of the report.
 
-\subsubsection{This is a sub sub section}
-And those are not numbered. It is possible to adjust the deep hierarchy of numbering sections in Setup/Settings.tex. 
+\section*{Chapters}
+The report is divided into five chapters, where the first part is an introduction to the project. The second chapter will focus on explaining the theory of the topic of the project. The third chapter focuses on the synthesis of a circuit for experimental testing. The fourth chapter explains the production of the hardware. The fifth chapter will explain the testing methodology performed on the hardware. Finally, the documentation of testing and diagrams of laboratory setups can be found in the appendix.
 
-The front and back cover has been made to replicate the examples in the design guide \url{https://www.designguide.dtu.dk/#stnd-printmedia}. The name of department heading is omitted because it is located in the top right corner (no need to write it twice). Take a look at \url{https://www.inside.dtu.dk/en/medarbejder/om-dtu-campus-og-bygninger/kommunikation-og-design/skabeloner/rapporter} if you want to make your cover separately. 
+\cleardoublepage
 
-Citing is done with the \texttt{biblatex} package \cite{1999_SummerSchool_Notes}. Cross referencing (figures, tables, etc.) is taken care by the \texttt{cleveref} package. Just insert the name of the label in \textbackslash \texttt{cref\{\}} and it will automatically format the cross-reference. For example, writing the \texttt{cleveref} command \textbackslash \texttt{cref\{fig:groupedcolumn\}} will output ``\cref{fig:groupedcolumn}''. Using \textbackslash \texttt{Cref\{\}} will capitalize the first letter and \textbackslash \texttt{crefrange\{\}\{\}} will make a reference range. An example: \Cref{fig:stackedbar} is an example of a stacked bar chart and \crefrange{fig:stackedcolumn}{fig:groupedcolumn} are three consecutive figures.
+\chapter{Introduction} \label{cha:introduction}
+%In the following report, an analysis of a class-D amplifier module is documented. The work is conducted in the Department of Electrical Engineering at the \organisation. \\\\
+An audio amplifier is a device that amplifies low-power audio signals within the audio spectrum perceptible to the human hearing to a level suitable for loudspeakers. It is typically the second last stage in an audio playback chain. While the input signal to an audio amplifier measures a low power, the output of the amplifier typically measures a high power delivery to the load, in this case, a loudspeaker. The output power of the amplifier depends on several key factors, characteristics of the output stage, heat dissipation, and parasitic elements among others. \\\\
+A class-D audio amplifier is a typology of audio amplifiers that utilizes transistors as switches instead of gain devices as in other amplifier systems. As the transistors are operating non-linearly, the input signal is converted into a stream of pulses that resemble the input signal through a pulse-width modulation scheme. The time-averaged power of the modulated pulses is directly proportional to the input signal, so after amplification, the signal can be converted back into an analog signal through a passive low-pass filter. The purpose of this filter is to reduce high-frequency components in the amplified signal and thereby restore the audible spectrum frequency signal. \\
 
-\section{Font and symbols test}
-Symbols can be written directly in the document, meaning that there is no need for special commands to write special characters. I love to write special characters like æøå inside my \TeX{} document. Also á, à, ü, û, ë, ê, î, ï could be nice. So what about the ``¿'' character. What about ° é ® † ¥ ü | œ ‘ @ ö ä ¬ ‹ « © ƒ ß ª … ç ñ µ ‚ · ¡ “ £ ™ [ ] '. Some dashes - – —, and the latex form - -- --- 
+%\begin{figure}[htbp]
+%	\centering
+%	\input{0_Figures/Introduction/ClassD_blockdiagram.tikz}
+%	\caption{Block diagram of basic class-D amplifier topology.}
+%	\label{fig:01_classd_diagram}
+%\end{figure}
 
-This is a font test \newline 
-Arial Regular \newline 
-%\textit{Arial Italic} \newline 
-%\textbf{Arial Bold} \newline 
-%\textbf{\textit{Arial Bold Italic}}
+%See \autoref{fig:01_classd_diagram} for a block diagram overview of a class-D amplifier system with waveform illustrations.
+%The primary benefit of the class-D topology is an increased power efficiency as the maximum theoretical power efficiency for class-D amplifiers are near 100\%, whereas Class-A- and Class-B amplifiers maximum theoretical power efficiency is 25\% and 78.5\%, respectively.\\
+%
+%The design process in this project will be based on previous work by \cite{multivar_ctrl_loops_for_SM_audio_systems,nagy_special_course}. These two works explored using LQR in a control loop and minimizing the generated noise within the circuit from that implementation. The result was a circuit design that was implemented in-house within the DTU laboratory that is documented through an iterative design process.
 
-\gls{mri}, \gls{snr}, \gls{smps}, \gls{rvs}, \gls{ac}, \gls{dc}, \gls{emi}, \gls{gcd}, \gls{lcm} \\
-\gls{high}, \gls{low}, \gls{spice}
+\section{Project scope}
+As this project deals with a synthesis of a peculiar design and an analytical examination of a class-D system, this initial design will determine the specific direction of the qualitative analysis. The project is focused on the output stage of the system. Therefore analysis will comprise of distinctive variations of parasitic element combinations in the chosen output filter topology.
 
-% Given a set of numbers, there are elementary methods to compute its \glsxtrlong{gcd}, which is abbreviated \glsxtrshort{gcd}. This process is similar to that used for \acrfull{lcm}.
+\subsection{Learning objectives}
+See below for an outline of the project activities
+\begin{table}[ht!]
+	\centering
+	\begin{tabular}{@{}l@{}}
+		\toprule
+		\textbf{Project specification}									\\ \midrule
+		Learn a class-D amplifier topology, calculate component values	\\
+		Understand and design a self-oscillating modulator amplifier	\\
+		Investigate and test open loop output filter					\\
+		Investigate and test closed loop output filter					\\
+		Investigate output filter parasitic elements affects control loop\\
+		Make quantifiable performance measurements on system			\\
+		Write a technical report documenting the project work			\\ \bottomrule
+	\end{tabular}
+	\caption{Project specification table}
+	\label{tab:specifications}
+\end{table}
 
-I want to talk about \gls{spice}, \gls{high} and \gls{low}. These are all \gls{dc} and \gls{ac} electric principles. I want to mention that \glsxtrlong{fet} devices can be called \glsxtrshort{fet}.
-
-\section{Tikz Test}
-\begin{figure}[h]
-	\centering 
-	\resizebox{\textwidth}{!}{
-		\input{Figures/system_overview.tex}
-	}
-	\caption{Simple overview of the system}
-	\label{fig:system_overview}
-\end{figure}
-
-I like to talk about logic systems and their binary states. Such as \gls{high} and \gls{low}. These are also important in \gls{spice} simulation systems.
-
-I like to explain abbreviations such as \glsxtrshort{fet}. This abbreviation stands for \glsxtrlong{fet}. I like this paper \cite{Omura2022}.
-Two datasheets \cite{AD8332,AD8333}
+%\chapter{Introduction}
+%The progress of imaging internal organs has advanced significantly during the \nth{20} century. Three major technologies used are X-ray, \gls{mri}, and ultrasound. Each of the technologies have distinct advantages and disadvantages in biomedical imaging, thus are still relevant for modern medicine. With x-rays, an important drawback is that patients are exposed to ionizing radiation 
+%\cite{ShungUltrasound_Book,Shung1976,JensenUltrasoundBook,Jensen_Algorithms}
+%\cite{1999_SummerSchool_Notes,Szabo_UltrasoundBook_2}
+%This template complies with the DTU Design Guide \url{https://www.designguide.dtu.dk/}. DTU holds all rights to the design program including all copyrights. It is intended for two-sided printing. The \textbackslash \texttt{cleardoublepage} command can be used to ensure that new sections and the table of contents begins on a right-hand page. The back page always ends as an odd page. \cite{Jensen_Analysis_PW_1996}
+%
+%All document settings have been collected in Setup/Settings.tex. These are global settings, meaning the settings will affect the whole document. Defining the title for example will change the title on the front page, the copyright page, and the footer. A watermark can be enabled or disabled in Setup/Premeable.tex. You can edit the watermark to display draft, review, approve, confidential, or anything else. By default, the watermark is printed on top of the document's contents and has a transparent gray color. Here I am just testing the synchronization functionality of Overleaf and Github. Now, that the first synchronization finished successfully, I want to test that the reverse direction process is also functional. Hopefully, this will end up on Overleaf.
+%
+%\section{This is a section}
+%Every chapter is numbered and the sections inherit the chapter number followed by a dot and a section number. Figures, equations, tables, etc. also inherit the chapter numbering. 
+%
+%\subsection{This is a sub section}
+%Sub-sections are also numbered. In general, try not to use a deep hierarchy of sub-sections (\texttt{\textbackslash paragraph\{\}} and the like). The document will become segmented, which will make the document appear less coherent. 
+%
+%\subsubsection{This is a sub sub section}
+%And those are not numbered. It is possible to adjust the deep hierarchy of numbering sections in Setup/Settings.tex. 
+%
+%The front and back cover has been made to replicate the examples in the design guide \url{https://www.designguide.dtu.dk/#stnd-printmedia}. The name of department heading is omitted because it is located in the top right corner (no need to write it twice). Take a look at \url{https://www.inside.dtu.dk/en/medarbejder/om-dtu-campus-og-bygninger/kommunikation-og-design/skabeloner/rapporter} if you want to make your cover separately. 
+%
+%Citing is done with the \texttt{biblatex} package \cite{1999_SummerSchool_Notes}. Cross referencing (figures, tables, etc.) is taken care by the \texttt{cleveref} package. Just insert the name of the label in \textbackslash \texttt{cref\{\}} and it will automatically format the cross-reference. For example, writing the \texttt{cleveref} command \textbackslash \texttt{cref\{fig:groupedcolumn\}} will output ``\cref{fig:groupedcolumn}''. Using \textbackslash \texttt{Cref\{\}} will capitalize the first letter and \textbackslash \texttt{crefrange\{\}\{\}} will make a reference range. An example: \Cref{fig:stackedbar} is an example of a stacked bar chart and \crefrange{fig:stackedcolumn}{fig:groupedcolumn} are three consecutive figures.
+%
+%\section{Font and symbols test}
+%Symbols can be written directly in the document, meaning that there is no need for special commands to write special characters. I love to write special characters like æøå inside my \TeX{} document. Also á, à, ü, û, ë, ê, î, ï could be nice. So what about the ``¿'' character. What about ° é ® † ¥ ü | œ ‘ @ ö ä ¬ ‹ « © ƒ ß ª … ç ñ µ ‚ · ¡ “ £ ™ [ ] '. Some dashes - – —, and the latex form - -- --- 
+%
+%This is a font test \newline 
+%Arial Regular \newline 
+%%\textit{Arial Italic} \newline 
+%%\textbf{Arial Bold} \newline 
+%%\textbf{\textit{Arial Bold Italic}}
+%
+%\gls{mri}, \gls{snr}, \gls{smps}, \gls{rvs}, \gls{ac}, \gls{dc}, \gls{emi}, \gls{gcd}, \gls{lcm} \\
+%\gls{high}, \gls{low}, \gls{spice}
+%
+%% Given a set of numbers, there are elementary methods to compute its \glsxtrlong{gcd}, which is abbreviated \glsxtrshort{gcd}. This process is similar to that used for \acrfull{lcm}.
+%
+%I want to talk about \gls{spice}, \gls{high} and \gls{low}. These are all \gls{dc} and \gls{ac} electric principles. I want to mention that \glsxtrlong{fet} devices can be called \glsxtrshort{fet}.
+%
+%\section{Tikz Test}
+%\begin{figure}[h]
+%	\centering 
+%	\resizebox{\textwidth}{!}{
+%		\input{Figures/system_overview.tex}
+%	}
+%	\caption{Simple overview of the system}
+%	\label{fig:system_overview}
+%\end{figure}
+%
+%I like to talk about logic systems and their binary states. Such as \gls{high} and \gls{low}. These are also important in \gls{spice} simulation systems.
+%
+%I like to explain abbreviations such as \glsxtrshort{fet}. This abbreviation stands for \glsxtrlong{fet}. I like this paper \cite{Omura2022}.
+%Two datasheets \cite{AD8332,AD8333}. \gls{cad} \gls{dtu} \gls{kaist}. Signals are usually \glsxtrshort{ac}-coupled from the transducer.
