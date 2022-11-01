@@ -1,23 +1,10 @@
-\chapter*{Report Structure} \label{cha:report_structure}
-\addcontentsline{toc}{chapter}{Report Structure}
-This section of the report will explain to the reader how to reference this document and explain the fundamental structure of the project as well as the report. Throughout the report, the reader will be assumed to be knowledgeable of basic circuit analysis and familiar with standard abbreviations typically used in electrical engineering. If not, readers can refer to the denotation section at the beginning of the report.
-
-Please refer to \hyperref[cha:acronyms]{Acronyms}, \hyperref[cha:glossary]{Glossary}, and \hyperref[cha:nomenclature]{Nomenclature} pages for explanations to terms found within the report.
-
-Furthermore, as a notation convention, large-signal \gls{dc} quantities are denoted by uppercase letters with uppercase subscripts. Small-signal quantities are denoted using lowercase letters with lowercase subscripts. Quantities composed of both large-signal and small-signal elements are denoted using lowercase letters and uppercase subscripts.
-
-\section*{Sources}
-Calculus expressions present in the report will typically have a reference explaining their origin. All references are prominently displayed with square brackets and a number, directing to the appendix in the last section of the report.
-
-\section*{Chapters}
-The report is divided into five chapters, where the first part is an introduction to the project. The second chapter will focus on explaining the theory of the topic of the project. The third chapter focuses on the synthesis of a circuit for experimental testing. The fourth chapter explains the production of the hardware. The fifth chapter will explain the testing methodology performed on the hardware. Finally, the documentation of testing and diagrams of laboratory setups can be found in the appendix.
-
-\cleardoublepage
-
 \chapter{Introduction} \label{cha:introduction}
-%In the following report, an analysis of a class-D amplifier module is documented. The work is conducted in the Department of Electrical Engineering at the \organisation. \\\\
-An audio amplifier is a device that amplifies low-power audio signals within the audio spectrum perceptible to the human hearing to a level suitable for loudspeakers. It is typically the second last stage in an audio playback chain. While the input signal to an audio amplifier measures a low power, the output of the amplifier typically measures a high power delivery to the load, in this case, a loudspeaker. The output power of the amplifier depends on several key factors, characteristics of the output stage, heat dissipation, and parasitic elements among others. \\\\
+The progress of imaging internal organs has advanced significantly during the \nth{20} century. Three major technologies used are X-ray, \gls{mri}, and ultrasound. Each of the technologies have distinct advantages and disadvantages in biomedical imaging, thus are still relevant for modern medicine. With x-rays, an important drawback is that patients are exposed to ionizing radiation 
+\cite{ShungUltrasound_Book,Shung1976,JensenUltrasoundBook,Jensen_Algorithms}
+\cite{1999_SummerSchool_Notes,Szabo_UltrasoundBook_2}
 A class-D audio amplifier is a typology of audio amplifiers that utilizes transistors as switches instead of gain devices as in other amplifier systems. As the transistors are operating non-linearly, the input signal is converted into a stream of pulses that resemble the input signal through a pulse-width modulation scheme. The time-averaged power of the modulated pulses is directly proportional to the input signal, so after amplification, the signal can be converted back into an analog signal through a passive low-pass filter. The purpose of this filter is to reduce high-frequency components in the amplified signal and thereby restore the audible spectrum frequency signal. \\
+
+\gls{dc} \gls{ltspice} \gls{matlab} \gls{mri} \gls{dsp}
 
 %\begin{figure}[htbp]
 %	\centering
