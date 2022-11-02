@@ -14,12 +14,12 @@
 *.ist
 
 # glossaries files
-*.gls
-*.glo
-*.glg
-*.gls-abr
-*.glo-abr
-*.glg-abr
+#*.gls
+#*.glo
+#*.glg
+#*.gls-abr
+#*.glo-abr
+#*.glg-abr
 
 ## Intermediate documents:
 *.dvi
