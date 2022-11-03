@@ -1,29 +1,9 @@
-\chapter{Introduction to Ultrasound} \label{cha:introduction}
+\chapter{Introduction} \label{cha:introduction}
 \DeclareSIUnit{\fps}{ \translate{frames per second} }
 The progress of diagnostic imaging has advanced significantly during the \nth{20} century. As the cost of high speed computational systems has grown increasingly accessible, so has the use of of medical imaging become prominent. Advancement in scientific visualization have in turn generated more complex datasets of increased size and quality. Within the last few decades
-Three major technologies used are X-ray, \glsxtrshort{mri}, and Ultrasound. Each of the technologies have distinct advantages and disadvantages in biomedical imaging, thus each are still relevant for modern medicine. 
+Three major technologies used are X-ray, \glsxtrshort{mri}, and Ultrasound. Each of the technologies have distinct advantages and disadvantages in biomedical imaging, thus each are still relevant for modern medicine. \Cref{tab:imaging_modalities} contains a comparison and summary of the various fundamental diagnostic imaging modalities.
 
-Ultrasound is a technology that transmit sound wave with frequencies above the audible range (\SIrange{20}{20000}{\hertz}) to mechanically vibrate matter. The particles in the medium would be at rest and distributed uniformly. The wave propagates as a disturbance and the particles oscillate around their mean position due to the presence of the ultrasonic wave. Typically the frequency band used in clinical settings are from \SIrange{2}{12}{\mega\hertz}. \Cref{fig:planewave_jensen} visualizes the propagation of a plane wave in matter. The oscillation occurs parallel to the wave's direction, making it longitudinal, and the disturbance will propagate with $c$, which is determined by the medium and is given by
-\begin{equation}
-	c = \sqrt{\frac{1}{\rho_{0} \kappa_{S}}}
-\end{equation}
-Where $\rho_{0}$ is the mean density (\si{\kilogram\per\meter\cubed}) and $\kappa_{S}$ is the adiabatic compressibility (\si{\meter\squared\per\newton}). Since in the majority of cases, the propagation of ultrasound is linear, it is assumed in this work. 
-
-\begin{figure}[ht]
-	\centering
-	\includegraphics[width=.6\textwidth]{Figures/plane_wave_jensen-cropped.pdf}
-	\caption{Particle displacement for a propagating ultrasound wave \cite{JensenUltrasoundBook}}
-	\label{fig:planewave_jensen}
-\end{figure}
-
-\subsection{Comparison to Other Diagnostic Modalities}
-Since medical imaging has been reportedly performed over 5 billion times as of 2004 \cite{Picano2004}, and later numbers from 2011 show a doubling of imaging per year, and a ten-fold increase in Ultrasound examinations between year 2000 and 2011 \cite{Szabo_UltrasoundBook_2}. Potentially millions of people have been spared painful exploratory surgery through noninvasive diagnostic imaging. Lives can be saved by diagnosis and timely intervention. Looking at \Cref{tab:imaging_modalities}, a comparison of each major diagnostic imaging method is seen. 
-With x-rays, an important drawback is that patients are exposed to ionizing radiation when undergoing imaging. 
-\cite{ShungUltrasound_Book,Shung1976,JensenUltrasoundBook,Jensen_Algorithms}
-\cite{1999_SummerSchool_Notes,Szabo_UltrasoundBook_2}
-
-\gls{dc} \gls{ltspice} \gls{matlab} \gls{mri} \gls{dsp}
-
+Since medical imaging has been reportedly performed over 5 billion times as of 2004 \cite{Picano2004}, and later numbers from 2011 show a doubling of imaging per year, and a ten-fold increase in Ultrasound examinations between year 2000 and 2011 \cite{Szabo_UltrasoundBook_2}. Potentially millions of people have been spared painful exploratory surgery through noninvasive diagnostic imaging. Lives can be saved by diagnosis and timely intervention. 
 
 \begin{table}[ht]
 	\centering
@@ -46,6 +26,24 @@ With x-rays, an important drawback is that patients are exposed to ionizing radi
 	\caption{Comparison of Imaging Modalities \cite{Szabo_UltrasoundBook_2}}
 	\label{tab:imaging_modalities}
 \end{table}
+
+
+
+\section{Ultrasound}
+Ultrasound is a technology that transmit sound wave with frequencies above the audible range (\SIrange{20}{20000}{\hertz}) to mechanically vibrate matter. The particles in the medium would be at rest and distributed uniformly. The wave propagates as a disturbance and the particles oscillate around their mean position due to the presence of the ultrasonic wave. Typically the frequency band used in clinical settings are from \SIrange{2}{12}{\mega\hertz}. \Cref{fig:planewave_jensen} visualizes the propagation of a plane wave in matter. The oscillation occurs parallel to the wave's direction, making it longitudinal, and the disturbance will propagate with $c$, which is determined by the medium and is given by
+\begin{equation}
+	c = \sqrt{\frac{1}{\rho_{0} \kappa_{S}}}
+\end{equation}
+Where $\rho_{0}$ is the mean density (\si{\kilogram\per\meter\cubed}) and $\kappa_{S}$ is the \glsxtrshort{adiabatic} compressibility (\si{\meter\squared\per\newton}). Since in the majority of cases, the propagation of ultrasound is linear, it is assumed in this work. 
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=.6\textwidth]{Figures/plane_wave_jensen-cropped.pdf}
+	\caption{Particle displacement for a propagating ultrasound wave \cite{JensenUltrasoundBook}}
+	\label{fig:planewave_jensen}
+\end{figure}
+
+
 
 %\begin{figure}[htbp]
 %	\centering
