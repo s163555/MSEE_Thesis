@@ -1,0 +1,102 @@
+\chapter{Theory} \label{sec:theory}
+\section{Acoustical properties of ultrasound}
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=.6\textwidth]{1_plane_wave_jensen-cropped.pdf}
+	\caption{Particle displacement for a propagating ultrasound wave \cite{JensenUltrasoundBook}}
+	\label{fig:1_planewave_jensen}
+\end{figure}
+
+Ultrasound is a technology that transmit sound wave with frequencies above the audible range (\qtyrange[range-units = single]{20}{20e3}{\hertz}) to mechanically vibrate matter. The particles in the medium would be at rest and distributed uniformly before any disturbance. The wave propagates as a disturbance and the particles oscillate around their mean position due to the presence of the ultrasonic wave. Typically the \glsxtrshort{US} frequency band used in clinical settings are from \qtyrange[range-units = single]{2}{12}{\mega\hertz}. \Cref{fig:1_planewave_jensen} visualizes the propagation of a plane wave in matter. The oscillation occurs parallel to the wave's direction, making it longitudinal, and the disturbance will propagate with the variable $c$, which is determined by the medium and is given by \cref{eq:1_velocity_c}.
+\begin{equation} \label{eq:1_velocity_c}
+	c = \sqrt{\frac{1}{\rho_{0} \kappa_{S}}}
+\end{equation}
+Where $\rho_{0}$ is the mean density (\si{\kilogram\per\meter\cubed}) and $\kappa_{S}$ is the \gls{adiabatic} compressibility (\si{\meter\squared\per\newton}). Since in the majority of cases, the propagation of ultrasound is linear, it is assumed in this work. 
+
+The acoustic pressure of the harmonic plane wave is expressed by \cref{eq:1_acoustic_pressure}
+\begin{equation} \label{eq:1_acoustic_pressure}
+	p(t,z)=p_{0} e^{j(\omega t - k z)}
+\end{equation}
+And propagates along the $z$-axis. $\omega$ is the angular frequency, $k$ is the wave number and is expressed by $k=\nicefrac{\omega}{c}=\nicefrac{2\pi}{\lambda}$, and $_{0}$ is the acoustic pressure amplitude. A spherical wave is expressed by \cref{eq:1_spherical_wave}
+\begin{equation} \label{eq:1_spherical_wave}
+	p(t,r)=p_{0} e^{j(\omega t - k r)}
+\end{equation}
+Where $r$ is radial distance, and is defined in a polar coordinate system. For each time instance, the acoustic pressure $p(t,r)$ is constant over a fixed radial position. In this scenario, the pressure amplitude is given by $p_{0}(r) = \nicefrac{k_{p}}{r}$, where $k_{p}$ is a constant since the energy of the outgoing wave must be constant.  Particle speed $u$ is dependent on the pressure caused by a wave expressed by \cref{eq:1_particle_speed}
+\begin{equation} \label{eq:1_particle_speed}
+	u = \frac{p}{Z}
+\end{equation}
+Where $Z$ is the characteristic acoustic impedance, defined as the ratio of acoustic pressure to particle speed at a given position in the medium and is expressed by \cref{eq:1_acoustic_impedance}.
+\begin{equation} \label{eq:1_acoustic_impedance}
+	Z = \rho_{0} c
+\end{equation}
+
+Characteristic acoustic impedance $Z$ is one of the most significant variables in the characterization of propagating plane waves. Reference values for density, speed of sound, and characteristic acoustic impedance can be seen in \cref{tab:density_tissue}.
+
+\begin{table}[ht]
+	\centering
+	\sisetup{range-phrase=--,range-exponents = combine}
+	\begin{tabularx}{\linewidth}{@{}lSSS@{}}
+		\toprule
+		\textbf{Medium}          & {\makecell{\textbf{Density}\\\unit[per-mode = symbol]{\kilogram\per\meter\cubed}}} & {\makecell{\textbf{Speed of sound}\\\unit[per-mode = symbol]{\meter\per\second}}} & {\makecell{\textbf{Characteristic}\\\textbf{acoustic impedance}\\\unit[per-mode = symbol]{\kilogram\per\meter\squared\per\second}}} \\ \midrule
+		Air             & 1.2     & 333            & 0.4e3       \\
+		Blood           & 1.06e3    &    1566        &  1.66e6     \\
+		Bone            & \numrange{1.38e3}{1.81e3}  &   \numrange{2070}{5350}{}       & \numrange{3.75e6}{7.38e6}{} \\
+		Brain           &  1.03e3       & \numrange{1505}{1612}{}  & \numrange{1.55e6}{1.66e6}{} \\
+		Fat             &  0.92e3  &  1446 & 1.33e6 \\
+		Kidney          &  1.04e3  & 1567 & 1.62e6 \\
+		Lung            &  0.4e3  &  650  & 0.26e6 \\
+		Liver           &  1.06e3  &  1566  & 1.66e6 \\
+		Muscle          &  1.07e3  & \numrange{1542}{1626}{} & \numrange{1.65e6}{1.74e6}{} \\
+		Spleen          &  1.06e3  & 1566 & 1.66e6 \\
+		Distilled water &  1e3  & 1480 & 1.48e6 \\ \bottomrule
+	\end{tabularx}
+	\caption{Approximate density, sound speed, and acoustic impedance of human tissue types \cite{JensenUltrasoundBook}}
+	\label{tab:density_tissue}
+\end{table}
+
+In the following sections, various acoustic wave phenomena will be briefly described.
+
+\subsection{Scattering}
+A wave propagating across a medium continues in the same direction until it encounters a new medium. When this occurs, a portion of the wave is transmitted into the new medium, with a change in direction. Because the scattered wave is the result of several contributors, it is necessary to define it statistically. The amplitude distribution is Gaussian \cite{JensenUltrasoundBook} and can thus be fully described by its mean and variance. The mean value is zero because the dispersed signal is caused by variances of the acoustic characteristics in tissue.
+
+The correlation between multiple data is what allows ultrasound to determine blood velocities.
+Because minor movements have a significant correlation, it is feasible to discover alterations in location by comparing sequential measurements of moving structure, such as blood cells. In medical ultrasound, just one transducer is utilised for transmitting and receiving, and only the backscattered signal is analysed. 
+
+The power of scattered signal is defined by the scattering cross-section, which in small cases mean a uniform intensity $I_{i}$, and is expressed by \cref{eq:1_scatter_power}.
+
+\begin{equation} \label{eq:1_scatter_power}
+	P_{s} = I_{i} \sigma_{s c}
+\end{equation}
+Where $\sigma_{s c}$ is the scattering cross-section. 
+
+\subsection{Attenuation}
+
+\subsection{Transducer}
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=.6\textwidth]{1_transducer_construction-cropped.pdf}
+	\caption{Single element ultrasound transducer construction \cite{JensenUltrasoundBook}}
+	\label{fig:1_transducer_construction}
+\end{figure}
+
+A layperson knows transducers as speakers and microphones in the context of PA systems. In the case of medical ultrasound it is the device that generates the acoustic pressure field, which is emitted into tissue. The transducer has a piezoelectric crystal inside the housing. When excited, this crystal emits ultrasound waves toward flowing blood. The red blood cells will reflect a fraction of the emitted waves. These reflected waves are of a different frequency than the transmitted wave. If the red blod cells are moving away from the transducer, the frequency will be lower. If the red blod cells are moving towards the transducer, the frequency will be higher. This is caused by the \gls{doppler}. The reflected ultrasonic waves return to the crystal and are converted back into electrical signals. The single element transducer shown in \cref{fig:1_transducer_construction} has a minimal imaging window and has to be mechanically manipulated to get a wide window, which is unfeasible for responsive high-frequency imaging. Thus, usually an array transducer is used. Various ultrasound transducer types exist with different strengths and weaknesses, shown in \cref{fig:1_transducer_types}. 
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=.6\textwidth]{1_transducer_types-cropped.pdf}
+	\caption{Single element ultrasound transducer construction \cite{JensenUltrasoundBook}}
+	\label{fig:1_transducer_types}
+\end{figure}
+
+\begin{figure}[ht]
+	\centering
+	\resizebox{\textwidth}{!}{
+		\input{Figures/tikz/system_overview.tex}
+	}
+	\caption{Simple overview of the system}
+	\label{fig:1_system_overview}
+\end{figure}
+
+

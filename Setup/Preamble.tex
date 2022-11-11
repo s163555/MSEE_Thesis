@@ -26,6 +26,16 @@
 \usepackage{xcolor}         % Package for defining DTU colours to be used
 \usepackage{amsmath}        % For aligning equations among other
 \usepackage{siunitx}        % SI units
+\sisetup{%
+	exponent-to-prefix = true,
+%	zero-decimal-to-integer,
+%    
+	%range-units=single,
+	%list-exponents = combine ,
+	%product-exponents = combine ,
+	%range-exponents = combine
+}
+\usepackage{nicefrac}		% Neat inline fractions
 \usepackage{listings}       % Package for inserting code, (before cleveref)
 \PassOptionsToPackage{hyphens}{url} % Ability to line break urls at hyphens
 \usepackage{hyperref}       % Package for cross referencing (also loads url package)
@@ -35,16 +45,18 @@
 \usepackage{subcaption}     % for subfigures
 \usepackage{csquotes}       % For biblatex with babel
 %\usepackage[backend=biber,style=numeric,sorting=none]{biblatex} % Package for bibliography (citing)
-\usepackage[backend=biber,style=ieee,backref=false,abbreviate=true,dateabbrev=false,alldates=long,sorting=ynt,dashed=false,block=space]{biblatex} % Package for bibliography (citing)
+\usepackage[backend=biber,style=ieee,backref=false,abbreviate=true,dateabbrev=false,alldates=long,sorting=ynt,dashed=false,block=space,maxcitenames=3,maxbibnames=9]{biblatex} % Package for bibliography (citing)
 \bibliography{bibliography_bibertool.bib}
 
 % Tables
 \usepackage{tabularx}       % for ability to adjust column spacing in tabular better
 \usepackage{multirow}				% Cells spanning multiple rows (used by tablesgenerator)
+
 \usepackage{booktabs}       % for better tables
 \usepackage{float}          % floating figures in correct places
 \usepackage{ltablex}				% Modified tabularx (auto-sized columns) with longtable (multi-page) tables
 \usepackage{adjustbox}				% Adjust table widths (?)
+\usepackage{makecell}		% pre-formatting of column heads and multine heads
 \usepackage{nth}			% 1st, 2nd, etc
 
 
@@ -64,6 +76,8 @@ nopostdot=true, nonumberlist=true
 \usepackage{blindtext}
 %\usepackage{etoolbox} % provides \patchcmd
 %\patchcmd{\endabstract}{\null}{}{}{} % replaces \null with third argument (empty)
+\usepackage{graphicx}
+\graphicspath{{Figures/}} %Setting the graphicspath
 
 % Drawing
 \usepackage{tikz}					% Create graphics
