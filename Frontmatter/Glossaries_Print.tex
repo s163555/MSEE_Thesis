@@ -1,15 +1,20 @@
-\renewcommand{\printunsrtglossaryentryprocesshook}[1]{%
-	\glsifcategory{#1}{glosscat}%
-	{\printunsrtglossaryskipentry}%
-	{}%
-}
-\label{cha:acronyms}
-\printglossary[type=\acronymtype,title=Abbreviations,toctitle=Acronyms, style=long-booktabs]
-\renewcommand{\printunsrtglossaryentryprocesshook}[1]{%
-	\glsifcategory{#1}{acronymcat}%
-	{\printunsrtglossaryskipentry}%
-	{}%
-}
-%\printunsrtglossary[type=main, title={Glossary}, style=long-booktabs]
-\printglossary[type=main, title={Glossary}, style=long-booktabs]
-\label{cha:glossary}
+%\setabbreviationstyle[acronym]{long-em-short-em}
+
+%\renewcommand*{\glslongemfont}[1]{\textsf{#1}}%
+%\renewcommand*{\glsabbrvemfont}[1]{\textsf{#1}}%
+%\setabbreviationstyle[acronym]{footnote}
+
+%\renewcommand{\printunsrtglossaryentryprocesshook}[1]{\glsifcategory{#1}{glosscat}	{\printunsrtglossaryskipentry}{}}
+%\printglossary[type=\glsxtrabbrvtype,title=Abbreviations,toctitle=Acronyms, style=long-booktabs]
+
+%\renewcommand{\glstextformat}[1]{\textsf{#1}}
+%
+%\printabbreviations[title=Abbreviations,toctitle=Abbreviations, style=long-booktabs]
+%\label{cha:acronyms}
+%
+%%\renewcommand{\printunsrtglossaryentryprocesshook}[1]{\glsifcategory{#1}{acronymcat}	{\printunsrtglossaryskipentry}{}}
+%%\printunsrtglossary[type=main, title={Glossary}, style=long-booktabs]
+%\printglossary[type=main, title={Glossary}, style=long-booktabs]
+%\label{cha:glossary}
+
+\printglossaries

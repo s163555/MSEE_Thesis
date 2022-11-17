@@ -1,0 +1,1 @@
+bibtex-tidy --omit=abstract --curly --numeric --tab --strip-enclosing-braces --escape --sort-fields --strip-comments --trailing-commas --encode-urls --remove-empty-fields --enclosing-braces=title,journal bib.bib

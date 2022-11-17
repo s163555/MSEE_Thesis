@@ -1,6 +1,5 @@
 \chapter{Introduction} \label{cha:introduction}
-%\DeclareSIUnit{\fps}{ \translate{frames per second} }
-The progress of diagnostic imaging has advanced significantly during the \nth{20} century. As the cost of high speed computational systems has grown increasingly accessible, so has the use of of medical imaging become prominent. Potentially millions of people have been spared painful exploratory surgery through noninvasive diagnostic imaging. And thus, lives can be saved by early diagnosis and intervention through medical imaging. Advancement in scientific visualization have in turn generated more complex datasets of increased size and quality. Four major technologies used are ultrasound, X-ray, \gls{ct}, and \gls{mri}. Each of the technologies have distinct advantages and disadvantages in biomedical imaging, thus each are still relevant for modern medicine. \Cref{tab:imaging_modalities} contains a comparison and summary of the various fundamental diagnostic imaging modalities. 
+The progress of diagnostic imaging has advanced significantly during the \nth{20} century. As the cost of high speed computational systems has grown increasingly accessible, so has the use of of medical imaging become prominent. Potentially millions of people have been spared painful exploratory surgery through non-invasive diagnostic imaging. And thus, lives can be saved by early diagnosis and intervention through medical imaging. Advancement in scientific visualization have in turn generated more complex datasets of increased size and quality. Four major technologies used are \gls{us}, X-ray, \gls{ct}, and \gls{mri}. Each of the technologies have distinct advantages and disadvantages in biomedical imaging, thus each are still relevant for modern medicine. \Cref{tab:imaging_modalities} contains a comparison and summary of the various fundamental diagnostic imaging modalities.
 
 \begin{table}[ht]
 	\centering
@@ -12,7 +11,7 @@ The progress of diagnostic imaging has advanced significantly during the \nth{20
 		Spatial resolution & Frequency and axially dependent, \qtyrange{0.2}{3}{\milli\meter} & $\sim \qty{1}{\milli \meter}$           & $\sim \qty{1}{\milli \meter}$            & $\sim \qty{1}{\milli \meter}$          \\
 		Penetration     & Frequency dependent, \qtyrange{3}{25}{\centi\meter} & Excellent               & Excellent          & Excellent                                 \\
 		Safety          & Excellent for > 50 years          & Ionizing radiation      & Ionizing radiation & Very good                                 \\
-		Speed           & Real-time & Minutes & 20 minutes & Typical: 45 minutes, fastest: Real-time (\glsxtrshort{low-res}) \\
+		Speed           & Real-time & Minutes & 20 minutes & Typical: 45 minutes, fastest: Real-time (\gls{low-res}) \\
 		Cost            & \$                                            & \$                      & \$\$                 & \$\$\$                                       \\
 		Portability     & Excellent                                     & Good                    & Poor               & Poor                                      \\
 		Volume coverage & Real-time 3D volumes, improving               & 2D                      & Large 3D volume    & Large 3D volume                           \\
@@ -20,32 +19,33 @@ The progress of diagnostic imaging has advanced significantly during the \nth{20
 		Intervention    & Real-time 3D increasing                       & No, fluoroscopy limited & No                 & Yes, limited                              \\
 		Functional      & Functional ultrasound                         & No                      & No                 & fMRI                                      \\ \bottomrule
 	\end{tabularx}
-	\caption{Comparison of Imaging Modalities \cite{Szabo_UltrasoundBook_2}}
+	\caption[Comparison of medical imaging modalities]{Comparison of medical imaging modalities \cite{Szabo_UltrasoundBook_2}}
 	\label{tab:imaging_modalities}
 \end{table}
 
-Since medical imaging has been reportedly performed over 5 billion times as of 2004 \cite{Picano2004}, and later numbers from 2011 show a general doubling, and particularly a ten-fold increase in ultrasound examinations between year 2000 and 2011 \cite{Szabo_UltrasoundBook_2}. Recent data reveals that this trend of doubling has continued through the years 2010 to 2020 \cite{Winder2021}, and reveals that even though patient processes were disrupted during the global SARS-CoV-2 pandemic, the number of medical imaging examinations per 1000 patients, still increased. The reasons for this, and particularly why ultrasound has been notably increased in use, can be attributed to its high, but inconsistent, resolution, cost effectiveness, portability, and real-time interventional imaging. The downside of ultrasound is its limited penetration and restrictions for use in certain body parts. When just comparing soft-tissue examinations, which ultrasound is limited to, both \glsxtrshort{ct} and \glsxtrshort{mri} can image the entire body with consistent resolution and contrast, but are more expensive and has poor portability due to immense size of its hardware. 
+Since medical imaging has been reportedly performed over 5 billion times as of 2004 \cite{Picano2004}, and later numbers from 2011 show a general doubling, and particularly a ten-fold increase in ultrasound examinations between year 2000 and 2011 \cite{Szabo_UltrasoundBook_2}. Recent data reveals that this trend of doubling has continued through the years 2010 to 2020 \cite{Winder2021}, and reveals that even though patient processes were disrupted during the global SARS-CoV-2 pandemic, the number of medical imaging examinations per 1000 patients, still increased. The reasons for this, and particularly why ultrasound has been notably increased in use, can be attributed to its high, but inconsistent, resolution, cost effectiveness, portability, and real-time interventional imaging. The downside of ultrasound is its limited penetration and restrictions for use in certain body parts. When just comparing soft-tissue examinations, which ultrasound is limited to, both \gls{ct} and \gls{mri} can image the entire body with consistent resolution and contrast, but are more expensive and has poor portability due to immense size of its hardware. 
 
-The cardiovascular system, which transports oxygen and nutrients to tissue, produces a complex flow pattern that cause velocity fluctuations. Several cardiovascular diseases are also known to cause abnormal blood flow. As mentioned earlier, ultrasound is a powerful tool for conducting non-invasive imaging of the cardiovascular system \cite{JensenUltrasoundBook,Hansen_thesis}, and has no adverse risk to patients. Determining \gls{psd} of a received signal is a common way to estimate blood velocity. A processed image of the \glsxtrshort{psd} over time is commonly known as a sonogram, where changes in blood velocity over time can be seen. 
+The cardiovascular system, which transports oxygen and nutrients to tissue, produces a complex flow pattern that cause velocity fluctuations. Several cardiovascular diseases are also known to cause abnormal blood flow. As mentioned earlier, ultrasound is a powerful tool for conducting non-invasive imaging of the cardiovascular system \cite{JensenUltrasoundBook,Hansen_thesis}, and has no adverse risk to patients. Determining \gls{psd} of a received signal is a common way to estimate blood velocity. A processed image of the \gls{psd} over time is commonly known as a sonogram, where changes in blood velocity over time can be seen. 
 
 \section{Project scope}
-The aim of this project is to study the application of ultrasound in the context of blood flow measurements. Various scientific articles have been studied to gain knowledge of prior research \cite{Jensen_Analysis_PW_1996,Jansson_Estimation_Perfusion,Huang_Smartphone_2012,JanaSmartphone2020,DingPMUTs,Ding_PW_Pmut}. The desire is to build upon the vast knowledge already gathered by prominent researchers in the field of ultrasound systems for blood velocity estimation. Finally, using the knowledge gained, to design and implement a device capable of performing these measurements using a novel approach.
+The aim of this project is to study the application of ultrasound in the context of blood flow measurements. Various scientific articles have been studied to gain knowledge of prior research \cite{Jensen_Analysis_PW_1996,Jansson_Estimation_Perfusion,Huang_Smartphone_2012,JanaSmartphone2020,DingPMUTs,Ding_PW_Pmut,Xu2007_Pulser,Matsuoka_Doppler_Rabbit,Fish_Ultrasonic,Williams2006,Winckler2012,Wang2016,Wang2019,Tsang2009,Govindan2016,Xu2007_Pulser,PICpulser}. In addition, the textbooks \cite{JensenUltrasoundBook,ShungUltrasound_Book,Szabo_UltrasoundBook_2} have also been instrumental in forming a solid knowledge base for the thesis. The desire is to build upon the vast knowledge already gathered by prominent researchers in the field of ultrasound systems for blood velocity estimation. Finally, using the knowledge gained, to design and implement an electronic device capable of performing these measurements using a novel approach. The project specifications are written in \cref{tab:specifications}.
 
-\subsection{Learning objectives}
-See below for an outline of the project activities
-\begin{table}[ht!]
+\begin{table}[ht]
 	\centering
 	\begin{tabular}{@{}l@{}}
 		\toprule
 		\textbf{Project specification}									\\ \midrule
-		Learn a class-D amplifier topology, calculate component values	\\
-		Understand and design a self-oscillating modulator amplifier	\\
-		Investigate and test open loop output filter					\\
-		Investigate and test closed loop output filter					\\
-		Investigate output filter parasitic elements affects control loop\\
+		Study and research ultrasound and its principles and applications	\\
+		Design and implement a device for ultrasound blood velocity estimation	\\
+		Investigate and test the device in an experimental setting		\\
+		Validate results with commercial equipment 						\\
 		Make quantifiable performance measurements on system			\\
 		Write a technical report documenting the project work			\\ \bottomrule
 	\end{tabular}
 	\caption{Project specification table}
 	\label{tab:specifications}
 \end{table}
+
+The project is conducted under the guidance of advisors from the affiliated institutions \Gls{dtu}, Department of Electrical Engineering, Department of Applied Mathematics and Computer Science, and \Gls{kaist} at the Brain/Bio Medical Microsystems Laboratory.
+
+The report is divided into five chapters, where the first part is an introduction to the project. The second chapter will focus on explaining the theory of the topic of the project. The third chapter focuses on the synthesis of a system for experimental testing. The fourth chapter explains the production of the hardware. The fifth chapter will explain the testing methodology performed on the hardware. Finally, additional documentation of testing, code, circuit diagrams, and of laboratory setups can be found in the appendix.

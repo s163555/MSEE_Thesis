@@ -1,23 +1,16 @@
 
-%\usepackage{ifluatex}
-%\ifluatex 
-	\usepackage{fontspec}       % Package for custom fonts
-%\else
-%	\usepackage[utf8]{inputenc}
-	\usepackage[T1]{fontenc}
-%\fi	
-
-\usepackage{mlmodern}		% Latin Modern font type
+\usepackage{fontspec}       % Package for custom fonts
+\usepackage{lmodern}		% Latin Modern font type
 
 % Localization
-\usepackage{kotex}			% Korean typesetting
-\usepackage[bidi=default]{babel}
-\babelprovide[main, import]{english}
-\babelprovide[import=ko]{korean}
-\babelprovide[import=da]{danish}
+%\usepackage{kotex}			% Korean typesetting
+%\usepackage[bidi=default]{babel}
+%\babelprovide[main, import]{english}
+%\babelprovide[import=ko]{korean}
+%\babelprovide[import=da]{danish}
 
 % Basic thesis packages
-\usepackage[]{geometry}     % Package for changing page margins (before fancyhdr) 
+\usepackage{geometry}     % Package for changing page margins (before fancyhdr) 
 \usepackage{fancyhdr}       % Package to change header and footer
 \usepackage{parskip}        % Package to tweak paragraph skipping (instead of indents a small skip is added after every paragraph)
 \usepackage{titlesec}
@@ -27,14 +20,13 @@
 \usepackage{amsmath}        % For aligning equations among other
 \usepackage{siunitx}        % SI units
 \sisetup{%
+	inter-unit-product = \ensuremath,
 	exponent-to-prefix = true,
-%	zero-decimal-to-integer,
-%    
+	zero-decimal-to-integer,
 	%range-units=single,
-	%list-exponents = combine ,
-	%product-exponents = combine ,
-	%range-exponents = combine
 }
+%\usepackage{sectsty}
+%\usepackage{sfmath}			% Sans serif math
 \usepackage{nicefrac}		% Neat inline fractions
 \usepackage{listings}       % Package for inserting code, (before cleveref)
 \PassOptionsToPackage{hyphens}{url} % Ability to line break urls at hyphens
@@ -46,7 +38,7 @@
 \usepackage{csquotes}       % For biblatex with babel
 %\usepackage[backend=biber,style=numeric,sorting=none]{biblatex} % Package for bibliography (citing)
 \usepackage[backend=biber,style=ieee,backref=false,abbreviate=true,dateabbrev=false,alldates=long,sorting=ynt,dashed=false,block=space,maxcitenames=3,maxbibnames=9]{biblatex} % Package for bibliography (citing)
-\bibliography{bibliography_bibertool.bib}
+\bibliography{bib_bibertool.bib}
 
 % Tables
 \usepackage{tabularx}       % for ability to adjust column spacing in tabular better
@@ -65,17 +57,16 @@
 \usepackage{datetime}		% For dates and time functions
 \usepackage[automake=immediate,toc, % Abbreviations and glossary lists
 abbreviations,
-%symbols,
 postdot, 
-hyperfirst=false,
-nopostdot=true, nonumberlist=true
+hyperfirst=true,
+nopostdot=true,
+nonumberlist=true,
+nowarn,
 ]{glossaries-extra}
 \usepackage{glossary-longextra} % Long booktabs table style
 \usepackage[numbib]{tocbibind} % Lists of... in toc
 %\usepackage{calc}           % Adds ability for latex to calculate (3pt+2pt) 
 \usepackage{blindtext}
-%\usepackage{etoolbox} % provides \patchcmd
-%\patchcmd{\endabstract}{\null}{}{}{} % replaces \null with third argument (empty)
 \usepackage{graphicx}
 \graphicspath{{Figures/}} %Setting the graphicspath
 
@@ -86,4 +77,4 @@ nopostdot=true, nonumberlist=true
 \usepackage[american,arrowmos,nooldvoltagedirection]{circuitikz}	% Create circuit graphics (using TikZ)
 
 \usepackage[verbose=silent,protrusion=true,expansion=true,final,babel]{microtype} % Better text appearance
-%\DeclareMicrotypeAlias{Latin Modern}{TU-basic}
+\usepackage{hyphenat}			% Prevent hyphenation by \nohyphens{text}
