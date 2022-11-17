@@ -7,29 +7,29 @@
 \begin{document}
 
 \pagenumbering{Roman}
-%\input{Frontmatter/Frontpage.tex}
+\input{Frontmatter/Frontpage.tex}
 \pagecolor{white}
 \newgeometry{top=2.81cm, bottom=2.75cm, outer=2.5cm, inner=3.5cm}
 \pagestyle{empty}
-%\cleardoublepage
-%\input{Frontmatter/Copyright.tex}
+\cleardoublepage
+\input{Frontmatter/Copyright.tex}
 \clearpage 
 %%%%%%%%%%%%%%%%%%%%Frontmatter%%%%%%%%%%%%%%%%%%%%%%%
 \pagestyle{front}
-%\input{Frontmatter/Approval.tex}
+\input{Frontmatter/Approval.tex}
 %\clearpage 
 %\input{Frontmatter/Abstract.tex}
-%\clearpage 
+\clearpage 
 \tableofcontents
-%\clearpage
+\clearpage
 \listoffigures
 \listoftables
 \printabbreviations[style=long-booktabs]
 \printglossary[style=long-booktabs]
 %\input{Frontmatter/Nomenclature.tex}
-%\clearpage
-%\input{Frontmatter/Structure.tex}
-%\cleardoublepage
+\clearpage
+\input{Frontmatter/Structure.tex}
+\cleardoublepage
 %%%%%%%%%%%%%%%%%%%%%%%Chapters%%%%%%%%%%%%%%%%%%%%%%%%
 \pagenumbering{arabic}
 \pagestyle{main}
@@ -45,10 +45,10 @@
 %\cleardoublepage
 %%%%%%%%%%%%%%%%%%%%%%Backmatter%%%%%%%%%%%%%%%%%%%%%%%
 \printbibliography[heading=bibintoc,title={Bibliography}]
-%\cleardoublepage 
-%\appendix
-%\input{Backmatter/Appendix.tex}
-%\cleartoleftpage
-%\input{Backmatter/Backpage.tex}
+\cleardoublepage 
+\appendix
+\input{Backmatter/Appendix.tex}
+\cleartoleftpage
+\input{Backmatter/Backpage.tex}
 
 \end{document}
