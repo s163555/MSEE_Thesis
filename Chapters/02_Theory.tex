@@ -3,7 +3,7 @@
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[width=.6\textwidth]{2_plane_wave_jensen-cropped.pdf}
+	\includegraphics[width=\textwidth]{2_plane_wave_jensen-cropped.pdf}
 	\caption[Particle displacement for a propagating ultrasound wave]{Particle displacement for a propagating ultrasound wave \cite{JensenUltrasoundBook}}
 	\label{fig:2_planewave_jensen}
 \end{figure}
@@ -134,7 +134,7 @@ A layperson knows transducers as speakers and microphones in the context of PA s
 	\label{fig:2_transducer_types}
 \end{figure}
 
-\subsection{Doppler effect}
+\subsection{Doppler effect} \label{sec:doppler_effect}
 
 \begin{figure}[ht]
 	\centering
@@ -229,7 +229,7 @@ The echoes scattered by blood after being insonified by an ultrasonic wave conve
 \end{figure}
 The earliest non-invasive cardiovasclar diagnostic technologies relied heavily on \gls{cw} Doppler flowmeters. One of the earliest concepts for a device to estimate and study blood flow was proposed by \citeauthor{Satomura_CW}\cite{Satomura_CW} during the 1950's in Japan. To continuously transmit waves and receive signals from moving reflectors, the \gls{cw} flowmeter uses two transducers. \gls{cw} flowmeters use less sophisticated electronics than \gls{pw} flowmeters. A drawback to the \gls{cw} flowmeter is the lacking depth discrimination due to the continuous characteristic of this device type. A block diagram of a typical \gls{cw} flowmeter can be seen in \cref{fig:2_devices_cw}.
 
-The basic principles of the device is previously explained in the Doppler effect section, and the measurement of the device is described in \cref{eq:2_doppler_effect}. The device continuously emits an ultrasonic wave in the first transducer expressed as a function of time by \cref{eq:2_cw_tx} \cite{JensenUltrasoundBook}.
+The basic principles of the device is previously explained in \cref{sec:doppler_effect}, and the measurement of the device is described in \cref{eq:2_doppler_effect}. The device continuously emits an ultrasonic wave in the first transducer expressed as a function of time by \cref{eq:2_cw_tx} \cite{JensenUltrasoundBook}.
 \begin{equation} \label{eq:2_cw_tx}
 	e(t) = \cos (2\pi f_{0} t)
 \end{equation}
@@ -254,7 +254,7 @@ As is general for quadrature demodulation, the resulting signal contains the fre
 \begin{equation} \label{eq:2_cw_bp}
 	m_{f}(t) \approx \frac{a}{2} e^{\left(j2\pi f_{0} \frac{2v_{z}}{c}t\right)} e^{\left( -j2\pi f_{0} \alpha t_{0} \right)}
 \end{equation}
-where the second exponential term is the delay proportional to the time between transmission and receiving of the signal.
+Where the second exponential term is the delay proportional to the time between transmission and receiving of the signal.
 
 \begin{table}[ht]
 	\centering
