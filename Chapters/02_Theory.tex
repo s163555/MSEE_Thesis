@@ -192,7 +192,7 @@ The flow physics of the human circulatory system are sophisticated and numerous 
 	\item Blood vessels
 	\begin{itemize}
 		\item Arteries (and arterioles), that transport oxygenised blood to organs and tissues at high pressure and velocity.
-		\item Capillaries, thin but wide ranging blood vessels that performs the exchange of matter between the blood and tissues.
+		\item Capillaries, thin but wide ranging blood vessels that performs the exchange of matter between the circulatory system and tissue.
 		\item Veins (and venules), carries blood back to the heart at low pressure and velocity.
 	\end{itemize}
 \end{itemize}
@@ -250,11 +250,20 @@ Where $R_{s}(f-f_{0})$ is the Fourier transform of $r_{s}(t)$. The received sign
 	&\quad + j \sin (2\pi f_{0} [ (1-\alpha) t- \alpha t_{0} ]) + j \sin (2\pi f_{0} [(1-\alpha) t- \alpha t_{0} ]) \Bigr\} \nonumber
 \end{align}
 
-As is general for quadrature demodulation, the resulting signal contains the frequency components of the sum and difference of the emitted and received signals' frequencies. Generally a gls bp filter is used on the demodulated signal to remove the high frequency summed signal at twice the frequency of $f_{0}$. The filtered signal after the bp filter is expressed by \cref{eq:2_cw_bp} and contains the Doppler shift of the emitted signal.
+As is general for quadrature demodulation, the resulting signal contains the frequency components of the sum and difference of the emitted and received signals' frequencies shown in \cref{fig:2_demod_fd_frequency_domain}, where the signals are shown in time and frequency domains. 
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=.8\textwidth]{2_demod_fd_frequency_domain-cropped.pdf}
+	\caption[Doppler signals in time and frequency domain showing demodulation effects]{Doppler signals in time and frequency domain showing demodulation effects \cite{ShungUltrasound_Book}}
+	\label{fig:2_demod_fd_frequency_domain}
+\end{figure}
+
+Generally a \gls{bp} filter is used on the demodulated signal to remove the high frequency summed signal at twice the frequency of $f_{0}$. The filtered signal after the \gls{bp} filter is expressed by \cref{eq:2_cw_bp} and contains the Doppler shift of the emitted signal.
 \begin{equation} \label{eq:2_cw_bp}
 	m_{f}(t) \approx \frac{a}{2} e^{\left(j2\pi f_{0} \frac{2v_{z}}{c}t\right)} e^{\left( -j2\pi f_{0} \alpha t_{0} \right)}
 \end{equation}
-Where the second exponential term is the delay proportional to the time between transmission and receiving of the signal.
+Where the second exponential term is the delay proportional to the time between transmission and receiving of the signal. The selected cutoff frequency is chosen to be much lower than the carrier frequency to remove the carrier wave. One issue with ultrasonic Doppler blood flow monitoring is that the blood vessels that generate large reflected echoes are also moving with a low velocity. These big, slow-moving echoes are referred to as clutter signals in Doppler nomenclature. The band pass filter's low-end cutoff frequency must be designed to minimize interference from these clutter signals. The design of this band pass filter in the low-frequency region, which serves the function of high pass, also known as a clutter rejection filter, has proven troublesome since the magnitude of clutter signals is many orders greater than that of blood and may obfuscate those from slow-moving blood. 
 
 \begin{table}[ht]
 	\centering
@@ -281,3 +290,31 @@ Seen in \cref{tab:2_cw_frequency_shifts} is an example of measured Doppler frequ
 	\caption[Block diagram of pulsed-wave flowmeter]{Block diagram of \gls{pw} flowmeter \cite{JensenUltrasoundBook}}
 	\label{fig:2_devices_pw}
 \end{figure}
+The concept of a pulsed-wave flowmeter was proposed in \cite{Baker1970} and other related articles. In this type of flowmeter is periodically changing from a transmitter to a receiver. In the transmitting mode, the transducer emits a series of pulses. When in the receiving mode, the transducer is listening for the back-scattered signal. A simplified block diagram can be seen in \cref{fig:2_devices_pw}. The movement of particles within the blood cause a displacement in the back-scattered signal. These systems are commonly referred to as \enquote{Doppler systems} even though it is somewhat misleading. The effects of attenuation is also causing a shift in frequency of a higher magnitude than the velocity of particles in blood. This is because the conventional Doppler effect is not the straight forward methodology that is applied to the analysis of the back-scattered signal. It is, in fact, an artifact. It is the shift in the location of the scatters that is observed, not the shift in the transmitted frequency. \Cref{fig:2_pw_sampling_displacement} shows the received signal after demodulation and filtering; the depth in tissue is fixed here, and the signals displayed on the left side of the figure are the result of a pulse sequence. Each line represents a single pulse, and each pulse is emitted at a pulse repetition frequency, $f_{\textup{prf}}$. Instead, on the right side, the dotted line shows the sampled signal formed by taking into account the amplitude of each pulse after a specified time period.
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=.8\textwidth]{2_pw_pulse_sampling_displacement.pdf}
+	\caption[Sampling for a gate pulsed wave system with a single range]{Sampling for a gate pulsed wave system with a single range. To depict the signals on the graph, a single pulse is emitted for each line, and the signals are displaced in amplitude. The sampled signal is displayed on the right. \cite{JensenUltrasoundBook}}
+	\label{fig:2_pw_sampling_displacement}
+\end{figure}
+
+
+After the back-scattered signal is received it is multiplied by the center frequency of the emitted pulse and filtered to remove the sum frequency \cite{JensenUltrasoundBook}. A \gls{adc} quantifies the signal for further signal processing. Referring to displacement \cref{fig:2_pw_sampling_displacement} again, the dashed vertical line represents the sample of each pulse that is taken. If sampling is done $T_{s}$ after pulse emission, the measurement depth is expressed by \cref{eq:2_pw_depth}.
+\begin{equation} \label{eq:2_pw_depth}
+	d_{0} = \frac{T_{s}c}{2}
+\end{equation}
+Hypothetically, if the velocity of stationary scatterers in blood was measured, a constant amplitude would be measured. A change in sample value is observed when movement is present. Between two pulses the scatterer movement is propertional to the velocity $v_{z}$ in the direction of the ultrasound beam. Time shift of the $t_{s}$ is expressed as \cref{eq:2_pw_timeshift}.
+\begin{equation} \label{eq:2_pw_timeshift}
+	t_{s} = \frac{2v_{z}}{c}\cdot T_{\textup{prf}}
+\end{equation}
+Where $c$ is the speed of sound, and $T_{\textup{prf}}$ is the timespan between each pulse emission. Taking one sample from each line at a certain depth yields a sampled signal with a frequency proportional to the scatter velocity. Thus, if a sample is taken at the same depth for each line, resulting in a sinusoidal signal proportional in frequency to the scatter velocity \cite{Munk_Thesis} and that signal is expressed by \cref{eq:2_pw_scatter_velocity_a,eq:2_pw_scatter_velocity_b}.
+\begin{subequations}
+	\begin{align} 
+		r(i) &= a(i) \sin \left( 2\pi f_{p} T_{\textup{prf}} \cdot i \right) \label{eq:2_pw_scatter_velocity_a} \\
+		f_{p} &= \frac{2 v_{z}}{c} f_{0} \label{eq:2_pw_scatter_velocity_b}
+	\end{align}
+\end{subequations}
+Where $a(i)$ is the amplitude, $f_{0}$ is the emitted frequency, and $\Theta$ is the phase factor in the depth of interest.
+
+This technique improved the accuracy of the investigations of blood vessels and facilitated the display of velocity profiles. Furthermore, employing two transducers or a multi-element transducer, duplex mode imaging (displaying both a B-mode picture and a blood velocity estimate) became feasible. Two-transducer systems are no longer utilised, since it is easier to create a duplex picture with a multi-element transducer. 

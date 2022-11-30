@@ -8,9 +8,9 @@
 
 \pagenumbering{Roman}
 %\input{Frontmatter/Frontpage.tex}
-\pagecolor{white}
+%\pagecolor{white}
 \newgeometry{top=2.81cm, bottom=2.75cm, outer=2.5cm, inner=3.5cm}
-\pagestyle{empty}
+%\pagestyle{empty}
 %\cleardoublepage
 %\input{Frontmatter/Copyright.tex}
 %\clearpage 
@@ -26,6 +26,7 @@
 \listoftables
 \printabbreviations[style=long-booktabs]
 \printglossary[style=long-booktabs]
+\clearpage
 %\input{Frontmatter/Nomenclature.tex}
 %\clearpage
 %\input{Frontmatter/Structure.tex}
@@ -33,8 +34,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%Chapters%%%%%%%%%%%%%%%%%%%%%%%%
 \pagenumbering{arabic}
 \pagestyle{main}
-%\input{Chapters/01_Introduction.tex}
-%\cleardoublepage
+\input{Chapters/01_Introduction.tex}
+\cleardoublepage
 \input{Chapters/02_Theory.tex}
 \cleardoublepage
 %\input{Chapters/03_Synthesis.tex}
@@ -45,9 +46,10 @@
 %\cleardoublepage
 %%%%%%%%%%%%%%%%%%%%%%Backmatter%%%%%%%%%%%%%%%%%%%%%%%
 \printbibliography[heading=bibintoc,title={Bibliography}]
-%\cleardoublepage 
-%\appendix
-%\input{Backmatter/Appendix.tex}
+\cleardoublepage
+\appendix
+\renewcommand\chaptername{Appendix}
+\input{Backmatter/Appendix.tex}
 %\cleartoleftpage
 %\input{Backmatter/Backpage.tex}
 
