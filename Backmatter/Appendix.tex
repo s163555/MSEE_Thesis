@@ -1,4 +1,89 @@
-\chapter{Appendix example}
+\chapter{Bill of Materials}
+
+\begin{longtblr}[
+	%	theme=fancy,
+	caption = {Bill of Materials for the entire system}, 
+	entry={BOM},
+	label = {tab:bom}
+	]{
+		colspec = {XXXXX},
+		width = \linewidth,
+		rowhead = 1,
+		hspan=minimal,
+		%vspan=minimal,
+	}                                             
+	\toprule
+	{\textbf{Component}} 
+	& {\textbf{Value}}  
+	& {\textbf{Footprint}}
+	& {\textbf{Classification}}
+	& {\textbf{Description}}                              \\
+	%	\cmidrule[r=-0.5]{1-3}
+	%	\cmidrule[l=-0.5]{4-6}
+	\midrule
+	% table body
+	\SetCell[c=5]{c}{} IO & & & & \\ \midrule
+	C1 & 1n & 0603 & X7R50V & Preamp \\
+	C13 & 1u & RAD-0.3in & Film 40V & Preamp \\
+	C14 & 1.5n & 0603 & X7R50V & PI controller \\
+	C15 & NC & 0603 & X7R50V & PI controller \\
+	C2, C3, C4, C9, C10 & 100n & 0603 & X7R16V & Decoupling \\
+	C5, C11 & 1u & 0603 & X5R6.3V & Decoupling \\
+	C6, C7 & 100n & 0805 & X7R50V & Decoupling \\
+	C8 & 1500u & RAD-0.3in & 63Vdc & Decoupling \\
+	P10 & 3-pin & Male & 250V & Controller bypass \\
+	P11, P12 & 10-pin & Female & 250V & InterPCB con. \\
+	P2, P3 & 1-pin header & Male & 250V & Measurements \\
+	P4, P5 & 2-way screw & NA & 300V 15A & 30V Power,Output \\
+	P6 & 2-pin header & Molex KK254 & 500V 4A & Audio in \\
+	P7 & 4-pin header & Female & 250V & 5V Power \\
+	P8, P9 & BNC & BNC PCB & 500V & Audio in, Output \\
+	R2 & 16.2k & 0603 & 1\% & Preamp \\
+	R1, R3 & 2k & 0603 & 1\% & Preamp \\
+	R4, R7 & 4.75k & 0603 & 1\% & Voltage ref \\
+	R5 & 33.2k & 0603 & NA & PI controller \\
+	R6 & 0 (short) & 0603 & NA & PI controller \\
+	R9 & 0 (short) & 0603 & NA & PI controller \\
+	R10 & NC & 0603 & NA & PI controller \\
+	R8 & 2.49k & 0603 & 1\% & Voltage ref \\
+	U1 & OPA2365 & SOIC-8 & NA & Preamp, PI \\ 
+	U2 & TLV431A & SOT-23 & 1\% & Voltage ref \\ \pagebreak
+	\SetCell[c=5]{c}{} Power stage & & & & \\ \midrule
+	C1, C11, C15, C19 & 100n & 0603 & X7R16V & Gate driver \\
+	P1, P2 & 10-pin header & Male & 250V & InterPCB con. \\
+	C2, C16 & 150n & 0603 & X5R10V & Gate driver \\
+	C3, C10 & 100p & 0603 & NPO50V & Decoupling \\
+	L1, L2 & 1.768u & Radial & NA & Output filter \\
+	U1, U3 & LM5113 & WSON-10 & NA & Gate driver \\
+	R20 & 15m sense & 1210 & 1\% 1W & Output filter \\
+	R1, R6 & 500 & SMDtrim 3213 & NA & Gate driver \\
+	Q1, Q2, Q3, Q4 & BSZ097-N10NS5 & TSDSON-8 & NA & Power stage \\
+	R2, R5, R8, R10 & 5 & 0603 & 1\% & Gate driver \\
+	R4, R9 & 0 & 0603 & 1\% & Gate driver \\
+	D1, D2 & Diode & NA & 85V 0.25A & Gate driver \\
+	C5, C6, C9, C17 & 10u & 1210 & X7R50V & Decoupling \\
+	C12, C13, C14 & 680n & 1210 & X7R100V & Output filter \\
+	\\
+	\SetCell[c=5]{c}{} AIM regulator & & & & \\ \midrule
+	C18,C20,C27 & 100n & 0603 & X7R16V & Decoupling \\
+	C28, C29, C30, C31 & 100n & 0603 & X7R16V & Decoupling \\
+	U6 & LT1999 & MSOP-8 & NA & Current acq. \\
+	U4 & AD8274 & MSOP-8 & NA & Volt acq. \\
+	U2 & LT1711 & MSOP-8 & NA & AIM \\
+	C4 & NC & 0603 & X7R16V & AIM \\
+	C7 & NC & 0603 & X7R16V & AIM \\
+	C8 & NC & 0603 & X7R16V & Cur. acq. \\
+	CA1 & 1.5n & 0603 & X7R50V & AIM \\
+	R14 & 8.66k & 0603 & 1\% & AIM \\
+	R18 & 16.2k & 0603 & 1\% & AIM \\
+	R23 & 1.5k & 0603 & 1\% & AIM \\
+	R3, R11 & 120k & 0603 & 1\% & Voltage acq. \\
+	RA1 & 2.2k & 0603 & 1\% & AIM \\
+	RA2 & 20k & 0603 & 1\% & AIM \\
+	RA3 & 2.74k & 0603 & 1\% & AIM \\
+	RA4 & 0 & 0603 & NA & AIM \\
+	\bottomrule
+\end{longtblr}
 
 \chapter{Instruments}
 \begin{table}[ht]

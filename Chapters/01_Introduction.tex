@@ -3,24 +3,33 @@ The progress of diagnostic imaging has advanced significantly during the \nth{20
 
 \begin{table}[ht]
 	\centering
-	\begin{tabularx}{\textwidth}{@{}XXXXX@{}}
+	\begin{talltblr}[
+		caption = {Comparison of medical imaging modalities \cite{Szabo_UltrasoundBook_2}},
+		entry = {Comparison of medical imaging modalities},
+		label = {tab:imaging_modalities},
+		note{a} = {Frequency and axially dependent.},
+		note{b} = {Frequency dependent.},
+		note{c} = {Fluoroscopy limited.},
+		note{$\dag$} = {Typical: 45 minutes, fastest: Real-time (\glsxtrshort{low-res}).},
+		]{ 
+			colspec = {XXXXX}, width = \linewidth, %hlines,
+			row{1} = {guard, m, font=\small\bfseries},
+		}
 		\toprule
 		\textbf{Modality} & \textbf{Ultrasound} & \textbf{X-ray} & \textbf{CT} & \textbf{MRI} \\ \midrule
 		Topic              & Longitudinal, shear, mechanical properties              & Mean X-ray tissue absorbtion & Local tissue X-ray absorbtion & Biochemistry (\textit{T1} and \textit{T2})    \\
 		Access             & Small windows adequate                                  & 2 sides needed               & Circumferential around body   & Circumferential around body \\
-		Spatial resolution & Frequency and axially dependent, \qtyrange{0.2}{3}{\milli\meter} & $\sim \qty{1}{\milli \meter}$           & $\sim \qty{1}{\milli \meter}$            & $\sim \qty{1}{\milli \meter}$          \\
-		Penetration     & Frequency dependent, \qtyrange{3}{25}{\centi\meter} & Excellent               & Excellent          & Excellent                                 \\
-		Safety          & Excellent for > 50 years          & Ionizing radiation      & Ionizing radiation & Very good                                 \\
-		Speed           & Real-time & Minutes & 20 minutes & Typical: 45 minutes, fastest: Real-time (\gls{low-res}) \\
+		Spatial resolution & \qtyrange{0.2}{3}{\milli\meter}\TblrNote{a} & $\sim \qty{1}{\milli \meter}$           & $\sim \qty{1}{\milli \meter}$            & $\sim \qty{1}{\milli \meter}$          \\
+		Penetration     & \qtyrange{3}{25}{\centi\meter}\TblrNote{b} & Excellent               & Excellent          & Excellent                                 \\
+		Safety          & Excellent & Ionizing radiation      & Ionizing radiation & Very good                                 \\
+		Speed           & Real-time & Minutes & 20 minutes & Varies\TblrNote{$\dag$} \\
 		Cost            & \$                                            & \$                      & \$\$                 & \$\$\$                                       \\
 		Portability     & Excellent                                     & Good                    & Poor               & Poor                                      \\
 		Volume coverage & Real-time 3D volumes, improving               & 2D                      & Large 3D volume    & Large 3D volume                           \\
 		Contrast        & Increasing (shear)                            & Limited                 & Limited            & Slightly flexible                         \\
-		Intervention    & Real-time 3D increasing                       & No, fluoroscopy limited & No                 & Yes, limited                              \\
+		Intervention    & Real-time 3D increasing                       & No\TblrNote{c} & No                 & Yes, limited                              \\
 		Functional      & Functional ultrasound                         & No                      & No                 & fMRI                                      \\ \bottomrule
-	\end{tabularx}
-	\caption[Comparison of medical imaging modalities]{Comparison of medical imaging modalities \cite{Szabo_UltrasoundBook_2}}
-	\label{tab:imaging_modalities}
+	\end{talltblr}
 \end{table}
 
 Since medical imaging has been reportedly performed over 5 billion times as of 2004 \cite{Picano2004}, and later numbers from 2011 show a general doubling, and particularly a ten-fold increase in ultrasound examinations between year 2000 and 2011 \cite{Szabo_UltrasoundBook_2}. Recent data reveals that this trend of doubling has continued through the years 2010 to 2020 \cite{Winder2021}, and reveals that even though patient processes were disrupted during the global SARS-CoV-2 pandemic, the number of medical imaging examinations per 1000 patients, still increased. The reasons for this, and particularly why ultrasound has been notably increased in use, can be attributed to its high, but inconsistent, resolution, cost effectiveness, portability, and real-time interventional imaging. The downside of ultrasound is its limited penetration and restrictions for use in certain body parts. When just comparing soft-tissue examinations, which ultrasound is limited to, both \gls{ct} and \gls{mri} can image the entire body with consistent resolution and contrast, but are more expensive and has poor portability due to immense size of its hardware. 
@@ -32,7 +41,15 @@ The aim of this project is to study the application of ultrasound in the context
 
 \begin{table}[ht]
 	\centering
-	\begin{tabular}{@{}l@{}}
+	\caption{Project specification table}
+	\label{tab:specifications}
+	\begin{tblr}[]{%
+			width=.9\textwidth,
+			colspec = {X
+			},
+			row{1} = {guard, m, font=\small\bfseries},
+			%vlines, hlines,
+		}
 		\toprule
 		\textbf{Project specification}									\\ \midrule
 		Study and research ultrasound and its principles and applications	\\
@@ -41,9 +58,8 @@ The aim of this project is to study the application of ultrasound in the context
 		Validate results with commercial equipment 						\\
 		Make quantifiable performance measurements on system			\\
 		Write a technical report documenting the project work			\\ \bottomrule
-	\end{tabular}
-	\caption{Project specification table}
-	\label{tab:specifications}
+	\end{tblr}
+
 \end{table}
 
 The project is conducted under the guidance of advisors from the affiliated institutions \Gls{dtu}, Department of Electrical Engineering, Department of Applied Mathematics and Computer Science, and \Gls{kaist} at the Brain/Bio Medical Microsystems Laboratory.

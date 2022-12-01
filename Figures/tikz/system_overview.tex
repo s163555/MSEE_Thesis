@@ -9,14 +9,15 @@
 	\node[place]		(pwr_stg)	[inner sep=1mm,rectangle,right=4.5mm of wave_gen]	{Output\\stage};
 	\node[place]		(tr_switch)	[inner sep=1mm,rectangle,right=4.5mm of pwr_stg]	{T/R\\switch};
 	\node[place]		(transducer)		[inner sep=1mm,rectangle,right=4.5mm of tr_switch]	{Transducer};
-	\node[place]		(preamp)		[inner sep=1mm,rectangle,below=4.5mm of wave_gen]		{Demodulation};
+	\node[place]		(preamp)		[inner sep=1mm,rectangle,below=4.5mm of tr_switch]	{Preamplifier};
+	\node[place]		(demod)		[inner sep=1mm,rectangle,left=9mm of preamp]		{Demodulation};
 	% Draw lines between nodes
 	\draw [|->] 		(human_in) 		to 		(embed);
 	\draw [->]			(embed)			to		(wave_gen);
-	\draw [->]			(wave_gen)			to		(pwr_stg);
+	\draw [->]			(wave_gen)		to		(pwr_stg);
 	\draw [->]			(pwr_stg)		to		(tr_switch);
 	\draw [->]			(tr_switch)		to		(transducer);
-	\draw [->]			(tr_switch)		|-		(preamp);
-	\draw [->]			(preamp)		-|		(embed);
-
+	\draw [->]			(tr_switch)		to		(preamp);
+	\draw [->]			(preamp)		to		(demod);
+	\draw [->]			(demod)		-|		(embed);
 \end{tikzpicture}

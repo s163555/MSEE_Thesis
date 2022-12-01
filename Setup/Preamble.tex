@@ -3,20 +3,23 @@
 \usepackage{lmodern}		% Latin Modern font type
 
 % Localization
-\usepackage{kotex}			% Korean typesetting
-\usepackage[bidi=default]{babel}
-\babelprovide[main, import]{english}
-\babelprovide[import=ko]{korean}
-\babelprovide[import=da]{danish}
+%\usepackage{kotex}			% Korean typesetting
+%\usepackage[bidi=default]{babel}
+%\babelprovide[main, import]{english}
+%\babelprovide[import=ko]{korean}
+%\babelprovide[import=da]{danish}
 
 % Basic thesis packages
 \usepackage{geometry}     % Package for changing page margins (before fancyhdr) 
 \usepackage{fancyhdr}       % Package to change header and footer
 \usepackage{parskip}        % Package to tweak paragraph skipping (instead of indents a small skip is added after every paragraph)
 \usepackage{titlesec}
-\usepackage{tikz}           % Package for drawing
+%\usepackage{tikz}           % Package for drawing
 \usepackage{pgfplots}       % Package for creating graphs and charts
 \usepackage{xcolor}         % Package for defining DTU colours to be used
+\selectcolormodel{natural}
+\usepackage{ninecolors}
+\selectcolormodel{rgb}
 \usepackage{amsmath}        % For aligning equations among other
 \usepackage{siunitx}        % SI units
 \sisetup{%
@@ -41,16 +44,17 @@
 \bibliography{bib_bibertool.bib}
 
 % Tables
-\usepackage{tabularx}       % for ability to adjust column spacing in tabular better
-\usepackage{multirow}				% Cells spanning multiple rows (used by tablesgenerator)
+%\usepackage{tabularx}       % for ability to adjust column spacing in tabular better
+%\usepackage{multirow}				% Cells spanning multiple rows (used by tablesgenerator)
 
-\usepackage{booktabs}       % for better tables
+%\usepackage{booktabs}       % for better tables
 \usepackage{float}          % floating figures in correct places
-\usepackage{ltablex}				% Modified tabularx (auto-sized columns) with longtable (multi-page) tables
+%\usepackage{ltablex}				% Modified tabularx (auto-sized columns) with longtable (multi-page) tables
 \usepackage{adjustbox}				% Adjust table widths (?)
-\usepackage{makecell}		% pre-formatting of column heads and multine heads
+%\usepackage{makecell}		% pre-formatting of column heads and multine heads
 \usepackage{nth}			% 1st, 2nd, etc
-
+\usepackage{tabularray}		% latex3 tables
+\UseTblrLibrary{booktabs,siunitx,varwidth}
 
 % Extras
 \let\ordinal\relax          % Remove warning from ordinal definition (datetime package)
