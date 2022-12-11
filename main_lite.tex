@@ -1,0 +1,34 @@
+\documentclass[draft]{report}
+\usepackage{fontspec}
+\usepackage[OT1]{fontenc}
+\usepackage{mlmodern}
+\usepackage{textcomp}
+\usepackage{titlesec}
+\usepackage{nth}
+\usepackage[nowarn]{glossaries-extra}
+\usepackage{tabularray}
+\UseTblrLibrary{booktabs,siunitx,varwidth}
+\usepackage{cleveref}
+\usepackage[draft]{graphicx}
+\graphicspath{{Figures/}} %Setting the graphicspath
+\usepackage{nicefrac}
+\usepackage[backend=biber]{biblatex} % Package for bibliography (citing)
+\bibliography{bib_bibertool.bib}
+\usepackage{csquotes}
+\usepackage{todonotes}
+
+\input{Setup/Glossaries_List.tex}
+
+\title{mlmodern}
+\author{Jeppe Hinrichs}
+\date{December 2022}
+\newcommand{\overbar}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
+\begin{document}
+
+\maketitle
+
+\input{Chapters/01_Introduction.tex}
+\clearpage
+\input{Chapters/02_Theory.tex}
+\clearpage
+\end{document}
