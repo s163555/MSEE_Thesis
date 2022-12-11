@@ -1,14 +1,15 @@
 
 \usepackage{fontspec}       % Package for custom fonts
-\usepackage[T1]{fontenc}	% Why? I don't know. (to fix mlmodern shape undefined!)
+%\usepackage[T1]{fontenc}	% Why? I don't know. (to fix mlmodern shape undefined!)
+\usepackage[OT1]{fontenc}	% Why? I don't know. (to fix mlmodern shape undefined!)
 \usepackage{mlmodern}		% Latin Modern font type
 
 % Localization
-\usepackage{kotex}			% Korean typesetting
-\usepackage[bidi=default]{babel}
-\babelprovide[main, import]{english}
-\babelprovide[import=ko]{korean}
-\babelprovide[import=da]{danish}
+%\usepackage[hangul]{kotex}			% Korean typesetting
+%\usepackage[bidi=default]{babel}
+%\babelprovide[main, import]{english}
+%\babelprovide[import=ko]{korean}
+%\babelprovide[import=da]{danish}
 
 % Basic thesis packages
 \usepackage{geometry}     % Package for changing page margins (before fancyhdr) 
@@ -45,14 +46,8 @@
 \bibliography{bib_bibertool.bib}
 
 % Tables
-%\usepackage{tabularx}       % for ability to adjust column spacing in tabular better
-%\usepackage{multirow}				% Cells spanning multiple rows (used by tablesgenerator)
-
-%\usepackage{booktabs}       % for better tables
 \usepackage{float}          % floating figures in correct places
-%\usepackage{ltablex}				% Modified tabularx (auto-sized columns) with longtable (multi-page) tables
 \usepackage{adjustbox}				% Adjust table widths (?)
-%\usepackage{makecell}		% pre-formatting of column heads and multine heads
 \usepackage{nth}			% 1st, 2nd, etc
 \usepackage{tabularray}		% latex3 tables
 \UseTblrLibrary{booktabs,siunitx,varwidth}

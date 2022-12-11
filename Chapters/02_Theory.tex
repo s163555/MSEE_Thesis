@@ -12,9 +12,7 @@
 \begin{equation} \label{eq:2_velocity_c}
 	c = \sqrt{\frac{1}{\rho_{0} \kappa_{S}}}
 \end{equation}
-Where $\rho_{0}$ is the mean density (\unit{\kilogram\per\meter\cubed}) and $\kappa_{S}$ is the \gls{adiabatic} compressibility (\unit{\meter\squared\per\newton}). Since in the majority of cases, the propagation of ultrasound is linear, it is assumed in this work. 
-
-The acoustic pressure of the harmonic plane wave is expressed by \cref{eq:2_acoustic_pressure}
+Where $\rho_{0}$ is the mean density (\unit{\kilogram\per\meter\cubed}) and $\kappa_{S}$ is the \gls{adiabatic} compressibility (\unit{\meter\squared\per\newton}). Since in the majority of cases, the propagation of ultrasound is linear, it is assumed in this work. The acoustic pressure of the harmonic plane wave is expressed by \cref{eq:2_acoustic_pressure}
 \begin{equation} \label{eq:2_acoustic_pressure}
 	p(t,z)=p_{0} e^{j(\omega t - k z)}
 \end{equation}
@@ -39,12 +37,11 @@ Characteristic acoustic impedance $Z$ is one of the most significant variables i
 	\label{tab:2_density_tissue}
 	\sisetup{range-phrase=--,range-exponents = combine}
 	\begin{tblr}[]{ 
-		colspec = {XSSS}, width = \linewidth,
+		colspec = {lSSS},
 		row{1} = {guard,m,font=\small\bfseries},
-%			column{2,3,4} = {r},
 		}
 		\toprule
-		Medium & {Density ($\rho_{0}$)\\\unit[per-mode = symbol]{\kilogram\per\meter\cubed}} & {Speed of sound ($c$)\\\unit[per-mode = symbol]{\meter\per\second}} & {Characteristic\\\textbf{acoustic impedance ($Z$)}\\\unit[per-mode = symbol]{\kilogram\per\meter\squared\per\second}} \\ \midrule
+		Medium & {Density ($\rho_{0}$)\\\unit[per-mode = symbol]{\kilogram\per\meter\cubed}} & {Speed of sound ($c$)\\\unit[per-mode = symbol]{\meter\per\second}} & {\textbf{Acoustic impedance ($Z$)}\\\unit[per-mode = symbol]{\kilogram\per\meter\squared\per\second}} \\ \midrule
 		Air             & 1.2     & 333            & 0.4e3       \\
 		Blood           & 1.06e3    &    1566        &  1.66e6     \\
 		Bone            & \numrange{1.38e3}{1.81e3}  &   \numrange{2070}{5350}{}       & \numrange{3.75e6}{7.38e6}{} \\
@@ -55,19 +52,14 @@ Characteristic acoustic impedance $Z$ is one of the most significant variables i
 		Liver           &  1.06e3  &  1566  & 1.66e6 \\
 		Muscle          &  1.07e3  & \numrange{1542}{1626}{} & \numrange{1.65e6}{1.74e6}{} \\
 		Spleen          &  1.06e3  & 1566 & 1.66e6 \\
-		Distilled water &  1e3  & 1480 & 1.48e6 \\ \bottomrule
+%		DI				&  1e3  & 1480 & 1.48e6 \\ \bottomrule
 	\end{tblr}
 \end{table}
 
 In the following sections, various acoustic wave phenomena will be briefly described.
 
 \subsection{Scattering}
-A wave propagating across a medium continues in the same direction until it encounters a new medium. When this occurs, a portion of the wave is transmitted into the new medium, with a change in direction. Because the scattered wave is the result of several contributors, it is necessary to define it statistically. The amplitude distribution is Gaussian \cite{JensenUltrasoundBook} and can thus be fully described by its mean and variance. The mean value is zero because the dispersed signal is caused by variances of the acoustic characteristics in tissue.
-
-The correlation between multiple data is what allows ultrasound to determine blood velocities.
-Because minor movements have a significant correlation, it is feasible to discover alterations in location by comparing sequential measurements of moving structure, such as blood cells. In medical ultrasound, just one transducer is utilised for transmitting and receiving, and only the backscattered signal is analysed. 
-
-The power of scattered signal is defined by the scattering cross-section, which in small cases mean a uniform intensity $I_{i}$, and is expressed by \cref{eq:2_scatter_power}.
+A wave propagating across a medium continues in the same direction until it encounters a new medium. When this occurs, a portion of the wave is transmitted into the new medium, with a change in direction. Because the scattered wave is the result of several contributors, it is necessary to define it statistically. The amplitude distribution is Gaussian \cite{JensenUltrasoundBook} and can thus be fully described by its mean and variance. The mean value is zero because the dispersed signal is caused by variances of the acoustic characteristics in tissue. The correlation between multiple data is what allows ultrasound to determine blood velocities. Because minor movements have a significant correlation, it is feasible to discover alterations in location by comparing sequential measurements of moving structure, such as blood cells. In medical ultrasound, just one transducer is utilised for transmitting and receiving, and only the backscattered signal is analysed. The power of scattered signal is defined by the scattering cross-section, which in small cases mean a uniform intensity $I_{i}$, and is expressed by \cref{eq:2_scatter_power}.
 \begin{equation} \label{eq:2_scatter_power}
 	P_{s} = I_{i} \sigma_{s c}
 \end{equation}
@@ -80,9 +72,7 @@ Where $R$ is distance to the scattering region \cite{JensenUltrasoundBook}. This
 	P_{r} = I_{s} \pi r^{2} = \sigma_{s c} \frac{r^{2}}{4 R^{2}} \cdot I_{i}
 \end{equation}
 
-The backscattering coefficient, which characterizes scattering from a volume of scatterers, is another measure of scattering strength. It is defined as average received power per steradian volume of scatterers when flooded with plane waves of unit amplitude and the unit is \unit{1\per\centi\meter\steradian}.
-
-Back scattering coefficients in blood are significantly lower than the back scattering coefficients from various tissue types. This poses a challenge when estimating blood flow close to tissue vessel walls \cite{ShungScattering1992,JensenUltrasoundBook}.
+The backscattering coefficient, which characterizes scattering from a volume of scatterers, is another measure of scattering strength. It is defined as average received power per steradian volume of scatterers when flooded with plane waves of unit amplitude and the unit is \unit{1\per\centi\meter\steradian}. Back scattering coefficients in blood are significantly lower than the back scattering coefficients from various tissue types. This poses a challenge when estimating blood flow close to tissue vessel walls \cite{ShungScattering1992,JensenUltrasoundBook}.
 
 \subsection{Attenuation}
 The ultrasonic wave will be reduced as it propagates through tissue due to absorption and scattering. The attenuation in tissue is frequency dependent, with greater attenuation with increasing frequency. Because of absorption and dispersion, the ultrasonic wave will be attenuated as it travels through tissue. The relationship between attenuation, distance traveled, and frequency is frequently linear. Attenuation in tissue occurs as a result of both dispersion, which spreads energy in all directions, and absorption, which turns it to thermal energy. 
@@ -159,9 +149,7 @@ A layperson knows transducers as speakers and microphones in the context of PA s
 	\label{fig:2_doppler_effect}
 \end{figure}
 
-The Doppler effect is a phenomena in which an observer perceives a shift in the frequency of sound emitted from a source when either the source or the observer is moving, or both are moving. The reason for the perceived change in frequency is visualised in \cref{fig:2_doppler_effect}. In diagram (a), the source $S_{p}$ is stationary and producing a spherical distribution pattern of the wave with the perceived frequency of the observer is given by $f=\nicefrac{c}{\lambda}$, where $c$ is the velocity of the wave in the medium and $\lambda$ is the wavelength. In diagram (b), the sound source is moving towards the right with a velocity $v$. The locomotion of the source changes the distribution pattern and causes a longer wavelength on the left, indicating a lower perceived frequency, and a shorter wavelength on the right, indicating a higher perceived frequency, both denoted as $\lambda^{\prime}$ in the diagram.
-
-In the case of the observer on the right side, the perceived frequency becomes \cref{eq:2_doppler_effect}.
+The Doppler effect is a phenomena in which an observer perceives a shift in the frequency of sound emitted from a source when either the source or the observer is moving, or both are moving. The reason for the perceived change in frequency is visualised in \cref{fig:2_doppler_effect}. In diagram (a), the source $S_{p}$ is stationary and producing a spherical distribution pattern of the wave with the perceived frequency of the observer is given by $f=\nicefrac{c}{\lambda}$, where $c$ is the velocity of the wave in the medium and $\lambda$ is the wavelength. In diagram (b), the sound source is moving towards the right with a velocity $v$. The locomotion of the source changes the distribution pattern and causes a longer wavelength on the left, indicating a lower perceived frequency, and a shorter wavelength on the right, indicating a higher perceived frequency, both denoted as $\lambda^{\prime}$ in the diagram. In the case of the observer on the right side, the perceived frequency becomes \cref{eq:2_doppler_effect}.
 
 \begin{equation} \label{eq:2_doppler_effect}
 	f^{\prime} = \frac{c}{\lambda} = \frac{c}{\lambda - v T} = \frac{c}{(c-v)T} = \frac{c}{c-v}\cdot f_{0}
@@ -232,9 +220,7 @@ Where $P_{1}$ and $P_{2}$ are the blood pressures measured at each end of the bl
 	\label{fig:2_ultrasound_flow_scan}
 \end{figure}
 
-A device that measures the flowing of blood is called a flowmeter. Flowmeters may be used both inside and outside of vessels. One of the flowmeters that may be used outside the vessel to monitor flow is \gls{us}. \Cref{fig:2_ultrasound_flow_scan} depicts an ultrasonic wave of frequency $f$ insonifying a blood artery, resulting in an angle of $\theta$ relative to velocity $v$. For simplicity, it is assumed that blood flows in a vessel at a constant velocity $v$. The echoes returned are shifted in frequency as described in \cref{eq:2_doppler_theta} in earlier in the chapter.
-
-The echoes scattered by blood after being insonified by an ultrasonic wave convey information about the velocity of blood flow. Blood flow measurements are often used in clinical settings to determine the status of blood vessels and organ functioning. The two commonly used fundamental techniques for ultrasound Doppler flow measurements are \gls{cw} and \gls{pw}. Both will be explained.
+A device that measures the flowing of blood is called a flowmeter. Flowmeters may be used both inside and outside of vessels. One of the flowmeters that may be used outside the vessel to monitor flow is \gls{us}. \Cref{fig:2_ultrasound_flow_scan} depicts an ultrasonic wave of frequency $f$ insonifying a blood artery, resulting in an angle of $\theta$ relative to velocity $v$. For simplicity, it is assumed that blood flows in a vessel at a constant velocity $v$. The echoes returned are shifted in frequency as described in \cref{eq:2_doppler_theta} in earlier in the chapter. The echoes scattered by blood after being insonified by an ultrasonic wave convey information about the velocity of blood flow. Blood flow measurements are often used in clinical settings to determine the status of blood vessels and organ functioning. The two commonly used fundamental techniques for ultrasound Doppler flow measurements are \gls{cw} and \gls{pw}. Both will be explained.
 
 \subsection{Continuous-wave flowmeter}
 \begin{figure}[ht]
@@ -243,9 +229,7 @@ The echoes scattered by blood after being insonified by an ultrasonic wave conve
 	\caption[Block diagram of continuous-wave flowmeter]{Block diagram of \gls{cw} flowmeter \cite{JensenUltrasoundBook}}
 	\label{fig:2_devices_cw}
 \end{figure}
-The earliest non-invasive cardiovasclar diagnostic technologies relied heavily on \gls{cw} Doppler flowmeters. One of the earliest concepts for a device to estimate and study blood flow was proposed by \citeauthor{Satomura_CW}\cite{Satomura_CW} during the 1950's in Japan. To continuously transmit waves and receive signals from moving reflectors, the \gls{cw} flowmeter uses two transducers. \gls{cw} flowmeters use less sophisticated electronics than \gls{pw} flowmeters. A drawback to the \gls{cw} flowmeter is the lacking depth discrimination due to the continuous characteristic of this device type. A block diagram of a typical \gls{cw} flowmeter can be seen in \cref{fig:2_devices_cw}.
-
-The basic principles of the device is previously explained in \cref{sec:doppler_effect}, and the measurement of the device is described in \cref{eq:2_doppler_effect}. The device continuously emits an ultrasonic wave in the first transducer expressed as a function of time by \cref{eq:2_cw_tx} \cite{JensenUltrasoundBook}.
+The earliest non-invasive cardiovasclar diagnostic technologies relied heavily on \gls{cw} Doppler flowmeters. One of the earliest concepts for a device to estimate and study blood flow was proposed by \citeauthor{Satomura_CW}\cite{Satomura_CW} during the 1950's in Japan. To continuously transmit waves and receive signals from moving reflectors, the \gls{cw} flowmeter uses two transducers. \gls{cw} flowmeters use less sophisticated electronics than \gls{pw} flowmeters. A drawback to the \gls{cw} flowmeter is the lacking depth discrimination due to the continuous characteristic of this device type. A block diagram of a typical \gls{cw} flowmeter can be seen in \cref{fig:2_devices_cw}. The basic principles of the device is previously explained in \cref{sec:doppler_effect}, and the measurement of the device is described in \cref{eq:2_doppler_effect}. The device continuously emits an ultrasonic wave in the first transducer expressed as a function of time by \cref{eq:2_cw_tx} \cite{JensenUltrasoundBook}.
 \begin{equation} \label{eq:2_cw_tx}
 	e(t) = \cos (2\pi f_{0} t)
 \end{equation}
@@ -287,10 +271,7 @@ Where the second exponential term is the delay proportional to the time between 
 	\label{tab:2_cw_frequency_shifts}
 	\begin{tblr}[]{%
 			width=.3\textwidth,
-			colspec = {
-				*{1}{S[]}
-				*{1}{S[]}
-			},
+			colspec = {SS},
 			row{1} = {guard, m, font=\small\bfseries},
 			%vlines, hlines,
 		}
@@ -341,6 +322,4 @@ Where $c$ is the speed of sound, and $T_{\textup{prf}}$ is the timespan between 
 		f_{p} &= \frac{2 v_{z}}{c} f_{0} \label{eq:2_pw_scatter_velocity_b}
 	\end{align}
 \end{subequations}
-Where $a(i)$ is the amplitude, $f_{0}$ is the emitted frequency, and $\theta$ is the phase factor in the depth of interest. \todo{Hvor er $\theta$ i udtrykket? Omskriv fra Jensen2012}
-
-This technique improved the accuracy of the investigations of blood vessels and facilitated the display of velocity profiles. Furthermore, employing two transducers or a multi-element transducer, duplex mode imaging (displaying both a B-mode picture and a blood velocity estimate) became feasible. Two-transducer systems are no longer utilised, since it is easier to create a duplex picture with a multi-element transducer. 
+Where $a(i)$ is the amplitude, $f_{0}$ is the emitted frequency, and $\theta$ is the phase factor in the depth of interest. \todo{Hvor er $\theta$ i udtrykket? Omskriv fra Jensen2012} This technique improved the accuracy of the investigations of blood vessels and facilitated the display of velocity profiles. Furthermore, employing two transducers or a multi-element transducer, duplex mode imaging (displaying both a B-mode picture and a blood velocity estimate) became feasible. Two-transducer systems are no longer utilised, since it is easier to create a duplex picture with a multi-element transducer. 

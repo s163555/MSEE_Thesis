@@ -216,10 +216,13 @@ tick label style={/pgf/number format/assume math mode}, % To apply main font to 
 
 \renewcommand\mkbibacro[1]{{\footnotesize\MakeUppercase{#1}}} % i dont remember what this was for
 
-% Shut up biblatex
+% Shut up biblatex (unsupported language)
 \makeatletter
 \protected\def\blx@langsetup#1{%
   \blx@lbxinput{#1}
     {\edef\blx@languagename{#1}}
     {}}
 \makeatother
+
+% Define english font
+\let\englishfont\itshape
