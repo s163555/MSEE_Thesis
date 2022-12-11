@@ -37,7 +37,7 @@ Characteristic acoustic impedance $Z$ is one of the most significant variables i
 	\label{tab:2_density_tissue}
 	\sisetup{range-phrase=--,range-exponents = combine}
 	\begin{tblr}[]{ 
-		colspec = {lSSS},
+		colspec = {XSSS},
 		row{1} = {guard,m,font=\small\bfseries},
 		}
 		\toprule
@@ -52,7 +52,7 @@ Characteristic acoustic impedance $Z$ is one of the most significant variables i
 		Liver           &  1.06e3  &  1566  & 1.66e6 \\
 		Muscle          &  1.07e3  & \numrange{1542}{1626}{} & \numrange{1.65e6}{1.74e6}{} \\
 		Spleen          &  1.06e3  & 1566 & 1.66e6 \\
-%		DI				&  1e3  & 1480 & 1.48e6 \\ \bottomrule
+		DI				&  1e3  & 1480 & 1.48e6 \\ \bottomrule
 	\end{tblr}
 \end{table}
 
@@ -84,14 +84,8 @@ The ultrasonic wave will be reduced as it propagates through tissue due to absor
 	\label{tab:my_label}
 	\sisetup{range-phrase=--,range-exponents = combine}
 	\begin{tblr}[]{%
-			width=.3\textwidth,
-			colspec = {
-				*{1}{X[2]}
-				*{1}{S[]}
-			},
+			colspec = {lS},
 			row{1} = {guard, m, font=\small\bfseries},
-			measure=vbox, stretch=-1,
-			%vlines, hlines,
 		}
 		\toprule
 		Tissue & {Attenuation \\ $\unit[per-mode = symbol,inter-unit-product =\cdot]{\dB\per\mega\hertz\per\centi\meter}$ } \\ 
@@ -270,7 +264,6 @@ Where the second exponential term is the delay proportional to the time between 
 	\caption[Measured frequency shifts with a Doppler \qty{3}{\mega\hertz} transducer at various velocities at a \qty{45}{\degree} incident angle]{Measured frequency shifts with a Doppler \qty{3}{\mega\hertz} transducer at various velocities at a \qty{45}{\degree} incident angle \cite{JensenUltrasoundBook}}
 	\label{tab:2_cw_frequency_shifts}
 	\begin{tblr}[]{%
-			width=.3\textwidth,
 			colspec = {SS},
 			row{1} = {guard, m, font=\small\bfseries},
 			%vlines, hlines,
