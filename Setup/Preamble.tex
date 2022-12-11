@@ -1,13 +1,14 @@
 
 \usepackage{fontspec}       % Package for custom fonts
-\usepackage{lmodern}		% Latin Modern font type
+\usepackage[T1]{fontenc}	% Why? I don't know. (to fix mlmodern shape undefined!)
+\usepackage{mlmodern}		% Latin Modern font type
 
 % Localization
-%\usepackage{kotex}			% Korean typesetting
-%\usepackage[bidi=default]{babel}
-%\babelprovide[main, import]{english}
-%\babelprovide[import=ko]{korean}
-%\babelprovide[import=da]{danish}
+\usepackage{kotex}			% Korean typesetting
+\usepackage[bidi=default]{babel}
+\babelprovide[main, import]{english}
+\babelprovide[import=ko]{korean}
+\babelprovide[import=da]{danish}
 
 % Basic thesis packages
 \usepackage{geometry}     % Package for changing page margins (before fancyhdr) 
@@ -73,6 +74,7 @@ nowarn,
 \usepackage{blindtext}
 \usepackage{graphicx}
 \graphicspath{{Figures/}} %Setting the graphicspath
+\usepackage[colorinlistoftodos]{todonotes} % Margin coloured todonotes
 
 % Drawing
 \usepackage{tikz}					% Create graphics

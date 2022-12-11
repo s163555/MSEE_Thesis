@@ -1,12 +1,14 @@
-\chapter*{Nomenclature} \label{cha:nomenclature}
+\chapter*{Nomenclature\markboth{Nomenclature}{}}
+ \label{cha:nomenclature}
 \addcontentsline{toc}{chapter}{Nomenclature}
 
 \begin{longtblr}[
 	label = {tab:nomenclature},
 	caption={Nomenclature},
+	entry={}
 	]{
-		colspec = {X[2cm]X[2cm]X},
-		width = .85\linewidth,
+		colspec = {llX},
+		width = \linewidth,
 		rowhead = 1,
 		hspan=minimal,
 		%vspan=minimal,
@@ -80,8 +82,7 @@
 	$Q$ & $1$ & Output filter quality factor \\
 	$f_{c}$ & $\unit{\hertz}$ & Output filter cut-off frequency \\ 
 	$\omega_{n}$ & $\unit{\radian\per\second}$ & Output filter natural frequency \\
-	$\zeta$ & $1$ & Output filter damping ratio \\
-	\\
+	$\zeta$ & $1$ & Output filter damping ratio \\ \pagebreak
 	\SetCell[c=3]{c} Shunt regulator & & & \\ \midrule
 	$R_{sh}$ & $\unit{\ohm}$ & Shunt current limiting resistor \\
 	$I_{K}$ & $\unit{\ampere}$ & Shunt cathode current \\
