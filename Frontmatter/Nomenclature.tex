@@ -2,10 +2,13 @@
  \label{cha:nomenclature}
 \addcontentsline{toc}{chapter}{Nomenclature}
 
-\begin{longtblr}[
-	label = {none},
-	%caption = {none},
-	]{
+\NewTblrTheme{no-caption}{
+  \SetTblrTemplate{head}{empty}
+  %\SetTblrTemplate{foot}{empty}
+  \SetTblrTemplate{caption}{empty}
+}
+
+\begin{longtblr}[theme=no-caption,entry=none]{
 		colspec = {llX},
 		width = \linewidth,
 		rowhead = 1,

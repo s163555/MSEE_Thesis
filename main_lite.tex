@@ -1,7 +1,9 @@
 \documentclass[draft]{report}
 \usepackage{fontspec}
 \usepackage[OT1]{fontenc}
+\usepackage{lmodern}
 \usepackage{mlmodern}
+\usepackage{geometry}
 \usepackage{textcomp}
 \usepackage{titlesec}
 \usepackage{nth}
@@ -19,16 +21,19 @@
 
 \input{Setup/Glossaries_List.tex}
 
-\title{lite compilation}
+\title{MSEE thesis lite}
 \author{Jeppe Hinrichs}
 \date{December 2022}
 \newcommand{\overbar}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
-\begin{document}
 
+\begin{document}
+\newgeometry{top=2.81cm, bottom=2.75cm, outer=2.5cm, inner=3.5cm}
 \maketitle
 
 \input{Chapters/01_Introduction.tex}
 \clearpage
 \input{Chapters/02_Theory.tex}
 \clearpage
+% \input{Chapters/03_Synthesis.tex}
+% \clearpage
 \end{document}
