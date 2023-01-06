@@ -4,20 +4,24 @@
 	align=center]
 	% Draw nodes
 	\node[place]		(human_in)	[draw=none]											{Control\\input};
-	\node[place]		(embed)		[inner sep=1mm,rectangle,right=4.5mm of human_in]	{Control\\system};
-	\node[place]		(wave_gen)		[inner sep=1mm,rectangle,right=4.5mm of embed]			{Waveform \\generator};
-	\node[place]		(pwr_stg)	[inner sep=1mm,rectangle,right=4.5mm of wave_gen]	{Output\\stage};
-	\node[place]		(tr_switch)	[inner sep=1mm,rectangle,right=4.5mm of pwr_stg]	{T/R\\switch};
-	\node[place]		(transducer)		[inner sep=1mm,rectangle,right=6.5mm of tr_switch]	{Transducer};
-	\node[place]		(preamp)		[inner sep=1mm,rectangle,below=4.5mm of tr_switch]	{Preamplifier};
-	\node[place]		(demod)		[inner sep=1mm,rectangle,left=9mm of preamp]		{Demodulation};
+	\node[place]		(embed)		[inner sep=1mm,rectangle,right=10mm of human_in]	{Control\\system};
+	\node[place]		(wave_gen)		[inner sep=1mm,rectangle,right=5mm of embed]			{Waveform\\generator};
+	\node[place]		(pwr_stg)	[inner sep=1mm,rectangle,right=5mm of wave_gen]	{Power\\stage};
+	\node[place]		(tr_switch)	[inner sep=1mm,rectangle,right=5mm of pwr_stg]	{T/R\\switch};
+	\node[place]		(transducer)		[inner sep=1mm,rectangle,right=5mm of tr_switch]	{Transducer};
+	\node[place]		(demod)		[inner sep=1mm,rectangle,below=5mm of embed]		{Demodulation};
+	\node[place]		(preamp)		[inner sep=1mm,rectangle,right=22mm of demod]	{Preamplifier};
+
 	% Draw lines between nodes
 	\draw [|->] 		(human_in) 		to 		(embed);
 	\draw [->]			(embed)			to		(wave_gen);
 	\draw [->]			(wave_gen)		to		(pwr_stg);
 	\draw [->]			(pwr_stg)		to		(tr_switch);
 	\draw [<->]			(tr_switch)		to		(transducer);
-	\draw [->]			(tr_switch)		to		(preamp);
+	\draw [->]			(tr_switch)		|-		(preamp);
 	\draw [->]			(preamp)		to		(demod);
-	\draw [->]			(demod)		-|		(embed);
+	\draw [->]			(demod)		to		(embed);
+	
+	% Draw rectangle
+	\draw[draw=black,dashed,red] (10mm,8mm) rectangle ++(48mm,-29mm);
 \end{tikzpicture}

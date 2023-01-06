@@ -1,13 +1,12 @@
 \chapter{Theory} \label{sec:theory}
+This chapter explains the overall theory that forms the fundamental principles of this project. Initially, the characteristics of ultrasound will be explained from an acoustics standpoint. Then, a brief overview of the systemic circulation is explained in vivo. Lastly, the various types of flow-meters are outlined with their strengths and weaknesses. 
 \section{Ultrasound}
-
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=\textwidth]{2_plane_wave_jensen-cropped.pdf}
 	\caption[Particle displacement for a propagating ultrasound wave]{Particle displacement for a propagating ultrasound wave \cite{JensenUltrasoundBook}}
 	\label{fig:2_planewave_jensen}
 \end{figure}
-
 \gls{us} is a technology that transmit sound wave with frequencies above the audible range (\qtyrange[range-units = single]{20}{20e3}{\hertz}) to mechanically vibrate matter. The particles in the medium would be at rest and distributed uniformly before any disturbance. The wave propagates as a disturbance and the particles oscillate around their mean position due to the presence of the ultrasonic wave. Typically the \gls{us} frequency band used in clinical settings are from \qtyrange[range-units = single]{1}{15}{\mega\hertz} \cite{Szabo_UltrasoundBook_2}. \Cref{fig:2_planewave_jensen} visualizes the propagation of a plane wave in matter. The oscillation occurs parallel to the wave's direction, making it longitudinal, and the disturbance will propagate with the variable $c$, which is determined by the medium and is given by \cref{eq:2_velocity_c}.
 \begin{equation} \label{eq:2_velocity_c}
 	c = \sqrt{\frac{1}{\rho_{0} \kappa_{S}}}
@@ -170,7 +169,7 @@ If the velocity of the moving source is traveling with an incident angle $\theta
 
 The Doppler effect is used in ultrasonic Doppler devices used to image blood flow \gls{transcutaneous}ly. An ultrasonic transducer in these devices sends ultrasonic waves into a blood artery, and the scattered radiation from moving red cells is measured by either the same transducer or a second transducer. The Doppler frequency, which is determined by the velocity of red blood cells, is extracted using modern electronic demodulation techniques.
 
-\section{Flow physics}
+\section{Flow Physics}
 \begin{figure}[ht!]
 	\centering
 	\includegraphics[width=\textwidth]{2_flow_circulatory_system_cropped.pdf}
@@ -216,7 +215,7 @@ Where $P_{1}$ and $P_{2}$ are the blood pressures measured at each end of the bl
 
 A device that measures the flowing of blood is called a flowmeter. Flowmeters may be used both inside and outside of vessels. One of the flowmeters that may be used outside the vessel to monitor flow is \gls{us}. \Cref{fig:2_ultrasound_flow_scan} depicts an ultrasonic wave of frequency $f$ insonifying a blood artery, resulting in an angle of $\theta$ relative to velocity $v$. For simplicity, it is assumed that blood flows in a vessel at a constant velocity $v$. The echoes returned are shifted in frequency as described in \cref{eq:2_doppler_theta} earlier in the chapter. The echoes scattered by blood after being insonified by an ultrasonic wave convey information about the velocity of blood flow. Blood flow measurements are often used in clinical settings to determine the status of blood vessels and organ functioning. The two commonly used fundamental techniques for ultrasound Doppler flow measurements are \gls{cw} and \gls{pw}. Both will be explained.
 
-\subsection{Continuous-wave flowmeter}
+\subsection{Continuous-wave Flowmeter}
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=\textwidth]{2_blockdiagram_cwdoppler.pdf}
@@ -283,7 +282,7 @@ Where the second exponential term is the delay proportional to the time between 
 
 Seen in \cref{tab:2_cw_frequency_shifts} is an example of measured Doppler frequencies using a \qty{3}{\mega\hertz} transducer using the method shown in \cref{fig:2_ultrasound_flow_scan}. Note that the measured frequencies are all within the audible range.
 
-\subsection{Pulsed-wave flowmeter}
+\subsection{Pulsed-wave Flowmeter}
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=\textwidth]{2_blockdiagram_pwdoppler.pdf}
@@ -316,3 +315,15 @@ Where $c$ is the speed of sound, and $T_{\textup{prf}}$ is the timespan between 
 	\end{align}
 \end{subequations}
 Where $a(i)$ is the amplitude, $f_{0}$ is the emitted frequency, and $\theta$ is the phase factor in the depth of interest. \todo{Hvor er $\theta$ i udtrykket? Omskriv fra Jensen2012} This technique improved the accuracy of the investigations of blood vessels and facilitated the display of velocity profiles. Furthermore, by employing two transducers or a multi-element transducer, duplex mode imaging (displaying both a B-mode picture and a blood velocity estimate) became feasible. Two-transducer systems are no longer utilised since it is easier to create a duplex picture with a multi-element transducer. 
+
+\section{Blood Velocity Estimation}
+Once a backscattered signal is received, estimation of velocity can be obtained with multiple methods. In this section the most common methods to estimate blood velocity are mentioned with their strengths and limitations. 
+\subsection{Spectral estimation}
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=.8\textwidth]{Figures/2_estimation_sonogram_cph.pdf}
+	\caption{Arterial sonogram with time-frequency and Doppler shift \cite{JensenUltrasoundBook}}
+	\label{fig:2_estimation_sonogram_cph}
+\end{figure}
+
+Given that the frequency volume of the received signal is similar to the blood's velocity distribution, the Fourier transform of the received signal can be used to obtain velocity. The spectrogram, usually erroneously known as the Doppler spectrum, can be created by saving the \gls{psd} together. The \gls{psd} is calculated for each of the components that make up the received signal in order to accomplish this. A quadrature demodulated signal is used to display both positive and negative frequencies. When these spectra are shown side by side, the evolution of the velocity distribution can then be seen. The ultrasonography of an artery is displayed in \cref{fig:2_estimation_sonogram_cph}. 
