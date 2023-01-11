@@ -3,33 +3,62 @@ The progress of diagnostic imaging has advanced significantly during the \nth{20
 
 \begin{table}[ht]
 	\centering
+%	\begin{talltblr}[
+%		caption = {Comparison of medical imaging modalities \cite{Szabo_UltrasoundBook_2}},
+%		entry = {Comparison of medical imaging modalities},
+%		label = {tab:imaging_modalities},
+%		note{a} = {Frequency and axially dependent.},
+%		note{b} = {Frequency dependent.},
+%		note{c} = {Fluoroscopy limited.},
+%		note{$\dag$} = {Typical: 45 minutes, fastest: Real-time (\glsxtrshort{low-res}).},
+%		]{ 
+%			colspec = {X[j]X[j]X[j]X[j]X[j]},
+%			row{1} = {guard, m, font=\small\bfseries},
+%		}
+%		\toprule
+%		\textbf{Modality} & \textbf{Ultrasound} & \textbf{X-ray} & \textbf{CT} & \textbf{MRI} \\ \midrule
+%		Topic              & Longitudinal, shear, mechanical properties              & Mean X-ray tissue absorbtion & Local tissue X-ray absorbtion & Biochemistry (\textit{T1} and \textit{T2})    \\
+%		Access             & Small windows adequate                                  & 2 sides needed               & Circumferential around body   & Circumferential around body \\
+%		Spatial resolution & \qtyrange{0.2}{3}{\milli\meter}\TblrNote{a} & $\sim \qty{1}{\milli \meter}$           & $\sim \qty{1}{\milli \meter}$            & $\sim \qty{1}{\milli \meter}$          \\
+%		Penetration     & \qtyrange{3}{25}{\centi\meter}\TblrNote{b} & Excellent               & Excellent          & Excellent                                 \\
+%		Safety          & Excellent & Ionizing radiation      & Ionizing radiation & Very good                                 \\
+%		Speed           & Real-time & Minutes & 20 minutes & Varies\TblrNote{$\dag$} \\
+%		Cost            & \$                                            & \$                      & \$\$                 & \$\$\$                                       \\
+%		Portability     & Excellent                                     & Good                    & Poor               & Poor                                      \\
+%		Volume coverage & Real-time 3D volumes, improving               & 2D                      & Large 3D volume    & Large 3D volume                           \\
+%		Contrast        & Increasing (shear)                            & Limited                 & Limited            & Slightly flexible                         \\
+%		Intervention    & Real-time 3D increasing                       & No\TblrNote{c} & No                 & Yes, limited                              \\
+%		Functional      & Functional ultrasound                         & No                      & No                 & fMRI                                      \\ \bottomrule
+%	\end{talltblr}
 	\begin{talltblr}[
-		caption = {Comparison of medical imaging modalities \cite{Szabo_UltrasoundBook_2}},
-		entry = {Comparison of medical imaging modalities},
-		label = {tab:imaging_modalities},
-		note{a} = {Frequency and axially dependent.},
-		note{b} = {Frequency dependent.},
-		note{c} = {Fluoroscopy limited.},
-		note{$\dag$} = {Typical: 45 minutes, fastest: Real-time (\glsxtrshort{low-res}).},
-		]{ 
-			colspec = {XXXXX},
-			row{1} = {guard, m, font=\small\bfseries},
-		}
-		\toprule
-		\textbf{Modality} & \textbf{Ultrasound} & \textbf{X-ray} & \textbf{CT} & \textbf{MRI} \\ \midrule
-		Topic              & Longitudinal, shear, mechanical properties              & Mean X-ray tissue absorbtion & Local tissue X-ray absorbtion & Biochemistry (\textit{T1} and \textit{T2})    \\
-		Access             & Small windows adequate                                  & 2 sides needed               & Circumferential around body   & Circumferential around body \\
-		Spatial resolution & \qtyrange{0.2}{3}{\milli\meter}\TblrNote{a} & $\sim \qty{1}{\milli \meter}$           & $\sim \qty{1}{\milli \meter}$            & $\sim \qty{1}{\milli \meter}$          \\
-		Penetration     & \qtyrange{3}{25}{\centi\meter}\TblrNote{b} & Excellent               & Excellent          & Excellent                                 \\
-		Safety          & Excellent & Ionizing radiation      & Ionizing radiation & Very good                                 \\
-		Speed           & Real-time & Minutes & 20 minutes & Varies\TblrNote{$\dag$} \\
-		Cost            & \$                                            & \$                      & \$\$                 & \$\$\$                                       \\
-		Portability     & Excellent                                     & Good                    & Poor               & Poor                                      \\
-		Volume coverage & Real-time 3D volumes, improving               & 2D                      & Large 3D volume    & Large 3D volume                           \\
-		Contrast        & Increasing (shear)                            & Limited                 & Limited            & Slightly flexible                         \\
-		Intervention    & Real-time 3D increasing                       & No\TblrNote{c} & No                 & Yes, limited                              \\
-		Functional      & Functional ultrasound                         & No                      & No                 & fMRI                                      \\ \bottomrule
-	\end{talltblr}
+	caption = {Comparison of medical imaging modalities},
+	entry = {Comparison of medical imaging modalities},
+	label = {tab:imaging_modalities},
+	note{a} = {Frequency and axially dependent.},
+	note{b} = {Frequency dependent.},
+	note{c} = {Fluoroscopy limited.},
+	note{$\dag$} = {Typical: 45 minutes, fastest: Real-time (\glsxtrshort{low-res}).},
+	]{ 
+		%colspec = {Q[l,t]Q[l,t]Q[l,t]Q[l,t]Q[l,t]},
+		%colspec = {Q[jQQQQ},
+		row{1} = {guard, m, font=\small\bfseries},
+	}
+	\toprule
+	\textbf{Modality} & \textbf{Ultrasound} & \textbf{X-ray} & \textbf{CT} & \textbf{MRI} \\ \midrule
+	Topic             & {Longitudinal,\\shear,\\mechanical\\properties} & {Mean X-ray\\tissue\\absorption} & {Local tissue\\X-ray absorbtion} & {Biochemistry \\(\textit{T1} and \textit{T2})}    \\
+	Access            & {Small\\windows\\adequate} & {2 sides\\needed} & {Circumferential\\around\\body} & {Circumferential\\around\\body} \\
+	{Spatial\\resolution} & {\qty{0.2}{\milli\meter} to\\\qty{3}{\milli\meter}\TblrNote{a}} & $\sim \qty{1}{\milli \meter}$ & $\sim \qty{1}{\milli \meter}$ & $\sim \qty{1}{\milli \meter}$ \\
+	Penetration     & {\qty{3}{\centi\meter} to\\\qty{25}{\centi\meter}\TblrNote{b}} & Excellent  & Excellent & Excellent \\
+	Safety          & Excellent & {Ionizing\\radiation}      & {Ionizing\\radiation} & Very good                                 \\
+	Speed           & Real-time & Minutes & 20 minutes & Varies\TblrNote{$\dag$} \\
+	Cost            & \$ & \$ & \$\$ & \$\$\$ \\
+	Portability     & Excellent & Good & Poor & Poor \\
+	{Volume\\coverage} & {Real-time\\3D volumes,\\improving} & 2D & {Large 3D\\volume} & {Large 3D \\volume} \\
+	Contrast        & {Increasing\\(shear)} & Limited & Limited & {Slightly\\flexible} \\
+	Intervention    & {Real-time\\3D increasing} & No\TblrNote{c} & No & Yes, limited \\
+	Functional      & {Functional\\ultrasound} & No & No & fMRI \\
+	\bottomrule
+\end{talltblr}
 \end{table}
 
 Since 2004, medical imaging has been reported to have been performed more than 5 billion times \cite{Picano2004}, and later numbers from 2011 show a general doubling and in particular, a tenfold increase in ultrasound examinations between 2000 and 2011 \cite{Szabo_UltrasoundBook_2}. Recent data reveal that this trend of doubling has continued throughout the years 2010 to 2020 \cite{Winder2021}, and reveal that even though patient processes were disrupted during the global SARS-CoV-2 pandemic, the number of medical imaging examinations per 1000 patients still increased. The reasons for this and, particularly, why ultrasound has seen a significant increase in use, can be attributed to its high, but inconsistent, resolution, cost-effectiveness, portability, and real-time interventional imaging. The downside of ultrasound is its limited penetration and restrictions for use in certain body parts. When comparing soft tissue examinations, which ultrasound is limited to, both \gls{ct} and \gls{mri} can image the entire body with consistent resolution and contrast, but are more expensive and have poor portability due to the immense size of their hardware. 
@@ -41,7 +70,7 @@ The aim of this project is to study the application of ultrasound in the context
 
 \begin{table}[ht]
 	\centering
-	\caption{Project specification table}
+	\caption{Project specification}
 	\label{tab:specifications}
 	\begin{tblr}[]{%
 			%width=.9\textwidth,
@@ -63,6 +92,4 @@ The aim of this project is to study the application of ultrasound in the context
 
 \end{table}
 
-The project is conducted under the guidance of advisors from the affiliated institutions \Gls{dtu}, Department of Electrical Engineering, Department of Applied Mathematics and Computer Science, and \Gls{kaist} at the Brain/Bio-Medical Microsystems Laboratory.
-
-The report is divided into five chapters, and the first part is an introduction to the project. The second chapter will focus on explaining the theory of the topic of the project. The third chapter focuses on the synthesis of a system for experimental testing. The fourth chapter explains the production of the hardware. The fifth chapter will explain the testing methodology performed on the hardware. Finally, additional documentation of testing, code, circuit diagrams, and laboratory setups can be found in the appendix.
+The project is conducted under the guidance of advisors from the affiliated institutions \Gls{dtu}, Department of Electrical Engineering, Department of Applied Mathematics and Computer Science, and \Gls{kaist} at the Brain/Bio Medical Microsystems Laboratory. The report is divided into five chapters, and the first part is an introduction to the project. The second chapter will focus on explaining the theory of the topic of the project. The third chapter focuses on the synthesis of a system for experimental testing. The fourth chapter explains the production of the hardware. The fifth chapter will explain the testing methodology performed on the hardware. Finally, additional documentation of testing, code, circuit diagrams, and laboratory setups can be found in the appendix.
