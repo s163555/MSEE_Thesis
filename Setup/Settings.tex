@@ -94,16 +94,18 @@ purple,         fill=purple         \\%
 \captionsetup{belowskip=\parskip,aboveskip=4pt plus 1pt minus 1pt}
 
 % Setup header and footer
-\renewcommand{\chaptermark}[1]{%
-	\markboth{#1}{}}
+%\renewcommand{\chaptermark}[1]{%
+%	\markboth{#1}{}}
 % Horizontal lines in header and footer, default 0pt
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0.4pt}
 \renewcommand{\chaptermark}[1]{%
 	
 %	\markboth{\MakeUppercase \chaptername\ \thechapter\ \textbullet\ #1}{}% 
-	\markboth{\chaptername\ \thechapter\ \textbullet\ #1}{}% 
+%	\markboth{\chaptername\ \thechapter\ \textbullet\ #1}{}% 
+	\markleft{\chaptername\ \thechapter\ \textbullet\ #1}{}% 
 }
+\renewcommand{\sectionmark}[1]{\markright{#1}}
 
 % Setup header and footer
 \fancypagestyle{front}{% Front pages
