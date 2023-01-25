@@ -100,7 +100,9 @@ purple,         fill=purple         \\%
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0.4pt}
 \renewcommand{\chaptermark}[1]{%
-	\markboth{\chaptername\ \thechapter\ \textbullet\ #1}{}% 
+	\markboth{\ifnum\value{chapter}>0
+		\chaptername\ \thechapter\ \textbullet\ #1}{}% 
+	\fi
 }
 \renewcommand{\sectionmark}[1]{\markright{#1}}
 
@@ -130,6 +132,11 @@ purple,         fill=purple         \\%
 	\fancyfoot[LE,RO]{\footnotesize \MakeUppercase \thesistitle}
 	\fancyhfoffset[E,O]{0pt}
 }
+
+\let\oldfrontmatter\frontmatter
+\let\oldmainmatter\mainmatter
+\gdef\frontmatter{\oldfrontmatter\pagestyle{front}}
+\gdef\mainmatter{\oldmainmatter\pagestyle{main}}
 
 % Setup for diagrams and graphs (tikz pictures) 
 \usetikzlibrary{spy}    % For magnifying anything within a tikzpicture, see the line graph
