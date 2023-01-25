@@ -100,10 +100,7 @@ purple,         fill=purple         \\%
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0.4pt}
 \renewcommand{\chaptermark}[1]{%
-	
-%	\markboth{\MakeUppercase \chaptername\ \thechapter\ \textbullet\ #1}{}% 
-%	\markboth{\chaptername\ \thechapter\ \textbullet\ #1}{}% 
-	\markleft{\chaptername\ \thechapter\ \textbullet\ #1}{}% 
+	\markboth{\chaptername\ \thechapter\ \textbullet\ #1}{}% 
 }
 \renewcommand{\sectionmark}[1]{\markright{#1}}
 
@@ -118,17 +115,19 @@ purple,         fill=purple         \\%
 \fancypagestyle{main}{% All normal pages
 	\fancyhead{}
 	\fancyfoot{}
-	\fancyhead[RE,LO]{\footnotesize \MakeUppercase \thesistitle}
+	\fancyhead[RE,LO]{\footnotesize \MakeUppercase \leftmark} % - \rightmark
+	\fancyhead[LE,RO]{\footnotesize \MakeUppercase \rightmark}
 	\fancyfoot[RE,LO]{\footnotesize \thepage}
-	\fancyfoot[LE,RO]{\footnotesize \MakeUppercase \leftmark} % - \rightmark
+	\fancyfoot[LE,RO]{\footnotesize \MakeUppercase \thesistitle}
 	\fancyhfoffset[E,O]{0pt}
 }
 \fancypagestyle{plain}{% Chapter pages
 	\fancyhead{}
 	\fancyfoot{}
-	\fancyhead[RE,LO]{\footnotesize \MakeUppercase \thesistitle}
+	\fancyhead[RE,LO]{\footnotesize \MakeUppercase \leftmark} % - \rightmark
+	\fancyhead[LE,RO]{\footnotesize \MakeUppercase \rightmark}
 	\fancyfoot[RE,LO]{\footnotesize \thepage}
-	\fancyfoot[LE,RO]{\footnotesize \MakeUppercase \leftmark} % - \leftmark
+	\fancyfoot[LE,RO]{\footnotesize \MakeUppercase \thesistitle}
 	\fancyhfoffset[E,O]{0pt}
 }
 
