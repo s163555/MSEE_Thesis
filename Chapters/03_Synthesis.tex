@@ -47,15 +47,50 @@ The transmit/receive switch is a module that is based on an IC from Texas Instru
 The module is designed with three channels available. That means three channels can be used, either three separate transducers for multi-angle sonography, or a \gls{cmut} with three channels in a single angle.
 
 \section{Transducer}
-Various \gls{transducer} types are used during the testing of this project. Initially, commercially available transducers were used in order to validate the experimental process of the pulse-echo and Doppler measurements. Commercially available transducers in this context means \gls{pzt} piezoe
-\subsection{Impedance matching input}
+Various \gls{transducer} types are used during the testing of this project. Initially, commercially available transducers were used in order to validate the experimental process of the pulse-echo and Doppler measurements. Commercially available transducers in this context means \gls{pzt} piezoelectric transducers. PZT is a piezoelectric material that deforms when an electrical voltage is applied, and generates an electrical signal when it is mechanically deformed. PZT transducers are widely used for medical imaging due to their high piezoelectric efficiency, high bandwidth and durability.
+
+At a later stage during the project, CMUTs are used. CMUT, is a newer technology that uses capacitance to convert between electrical and mechanical energy. The transducer consists of a flexible membrane that moves in response to an applied voltage, producing ultrasound signals. CMUTs have advantages in terms of their small size, high frequency, and ability to operate in a broad range of conditions, making them ideal for use in portable and high-resolution imaging devices. There are two types of CMUTs used:
+
+\subsubsection{Rigid CMUTs:}
+\begin{itemize}
+	\item Advantages:
+	\begin{itemize}
+		\item Higher mechanical stability, leading to less noise and improved image quality
+		\item Can handle higher pressures, making them suitable for deeper imaging applications
+		\item Can have a larger surface area, providing higher sensitivity
+	\end{itemize}
+	\item Disadvantages:
+	\begin{itemize}
+		\item Less flexible, limiting their use in applications with complex geometries or limited access
+		\item Higher stiffness, leading to increased power consumption and difficulty in producing high-frequency signals
+	\end{itemize}
+\end{itemize}
+\subsubsection{Flexible CMUTs:}
+\begin{itemize}
+	\item Advantages:
+	\begin{itemize}
+		\item More flexible, allowing them to conform to complex geometries or be used in applications with limited access
+		\item Can be made thinner and lighter, making them suitable for portable or handheld imaging devices
+		\item Can be integrated into wearable devices or implanted into the body, enabling new imaging modalities
+	\end{itemize}
+	\item Disadvantages:
+	\begin{itemize}
+		\item Lower mechanical stability, leading to increased noise and reduced image quality
+		\item Lower maximum operating pressure, limiting their use in deep imaging applications
+		\item Smaller surface area, resulting in reduced sensitivity
+	\end{itemize}
+\end{itemize}
+In summary, the choice between rigid and flexible CMUTs depends on the specific requirements of the application and the trade-off between flexibility, sensitivity, and image quality. For this project, a wearable transducer is desired and therefore the flexible CMUT is preferred.
+
+\subsection{Impedance matching}
+Impedance matching refers to the adjustment of the output impedance of the transducer to match the input impedance of the receiving system, such as the ultrasound machine or amplifier. This ensures maximum transfer of energy from the transducer to the receiving system, leading to improved signal strength and reduced noise in the final image. In ultrasound imaging, the transducer is used to both transmit and receive ultrasound signals. The impedance of the transducer must be carefully matched to the environment it is operating in, to ensure efficient transfer of energy both ways. If the impedance of the transducer and the receiving system do not match, a portion of the transmitted energy will be reflected back to the transducer, leading to reduced signal strength and increased noise in the final image. This can also result in increased power consumption and reduced battery life in portable or handheld imaging devices.
 
 \section{Preamplifier}
 \subsubsection{OPA487}
 The OPA847\cite{OPA847} is a high-performance, high-speed, voltage feedback amplifier with a bandwidth of over 1 GHz. It has a wide gain range, low distortion, and low noise, making it suitable for a variety of applications including video, RF, and high-speed data acquisition. The OPA847 has a single-ended input and a differential output, which allows it to be used in a variety of circuit configurations. It is available in a surface-mount package and operates over a wide supply voltage range.
 
 \subsubsection{AD8332}
-The AD8332\cite{AD8332} is a fully integrated, single-chip amplifier designed for use in a wide range of RF and microwave applications. It is a low-noise, high-linearity amplifier that can be used in a variety of configurations, including as a stand-alone amplifier or as part of a larger system. The AD8332 is a current-feedback amplifier that can operate over a wide frequency range, from 50 MHz to 4 GHz. It has a high level of integration, with all active components on a single monolithic IC. This makes it suitable for use in small form factor applications where space is at a premium. The AD8332 has a number of features that make it well-suited for use in RF and microwave applications. It has a high level of linearity, which allows it to amplify signals without introducing significant distortion. It also has a low noise figure, which makes it well-suited for use in low-noise applications. Additionally, the AD8332 has a wide dynamic range, which makes it capable of handling a wide range of input signals without clipping or saturating. Overall, the AD8332 is a versatile and reliable amplifier that can be used in a wide range of RF and microwave applications. It is well-suited for use in a variety of systems, including communication systems, radar systems, and instrumentation systems.
+The AD8332\cite{AD8332} is a fully integrated, single-chip amplifier designed for use in a wide range of RF and microwave applications. It is a low-noise, high-linearity amplifier that can be used in a variety of configurations, including as a stand-alone amplifier or as part of a larger system. The AD8332 is a current-feedback amplifier that can operate over a wide frequency range, from 50 MHz to 4 GHz. It has a high level of integration, with all active components on a single monolithic IC. This makes it suitable for use in small form factor applications where space is at a premium. The AD8332 has a number of features that make it well-suited for use in RF and microwave applications. It has a high level of linearity, which allows it to amplify signals without introducing significant distortion. It also has a low noise figure, which makes it well-suited for use in low-noise applications. Additionally, the AD8332 has a wide \gls{dynamic range}, which makes it capable of handling a wide range of input signals without clipping or saturating. Overall, the AD8332 is a versatile and reliable amplifier that can be used in a wide range of RF and microwave applications. It is well-suited for use in a variety of systems, including communication systems, radar systems, and instrumentation systems.
 
 \section{Demodulation}
 To demodulate our signal using the process described in The AD8333\cite{AD8333} is an integrated circuit (IC) that can be used to demodulate an amplitude-modulated (AM) signal. It contains all the necessary circuitry to detect and extract the information contained in an AM signal. In AM, the information is encoded in the amplitude of the carrier wave, which is modulated or varied in some way to convey the information. The AD8333 is able to detect these variations in the carrier wave and extract the original information from the signal. To do this, the AD8333 uses a process called envelope detection. It rectifies the input signal, which removes the negative portions of the waveform, and then filters the resulting signal to remove any remaining high-frequency components. This leaves only the envelope of the original modulated signal, which contains the encoded information. The AD8333 also includes amplifier and buffer stages to amplify the detected envelope and prepare it for further processing or application. It is often used in radio communication systems, industrial control systems, and other applications where an AM signal needs to be demodulated and the information contained in the signal needs to be extracted. Test af git push.
