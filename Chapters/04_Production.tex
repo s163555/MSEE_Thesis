@@ -496,24 +496,27 @@ Notice how the \texttt{aligned} environment can be used to align the equilibrium
 
 %\Cref{lst:montecarlo} is a nicely formatted block of code. A listing will automatically continue on the next page if it encounters a page break. Many different programming languages can be highlighted. Check the \texttt{listings} package documentation for a list of supported programming languages. 
 
-\begin{mintedc}[list text={C-Programm!},title={Ein primitives C - Programm!}]
-#include <stdio.h>
-int main() 
-{
-    printf("Hello, World!"); /*printf() outputs the quoted string*/
-    if (n == 0 || n == 1){    
-        return n;        
-    }        
-    j = 0;    
-    for (i = 0; i < n-1; i++){      
-        if (arr[i] != arr[i+1]){        
-            arr[j] = arr[i];       
-            j++;      
-        }    
-    }      
-    arr[j++] = arr[n-1];
-    return 0;
-}
-\end{mintedc}
-
+\begin{listing}[!ht]
+	\begin{minted}{lua}
+		#include <stdio.h>
+		int main() 
+		{
+		    printf("Hello, World!"); /*printf() outputs the quoted string*/
+		    if (n == 0 || n == 1){    
+		        return n;        
+		    }        
+		    j = 0;    
+		    for (i = 0; i < n-1; i++){      
+		        if (arr[i] != arr[i+1]){        
+		            arr[j] = arr[i];       
+		            j++;      
+		        }    
+		    }      
+		    arr[j++] = arr[n-1];
+		    return 0;
+		}
+	\end{minted}
+	\caption{Hello world in C}
+	\label{listing:3}
+\end{listing}
 
