@@ -1,3 +1,12 @@
+\chapter{Source Code}
+% Create a new environment for breaking code listings across pages.
+\newenvironment{longlisting}{\captionsetup{type=listing}}{}
+\begin{longlisting}
+	\inputminted[bgcolor=LightGray,fontsize=\footnotesize,linenos]{c}{Figures/Code/main.c}
+	\caption{main zephyr}
+	\label{lst:zephyr}
+\end{longlisting}
+
 \chapter{Bill of Materials} \thispagestyle{main}
 
 	\begin{longtblr}[
