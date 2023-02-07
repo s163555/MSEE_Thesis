@@ -25,7 +25,7 @@
 		C13 & 1u & RAD-0.3in & Film 40V & Preamp \\
 		C14 & 1.5n & 0603 & X7R50V & PI controller \\
 		C15 & NC & 0603 & X7R50V & PI controller \\
-		C2,C3,C4,C9,C10 & 100n & 0603 & X7R16V & Decoupling \\
+		C2,C3,C4 & 100n & 0603 & X7R16V & Decoupling \\
 		C5,C11 & 1u & 0603 & X5R6.3V & Decoupling \\
 		C6,C7 & 100n & 0805 & X7R50V & Decoupling \\
 		C8 & 1500u & RAD-0.3in & 63Vdc & Decoupling \\
@@ -47,7 +47,7 @@
 		U1 & OPA2365 & SOIC-8 & NA & Preamp, PI \\ 
 		U2 & TLV431A & SOT-23 & 1\% & Voltage ref \\ %\pagebreak
 		\SetCell[c=5]{c}{} Receiver & & & & \\ \midrule
-		C1,C11,C15,C19 & 100n & 0603 & X7R16V & Gate driver \\
+		C1,C11,C15 & 100n & 0603 & X7R16V & Gate driver \\
 		P1,P2 & 10-pin header & Male & 250V & InterPCB con. \\
 		C2,C16 & 150n & 0603 & X5R10V & Gate driver \\
 		C3,C10 & 100p & 0603 & NPO50V & Decoupling \\
@@ -59,11 +59,11 @@
 		R2,R5,R8,R10 & 5 & 0603 & 1\% & Gate driver \\
 		R4,R9 & 0 & 0603 & 1\% & Gate driver \\
 		D1,D2 & Diode & NA & 85V 0.25A & Gate driver \\
-		C5,C6, C9, C17 & 10u & 1210 & X7R50V & Decoupling \\
-		C12,C13, C14 & 680n & 1210 & X7R100V & Output filter \\
+		C5,C6,C9,C17 & 10u & 1210 & X7R50V & Decoupling \\
+		C12,C13,C14 & 680n & 1210 & X7R100V & Output filter \\
 		\SetCell[c=5]{c}{} Microcontroller & & & & \\ \midrule
 		C18,C20,C27 & 100n & 0603 & X7R16V & Decoupling \\
-		C28,C29,C30,C31 & 100n & 0603 & X7R16V & Decoupling \\
+		C28,C29 & 100n & 0603 & X7R16V & Decoupling \\
 		U6 & LT1999 & MSOP-8 & NA & Current acq. \\
 		U4 & AD8274 & MSOP-8 & NA & Volt acq. \\
 		U2 & LT1711 & MSOP-8 & NA & AIM \\

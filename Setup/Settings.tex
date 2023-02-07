@@ -100,9 +100,10 @@ purple,         fill=purple         \\%
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0.4pt}
 \renewcommand{\chaptermark}[1]{%
-	\markboth{\ifnum\value{chapter}>0
+%	\markboth{\ifnum\value{chapter}>0
+	\markboth{
 		\chaptername\ \thechapter\ \textbullet\ #1}{}% 
-	\fi
+%	\fi
 }
 \renewcommand{\sectionmark}[1]{\markright{#1}}
 
