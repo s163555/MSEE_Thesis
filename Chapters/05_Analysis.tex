@@ -496,7 +496,7 @@ Notice how the \texttt{aligned} environment can be used to align the equilibrium
 
 \Cref{lst:montecarlo} is a nicely formatted block of code. A listing will automatically continue on the next page if it encounters a page break. Many different programming languages can be highlighted. Check the \texttt{listings} package documentation for a list of supported programming languages. 
 
-\begin{lstlisting}[language=Matlab, caption = Monte Carlo simulation to estimate the value of $\pi$, label=lst:montecarlo]
+\begin{mintedc}
 %% Monte Carlo simulation, estimation of pi
 m=1E7;
 
@@ -509,6 +509,6 @@ g = x.^2+y.^2-1;
 Pf = sum((g)<=0)/m
 
 pi = 4*Pf
-\end{lstlisting}
+\end{mintedc}
 
 
