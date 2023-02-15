@@ -33,7 +33,7 @@ Visual Studio Code (VSCode) is an \gls{open-source} code editor developed by Mic
 Zephyr is an \gls{open-source} \gls{rtos} designed for the \gls{iot}. It is a lightweight RTOS that can run on a wide range of devices, from \gls{mcu}s with as little as \qty{20}{\kilo\byte} of RAM to more powerful systems with multiple processors. Zephyr is designed to be modular and scalable, with a focus on security and low power consumption. It includes support for a wide range of hardware architectures, including ARM Cortex-M, x86, and RISC-V, and it can be used with a variety of development boards and microcontrollers. One of the key features of Zephyr is its ability to run on very small devices with limited resources. It includes support for various networking protocols, such as \gls{ble}, IPv4, and IPv6, which makes it well-suited for use in IoT applications. Zephyr is developed as part of the Linux Foundation's Zephyr Project, and it is widely used in the development of IoT and embedded systems. It is a popular choice for lightweight, flexible, and secure RTOS projects.
 
 \subsubsection{Build System}
-To build an application with the Zephyr kernel, you use CMake which has two phases - configuration and build. During configuration phase, CMake executes the \texttt{CMakeLists.txt} build scripts to generate an internal model of the Zephyr build. The configuration phase can be seen in \cref{fig:3_cmake_configuration}. Starting with \gls{dts}/\gls{dtsi} and then using the device tree and Kconfig to configure the set of build files for ninja. Once configuration is done, CMake generates build scripts that are native to the host platform and initiate the build sequence with the build system Ninja \cite{ninja}. Afterwards, the generated build scripts are executed to begin the second phase, build. The build scripts can recompile the application without involving CMake after most code changes. However, in some cases, you need to execute the configuration step again before building. Zephyr uses CMake's ‘target’ concept to organize the build, where a target can be an executable, a library, or a generated file. The final output of Ninja is a binary file ready for \gls{flashing} using a microcontroller programmer.
+To build an application with the Zephyr kernel, you use CMake which has two phases - configuration and build. During configuration phase, CMake executes the \texttt{CMakeLists.txt} build scripts to generate an internal model of the Zephyr build. The configuration phase can be seen in \cref{fig:3_cmake_configuration}. Starting with \gls{dts}/\gls{dtsi} and then using the device tree and Kconfig to configure the set of build files for ninja. Once configuration is done, CMake generates build scripts that are native to the host platform and initiate the build sequence with the build system Ninja \cite{ninja}. Afterwards, the generated build scripts are executed to begin the second phase, build. The build scripts can recompile the application without involving CMake after most code changes. Zephyr uses CMake's ‘target’ concept to organize the build, where a target can be an executable, a library, or a generated file. The final output of Ninja is a binary file ready for \gls{flashing} using a microcontroller programmer.
 
 \begin{figure}[htbp!]
 	\centering
@@ -44,43 +44,43 @@ To build an application with the Zephyr kernel, you use CMake which has two phas
 After cmake configuration phase has completed, the build phase begins. CMake invokes the build system, which (conceptually) has five (six, one is repeated) stages: (I) pre-build, (II) generation and compilation, (III) first-pass binary (and (IV) second-pass binary), (V) final binary and (VI) post-processing.
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=\textwidth]{Figures/3_cmake_build1.pdf}
-	\caption[Flowchart of build stage I, pre-build]{Flowchart of \texttt{ninja} build stage I, pre-build}
+	\includegraphics[width=.8\textwidth]{Figures/3_cmake_build1.pdf}
+	\caption[Flowchart of build stage I, pre-build]{Flowchart of build stage I, pre-build}
 	\label{fig:3_build1}
 \end{figure}
 In \cref{fig:3_build1} the build system binds system call functions to implementations.
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=\textwidth]{Figures/3_cmake_build2.pdf}
-	\caption[Flowchart of build stage II, generation and compilation]{Flowchart of \texttt{ninja} build stage II, generation and compilation}
+	\includegraphics[width=.8\textwidth]{Figures/3_cmake_build2.pdf}
+	\caption[Flowchart of build stage II, generation and compilation]{Flowchart of build stage II, generation and compilation}
 	\label{fig:3_build2}
 \end{figure}
 Next, in \cref{fig:3_build2} the build system collects source files for various subsystems (decided by the configuration phase) and compiles into archives. The \texttt{gen\_app\_partitions.py} script examines all the archives that are produced and creates linker scripts that organize and align application partitions correctly, based on the memory protection hardware of the target. Then \texttt{cpp} process involves merging linker script fragments from various sources, including the target's architecture/\gls{soc}, the kernel tree, partition output (if memory protection is enabled), and any other selected fragments from the configuration process. These are combined into a \texttt{linker.cmd} file. The compiled archives are then linked with \texttt{ld}, following the specifications in the \texttt{linker.cmd} file.
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=\textwidth]{Figures/3_cmake_build3.pdf}
-	\caption[Flowchart of build stage III, intermediate binary]{Flowchart of \texttt{ninja} build stage III, intermediate binary}
+	\includegraphics[width=.8\textwidth]{Figures/3_cmake_build3.pdf}
+	\caption[Flowchart of build stage III, intermediate binary]{Flowchart of build stage III, intermediate binary}
 	\label{fig:3_build3}
 \end{figure}
 Shown in \cref{fig:3_build3} is the process, in which an unfixed size intermediate binary is produced. If a devicetree is being used, an intermediate binary is generated that has a variable size. The binary is not fixed in size, which means that it can be modified by post-processing steps that affect the size of the final binary.
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=\textwidth]{Figures/3_cmake_build4.pdf}
-	\caption[Flowchart of build stage IV, second intermediate binary]{Flowchart of \texttt{ninja} build stage IV, second intermediate binary}
+	\includegraphics[width=.8\textwidth]{Figures/3_cmake_build4.pdf}
+	\caption[Flowchart of build stage IV, second intermediate binary]{Flowchart of build stage IV, second intermediate binary}
 	\label{fig:3_build4}
 \end{figure}
 In \Cref{fig:3_build4} the fixed size intermediate binary is generated. The previous stage's binaries are not fully formed and contain sections that are empty or marked as placeholders. These sections must be filled in by a process similar to reflection. To finish building, certain scripts are run on the intermediate binaries. These scripts generate the necessary components that are missing from the final binary.
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=\textwidth]{Figures/3_cmake_build5.pdf}
-	\caption[Flowchart of build stage V, final binary]{Flowchart of \texttt{ninja} build stage V, final binary}
+	\includegraphics[width=.8\textwidth]{Figures/3_cmake_build5.pdf}
+	\caption[Flowchart of build stage V, final binary]{Flowchart of build stage V, final binary}
 	\label{fig:3_build5}
 \end{figure}
 Next, in \cref{fig:3_build5}, the final binary is produced by repeating the link from the previous stage, but this time with all the missing pieces populated.
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=.75\textwidth]{Figures/3_cmake_build6.pdf}
-	\caption[Flowchart of build stage VI, post-processing]{Flowchart of \texttt{ninja} build stage VI, post-processing}
+	\includegraphics[width=.6\textwidth]{Figures/3_cmake_build6.pdf}
+	\caption[Flowchart of build stage VI, post-processing]{Flowchart of build stage VI, post-processing}
 	\label{fig:3_build6}
 \end{figure}
 Finally, using \texttt{GNU objdump}, the completed kernel is converted from a \gls{elf} file to the hex file that is expected by the flash tool compatible with the target device.
