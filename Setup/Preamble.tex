@@ -10,7 +10,7 @@
 %\babelprovide[import=da]{danish}
 
 % Basic thesis packages
-\usepackage{geometry}     % Package for changing page margins (before fancyhdr) 
+\usepackage{geometry}     % Package for changing page margins (before fancyhdr)
 \usepackage{fancyhdr}       % Package to change header and footer
 \usepackage{parskip}        % Package to tweak paragraph skipping (instead of indents a small skip is added after every paragraph)
 \usepackage{titlesec}
@@ -31,10 +31,12 @@
 %\usepackage{sectsty}
 %\usepackage{sfmath}			% Sans serif math
 \usepackage{nicefrac}		% Neat inline fractions
-%\usepackage{listings}       % Package for inserting code, (before cleveref)
-\usepackage{minted}
-\usepackage[most, minted]{tcolorbox}
-\tcbuselibrary{listings, breakable, skins}
+\usepackage{listings}       % Package for inserting code, (before cleveref)
+\usepackage[chapter]{minted}
+%\setminted{autogobble,linenos=true,breaklines,labelposition=all}
+%\usepackage[most, minted]{tcolorbox}
+\usepackage[most]{tcolorbox}
+%\tcbuselibrary{listings, breakable, skins}
 \PassOptionsToPackage{hyphens}{url} % Ability to line break urls at hyphens
 \usepackage{hyperref}       % Package for cross referencing (also loads url package)
 \usepackage{cleveref}       % improved cross referencing
@@ -58,7 +60,7 @@
 \usepackage{datetime}		% For dates and time functions
 \usepackage[automake=immediate,toc, % Abbreviations and glossary lists
 abbreviations,
-postdot, 
+postdot,
 hyperfirst=true,
 nopostdot=true,
 nonumberlist=true,
@@ -67,7 +69,7 @@ nowarn,
 \usepackage{glossary-longextra} % Long booktabs table style
 \usepackage[numbib]{tocbibind} % Lists of... in toc
 %\usepackage{tocloft}		% Customising toc
-%\usepackage{calc}           % Adds ability for latex to calculate (3pt+2pt) 
+%\usepackage{calc}           % Adds ability for latex to calculate (3pt+2pt)
 \usepackage{blindtext}
 \usepackage{graphicx}
 \graphicspath{{Figures/}} %Setting the graphicspath
