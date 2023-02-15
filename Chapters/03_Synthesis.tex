@@ -52,7 +52,7 @@ In \cref{fig:3_build1} the build system binds system call functions to implement
 	\caption[Flowchart of ninja stage 2, generation and compilation]{Flowchart of \texttt{ninja} build stage II, generation and compilation}
 	\label{fig:3_build2}
 \end{figure}
-Next, in \cref{fig:3_build2} the build system collects source files for various subsystems (decided by the configuration phase) and compiles into archives.
+Next, in \cref{fig:3_build2} the build system collects source files for various subsystems (decided by the configuration phase) and compiles into archives. The \texttt{gen_app_partitions.py} script examines all the archives that are produced and creates linker scripts that organize and align application partitions correctly, based on the memory protection hardware of the target. Then \texttt{cpp} process involves merging linker script fragments from various sources, including the target's architecture/\gls{soc}, the kernel tree, partition output (if memory protection is enabled), and any other selected fragments from the configuration process. These are combined into a linker.cmd file. The compiled archives are then linked with ld, following the specifications in the linker.cmd file.
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=\textwidth]{Figures/3_cmake_build3.pdf}
