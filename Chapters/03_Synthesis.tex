@@ -34,49 +34,49 @@ To build an application with the Zephyr kernel, you use CMake which has two phas
 
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=.8\textwidth]{Figures/3_cmake_configuration.pdf}
+	\includegraphics[width=\textwidth]{Figures/3_cmake_configuration.pdf}
 	\caption[Configuration phase of a Zephyr application]{Configuration phase of a Zephyr application \cite{zephyrprojectdocumentation}, starting with \gls{dts}/\gls{dtsi} and then using the device tree and Kconfig to configure the set of build files for \texttt{ninja}}
 	\label{fig:3_cmake_configuration}
 \end{figure}
-After cmake configuration phase has completed, the build phase begins. CMake invokes \texttt{ninja}, which (conceptually) has six (five) stages: pre-build, generation and compilation, first-pass binary (and second-pass binary), final binary and post-processing.
+After cmake configuration phase has completed, the build phase begins. CMake invokes \texttt{ninja}, which (conceptually) has five (six, one is repeated) stages: pre-build, generation and compilation, first-pass binary (and second-pass binary), final binary and post-processing.
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=.8\textwidth]{Figures/3_cmake_build1.pdf}
+	\includegraphics[width=\textwidth]{Figures/3_cmake_build1.pdf}
 	\caption[Flowchart of ninja stage 1, pre-build]{Flowchart of \texttt{ninja} build stage 1, pre-build\cite{zephyrprojectdocumentation}}
 	\label{fig:3_build1}
 \end{figure}
 In \cref{fig:3_build1} the build system binds system call functions to implementations.
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=.8\textwidth]{Figures/3_cmake_build2.pdf}
+	\includegraphics[width=\textwidth]{Figures/3_cmake_build2.pdf}
 	\caption[Flowchart of ninja stage 2, generation and compilation]{Flowchart of \texttt{ninja} build stage 2, generation and compilation\cite{zephyrprojectdocumentation}}
 	\label{fig:3_build2}
 \end{figure}
 Next, in \cref{fig:3_build2} the build system collects source files for various subsystems (decided by the configuration phase) and compiles into archives.
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=.8\textwidth]{Figures/3_cmake_build3.pdf}
+	\includegraphics[width=\textwidth]{Figures/3_cmake_build3.pdf}
 	\caption[Flowchart of ninja stage 3, intermediate binary]{Flowchart of \texttt{ninja} build stage 3, intermediate binary\cite{zephyrprojectdocumentation}}
 	\label{fig:3_build3}
 \end{figure}
 In stage 3, shown in \cref{fig:3_build3}, an unfixed size intermediate binary is produced. If a devicetree is being used, an intermediate binary is generated that has a variable size. The binary is not fixed in size, which means that it can be modified by post-processing steps that affect the size of the final binary.
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=.8\textwidth]{Figures/3_cmake_build4.pdf}
+	\includegraphics[width=\textwidth]{Figures/3_cmake_build4.pdf}
 	\caption[Flowchart of ninja stage 4, second intermediate binary]{Flowchart of \texttt{ninja} build stage 4, second intermediate binary\cite{zephyrprojectdocumentation}}
 	\label{fig:3_build4}
 \end{figure}
 \Cref{fig:3_build4} shows stage 4, where the fixed size intermediate binary is generated. The previous stage's binaries are not fully formed and contain sections that are empty or marked as placeholders. These sections must be filled in by a process similar to reflection. To finish building, certain scripts are run on the intermediate binaries. These scripts generate the necessary components that are missing from the final binary.
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=.8\textwidth]{Figures/3_cmake_build5.pdf}
+	\includegraphics[width=\textwidth]{Figures/3_cmake_build5.pdf}
 	\caption[Flowchart of ninja stage 5, final binary]{Flowchart of \texttt{ninja} build stage 5, final binary\cite{zephyrprojectdocumentation}}
 	\label{fig:3_build5}
 \end{figure}
 Next, in \cref{fig:3_build5}, the final binary is produced by repeating the link from the previous stage, but this time with all the missing pieces populated.
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=.8\textwidth]{Figures/3_cmake_build5.pdf}
+	\includegraphics[width=\textwidth]{Figures/3_cmake_build6.pdf}
 	\caption[Flowchart of ninja stage 6, final binary]{Flowchart of \texttt{ninja} build stage 6, post-processing\cite{zephyrprojectdocumentation}}
 	\label{fig:3_build6}
 \end{figure}
