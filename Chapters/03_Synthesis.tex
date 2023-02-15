@@ -32,9 +32,9 @@ A real-time operating system is an operating system that is designed to handle r
 \subsubsection{Build System}
 To build an application with the Zephyr kernel, you use CMake which has two phases - configuration and build. During configuration phase, CMake executes the CMakeLists.txt build scripts to generate an internal model of the Zephyr build. The configuration phase can be seen in \cref{fig:3_cmake_configuration}. Starting with \gls{dts}/\gls{dtsi} and then using the device tree and Kconfig to configure the set of build files for \texttt{ninja}. Once configuration is done, CMake generates build scripts that are native to the host platform using Ninja or Make. Afterwards, the generated build scripts are executed to begin the second phase, build. The build scripts can recompile the application without involving CMake after most code changes. However, in some cases, you need to execute the configuration step again before building. Zephyr uses CMake’s 'target' concept to organize the build, where a target can be an executable, a library, or a generated file. The final output of the build system \texttt{ninja} is a binary file ready for \gls{flashing} using a microcontroller programmer.
 
-\begin{figure}[htbp]
+\begin{figure}[htbp!]
 	\centering
-	\includegraphics[width=\textwidth]{Figures/3_cmake_configuration.pdf}
+	\includegraphics[width=.8\textwidth]{Figures/3_cmake_configuration.pdf}
 	\caption[Configuration phase of a Zephyr application]{Configuration phase of a Zephyr application \cite{zephyrprojectdocumentation}}
 	\label{fig:3_cmake_configuration}
 \end{figure}
@@ -52,7 +52,7 @@ In \cref{fig:3_build1} the build system binds system call functions to implement
 	\caption[Flowchart of ninja stage 2, generation and compilation]{Flowchart of \texttt{ninja} build stage II, generation and compilation}
 	\label{fig:3_build2}
 \end{figure}
-Next, in \cref{fig:3_build2} the build system collects source files for various subsystems (decided by the configuration phase) and compiles into archives. The \texttt{gen_app_partitions.py} script examines all the archives that are produced and creates linker scripts that organize and align application partitions correctly, based on the memory protection hardware of the target. Then \texttt{cpp} process involves merging linker script fragments from various sources, including the target's architecture/\gls{soc}, the kernel tree, partition output (if memory protection is enabled), and any other selected fragments from the configuration process. These are combined into a linker.cmd file. The compiled archives are then linked with ld, following the specifications in the linker.cmd file.
+Next, in \cref{fig:3_build2} the build system collects source files for various subsystems (decided by the configuration phase) and compiles into archives. The \texttt{gen\_app\_partitions.py} script examines all the archives that are produced and creates linker scripts that organize and align application partitions correctly, based on the memory protection hardware of the target. Then \texttt{cpp} process involves merging linker script fragments from various sources, including the target's architecture/\gls{soc}, the kernel tree, partition output (if memory protection is enabled), and any other selected fragments from the configuration process. These are combined into a linker.cmd file. The compiled archives are then linked with ld, following the specifications in the linker.cmd file.
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=\textwidth]{Figures/3_cmake_build3.pdf}
