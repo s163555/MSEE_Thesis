@@ -21,7 +21,7 @@ The choice of platform for the control system is a microcontroller. A microcontr
 	\label{fig:3_vscode_cmake_build}
 \end{figure}
 
-Visual Studio Code (VSCode) is an \gls{open-source} code editor developed by Microsoft. It is designed to be highly customizable and efficient, with a wide range of features and extensions that allow developers to customize their workflows and improve their productivity. VSCode works in synergy with CMake through an extension. CMake is a cross-platform build system that helps developers manage the build process for their projects. It is used to generate build files for different platforms and build systems, to build projects on a wide range of platforms. When using CMake with VSCode, the basic idea is to use the CMake extension for VSCode to generate the appropriate build files for the target platform, and then use the VSCode tasks and debugging capabilities to build and debug the project. After setup of VSCode, the CMake Tools\cite{cmake} extension can be found in the VSCode Marketplace. The CMake Tools extension allows you to create, configure and build CMake projects from within VSCode. Once the extension is installed, you can create a new CMake project and configure it by specifying the path to the \texttt{CMakeLists.txt} file and other settings like the target platform and build configuration. After configuring the project, the VSCode tasks are provided to build and run the project. These tasks are defined in the \texttt{tasks.json} file, which can be customized to specify the build command and other options. Examples of tasks are build the project, cleaning the build directory, or running tests. The available CMake tasks are shown in \cref{fig:4_vscode_cmake_build}. In addition to building and running the project, VSCode allows for debugging capabilities to debug code. The CMake Tools extension provides a debug configuration template for C/C++ projects, which you can use to configure the debugger for your project. You can then set breakpoints in your code and step through it while debugging.
+Visual Studio Code (VSCode) is an \gls{open-source} code editor developed by Microsoft. It is designed to be highly customizable and efficient, with a wide range of features and extensions that allow developers to customize their workflows and improve their productivity. VSCode works in synergy with CMake through an extension. CMake is a cross-platform build system that helps developers manage the build process for their projects. It is used to generate build files for different platforms and build systems, to build projects on a wide range of platforms. When using CMake with VSCode, the basic idea is to use the CMake extension for VSCode to generate the appropriate build files for the target platform, and then use the VSCode tasks and debugging capabilities to build and debug the project. After setup of VSCode, the CMake Tools\cite{cmake} extension can be found in the VSCode Marketplace. The CMake Tools extension allows you to create, configure and build CMake projects from within VSCode. Once the extension is installed, you can create a new CMake project and configure it by specifying the path to the \texttt{CMakeLists.txt} file and other settings like the target platform and build configuration. After configuring the project, the VSCode tasks are provided to build and run the project. These tasks are defined in the \texttt{tasks.json} file, which can be customized to specify the build command and other options. Examples of tasks are build the project, cleaning the build directory, or running tests. The available CMake tasks are shown in \cref{fig:3_vscode_cmake_build}. In addition to building and running the project, VSCode allows for debugging capabilities to debug code. The CMake Tools extension provides a debug configuration template for C/C++ projects, which you can use to configure the debugger for your project. You can then set breakpoints in your code and step through it while debugging.
 
 \subsection{Zephyr}
 Zephyr is an \gls{open-source} \gls{rtos} designed for the \gls{iot}. It is a lightweight RTOS that can run on a wide range of devices, from \gls{mcu}s with as little as \qty{20}{\kilo\byte} of RAM to more powerful systems with multiple processors. Zephyr is designed to be modular and scalable, with a focus on security and low power consumption. It includes support for a wide range of hardware architectures, including ARM Cortex-M, x86, and RISC-V, and it can be used with a variety of development boards and microcontrollers. One of the key features of Zephyr is its ability to run on very small devices with limited resources. It includes support for various networking protocols, such as \gls{ble}, IPv4, and IPv6, which makes it well-suited for use in IoT applications. Zephyr is developed as part of the Linux Foundation's Zephyr Project, and it is widely used in the development of IoT and embedded systems. It is a popular choice for lightweight, flexible, and secure RTOS projects.
@@ -34,50 +34,50 @@ To build an application with the Zephyr kernel, you use CMake which has two phas
 
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=.8\textwidth]{Figures/3_cmake_configuration.svg}
+	\includesvg[width=.8\textwidth]{Figures/3_cmake_configuration.svg}
 	\caption[Configuration phase of a Zephyr application]{Configuration phase of a Zephyr application \cite{zephyrprojectdocumentation}, starting with \gls{dts}/\gls{dtsi} and then using the device tree and Kconfig to configure the set of build files for \texttt{ninja}}
 	\label{fig:3_cmake_configuration}
 \end{figure}
 After cmake configuration phase has completed, the build phase begins. CMake invokes \texttt{ninja}, which (conceptually) has six (five) stages: pre-build, generation and compilation, first-pass binary (and second-pass binary), final binary and post-processing.
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=.8\textwidth]{Figures/3_cmake_build1.svg}
-	\caption[Flowchart of ninja stage 1, pre-build]{Flowchart of \texttt{ninja} build stage 1, pre-build}
+	\includesvg[width=.8\textwidth]{Figures/3_cmake_build1.svg}
+	\caption[Flowchart of ninja stage 1, pre-build]{Flowchart of \texttt{ninja} build stage 1, pre-build\cite{zephyrprojectdocumentation}}
 	\label{fig:3_build1}
 \end{figure}
 In \cref{fig:3_build1} the build system binds system call functions to implementations.
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=.8\textwidth]{Figures/3_cmake_build2.svg}
-	\caption[Flowchart of ninja stage 2, generation and compilation]{Flowchart of \texttt{ninja} build stage 2, generation and compilation}
+	\includesvg[width=.8\textwidth]{Figures/3_cmake_build2.svg}
+	\caption[Flowchart of ninja stage 2, generation and compilation]{Flowchart of \texttt{ninja} build stage 2, generation and compilation\cite{zephyrprojectdocumentation}}
 	\label{fig:3_build2}
 \end{figure}
 Next, in \cref{fig:3_build2} the build system collects source files for various subsystems (decided by the configuration phase) and compiles into archives.
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=.8\textwidth]{Figures/3_cmake_build3.svg}
-	\caption[Flowchart of ninja stage 3, intermediate binary]{Flowchart of \texttt{ninja} build stage 3, intermediate binary}
+	\includesvg[width=.8\textwidth]{Figures/3_cmake_build3.svg}
+	\caption[Flowchart of ninja stage 3, intermediate binary]{Flowchart of \texttt{ninja} build stage 3, intermediate binary\cite{zephyrprojectdocumentation}}
 	\label{fig:3_build3}
 \end{figure}
 In stage 3, shown in \cref{fig:3_build3}, an unfixed size intermediate binary is produced. If a devicetree is being used, an intermediate binary is generated that has a variable size. The binary is not fixed in size, which means that it can be modified by post-processing steps that affect the size of the final binary.
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=.8\textwidth]{Figures/3_cmake_build4.svg}
-	\caption[Flowchart of ninja stage 4, second intermediate binary]{Flowchart of \texttt{ninja} build stage 4, second intermediate binary}
+	\includesvg[width=.8\textwidth]{Figures/3_cmake_build4.svg}
+	\caption[Flowchart of ninja stage 4, second intermediate binary]{Flowchart of \texttt{ninja} build stage 4, second intermediate binary\cite{zephyrprojectdocumentation}}
 	\label{fig:3_build4}
 \end{figure}
 \Cref{fig:3_build4} shows stage 4, where the fixed size intermediate binary is generated. The previous stage's binaries are not fully formed and contain sections that are empty or marked as placeholders. These sections must be filled in by a process similar to reflection. To finish building, certain scripts are run on the intermediate binaries. These scripts generate the necessary components that are missing from the final binary.
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=.8\textwidth]{Figures/3_cmake_build5.svg}
-	\caption[Flowchart of ninja stage 5, final binary]{Flowchart of \texttt{ninja} build stage 5, final binary}
+	\includesvg[width=.8\textwidth]{Figures/3_cmake_build5.svg}
+	\caption[Flowchart of ninja stage 5, final binary]{Flowchart of \texttt{ninja} build stage 5, final binary\cite{zephyrprojectdocumentation}}
 	\label{fig:3_build5}
 \end{figure}
 Next, in \cref{fig:3_build5}, the final binary is produced by repeating the link from the previous stage, but this time with all the missing pieces populated.
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=.8\textwidth]{Figures/3_cmake_build5.svg}
-	\caption[Flowchart of ninja stage 6, final binary]{Flowchart of \texttt{ninja} build stage 6, post-processing}
+	\includesvg[width=.8\textwidth]{Figures/3_cmake_build5.svg}
+	\caption[Flowchart of ninja stage 6, final binary]{Flowchart of \texttt{ninja} build stage 6, post-processing\cite{zephyrprojectdocumentation}}
 	\label{fig:3_build6}
 \end{figure}
 Finally, using \texttt{GNU objdump}, the completed kernel is converted from a \gls{elf} file to the hex file that is expected by the flash tool compatible with the target device.
