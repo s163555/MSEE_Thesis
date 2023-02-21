@@ -157,6 +157,21 @@ tick label style={/pgf/number format/assume math mode}, % To apply main font to 
 \tikzset{every mark/.append style={scale=1.5}}
 
 
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+
+% mathtools configuration
+% Swap the definition of \abs* and \norm*, so that \abs
+% and \norm resizes the size of the brackets, and the
+% starred version does not.
+\makeatletter
+\let\oldabs\abs
+\def\abs{\@ifstar{\oldabs}{\oldabs*}}
+%
+\let\oldnorm\norm
+\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+\makeatother
+
 % Hypersetup
 \hypersetup{
     pdfauthor={\thesisauthor},
