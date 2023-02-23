@@ -74,13 +74,13 @@ Where $R$ is distance to the scattering region \cite{JensenUltrasoundBook}. This
 The backscattering coefficient, which characterizes scattering from a volume of scatterers, is another measure of scattering strength. It is defined as the average received power per steradian volume of scatterers when flooded with plane waves of unit amplitude and the unit is \unit{1\per\centi\meter\steradian}. Backscattering coefficients in the blood are significantly lower than the backscattering coefficients from various tissue types. This poses a challenge when estimating blood flow close to tissue vessel walls \cite{ShungScattering1992,JensenUltrasoundBook}.
 
 \subsection{Attenuation}
-The ultrasonic wave will be reduced as it propagates through the tissue due to absorption and scattering. The attenuation in tissue is frequency dependent, with greater attenuation with increasing frequency. Because of absorption and dispersion, the ultrasonic wave will be attenuated as it travels through the tissue. The relationship between attenuation, distance travelled, and frequency is often linear. Attenuation in the tissue occurs as a result of both dispersion, which spreads energy in all directions, and absorption, which turns it into thermal energy.
+The ultrasonic wave will be reduced as it propagates through the tissue due to absorption and scattering. The attenuation in tissue is frequency dependent, with greater attenuation with increasing frequency. Because of absorption and dispersion, the ultrasonic wave will be attenuated as it travels through the tissue. The relationship between attenuation, distance travelled, and frequency is often linear. Attenuation in the tissue occurs as a result of both dispersion, which spreads energy in all directions, and absorption, which turns it into thermal energy. A table of approximate attenuation values can be seen in \cref{tab:2_tissue_attenuation}
 
 \begin{table}[ht]
 	\centering
 	\caption[Approximate attenuation values for human tissue]{Approximate attenuation values for human tissue
 		\cite{JensenUltrasoundBook}}
-	\label{tab:my_label}
+	\label{tab:2_tissue_attenuation}
 	\sisetup{range-phrase=--,range-exponents = combine}
 	\begin{tblr}[]{%
 			colspec = {lS},
@@ -215,8 +215,32 @@ Where $P_{1}$ and $P_{2}$ are the blood pressures measured at each end of the bl
 
 A device that measures the flowing of blood is called a flowmeter. Flowmeters may be used both inside and outside of vessels. One of the flowmeters that may be used outside the vessel to monitor flow is \gls{us}. \Cref{fig:2_ultrasound_flow_scan} depicts an ultrasonic wave of frequency $f$ insonifying a blood artery, resulting in an angle of $\theta$ relative to velocity $v$. For simplicity, it is assumed that blood flows in a vessel at a constant velocity $v$. The echoes returned are shifted in frequency as described in \cref{eq:2_doppler_theta} earlier in the chapter. The echoes scattered by blood after being insonified by an ultrasonic wave convey information about the velocity of blood flow. Blood flow measurements are often used in clinical settings to determine the status of blood vessels and organ functioning. The two commonly used fundamental techniques for ultrasound Doppler flow measurements are \gls{cw} and \gls{pw}. Both will be explained.
 
+\begin{table}[htbp]
+	\centering
+	\caption[Approximate attenuation values for human tissue]{Approximate attenuation values for human tissue
+		\cite{JensenUltrasoundBook}}
+	\label{tab:2_vessels_dimensions_velocity}
+	\sisetup{range-phrase=--,range-exponents = combine}
+	\begin{tblr}[]{%
+			colspec = {lS},
+			row{1} = {guard, m, font=\small\bfseries},
+		}
+		\toprule
+		Tissue & {Attenuation \\ $\unit[per-mode = symbol,inter-unit-product =\cdot]{\dB\per\mega\hertz\per\centi\meter}$ } \\
+		\midrule
+		Liver & \numrange{0.6}{0.9}{} \\
+		Kidney & \numrange{0.8}{1}{} \\
+		Spleen & \numrange{0.5}{1}{}\\
+		Fat & \numrange{1}{2}{} \\
+		Blood & \numrange{0.17}{0.24}{} \\
+		Plasma & 0.01 \\
+		Bone & \numrange{16}{23}{} \\
+		\bottomrule
+	\end{tblr}
+\end{table}
+
 \subsection{Continuous-wave Flowmeter}
-\begin{figure}[ht]
+\begin{figure}[htbp]
 	\centering
 	\includegraphics[width=\textwidth]{2_blockdiagram_cwdoppler.pdf}
 	\caption[Block diagram of continuous-wave flowmeter]{Block diagram of \gls{cw} flowmeter \cite{JensenUltrasoundBook}}
@@ -289,7 +313,7 @@ Seen in \cref{tab:2_cw_frequency_shifts} is an example of measured Doppler frequ
 	\caption[Block diagram of pulsed-wave flowmeter]{Block diagram of \gls{pw} flowmeter \cite{JensenUltrasoundBook}}
 	\label{fig:2_devices_pw}
 \end{figure}
-The concept of a pulsed-wave flowmeter was proposed in \cite{Baker1970} and other related articles. This type of flowmeter is periodically changing from a transmitter to a receiver. In the transmit mode, the transducer emits a series of pulses. When in the receiving mode, the transducer is listening for the backscattered signal. A simplified block diagram can be seen in \cref{fig:2_devices_pw}. The movement of particles within the blood causes a displacement in the backscattered signal. These systems are commonly referred to as \enquote{Doppler systems} even though it is somewhat misleading. The effects of attenuation are also causing a shift in frequency of a higher magnitude than the velocity of particles in the blood. This is because the conventional Doppler effect is not the straightforward methodology that is applied to the analysis of the back-scattered signal. It is, in fact, an artefact. It is the shift in the location of the scatters that is observed, not the shift in the transmitted frequency. \Cref{fig:2_pw_sampling_displacement} shows the received signal after demodulation and filtering; the depth in tissue is fixed here, and the signals displayed on the left side of the figure are the result of a pulse sequence. Each line represents a single pulse, and each pulse is emitted at a pulse repetition frequency, $f_{\textup{prf}}$. Instead, on the right, the dotted line shows the sampled signal formed by taking into account the amplitude of each pulse after a specified time period.
+The concept of a pulsed-wave flowmeter was proposed in \cite{Baker1970} and other related articles. This type of flowmeter is periodically changing from a transmitter to a receiver. In the transmit mode, the transducer emits a series of pulses. When in the receiving mode, the transducer is listening for the backscattered signal. A simplified block diagram can be seen in \cref{fig:2_devices_pw}. The movement of particles within the blood causes a displacement in the backscattered signal. These systems are commonly referred to as \enquote{Doppler systems} even though it is somewhat misleading. The effects of attenuation are also causing a shift in frequency of a higher magnitude than the velocity of particles in the blood. This is because the conventional Doppler effect is not the straightforward methodology that is applied to the analysis of the back-scattered signal. It is, in fact, an artefact. It is the shift in the location of the scatters that is observed, not the shift in the transmitted frequency. \Cref{fig:2_pw_sampling_displacement} shows the received signal after demodulation and filtering; the depth in tissue is fixed here, and the signals displayed on the left side of the figure are the result of a pulse sequence. Each line represents a single pulse, and each pulse is emitted at a pulse repetition frequency, $f_{\mathrm{prf}}$. Instead, on the right, the dotted line shows the sampled signal formed by taking into account the amplitude of each pulse after a specified time period.
 
 \begin{figure}[ht]
 	\centering
@@ -305,12 +329,12 @@ After the back-scattered signal is received it is multiplied by the centre frequ
 \end{equation}
 Hypothetically, if the velocity of stationary scatterers in blood was measured, a constant amplitude would be measured. A change in the sample value is observed when there is movement. Between two pulses, the scatterer movement is proportional to the velocity $v_{z}$ in the direction of the ultrasound beam. The time shift of $t_{s}$ is expressed as \cref{eq:2_pw_timeshift}.
 \begin{equation} \label{eq:2_pw_timeshift}
-	t_{s} = \frac{2v_{z}}{c}\cdot T_{\textup{prf}}
+	t_{s} = \frac{2v_{z}}{c}\cdot T_{\mathrm{prf}}
 \end{equation}
-Where $c$ is the speed of sound, and $T_{\textup{prf}}$ is the timespan between each pulse emission. Taking one sample from each line at a certain depth yields a sampled signal with a frequency proportional to the scatter velocity. Thus, if a sample is taken at the same depth for each line, resulting in a sinusoidal signal proportional in frequency to the scatter velocity \cite{Munk_Thesis} and that signal is expressed by \cref{eq:2_pw_scatter_velocity_a,eq:2_pw_scatter_velocity_b}.
+Where $c$ is the speed of sound, and $T_{\mathrm{prf}}$ is the timespan between each pulse emission. Taking one sample from each line at a certain depth yields a sampled signal with a frequency proportional to the scatter velocity. Thus, if a sample is taken at the same depth for each line, resulting in a sinusoidal signal proportional in frequency to the scatter velocity \cite{Munk_Thesis} and that signal is expressed by \cref{eq:2_pw_scatter_velocity_a,eq:2_pw_scatter_velocity_b}.
 \begin{subequations}
 	\begin{align}
-		r(i) &= a(i) \sin \left( 2\pi f_{p} T_{\textup{prf}} \cdot i \right) \label{eq:2_pw_scatter_velocity_a} \\
+		r(i) = a(i) \sin \left( 2\pi f_{p} T_{\mathrm{prf}} + \theta \right) \label{eq:2_pw_scatter_velocity_a} \\
 		f_{p} &= \frac{2 v_{z}}{c} f_{0} \label{eq:2_pw_scatter_velocity_b}
 	\end{align}
 \end{subequations}
