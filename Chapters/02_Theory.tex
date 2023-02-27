@@ -1,7 +1,7 @@
 \chapter{Theory} \label{cha:theory} %\thispagestyle{main}
 This chapter explains the overall theory that forms the fundamental principles of this project. Initially, the characteristics of ultrasound will be explained from an acoustics standpoint. Then, a brief overview of the systemic circulation is explained in vivo. Lastly, the various types of flow-meters are outlined with their strengths and weaknesses.
 \section{Ultrasound}
-\begin{figure}[ht]
+\begin{figure}[htbp]
 	\centering
 	\includegraphics[width=\textwidth]{2_plane_wave_jensen-cropped.pdf}
 	\caption[Particle displacement for a propagating ultrasound wave]{Particle displacement for a propagating ultrasound wave \cite{JensenUltrasoundBook}}
@@ -30,7 +30,7 @@ Where $Z$ is the characteristic acoustic impedance, defined as the ratio of acou
 
 Characteristic acoustic impedance $Z$ is one of the most significant variables in the characterization of propagating plane waves. Reference values for density, speed of sound, and characteristic acoustic impedance can be seen in \cref{tab:2_density_tissue}.
 
-\begin{table}[ht]
+\begin{table}[htbp]
 	\centering
 	\caption[Approximate density, sound speed, and acoustic impedance of human tissue types]{Approximate density, sound speed, and acoustic impedance of human tissue types \cite{JensenUltrasoundBook}}
 	\label{tab:2_density_tissue}
@@ -74,9 +74,9 @@ Where $R$ is distance to the scattering region \cite{JensenUltrasoundBook}. This
 The backscattering coefficient, which characterizes scattering from a volume of scatterers, is another measure of scattering strength. It is defined as the average received power per steradian volume of scatterers when flooded with plane waves of unit amplitude and the unit is \unit{1\per\centi\meter\steradian}. Backscattering coefficients in the blood are significantly lower than the backscattering coefficients from various tissue types. This poses a challenge when estimating blood flow close to tissue vessel walls \cite{ShungScattering1992,JensenUltrasoundBook}.
 
 \subsection{Attenuation}
-The ultrasonic wave will be reduced as it propagates through the tissue due to absorption and scattering. The attenuation in tissue is frequency dependent, with greater attenuation with increasing frequency. Because of absorption and dispersion, the ultrasonic wave will be attenuated as it travels through the tissue. The relationship between attenuation, distance travelled, and frequency is often linear. Attenuation in the tissue occurs as a result of both dispersion, which spreads energy in all directions, and absorption, which turns it into thermal energy. A table of approximate attenuation values can be seen in \cref{tab:2_tissue_attenuation}
+The ultrasonic wave will be reduced as it propagates through the tissue due to absorption and scattering. The attenuation in tissue is frequency dependent, with greater attenuation with increasing frequency. Because of absorption and dispersion, the ultrasonic wave will be attenuated as it travels through the tissue. The relationship between attenuation, distance travelled, and frequency is often linear. Attenuation in the tissue occurs as a result of both dispersion, which spreads energy in all directions, and absorption, which turns it into thermal energy. A table of approximate attenuation values can be seen in \cref{tab:2_tissue_attenuation}.
 
-\begin{table}[ht]
+\begin{table}[htbp]
 	\centering
 	\caption[Approximate attenuation values for human tissue]{Approximate attenuation values for human tissue
 		\cite{JensenUltrasoundBook}}
@@ -117,7 +117,7 @@ The significance of absorption and scattering in ultrasonic attenuation in biolo
 
 \subsection{Transducer}
 
-\begin{figure}[ht]
+\begin{figure}[htbp]
 	\centering
 	\includegraphics[width=.6\textwidth]{2_transducer_construction-cropped.pdf}
 	\caption[Single element ultrasound transducer construction]{Single element ultrasound transducer construction \cite{JensenUltrasoundBook}}
@@ -126,7 +126,7 @@ The significance of absorption and scattering in ultrasonic attenuation in biolo
 
 A layperson knows transducers as speakers and microphones in the context of PA systems. In the case of medical \gls{us} it is the device that generates the acoustic pressure field, which is emitted into the tissue. The transducer has a piezoelectric crystal inside the housing. When excited, this crystal emits ultrasound waves toward flowing blood. The red blood cells will reflect a fraction of the emitted waves. These reflected waves are of a different frequency than the transmitted wave. If the red blood cells move away from the transducer, the frequency will be lower. If the red blood cells are moving towards the transducer, the frequency will be higher. This is caused by the \gls{doppler}. The reflected ultrasonic waves return to the crystal and are converted back into electrical signals. The single-element transducer shown in \cref{fig:2_transducer_construction} has a minimal imaging window and has to be mechanically manipulated to obtain a wide window, which is unfeasible for responsive high-frequency imaging. Thus, usually, a transducer array is used. Various types of \gls{us} transducer exist with different strengths and weaknesses, shown in \cref{fig:2_transducer_types}.
 
-\begin{figure}[ht]
+\begin{figure}[htbp]
 	\centering
 	\includegraphics[width=.8\textwidth]{2_transducer_types-cropped.pdf}
 	\caption[Transducer types for acquiring B-mode images]{Transducer types for acquiring B-mode images \cite{JensenUltrasoundBook}}
@@ -135,7 +135,7 @@ A layperson knows transducers as speakers and microphones in the context of PA s
 
 \subsection{Doppler effect} \label{sec:doppler_effect}
 
-\begin{figure}[ht]
+\begin{figure}[htbp]
 	\centering
 	\includegraphics[width=.8\textwidth]{2_doppler_shung-cropped.pdf}
 	\caption[Doppler effect diagram]{Doppler effect diagram. A stationary observer perceives a change in the frequency of a wave generated by a moving source toward the observer as a result of a wavelength shift from $\lambda\ $ to $\lambda^{\prime}$. In (a), the source is still. In (b), the source is moving at a velocity $v$. \cite{ShungUltrasound_Book}}
@@ -147,17 +147,21 @@ The Doppler effect is a phenomenon in which an observer perceives a shift in the
 \begin{equation} \label{eq:2_doppler_effect}
 	f^{\prime} = \frac{c}{\lambda} = \frac{c}{\lambda - v T} = \frac{c}{(c-v)T} = \frac{c}{c-v}\cdot f_{0}
 \end{equation}
+
 And viceversa, on the left side, the perceived frequency becomes \cref{eq:2_doppler_effect2}.
+
 \begin{equation} \label{eq:2_doppler_effect2}
 	f^{\prime} = \frac{c}{c+v} \cdot f_{0}
 \end{equation}
-Where \todo{Hvad mangler her?}
 
 This perceived difference between the frequency that is transmitted from the source $f_{0}$, and the perceived frequency $f^{\prime}$ is also called the Doppler frequency, $f_{d}$. When these connections are combined, the Doppler frequency for a source moving with velocity $v$ and an observer travelling with velocity $v^{\prime}$ is given by \cref{eq:2_doppler_moving}.
+
 \begin{equation} \label{eq:2_doppler_moving}
 	f_{d} = f^{\prime} - f = \left( \frac{c + v^{\prime}}{c - v}-1 \right)
 \end{equation}
+
 If both source and observer are moving with the same velocity, $v$, assuming $c\gg v$, the $v$ cancels out and the expression is reduced to \cref{eq:2_doppler_reduced}.
+
 \begin{equation} \label{eq:2_doppler_reduced}
 	f_{d} = \frac{2 v f}{c}
 \end{equation}
@@ -167,10 +171,10 @@ If the velocity of the moving source is traveling with an incident angle $\theta
 	f_{d} = \frac{2 v(\cos\theta) f}{c}
 \end{equation}
 
-The Doppler effect is used in ultrasonic Doppler devices used to image blood flow \gls{transcutaneous}ly. An ultrasonic transducer in these devices sends ultrasonic waves into a blood artery, and the scattered radiation from moving red cells is measured by either the same transducer or a second transducer. The Doppler frequency, which is determined by the velocity of red blood cells, is extracted using modern electronic demodulation techniques.
+The Doppler effect is used in ultrasonic Doppler devices used to image blood flow \gls{transcutaneous}ly. An ultrasonic transducer in these devices sends ultrasonic waves into a blood artery, and the scattered radiation from moving red cells is measured by either the same transducer or a second transducer. The Doppler frequency, which is determined by the velocity of red blood cells, is extracted using modern electronic demodulation techniques which will be explored later.
 
 \section{Flow Physics}
-\begin{figure}[ht!]
+\begin{figure}[htbp]
 	\centering
 	\includegraphics[width=\textwidth]{2_flow_circulatory_system_cropped.pdf}
 	\caption[Circulatory system of the human body]{Circulatory system of the human body \cite{JensenUltrasoundBook}}
@@ -203,10 +207,40 @@ Where $\Delta P$ is the pressure difference across the blood vessel and $R$ is t
 \begin{equation} \label{eq:2_pressure_diff}
 	\Delta P = P_{1}-P_{2}
 \end{equation}
-Where $P_{1}$ and $P_{2}$ are the blood pressures measured at each end of the blood vessel. Pressure has a significant importance on blood flow because an increase in arterial pressure not only increases the force that pushes blood through the capillaries but also expands the vessels, lowering vascular resistance.
+Where $P_{1}$ and $P_{2}$ are the blood pressures measured at each end of the blood vessel. Pressure has a significant importance on blood flow because an increase in arterial pressure not only increases the force that pushes blood through the capillaries but also expands the vessels, lowering vascular resistance. Selected dimensions and flow characteristics can be seen in \cref{tab:2_dimensions_flow_vessels}.
+
+\begin{table}[htbp]
+	\centering
+	\caption[Typical dimensions and flow in human circulatory system]{Typical dimensions and flow in human circulatory system \cite{JensenUltrasoundBook}}
+	\begin{adjustbox}{max width=\textwidth}
+		\label{tab:2_dimensions_flow_vessels}
+		\sisetup{range-phrase=--,range-exponents = combine}
+		\begin{tblr}[]{%
+				width=\textwidth,
+				%width=.9\textwidth,
+				colspec = {lSSSSSSSS
+				},
+				row{1} = {guard, m, font=\small\bfseries},
+				%vlines, hlines,
+			}
+			\toprule
+			Vessel & {Internal\\diameter\\(\unit{\centi\meter})} & {Wall\\thickness\\(\unit{\centi\meter)}} & {Length\\(\unit{\centi\meter})} & {Young's\\modulus\\(\unit{\newton\per\meter\squared\cdot10^{5})}} & {Peak\\velocity\\(\unit{\centi\meter\per\second})} & {Mean\\velocity\\(\unit{\centi\meter\per\second})} & {Reynolds\\number\\(\unit{\mathrm{peak}})} & {Pulse\\propagation\\velocity\\(\unit{\centi\meter\per\second})}	\\
+			\midrule
+			Ascending aorta & \numrange{1}{2.4} & \numrange{0.05}{0.08} & 5 & \numrange{3}{6} & \numrange{20}{290} & \numrange{10}{40} & 4500 & \numrange{400}{600}	\\
+			Descending aorta & \numrange{0.8}{1.8} & \numrange{0.05}{0.08} & 20 & \numrange{3}{6} & \numrange{25}{250} & \numrange{10}{40} & 3400 & \numrange{400}{600} \\
+			Abdominal aorta & \numrange{0.5}{1.2} & \numrange{0.04}{0.06} & 15 & \numrange{9}{11} & \numrange{50}{60} & \numrange{8}{20} & 1250 & \numrange{600}{700}\\
+			Femoral artery & \numrange{0.2}{0.8} & \numrange{0.02}{0.06} & 10 & \numrange{9}{12} & \numrange{100}{120} & \numrange{10}{15} & 1000 & \numrange{800}{1030} \\
+			Carotid artery & \numrange{0.2}{0.8} & \numrange{0.02}{0.04} & \numrange{10}{20} & \numrange{7}{11} & &  &  & \numrange{600}{1100}\\
+			Arteriole & \numrange{0.001}{0.008} & 0.002 & \numrange{0.1}{0.2} &  & \numrange{0.5}{1} &  & 0.09 &  \\
+			Capillary & \numrange{0.0004}{0.0008} & 0.0001 & \numrange{0.02}{0.1} &  & \numrange{0.02}{0.17} &  & 0.001 &  \\
+			Inferior vena cava & \numrange{0.6}{1.5} & \numrange{0.01}{0.02} & \numrange{20}{40} & \numrange{0.4}{1} & \numrange{15}{40} &  & 700 & \numrange{100}{700}\\
+			\bottomrule
+		\end{tblr}
+	\end{adjustbox}
+\end{table}
 
 \section{Devices}
-\begin{figure}[ht]
+\begin{figure}[htbp]
 	\centering
 	\includegraphics[width=.6\textwidth]{2_ultrasound_scan.pdf}
 	\caption[Diagram of ultrasound wave transmitted and reaching blood vessel with incident angle $\theta$]{Diagram of \gls{us} wave transmitted and reaching blood vessel with incident angle $\theta$ \cite{ShungUltrasound_Book}}
@@ -215,30 +249,6 @@ Where $P_{1}$ and $P_{2}$ are the blood pressures measured at each end of the bl
 
 A device that measures the flowing of blood is called a flowmeter. Flowmeters may be used both inside and outside of vessels. One of the flowmeters that may be used outside the vessel to monitor flow is \gls{us}. \Cref{fig:2_ultrasound_flow_scan} depicts an ultrasonic wave of frequency $f$ insonifying a blood artery, resulting in an angle of $\theta$ relative to velocity $v$. For simplicity, it is assumed that blood flows in a vessel at a constant velocity $v$. The echoes returned are shifted in frequency as described in \cref{eq:2_doppler_theta} earlier in the chapter. The echoes scattered by blood after being insonified by an ultrasonic wave convey information about the velocity of blood flow. Blood flow measurements are often used in clinical settings to determine the status of blood vessels and organ functioning. The two commonly used fundamental techniques for ultrasound Doppler flow measurements are \gls{cw} and \gls{pw}. Both will be explained.
 
-\begin{table}[htbp]
-	\centering
-	\caption[Approximate attenuation values for human tissue]{Approximate attenuation values for human tissue
-		\cite{JensenUltrasoundBook}}
-	\label{tab:2_vessels_dimensions_velocity}
-	\sisetup{range-phrase=--,range-exponents = combine}
-	\begin{tblr}[]{%
-			colspec = {lS},
-			row{1} = {guard, m, font=\small\bfseries},
-		}
-		\toprule
-		Tissue & {Attenuation \\ $\unit[per-mode = symbol,inter-unit-product =\cdot]{\dB\per\mega\hertz\per\centi\meter}$ } \\
-		\midrule
-		Liver & \numrange{0.6}{0.9}{} \\
-		Kidney & \numrange{0.8}{1}{} \\
-		Spleen & \numrange{0.5}{1}{}\\
-		Fat & \numrange{1}{2}{} \\
-		Blood & \numrange{0.17}{0.24}{} \\
-		Plasma & 0.01 \\
-		Bone & \numrange{16}{23}{} \\
-		\bottomrule
-	\end{tblr}
-\end{table}
-
 \subsection{Continuous-wave Flowmeter}
 \begin{figure}[htbp]
 	\centering
@@ -246,7 +256,7 @@ A device that measures the flowing of blood is called a flowmeter. Flowmeters ma
 	\caption[Block diagram of continuous-wave flowmeter]{Block diagram of \gls{cw} flowmeter \cite{JensenUltrasoundBook}}
 	\label{fig:2_devices_cw}
 \end{figure}
-The earliest non-invasive cardiovascular diagnostic technologies relied heavily on \gls{cw} Doppler flowmeters. One of the earliest concepts for a device to estimate and study blood flow was proposed by \citeauthor{Satomura_CW}\cite{Satomura_CW} during the 1950s in Japan. To continuously transmit waves and receive signals from moving reflectors, the \gls{cw} flowmeter uses two transducers. \gls{cw} flowmeters use less sophisticated electronics than \gls{pw} flowmeters. A drawback to the \gls{cw} flowmeter is the lacking depth discrimination due to the continuous characteristic of this device type. A block diagram of a typical \gls{cw} flowmeter can be seen in \cref{fig:2_devices_cw}. The basic principles of the device are previously explained in \cref{sec:doppler_effect}, and the measurement of the device is described in \cref{eq:2_doppler_effect}. The device continuously emits an ultrasonic wave in the first transducer expressed as a function of time by \cref{eq:2_cw_tx} \cite{JensenUltrasoundBook}.
+The earliest non-invasive cardiovascular diagnostic technologies relied heavily on \gls{cw} Doppler flowmeters. One of the earliest concepts for a device to estimate and study blood flow was proposed by \cite{Satomura_CW} during the 1950s in Japan. To continuously transmit waves and receive signals from moving reflectors, the \gls{cw} flowmeter uses two transducers. \gls{cw} flowmeters use less sophisticated electronics than \gls{pw} flowmeters. A drawback to the \gls{cw} flowmeter is the lacking depth discrimination due to the continuous characteristic of this device type. A block diagram of a typical \gls{cw} flowmeter can be seen in \cref{fig:2_devices_cw}. The basic principles of the device are previously explained in \cref{sec:doppler_effect}, and the measurement of the device is described in \cref{eq:2_doppler_effect}. The device continuously emits an ultrasonic wave in the first transducer expressed as a function of time by \cref{eq:2_cw_tx} \cite{JensenUltrasoundBook}.
 \begin{equation} \label{eq:2_cw_tx}
 	e(t) = \cos (2\pi f_{0} t)
 \end{equation}
@@ -269,7 +279,7 @@ Where $R_{s}(f-f_{0})$ is the Fourier transform of $r_{s}(t)$. The received sign
 
 As is general for quadrature demodulation, the resulting signal contains the frequency components of the sum and difference of the emitted and received signals' frequencies shown in \cref{fig:2_demod_fd_frequency_domain}, where the signals are shown in time and frequency domains.
 
-\begin{figure}[ht]
+\begin{figure}[htbp]
 	\centering
 	\includegraphics[width=.8\textwidth]{2_demod_fd_frequency_domain-cropped.pdf}
 	\caption[Doppler signals in time and frequency domain showing demodulation effects]{Doppler signals in time and frequency domain showing demodulation effects \cite{ShungUltrasound_Book}}
@@ -282,7 +292,7 @@ Generally, a \gls{bp} filter is used on the demodulated signal to remove the hig
 \end{equation}
 Where the second exponential term is the delay proportional to the time between transmission and receiving of the signal. The selected cutoff frequency is chosen to be much lower than the carrier frequency to remove the carrier wave. One issue with ultrasonic Doppler blood flow monitoring is that the blood vessels that generate large reflected echoes are also moving with a low velocity. These big, slow-moving echoes are referred to as clutter signals in Doppler nomenclature. The band pass filter's low-end cutoff frequency must be designed to minimize interference from these clutter signals. The design of this band pass filter in the low-frequency region, which serves the function of high pass, also known as a clutter rejection filter, has proven troublesome since the magnitude of clutter signals is many orders greater than that of blood and may obfuscate those from slow-moving blood.
 
-\begin{table}[ht]
+\begin{table}[htbp]
 	\centering
 	\caption[Measured frequency shifts with a Doppler \qty{3}{\mega\hertz} transducer at various velocities at a \qty{45}{\degree} incident angle]{Measured frequency shifts with a Doppler \qty{3}{\mega\hertz} transducer at various velocities at a \qty{45}{\degree} incident angle \cite{JensenUltrasoundBook}}
 	\label{tab:2_cw_frequency_shifts}
@@ -307,18 +317,18 @@ Where the second exponential term is the delay proportional to the time between 
 Seen in \cref{tab:2_cw_frequency_shifts} is an example of measured Doppler frequencies using a \qty{3}{\mega\hertz} transducer using the method shown in \cref{fig:2_ultrasound_flow_scan}. Note that the measured frequencies are all within the audible range.
 
 \subsection{Pulsed-wave Flowmeter}
-\begin{figure}[ht]
+\begin{figure}[htbp]
 	\centering
 	\includegraphics[width=\textwidth]{2_blockdiagram_pwdoppler.pdf}
 	\caption[Block diagram of pulsed-wave flowmeter]{Block diagram of \gls{pw} flowmeter \cite{JensenUltrasoundBook}}
 	\label{fig:2_devices_pw}
 \end{figure}
-The concept of a pulsed-wave flowmeter was proposed in \cite{Baker1970} and other related articles. This type of flowmeter is periodically changing from a transmitter to a receiver. In the transmit mode, the transducer emits a series of pulses. When in the receiving mode, the transducer is listening for the backscattered signal. A simplified block diagram can be seen in \cref{fig:2_devices_pw}. The movement of particles within the blood causes a displacement in the backscattered signal. These systems are commonly referred to as \enquote{Doppler systems} even though it is somewhat misleading. The effects of attenuation are also causing a shift in frequency of a higher magnitude than the velocity of particles in the blood. This is because the conventional Doppler effect is not the straightforward methodology that is applied to the analysis of the back-scattered signal. It is, in fact, an artefact. It is the shift in the location of the scatters that is observed, not the shift in the transmitted frequency. \Cref{fig:2_pw_sampling_displacement} shows the received signal after demodulation and filtering; the depth in tissue is fixed here, and the signals displayed on the left side of the figure are the result of a pulse sequence. Each line represents a single pulse, and each pulse is emitted at a pulse repetition frequency, $f_{\mathrm{prf}}$. Instead, on the right, the dotted line shows the sampled signal formed by taking into account the amplitude of each pulse after a specified time period.
+The concept of a pulsed-wave flowmeter was proposed in \cite{Baker1970} and other related articles. This type of flowmeter is periodically changing from a transmitter to a receiver. In the transmit mode, the transducer emits a series of pulses. When in the receiving mode, the transducer is listening for the backscattered signal. A simplified block diagram can be seen in \cref{fig:2_devices_pw}. The movement of particles within the blood causes a displacement in the backscattered signal. These systems are commonly referred to as \enquote{Doppler systems} even though it is somewhat misleading. The effects of attenuation are also causing a shift in frequency of a higher magnitude than the velocity of particles in the blood. This is because the conventional Doppler effect is not the straightforward methodology that is applied to the analysis of the back-scattered signal. It is, in fact, an artefact. It is the shift in the location of the scatters that is observed, not the shift in the transmitted frequency. \Cref{fig:2_pw_sampling_displacement} shows the received signal after demodulation and filtering; the depth in tissue is fixed here, and the signals displayed on the left side of the figure are the result of a pulse sequence. Each line represents a single pulse, and each pulse is emitted at a pulse repetition frequency, $f_{\mathrm{prf}}$. Instead, on the right, the dotted line shows the sampled signal formed by taking into account the amplitude of each pulse after a specified time period. To depict the signals on the graph, a single pulse is emitted for each line, and the signals are displaced in amplitude. The sampled signal is displayed on the right.
 
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=.8\textwidth]{2_pw_pulse_sampling_displacement.pdf}
-	\caption[Sampling for a gate pulsed wave system with a single range]{Sampling for a gate pulsed wave system with a single range. To depict the signals on the graph, a single pulse is emitted for each line, and the signals are displaced in amplitude. The sampled signal is displayed on the right. \cite{JensenUltrasoundBook}}
+	\caption[Sampling for a gate pulsed wave system with a single range]{Sampling for a gate pulsed wave system with a single range \cite{JensenUltrasoundBook}}
 	\label{fig:2_pw_sampling_displacement}
 \end{figure}
 
@@ -334,16 +344,16 @@ Hypothetically, if the velocity of stationary scatterers in blood was measured, 
 Where $c$ is the speed of sound, and $T_{\mathrm{prf}}$ is the timespan between each pulse emission. Taking one sample from each line at a certain depth yields a sampled signal with a frequency proportional to the scatter velocity. Thus, if a sample is taken at the same depth for each line, resulting in a sinusoidal signal proportional in frequency to the scatter velocity \cite{Munk_Thesis} and that signal is expressed by \cref{eq:2_pw_scatter_velocity_a,eq:2_pw_scatter_velocity_b}.
 \begin{subequations}
 	\begin{align}
-		r(i) = a(i) \sin \left( 2\pi f_{p} T_{\mathrm{prf}} + \theta \right) \label{eq:2_pw_scatter_velocity_a} \\
+		r(i) &= a(i) \sin \left( 2\pi f_{p} T_{\mathrm{prf}} + \theta \right) \label{eq:2_pw_scatter_velocity_a} \\
 		f_{p} &= \frac{2 v_{z}}{c} f_{0} \label{eq:2_pw_scatter_velocity_b}
 	\end{align}
 \end{subequations}
-Where $a(i)$ is the amplitude, $f_{0}$ is the emitted frequency, and $\theta$ is the phase factor in the depth of interest. \todo{Hvor er $\theta$ i udtrykket? Omskriv fra Jensen2012} This technique improved the accuracy of the investigations of blood vessels and facilitated the display of velocity profiles. Furthermore, by employing two transducers or a multi-element transducer, duplex mode imaging (displaying both a B-mode picture and a blood velocity estimate) became feasible. Two-transducer systems are no longer utilised since it is easier to create a duplex picture with a multi-element transducer.
+Where $a(i)$ is the amplitude, $f_{0}$ is the emitted frequency, and $\theta$ is the phase factor in the depth of interest. This technique improved the accuracy of the investigations of blood vessels and facilitated the display of velocity profiles. Furthermore, by employing two transducers or a multi-element transducer, duplex mode imaging (displaying both a B-mode picture and a blood velocity estimate) became feasible. Two-transducer systems are no longer utilised since it is easier to create a duplex picture with a multi-element transducer.
 
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=.8\textwidth]{Pictures/./../Figures/2_rf_sampling_simulated.pdf}
-	\caption{Simulated RF sampling of blood vessel. Left graph displays a segmented receiver line with a sample interval denoted by a dotted line, and the right graph shows the resulting amplitude of the sample}
+	\caption{Simulated RF sampling of blood vessel with segmented receiver line with a sample interval denoted by a dotted line (left) and the resulting amplitude of the sample (right)}
 	\label{fig:2_rf_sampling_simulated}
 \end{figure}
 \Cref{fig:2_rf_sampling_simulated} displays a signal that has been sampled using RF technology. As the scatterers in the image move away from the transducer, the shift in the pulsed signal is present. The measurement is created by taking one sample at a specific depth ($d_0$) for each RF line, using a sample/hold circuit. The sampling is performed at a frequency of $f_{\mathrm{prf}}$, as indicated by the dotted line in the figure. Due to the slow movement of the received signals past the sample volume, there is a gradual change in the sampled signal over time. As a result of the slow movement of the signals, the frequency of the sampled signal is much lower than that of the RF signal. It's worth noting that the received signal not only shifts in time from pulse to pulse, but its shape also changes. This is because the signal is constructed by adding up responses from many scatterers that move at different speeds. A stationary structure will result in an identical sample value for all segmented RF lines. The spectrum of this stationary signal is shown in \cref{eq:2_stationary_rf_spectrum}.
@@ -356,14 +366,14 @@ which for $f = 0$ is equal to $aN$ and has its first zero at $\nicefrac{f_{\math
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=.8\textwidth]{Figures/2_rf_spectrum_stationary.pdf}
-	\caption{Left: Stationary tissue sampled signal. Right: stationary tissue sample spectrum}
+	\caption[Stationary tissue sampled signal and stationary tissue sample spectrum]{Stationary tissue sampled signal (left) and stationary tissue sample spectrum (right) \cite{JensenUltrasoundBook}}
 	\label{fig:2_rf_spectrum_stationary}
 \end{figure}
 
 When dealing with small blood vessels, the stationary echoes can be significantly stronger (up to \qty{40}{\decibel}) than the blood signal itself. To properly visualize blood flow details, the stationary signal must be eliminated from the sonogram. This requires setting the cutoff frequency to at least $f_{\mathrm{prf}} = N$, in order to remove the main component. In some cases, a higher cutoff frequency may be necessary, particularly if the stationary echo is strong or the vessel wall is in motion.
 
 \section{Blood Velocity Estimation}
-Once a backscattered signal is received, estimation of velocity can be obtained with multiple methods. In this section the most common methods to estimate blood velocity are mentioned with their strengths and limitations.
+Once a backscattered signal is received and sampled, estimation of velocity can be obtained with multiple methods. In this section the most common methods to estimate blood velocity are mentioned with their strengths and limitations.
 \subsection{Spectral estimation}
 \begin{figure}[htbp]
 	\centering

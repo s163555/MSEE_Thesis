@@ -1,6 +1,10 @@
 \documentclass{article}
 \usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{siunitx}
 \usepackage[backend=biber]{biblatex}
+\usepackage{tabularray}
+\UseTblrLibrary{booktabs,siunitx,varwidth}
 \bibliography{bib_bibertool.bib}
 \begin{document}
 \begin{figure}
@@ -10,6 +14,28 @@
 	\caption{Test}
 \end{figure}%
 
-\textbf{Test\cite{JensenUltrasoundBook}}
+\begin{equation}
+	r(i) = a(i) \sin \left( 2\pi f_{p} T_{\mathrm{prf}} + \theta \right)
+\end{equation}
+
+\begin{table}[ht]
+	\centering
+	\caption{Typical dimensions and flow in human circulatory system}
+	\label{tab:2_dimensions_flow_vessels}
+	\begin{tblr}[]{%
+			%width=.9\textwidth,
+			colspec = {lSSSSSSSS
+			},
+			row{1} = {m, font=\small\bfseries},
+			%vlines, hlines,
+		}
+		\toprule
+		Vessel & {Internal\\diameter}	\\ 
+		\midrule
+		Study & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1	\\
+ \bottomrule
+	\end{tblr}
+\end{table}
+
 \printbibliography
 \end{document}

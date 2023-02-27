@@ -1,5 +1,8 @@
 \usepackage[T1]{fontenc}	% Why? I don't know. (to fix mlmodern shape undefined!)
+%\usepackage{fontspec}
 \usepackage{mlmodern}		% Latin Modern font type
+%\usepackage[default]{fontsetup}
+%\usepackage{newcomputermodern}
 \directlua{pdf.setminorversion(7)}
 
 % Localization
@@ -25,8 +28,8 @@
 \usepackage{siunitx}        % SI units
 \sisetup{%
 	inter-unit-product = \ensuremath,
-	exponent-to-prefix = true,
-	zero-decimal-to-integer,
+	prefix-mode = combine-exponent,
+	drop-zero-decimal,
 	%range-units=single,
 }
 %\usepackage{sectsty}
