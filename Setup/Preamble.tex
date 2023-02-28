@@ -1,8 +1,28 @@
-\usepackage[T1]{fontenc}	% Why? I don't know. (to fix mlmodern shape undefined!)
-%\usepackage{fontspec}
+%%============================ Compiler Directives =======================%%
+%%                                                                        %%
+% !TeX program = lualatex
+% !TeX encoding = utf8
+% !TeX spellcheck = english
+%%                                                                        %%
+%%============================== Document Class ==========================%%
+%%                                                                        %%
+\usepackage{ifluatex}
+%%                                                                        %%
+%%========================================================================%%
+\ifluatex
+\usepackage{fontspec}
+\setsansfont{CMU Sans Serif}%{Arial}
+\setmainfont{CMU Serif}%{Times New Roman}
+\setmonofont{CMU Typewriter Text}%{Consolas}
+\defaultfontfeatures{Ligatures={TeX}}
+\else
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
 \usepackage{mlmodern}		% Latin Modern font type
-%\usepackage[default]{fontsetup}
-%\usepackage{newcomputermodern}
+\fi
+%\usepackage[T1]{fontenc}	% Why? I don't know. (to fix mlmodern shape undefined!)
+%\usepackage{fontspec}
+
 \directlua{pdf.setminorversion(7)}
 
 % Localization
