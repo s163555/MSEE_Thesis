@@ -15,6 +15,7 @@
 \setmainfont{CMU Serif}%{Times New Roman}
 \setmonofont{CMU Typewriter Text}%{Consolas}
 \defaultfontfeatures{Ligatures={TeX}}
+\directlua{pdf.setminorversion(7)}
 \else
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -22,8 +23,6 @@
 \fi
 %\usepackage[T1]{fontenc}	% Why? I don't know. (to fix mlmodern shape undefined!)
 %\usepackage{fontspec}
-
-\directlua{pdf.setminorversion(7)}
 
 % Localization
 %\usepackage[hangul]{kotex}			% Korean typesetting
