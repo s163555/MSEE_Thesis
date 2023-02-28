@@ -7,11 +7,30 @@
 	\inputminted[bgcolor=LightGray,fontsize=\footnotesize,linenos]{c}{Figures/Code/main.c}
 \end{longlisting}
 
+\chapter{Schematics}
+\begin{landscape}
+	\begin{figure}[htbp]
+		\centering
+		\includegraphics[width=20cm,height=28.7cm,keepaspectratio]{Figures/appendix/ultrasound_switch.pdf}
+		\caption{UltrasoundSwitch Schematic A}
+		\label{fig:appendix_ultrasoundswitch_a}
+	\end{figure}
+\end{landscape}
+\begin{landscape}
+	\begin{figure}[htbp]
+		\centering
+		\includegraphics[width=20cm,height=28.7cm,keepaspectratio]{Figures/appendix/ultrasound_conn.pdf}
+		\caption{UltrasoundSwitch Schematic B}
+		\label{fig:appendix_ultrasoundswitch_b}
+	\end{figure}
+\end{landscape}
+
+
 \chapter{Bill of Materials} \thispagestyle{main}
 
 	\begin{longtblr}[
 		%	theme=fancy,
-		caption = {Bill of Materials for the entire system}, 
+		caption = {Bill of Materials for the entire system},
 		entry={BOM},
 		label = {tab:bom}
 		]{
@@ -20,10 +39,10 @@
 			rowhead = 1,
 %			hspan=minimal,
 			%vspan=minimal,
-		}                                             
+		}
 		\toprule
-		{\textbf{Component}} 
-		& {\textbf{Value}}  
+		{\textbf{Component}}
+		& {\textbf{Value}}
 		& {\textbf{Footprint}}
 		& {\textbf{Classification}}
 		& {\textbf{Description}}                              \\
@@ -53,7 +72,7 @@
 		R9 & 0 (short) & 0603 & NA & PI controller \\
 		R10 & NC & 0603 & NA & PI controller \\
 		R8 & 2.49k & 0603 & 1\% & Voltage ref \\
-		U1 & OPA2365 & SOIC-8 & NA & Preamp, PI \\ 
+		U1 & OPA2365 & SOIC-8 & NA & Preamp, PI \\
 		U2 & TLV431A & SOT-23 & 1\% & Voltage ref \\ %\pagebreak
 		\SetCell[c=5]{c}{} Receiver & & & & \\ \midrule
 		C1,C11,C15 & 100n & 0603 & X7R16V & Gate driver \\
@@ -120,7 +139,7 @@
 			row{1} = {guard, m, font=\small\bfseries},
 		}
 		\toprule
-		Function & Manufacturer & Model \\ 
+		Function & Manufacturer & Model \\
 		\midrule
 		Power supply & RIGOL & DP832A \\
 		Function generator & Keysight & 33500B \\
@@ -132,6 +151,6 @@
 		Control loop injection transformer & OMICRON Lab & B-WIT 100 \\
 		Passive load & Unknown & Power resistor \SI{4}{\ohm} \\
 		Passive load & Unknown & Loudspeaker \SI{4}{\ohm} \\
-		Active cooling & ebm & \textbf{Test of bold} \\ \bottomrule    
+		Active cooling & ebm & \textbf{Test of bold} \\ \bottomrule
 	\end{tblr}
 \end{table}
