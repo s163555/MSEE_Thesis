@@ -10,19 +10,31 @@
 %%                                                                        %%
 %%========================================================================%%
 \ifluatex
-\usepackage{fontspec}
-%\setsansfont{CMU Sans Serif}%{Arial}
-%\setmainfont{CMU Serif}%{Times New Roman}
-%\setmonofont{CMU Typewriter Text}%{Consolas}
-\defaultfontfeatures{Ligatures={TeX}}
+\usepackage[T1]{fontenc}
+\usepackage{mlmodern}
+%%================= Issue with mlmodern and siunitx fix! =================%%
+%%                                                                        %%
+%%========================================================================%%
+\let\oldtextmu\textmu
+\renewcommand{\textmu}{{\fontencoding{TS1}\fontfamily{mlmr}\selectfont\oldtextmu}}
+%%                                                                        %%
+%%========================================================================%%
+%\defaultfontfeatures{Ligatures={TeX}}
 \directlua{pdf.setminorversion(7)}
 \else
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{mlmodern}		% Latin Modern font type
 \fi
-%\usepackage[T1]{fontenc}	% Why? I don't know. (to fix mlmodern shape undefined!)
-%\usepackage{fontspec}
+
+\usepackage{siunitx}        % SI units
+\sisetup{%
+	inter-unit-product = \ensuremath,
+	prefix-mode = combine-exponent,
+	drop-zero-decimal,
+	%range-units=single,
+}
+\DeclareSIPrefix\micro{\text{\textmu}}{-6}
 
 % Localization
 %\usepackage[hangul]{kotex}			% Korean typesetting
@@ -44,13 +56,7 @@
 \selectcolormodel{rgb}
 \usepackage{amsmath}        % For aligning equations among other
 \usepackage{mathtools}		% Extensible symbols, brackets, arrows, etc
-\usepackage{siunitx}        % SI units
-\sisetup{%
-	inter-unit-product = \ensuremath,
-	prefix-mode = combine-exponent,
-	drop-zero-decimal,
-	%range-units=single,
-}
+
 %\usepackage{sectsty}
 %\usepackage{sfmath}			% Sans serif math
 \usepackage{nicefrac}		% Neat inline fractions
