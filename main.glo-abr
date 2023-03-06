@@ -1,3 +1,5 @@
+\glossaryentry{LNA?\glossentry{lna}|setentrycounter[]{page}"\glsnumberformat}{III}
+\glossaryentry{VGA?\glossentry{vga}|setentrycounter[]{page}"\glsnumberformat}{III}
 \glossaryentry{US?\glossentry{us}|setentrycounter[]{page}"\glsnumberformat}{1}
 \glossaryentry{CT?\glossentry{ct}|setentrycounter[]{page}"\glsnumberformat}{1}
 \glossaryentry{MRI?\glossentry{mri}|setentrycounter[]{page}"\glsnumberformat}{1}
@@ -49,6 +51,8 @@
 \glossaryentry{SoC?\glossentry{soc}|setentrycounter[]{page}"\glsnumberformat}{28}
 \glossaryentry{ELF?\glossentry{elf}|setentrycounter[]{page}"\glsnumberformat}{28}
 \glossaryentry{MCU?\glossentry{mcu}|setentrycounter[]{page}"\glsnumberformat}{29}
-\glossaryentry{CMUT?\glossentry{cmut}|setentrycounter[]{page}"\glsnumberformat}{31}
-\glossaryentry{AM?\glossentry{am}|setentrycounter[]{page}"\glsnumberformat}{32}
-\glossaryentry{SHA?\glossentry{sha}|setentrycounter[]{page}"\glsnumberformat}{32}
+\glossaryentry{AFE?\glossentry{afe}|setentrycounter[]{page}"\glsnumberformat}{30}
+\glossaryentry{CMUT?\glossentry{cmut}|setentrycounter[]{page}"\glsnumberformat}{32}
+\glossaryentry{AM?\glossentry{am}|setentrycounter[]{page}"\glsnumberformat}{33}
+\glossaryentry{LNA?\glossentry{lna}|setentrycounter[]{page}"\glsnumberformat}{37}
+\glossaryentry{VGA?\glossentry{vga}|setentrycounter[]{page}"\glsnumberformat}{37}

@@ -1,19 +1,50 @@
 \chapter{Production}
+\section{Control System}
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=.8\textwidth]{Figures/4_advanced_timer1_diagram.pdf}
+	\caption{Configuration of \texttt{TIMER1}}
+	\label{fig:4_timer1}
+\end{figure}
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=.8\textwidth]{Figures/4_advanced_timer2-5_diagram.pdf}
+	\caption{Configuration of \texttt{TIMER2--5}}
+	\label{fig:4_timer2-5}
+\end{figure}
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=.8\textwidth]{Figures/4_advanced_timer9_diagram.pdf}
+	\caption{Configuration of \texttt{TIMER9}}
+	\label{fig:4_timer9}
+\end{figure}
 
+\section{Power Stage}
+\section{Transmit/Receive Switch}
+\section{Preamplifier}
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=.8\textwidth]{Figures/4_preamplifier_sim_out.eps}
+	\caption{Simulation output of preamplifier with OPA847 and AD8332 \gls{lna}/\gls{vga}}
+	\label{fig:4_preamplifier_out}
+\end{figure}
+\section{Demodulator}
+\section{Pulse-Repetition and Wall Filter}
+\section{Digital Signal Processor}
 \begin{figure}[H]
 	\centering
 	\begin{circuitikz}[american voltages]
 		\draw
 		(0,0) to [short, *-] (6,0)
-		to [V, l_=$\mathrm{j}{\omega}_m \underline{\psi}^s_R$] (6,2) 
-		to [R, l_=$R_R$] (6,4) 
-		to [short, i_=$\underline{i}^s_R$] (5,4) 
-		(0,0) to [open, v^>=$\underline{u}^s_s$] (0,4) 
-		to [short, *- ,i=$\underline{i}^s_s$] (1,4) 
+		to [V, l_=$\mathrm{j}{\omega}_m \underline{\psi}^s_R$] (6,2)
+		to [R, l_=$R_R$] (6,4)
+		to [short, i_=$\underline{i}^s_R$] (5,4)
+		(0,0) to [open, v^>=$\underline{u}^s_s$] (0,4)
+		to [short, *- ,i=$\underline{i}^s_s$] (1,4)
 		to [R, l=$R_s$] (3,4)
-		to [L, l=$L_{\sigma}$] (5,4) 
-		to [short, i_=$\underline{i}^s_M$] (5,3) 
-		to [L, l_=$L_M$] (5,0); 
+		to [L, l=$L_{\sigma}$] (5,4)
+		to [short, i_=$\underline{i}^s_M$] (5,3)
+		to [L, l_=$L_M$] (5,0);
 	\end{circuitikz}
 	\caption{The nodes short, V, R and L are presented here, but there a lot more}
 	\label{fig:circuitikz}
@@ -21,24 +52,24 @@
 
 \section{Listings (code)}
 
-\Cref{lst:helloworld} is a nicely formatted block of code. A listing will automatically continue on the next page if it encounters a page break. Many different programming languages can be highlighted. Check the \texttt{listings} package documentation for a list of supported programming languages. 
+\Cref{lst:helloworld} is a nicely formatted block of code. A listing will automatically continue on the next page if it encounters a page break. Many different programming languages can be highlighted. Check the \texttt{listings} package documentation for a list of supported programming languages.
 
 \begin{listing}[htbp]
 \begin{mintedc}
 #include <stdio.h>
-int main() 
+int main()
 {
 	printf("Hello, World!"); /*printf() outputs the quoted string*/
-	if (n == 0 || n == 1){    
-		return n;        
-	}        
-	j = 0;    
-	for (i = 0; i < n-1; i++){      
-		if (arr[i] != arr[i+1]){        
-			arr[j] = arr[i];       
-			j++;      
-		}    
-	}      
+	if (n == 0 || n == 1){
+		return n;
+	}
+	j = 0;
+	for (i = 0; i < n-1; i++){
+		if (arr[i] != arr[i+1]){
+			arr[j] = arr[i];
+			j++;
+		}
+	}
 	arr[j++] = arr[n-1];
 	return 0;
 }
