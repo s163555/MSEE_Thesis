@@ -15,11 +15,11 @@ Where $\rho_{0}$ is the mean density (\unit{\kilogram\per\meter\cubed}) and $\ka
 \begin{equation} \label{eq:2_acoustic_pressure}
 	p(t,z)=p_{0} e^{j(\omega t - k z)}
 \end{equation}
-And propagates along the $z$-axis. $\omega$ is the angular frequency, $k$ is the wave number and is expressed by $k=\nicefrac{\omega}{c}=\nicefrac{2\pi}{\lambda}$, and $_{0}$ is the acoustic pressure amplitude. A spherical wave is expressed by \cref{eq:2_spherical_wave}
+And propagates along the $z$-axis. $\omega$ is the angular frequency, $k$ is the wave number and is expressed by $k=\sfrac{\omega}{c}=\sfrac{2\pi}{\lambda}$, and $_{0}$ is the acoustic pressure amplitude. A spherical wave is expressed by \cref{eq:2_spherical_wave}
 \begin{equation} \label{eq:2_spherical_wave}
 	p(t,r)=p_{0} e^{j(\omega t - k r)}
 \end{equation}
-Where $r$ is radial distance, and is defined in a polar coordinate system. For each time instance, the acoustic pressure $p(t,r)$ is constant over a fixed radial position. In this scenario, the pressure amplitude is given by $p_{0}(r) = \nicefrac{k_{p}}{r}$, where $k_{p}$ is a constant since the energy of the outgoing wave must be constant.  Particle speed $u$ is dependent on the pressure caused by a wave expressed by \cref{eq:2_particle_speed}
+Where $r$ is radial distance, and is defined in a polar coordinate system. For each time instance, the acoustic pressure $p(t,r)$ is constant over a fixed radial position. In this scenario, the pressure amplitude is given by $p_{0}(r) = \sfrac{k_{p}}{r}$, where $k_{p}$ is a constant since the energy of the outgoing wave must be constant.  Particle speed $u$ is dependent on the pressure caused by a wave expressed by \cref{eq:2_particle_speed}
 \begin{equation} \label{eq:2_particle_speed}
 	u = \frac{p}{Z}
 \end{equation}
@@ -142,7 +142,7 @@ A layperson knows transducers as speakers and microphones in the context of PA s
 	\label{fig:2_doppler_effect}
 \end{figure}
 
-The Doppler effect is a phenomenon in which an observer perceives a shift in the frequency of sound emitted from a source when either the source or the observer is moving, or both are moving. The reason for the perceived change in frequency is visualised in \cref{fig:2_doppler_effect}. In diagram (a), the source $S_{p}$ is stationary and produces a spherical distribution pattern of the wave with the perceived frequency of the observer is given by $f=\nicefrac{c}{\lambda}$, where $c$ is the velocity of the wave in the medium and $\lambda$ is the wavelength. In diagram (b), the sound source is moving towards the right with a velocity $v$. The locomotion of the source changes the distribution pattern and causes a longer wavelength on the left, indicating a lower perceived frequency, and a shorter wavelength on the right, indicating a higher perceived frequency, both denoted as $\lambda^{\prime}$ in the diagram. In the case of the observer on the right side, the perceived frequency becomes \cref{eq:2_doppler_effect}.
+The Doppler effect is a phenomenon in which an observer perceives a shift in the frequency of sound emitted from a source when either the source or the observer is moving, or both are moving. The reason for the perceived change in frequency is visualised in \cref{fig:2_doppler_effect}. In diagram (a), the source $S_{p}$ is stationary and produces a spherical distribution pattern of the wave with the perceived frequency of the observer is given by $f=\sfrac{c}{\lambda}$, where $c$ is the velocity of the wave in the medium and $\lambda$ is the wavelength. In diagram (b), the sound source is moving towards the right with a velocity $v$. The locomotion of the source changes the distribution pattern and causes a longer wavelength on the left, indicating a lower perceived frequency, and a shorter wavelength on the right, indicating a higher perceived frequency, both denoted as $\lambda^{\prime}$ in the diagram. In the case of the observer on the right side, the perceived frequency becomes \cref{eq:2_doppler_effect}.
 
 \begin{equation} \label{eq:2_doppler_effect}
 	f^{\prime} = \frac{c}{\lambda} = \frac{c}{\lambda - v T} = \frac{c}{(c-v)T} = \frac{c}{c-v}\cdot f_{0}
@@ -412,12 +412,12 @@ Where $a(i)$ is the amplitude, $f_{0}$ is the emitted frequency, and $\theta$ is
 	\caption{Simulated RF sampling of blood vessel with segmented receiver line with a sample interval denoted by a dotted line (left) and the resulting amplitude of the sample (right)}
 	\label{fig:2_rf_sampling_simulated}
 \end{figure}
-\Cref{fig:2_rf_sampling_simulated} displays a signal that has been sampled using RF technology. As the scatterers in the image move away from the transducer, the shift in the pulsed signal is present. The measurement is created by taking one sample at a specific depth ($d_0$) for each RF line, using a sample/hold circuit. The sampling is performed at a frequency of $f_{\mathrm{prf}}$, as indicated by the dotted line in the figure. Due to the slow movement of the received signals past the sample volume, there is a gradual change in the sampled signal over time. As a result of the slow movement of the signals, the frequency of the sampled signal is much lower than that of the RF signal. It's worth noting that the received signal not only shifts in time from pulse to pulse, but its shape also changes. This is because the signal is constructed by adding up responses from many scatterers that move at different speeds. A stationary structure will result in an identical sample value for all segmented RF lines. The spectrum of this stationary signal is shown in \cref{eq:2_stationary_rf_spectrum}.
+\Cref{fig:2_rf_sampling_simulated} displays a signal that has been sampled using RF technology. As the scatterers in the image move away from the transducer, the shift in the pulsed signal is present. The measurement is created by taking one sample at a specific depth ($d_0$) for each RF line. The sampling is performed at a frequency of $f_{\mathrm{prf}}$, as indicated by the dotted line in the figure. Due to the slow movement of the received signals past the sample volume, there is a gradual change in the sampled signal over time. As a result of the slow movement of the signals, the frequency of the sampled signal is much lower than that of the RF signal. It's worth noting that the received signal not only shifts in time from pulse to pulse, but its shape also changes. This is because the signal is constructed by adding up responses from many scatterers that move at different speeds. A stationary structure will result in an identical sample value for all segmented RF lines. The spectrum of this stationary signal is shown in \cref{eq:2_stationary_rf_spectrum}.
 
 \begin{equation} \label{eq:2_stationary_rf_spectrum}
 	\abs{H_{s}(f)} = \abs{a \frac{\sin (\pi f N T_{\mathrm{prf}})}{\sin (\pi f T_{\mathrm{prf}})}}
 \end{equation}
-which for $f = 0$ is equal to $aN$ and has its first zero at $\nicefrac{f_{\mathrm{prf}}}{N}$. The signal spectrum based on \cref{eq:2_stationary_rf_spectrum} is shown in \cref{fig:2_rf_spectrum_stationary}.
+which for $f = 0$ is equal to $aN$ and has its first zero at $\sfrac{f_{\mathrm{prf}}}{N}$. The signal spectrum based on \cref{eq:2_stationary_rf_spectrum} is shown in \cref{fig:2_rf_spectrum_stationary}.
 
 \begin{figure}[htbp]
 	\centering
