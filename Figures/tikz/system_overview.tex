@@ -5,7 +5,7 @@ align=center]
 % Draw nodes
 \node[place]		(human_in)	[draw=none]											{Control\\input};
 \node[place]		(embed)		[inner sep=1mm,rectangle,right=10mm of human_in]	{Control\\system};
-\node[place]		(wave_gen)		[inner sep=1mm,rectangle,right=5mm of embed]			{Waveform\\generator};
+\node[place]		(wave_gen)		[inner sep=1mm,rectangle,right=5mm of embed]			{Pulse\\generator};
 \node[place]		(pwr_stg)	[inner sep=1mm,rectangle,right=5mm of wave_gen]	{Power\\stage};
 \node[place]		(tr_switch)	[inner sep=1mm,rectangle,right=5mm of pwr_stg]	{T/R\\switch};
 \node[place]		(transducer)		[inner sep=1mm,rectangle,right=5mm of tr_switch]	{Transducer};
