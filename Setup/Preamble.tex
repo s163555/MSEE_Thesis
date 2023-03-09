@@ -9,23 +9,18 @@
 \usepackage{ifluatex}
 %%                                                                        %%
 %%========================================================================%%
-\ifluatex
+\ifluatex % IF LUALATEX COMPILER
+\directlua{pdf.setminorversion(7)}
 \usepackage[TS1,T1]{fontenc}
 \usepackage{mlmodern}
-%%================= Issue with mlmodern and siunitx fix! =================%%
-%%                                                                        %%
-%%========================================================================%%
-\let\oldtextmu\textmu
-\renewcommand{\textmu}{{\fontencoding{TS1}\fontfamily{mlmr}\selectfont\oldtextmu}}
+\else % IF PDFLATEX
+\usepackage[utf8]{inputenc}
+\usepackage[TS1,T1]{fontenc}
+\usepackage{mlmodern}		% Latin Modern font type
+\fi
 %%                                                                        %%
 %%========================================================================%%
 %\defaultfontfeatures{Ligatures={TeX}}
-\directlua{pdf.setminorversion(7)}
-\else
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage{mlmodern}		% Latin Modern font type
-\fi
 
 \usepackage{siunitx}        % SI units
 \sisetup{%
@@ -34,10 +29,17 @@
 	drop-zero-decimal,
 	%range-units=single,
 }
+%%================= Issue with mlmodern and siunitx fix! =================%%
+%%                                                                        %%
+\let\oldtextmu\textmu
+\renewcommand{\textmu}{{\fontencoding{TS1}\fontfamily{mlmr}\selectfont\oldtextmu}}
+%%                                                                        %%
+%%========================================================================%%
 \DeclareSIPrefix\micro{\text{\textmu}}{-6}
 
 % Localization
 %\usepackage[hangul]{kotex}			% Korean typesetting
+%\usepackage{luatexko}
 %\usepackage[bidi=default]{babel}
 %\babelprovide[main, import]{english}
 %\babelprovide[import=ko]{korean}
@@ -75,7 +77,7 @@
 \usepackage{subcaption}     % for subfigures
 \usepackage[autostyle=true]{csquotes}       % For biblatex with babel
 %\usepackage[backend=biber,style=numeric,sorting=none]{biblatex} % Package for bibliography (citing)
-\usepackage[backend=biber,style=ieee,backref=false,abbreviate=true,dateabbrev=false,alldates=long,sorting=ynt,dashed=false,block=space,maxcitenames=3,maxbibnames=9]{biblatex} % Package for bibliography (citing)
+\usepackage[backend=biber,style=ieee,abbreviate=true,dateabbrev=false,alldates=long,sorting=ynt,dashed=false,block=space,maxcitenames=3,maxbibnames=9,backref=true]{biblatex} % Package for bibliography (citing)
 \bibliography{bib_bibertool.bib}
 
 % Tables
