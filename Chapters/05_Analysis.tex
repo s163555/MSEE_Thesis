@@ -1,10 +1,10 @@
 \chapter{Examples of figures, tables, equations and listings}
-In the following a bunch of examples of figures and tables have been made. There are advantages to using \texttt{tikZ} diagrams over excel diagrams. 1) the font and font size perfectly matches the document 2) the styling and colours are pre-defined to follow the design guide 3) the plots uses vector graphics which reduces the file size, reduces the compile time and looks sharp when zooming in. The possibilities are endless, look at the \texttt{pgfplots} gallery for inspiration: \url{http://pgfplots.sourceforge.net/gallery.html}. 
-However there are still cases where I would recommend to insert a plot as a picture. For example if the plot contains a lot of data: a line graph with 1000 points takes a long time to compile. 
+In the following a bunch of examples of figures and tables have been made. There are advantages to using \texttt{tikZ} diagrams over excel diagrams. 1) the font and font size perfectly matches the document 2) the styling and colours are pre-defined to follow the design guide 3) the plots uses vector graphics which reduces the file size, reduces the compile time and looks sharp when zooming in. The possibilities are endless, look at the \texttt{pgfplots} gallery for inspiration: \url{http://pgfplots.sourceforge.net/gallery.html}.
+However there are still cases where I would recommend to insert a plot as a picture. For example if the plot contains a lot of data: a line graph with 1000 points takes a long time to compile.
 
-Some tips if you want good looking diagrams or graphs which will be inserted as pictures (e.g. in a figure environment with \textbackslash includegraphics): The main font is Arial. Use DTU colours as described in \cref{sec:colours}. Use high quality pictures. Try to scale the diagram (picture) so the text size of the axis legends match the text size in this document.
+Some tips if you want good looking diagrams or graphs which will be inserted as pictures (e.g. in a figure environment with \textbackslash includegraphics): The main font is Arial. Use DTU colours as described in. Use high quality pictures. Try to scale the diagram (picture) so the text size of the axis legends match the text size in this document.
 
-Remember to change the label of your figures so there are no duplicate labels. A label should be placed below a caption or after a heading (fx after a \textbackslash chapter). 
+Remember to change the label of your figures so there are no duplicate labels. A label should be placed below a caption or after a heading (fx after a \textbackslash chapter).
 
 
 
@@ -28,25 +28,25 @@ x  {Name 1} {Name 2}    {Name 3}    {Name 4}
 
 \begin{figure}[htb]
 \centering
-\begin{tikzpicture} 
-\begin{axis}[ 
-    width=15cm, % You could use \linewidth instead 
+\begin{tikzpicture}
+\begin{axis}[
+    width=15cm, % You could use \linewidth instead
     height=6.6cm,
-    ybar stacked, 
+    ybar stacked,
     xtick = data,
     xticklabels={1,2,3,4,5,6,Var 1,Var 2,Var 3,Var 4},
-    ylabel={Some text with a unit $\phi$ }, 
+    ylabel={Some text with a unit $\phi$ },
     ymajorgrids=true,
-    legend style={at={(0.5,-0.1)}, anchor=north}, 
+    legend style={at={(0.5,-0.1)}, anchor=north},
     cycle list name=DTU,
     every axis plot/.append style={fill,draw=none},
-    ] 
-\addplot table[x=x,y={Name 1}]{\stackedColumnData}; 
+    ]
+\addplot table[x=x,y={Name 1}]{\stackedColumnData};
 \addplot table[x=x,y={Name 2}]{\stackedColumnData};
 \addplot table[x=x,y={Name 3}]{\stackedColumnData};
 \addplot table[x=x,y={Name 4}]{\stackedColumnData};
-\legend{Heating,Ventilation,Lighting,Solar shading} 
-\end{axis} 
+\legend{Heating,Ventilation,Lighting,Solar shading}
+\end{axis}
 \end{tikzpicture}
 \caption{Stacked column chart}
 \label{fig:stackedcolumn}
@@ -55,7 +55,7 @@ x  {Name 1} {Name 2}    {Name 3}    {Name 4}
 
 
 \pgfplotstableread{
-y {Name 1} {Name 2} {Name 3} {Name 4} 
+y {Name 1} {Name 2} {Name 3} {Name 4}
 1 50        20      15       15
 2 10        40      25       25
 3 40        30      20       10
@@ -69,7 +69,7 @@ y {Name 1} {Name 2} {Name 3} {Name 4}
 \centering
 \begin{tikzpicture}
 \begin{axis}[
-    width=15cm-10pt, % pgfplots widths are only approximate. You might have to fine tune the width of your figures to deal with overfull hbox warnings. 
+    width=15cm-10pt, % pgfplots widths are only approximate. You might have to fine tune the width of your figures to deal with overfull hbox warnings.
     height = 6.6cm,
     xbar stacked,
     xlabel=Write something here,
@@ -86,8 +86,8 @@ y {Name 1} {Name 2} {Name 3} {Name 4}
 \addplot table[x={Name 2},y=y]{\stackedBarData};
 \addplot table[x={Name 3},y=y]{\stackedBarData};
 \addplot table[x={Name 4},y=y]{\stackedBarData};
-\legend{Legend 1, Legend 2, Legend 3, Legend 4} 
-\end{axis}  
+\legend{Legend 1, Legend 2, Legend 3, Legend 4}
+\end{axis}
 \end{tikzpicture}
 \caption{Stacked bar chart}
 \label{fig:stackedbar}
@@ -106,25 +106,25 @@ x    {Far}  {Near}  {Here}
 
 \begin{figure}[H]
 \centering
-\begin{tikzpicture} 
-\begin{axis}[ 
+\begin{tikzpicture}
+\begin{axis}[
     width=15cm,
     height=6.6cm,
     ybar,
     xtick=data,
-    x tick label style={ /pgf/number format/1000 sep=}, 
-    ylabel=Population,  
+    x tick label style={ /pgf/number format/1000 sep=},
+    ylabel=Population,
     ymin=0,
     ymajorgrids=true,
     legend style={at={(0.5,-0.15)},anchor=north,legend columns=-1},
-    cycle list name=DTU, 
-    ] 
-\addplot table[x=x,y={Far}]{\groupedColumnData}; 
+    cycle list name=DTU,
+    ]
+\addplot table[x=x,y={Far}]{\groupedColumnData};
 \addplot table[x=x,y={Near}]{\groupedColumnData};
-\addplot table[x=x,y={Here}]{\groupedColumnData}; 
-\addplot[red,sharp plot,update limits=false] coordinates {(1910,43) (1990,43)} node[above] at (axis cs:1950,43) {Houses}; 
-\legend{Far,Near,Here,Annot} 
-\end{axis} 
+\addplot table[x=x,y={Here}]{\groupedColumnData};
+\addplot[red,sharp plot,update limits=false] coordinates {(1910,43) (1990,43)} node[above] at (axis cs:1950,43) {Houses};
+\legend{Far,Near,Here,Annot}
+\end{axis}
 \end{tikzpicture}
 \caption{Grouped column chart}
 \label{fig:groupedcolumn}
@@ -133,7 +133,7 @@ x    {Far}  {Near}  {Here}
 
 
 \pgfplotstableread{
-x {Name 1} {Name 2} {Name 3} {Name 4} 
+x {Name 1} {Name 2} {Name 3} {Name 4}
 1 0         10       58       10
 2 30        20       48       40
 3 10        60       45       10.5
@@ -154,13 +154,13 @@ x {Name 1} {Name 2} {Name 3} {Name 4}
     legend style = {at={(0.5,-0.1)}, anchor=north},
     cycle list name=DTU,
     every axis plot/.append style={fill opacity=0},
-    ] 
-\addplot table[x=x,y={Name 1}]{\lineGraphData}; 
+    ]
+\addplot table[x=x,y={Name 1}]{\lineGraphData};
 \addplot table[x=x,y={Name 2}]{\lineGraphData};
-\addplot table[x=x,y={Name 3}]{\lineGraphData}; 
-\addplot table[x=x,y={Name 4}]{\lineGraphData}; 
-\legend{Legend 1, Legend 2, Legend 3, Legend 4} 
-\end{axis} 
+\addplot table[x=x,y={Name 3}]{\lineGraphData};
+\addplot table[x=x,y={Name 4}]{\lineGraphData};
+\legend{Legend 1, Legend 2, Legend 3, Legend 4}
+\end{axis}
 \end{tikzpicture}
 \caption{Line graph}
 \label{fig:linegraph}
@@ -169,7 +169,7 @@ x {Name 1} {Name 2} {Name 3} {Name 4}
 
 
 \pgfplotstableread{
-x {Name 1} {Name 2} {Name 3} {Name 4} 
+x {Name 1} {Name 2} {Name 3} {Name 4}
 1 0         10       58       10
 2 30        20       48       40
 3 10        60       45       10.5
@@ -190,16 +190,16 @@ x {Name 1} {Name 2} {Name 3} {Name 4}
     legend style = {at={(0.5,-0.1)}, anchor=north},
     cycle list name=DTU,
     every axis plot/.append style={fill opacity=0},
-    ] 
-\addplot table[x=x,y={Name 1}]{\lineGraphMagnifyData}; 
+    ]
+\addplot table[x=x,y={Name 1}]{\lineGraphMagnifyData};
 \addplot table[x=x,y={Name 2}]{\lineGraphMagnifyData};
-\addplot table[x=x,y={Name 3}]{\lineGraphMagnifyData}; 
-\addplot table[x=x,y={Name 4}]{\lineGraphMagnifyData}; 
+\addplot table[x=x,y={Name 3}]{\lineGraphMagnifyData};
+\addplot table[x=x,y={Name 4}]{\lineGraphMagnifyData};
 
 \coordinate (spypoint) at (axis cs:3,10.5); % Delete this line to remove magnifying glass
 \coordinate (magnifyglass) at (axis cs:3.6,12); % Delete this line to remove magnifying glass
-\legend{Legend 1, Legend 2, Legend 3, Legend 4} 
-\end{axis} 
+\legend{Legend 1, Legend 2, Legend 3, Legend 4}
+\end{axis}
 
 \spy [black, size=2cm] on (spypoint) in node[fill=white] at (magnifyglass); % Delete this line to remove magnifying glass
 \end{tikzpicture}
@@ -210,7 +210,7 @@ x {Name 1} {Name 2} {Name 3} {Name 4}
 
 
 \pgfplotstableread{
-x {Name 1} {Name 2} {Name 3} {Name 4} 
+x {Name 1} {Name 2} {Name 3} {Name 4}
 1 30        10       2        10
 2 20        20       5        5
 3 25        20       5        8
@@ -220,25 +220,25 @@ x {Name 1} {Name 2} {Name 3} {Name 4}
 
 \begin{figure}[H]
 \centering
-\begin{tikzpicture} 
+\begin{tikzpicture}
 \begin{axis}[
     width=15cm,
     height=6.6cm,
-    stack plots=y, 
+    stack plots=y,
     area style,
     ylabel = {Unit},
     ymin = 0,
     enlarge x limits=false,
     ymajorgrids=true,
-    legend style={at={(0.5,-0.1)}, anchor=north}, 
+    legend style={at={(0.5,-0.1)}, anchor=north},
     cycle list name=DTU,
-    ] 
-\addplot table[x=x,y={Name 1}]{\areaGraphData}\closedcycle; 
+    ]
+\addplot table[x=x,y={Name 1}]{\areaGraphData}\closedcycle;
 \addplot table[x=x,y={Name 2}]{\areaGraphData}\closedcycle;
-\addplot table[x=x,y={Name 3}]{\areaGraphData}\closedcycle; 
-\addplot table[x=x,y={Name 4}]{\areaGraphData}\closedcycle; 
-\legend{Legend 1, Legend 2, Legend 3, Legend 4} 
-\end{axis} 
+\addplot table[x=x,y={Name 3}]{\areaGraphData}\closedcycle;
+\addplot table[x=x,y={Name 4}]{\areaGraphData}\closedcycle;
+\legend{Legend 1, Legend 2, Legend 3, Legend 4}
+\end{axis}
 \end{tikzpicture}
 \caption{Area graph}
 \label{fig:areagraph}
@@ -247,7 +247,7 @@ x {Name 1} {Name 2} {Name 3} {Name 4}
 
 
 \pgfplotstableread{
-x {Name 1} {Name 2} {Name 3} {Name 4} 
+x {Name 1} {Name 2} {Name 3} {Name 4}
 1   11	15	38	41
 2   33	22	25	31
 3   22	25	11	21
@@ -270,7 +270,7 @@ x {Name 1} {Name 2} {Name 3} {Name 4}
 \addplot+[only marks,mark=square*]  table[x=x,y={Name 2}]{\scatterData};
 \addplot+[only marks,mark=triangle*]table[x=x,y={Name 3}]{\scatterData};
 \addplot+[only marks,mark=+]        table[x=x,y={Name 4}]{\scatterData};
-\legend{Legend 1, Legend 2, Legend 3, Legend 4} 
+\legend{Legend 1, Legend 2, Legend 3, Legend 4}
 \end{axis}
 \end{tikzpicture}
 \caption{Scatter plot}
@@ -323,15 +323,15 @@ upper quartile=46, upper whisker=47,
 	\begin{circuitikz}[american voltages]
 		\draw
 		(0,0) to [short, *-] (6,0)
-		to [V, l_=$\mathrm{j}{\omega}_m \underline{\psi}^s_R$] (6,2) 
-		to [R, l_=$R_R$] (6,4) 
-		to [short, i_=$\underline{i}^s_R$] (5,4) 
-		(0,0) to [open, v^>=$\underline{u}^s_s$] (0,4) 
-		to [short, *- ,i=$\underline{i}^s_s$] (1,4) 
+		to [V, l_=$\mathrm{j}{\omega}_m \underline{\psi}^s_R$] (6,2)
+		to [R, l_=$R_R$] (6,4)
+		to [short, i_=$\underline{i}^s_R$] (5,4)
+		(0,0) to [open, v^>=$\underline{u}^s_s$] (0,4)
+		to [short, *- ,i=$\underline{i}^s_s$] (1,4)
 		to [R, l=$R_s$] (3,4)
-		to [L, l=$L_{\sigma}$] (5,4) 
-		to [short, i_=$\underline{i}^s_M$] (5,3) 
-		to [L, l_=$L_M$] (5,0); 
+		to [L, l=$L_{\sigma}$] (5,4)
+		to [short, i_=$\underline{i}^s_M$] (5,3)
+		to [L, l_=$L_M$] (5,0);
 	\end{circuitikz}
 	\caption{The nodes short, V, R and L are presented here, but there a lot more}
 	\label{fig:circuitikz}
@@ -356,7 +356,7 @@ Emu        & stuffed     & 33.33      \\
 Armadillo  & frozen      & 8.99       \\ \bottomrule
 \end{tabular}
 \end{table}
-\texttt{Booktabs} tables don't use any vertical lines. Only horizontal lines are used. \Cref{tab:tableExample} begins with a \textbackslash \texttt{toprule}, ends with a \textbackslash \texttt{bottomrule} with \textbackslash \texttt{midrule} in between. The table has 3 columns formatted as \texttt{@\{\}llS@\{\}}. \texttt{@\{\}} is cropping the horizontal lines of the table to fit the content (removes column spacing at the left and right edges). \texttt{l} aligns the column to the left and \texttt{S} aligns the column according to the decimal point (\texttt{siunitx} package). You can of course also use \texttt{r} to align right or \texttt{c} to center the contents of the column. 
+\texttt{Booktabs} tables don't use any vertical lines. Only horizontal lines are used. \Cref{tab:tableExample} begins with a \textbackslash \texttt{toprule}, ends with a \textbackslash \texttt{bottomrule} with \textbackslash \texttt{midrule} in between. The table has 3 columns formatted as \texttt{@\{\}llS@\{\}}. \texttt{@\{\}} is cropping the horizontal lines of the table to fit the content (removes column spacing at the left and right edges). \texttt{l} aligns the column to the left and \texttt{S} aligns the column according to the decimal point (\texttt{siunitx} package). You can of course also use \texttt{r} to align right or \texttt{c} to center the contents of the column.
 
 \begin{table}[H]
 \centering
@@ -380,13 +380,13 @@ Efficiency          &         &           & 60\%    \\ \bottomrule
 \toprule
                     & {Voltage} & {Current} & {Power}       \\
                     & V         & A         & W             \\ \midrule
-Transformer input   & 234.4     & 0.50      & 117.4         \\ 
+Transformer input   & 234.4     & 0.50      & 117.4         \\
 Transformer output  & 25.86     & 2.72      & 70.3          \\ \midrule
 Efficiency          &           &           & \SI{60}{\percent} \\ \bottomrule
 \end{tabular}
 \end{table}
 
-\Cref{tab:tableExampleWrong} and \cref{tab:tableExampleCorrect} have the same comtents but there are some subtle differences in formatting which makes \cref{tab:tableExampleCorrect} the superior table of the two. The most obvious change is removing the midrule between the transformer input and output rows. The efficency row is the odd man out and a midrule has been used to emphasise the difference between the transformer rows and the efficiency row. The delimiters in the voltage, current and power columns are aligned. The horizontal lines (rules) fits to the content and instead of protruding. The spacing between 60 and the percentage sign is correctly adjusted. 
+\Cref{tab:tableExampleWrong} and \cref{tab:tableExampleCorrect} have the same comtents but there are some subtle differences in formatting which makes \cref{tab:tableExampleCorrect} the superior table of the two. The most obvious change is removing the midrule between the transformer input and output rows. The efficency row is the odd man out and a midrule has been used to emphasise the difference between the transformer rows and the efficiency row. The delimiters in the voltage, current and power columns are aligned. The horizontal lines (rules) fits to the content and instead of protruding. The spacing between 60 and the percentage sign is correctly adjusted.
 
 \begin{figure}[H]
 \centering
@@ -447,11 +447,11 @@ Referring to the figure as a whole \cref{fig:foursubfigures} or to an individual
 
 
 \section{Equations}
-In-line math is easy. Anything surrounded by dollar signs becomes a math field. Here is an example: $f(x)=2x-1$. Also anything inside the ``\textbackslash begin\{equation\}'' and  ``\textbackslash end\{equation\}'' environment is also a math field. Examples are shown below. 
+In-line math is easy. Anything surrounded by dollar signs becomes a math field. Here is an example: $f(x)=2x-1$. Also anything inside the ``\textbackslash begin\{equation\}'' and  ``\textbackslash end\{equation\}'' environment is also a math field. Examples are shown below.
 
-All equations use the default latex font. Some might say it looks weird with a serif font for equations and a sans-serif font for the body text. However, it is very unpractical to change the math font in latex which is the exactly the reason why this has not been done. One benefit of the serif style math font is the clear distinction between symbols (variables) and units. 
+All equations use the default latex font. Some might say it looks weird with a serif font for equations and a sans-serif font for the body text. However, it is very unpractical to change the math font in latex which is the exactly the reason why this has not been done. One benefit of the serif style math font is the clear distinction between symbols (variables) and units.
 
-On the subject of units, those are all taken care of by the \texttt{\textbackslash siunitx} package. Whenever there is a number followed by a unit one should write \textbackslash SI\{number\}\{unit\}. Note this command is case sensitive. If a unit should follow a variable use the command \textbackslash si\{unit\} (also case sensitive). 
+On the subject of units, those are all taken care of by the \texttt{\textbackslash siunitx} package. Whenever there is a number followed by a unit one should write \textbackslash SI\{number\}\{unit\}. Note this command is case sensitive. If a unit should follow a variable use the command \textbackslash si\{unit\} (also case sensitive).
 
 The ideal gas law is shown in \cref{eq:idealgaslaw}.
 \begin{equation} \label{eq:idealgaslaw}
@@ -463,8 +463,8 @@ The ideal gas law is shown in \cref{eq:idealgaslaw}.
 \end{equation}
 
 \begin{equation} \label{eq:penDepthStep}
-d_{step} = \sqrt{\frac{\delta}{\frac{dw}{dp_v}} \cdot t} = 
-\sqrt{\frac{\SI{1.0e-11}{kg/(m.s.Pa)}}{\frac{\SI{5.4}{kg/m^3}}{\SI{233.82}{Pa}}} \cdot \SI{7200}{s}} = 
+d_{step} = \sqrt{\frac{\delta}{\frac{dw}{dp_v}} \cdot t} =
+\sqrt{\frac{\SI{1.0e-11}{kg/(m.s.Pa)}}{\frac{\SI{5.4}{kg/m^3}}{\SI{233.82}{Pa}}} \cdot \SI{7200}{s}} =
 \SI{0.001766}{m} = \SI{1.766}{mm}
 \end{equation}
 
@@ -475,18 +475,18 @@ d_{step} = \sqrt{\frac{\delta}{\frac{dw}{dp_v}} \cdot t} =
 Notice how the \texttt{aligned} environment can be used to align the equilibrium arrows in \cref{eq:equilibrium}. Only one equation number is generated using this method. Alternatively if you want an equation number for each line see \crefrange{eq:align1}{eq:align2}.
 
 \begin{equation} \label{eq:equilibrium}
-\begin{aligned} 
+\begin{aligned}
     CH_3COOH + OH^{-} &\rightleftharpoons CH_3COO^{-} + H_2O \\
     H_2O &\rightleftharpoons H^{+}_{(aq)} + OH^{-}_{(aq)}
 \end{aligned}
 \end{equation}
 
 
-\begin{align} 
-    \label{eq:align1}     
+\begin{align}
+    \label{eq:align1}
     f(x) &= 1 + x - 3 x^2 \\
-    \label{eq:align2} 
-    g(x) + y &= 3x - \frac{1}{2} x^3 
+    \label{eq:align2}
+    g(x) + y &= 3x - \frac{1}{2} x^3
 \end{align}
 
 
@@ -494,7 +494,7 @@ Notice how the \texttt{aligned} environment can be used to align the equilibrium
 
 \section{Listings (code)}
 
-\Cref{lst:montecarlo} is a nicely formatted block of code. A listing will automatically continue on the next page if it encounters a page break. Many different programming languages can be highlighted. Check the \texttt{listings} package documentation for a list of supported programming languages. 
+\Cref{lst:montecarlo} is a nicely formatted block of code. A listing will automatically continue on the next page if it encounters a page break. Many different programming languages can be highlighted. Check the \texttt{listings} package documentation for a list of supported programming languages.
 
 \begin{mintedc}
 %% Monte Carlo simulation, estimation of pi
