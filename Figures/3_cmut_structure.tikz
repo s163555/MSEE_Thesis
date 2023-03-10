@@ -1,0 +1,65 @@
+
+
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+	%uncomment if require: \path (0,171); %set diagram left start at 0, and has height of 171
+
+	%Shape: Rectangle [id:dp9408379535361424]
+	\draw  [fill={rgb, 255:red, 155; green, 155; blue, 155 }  ,fill opacity=1 ] (10,110) -- (330,110) -- (330,160) -- (10,160) -- cycle ;
+	%Curve Lines [id:da14073546290370997]
+	\draw    (10,120) .. controls (77.23,90) and (262.77,150) .. (330,120) ;
+	%Shape: Polygon [id:ds29154118264594087]
+	\draw  [fill={rgb, 255:red, 126; green, 211; blue, 33 }  ,fill opacity=1 ] (330,70) -- (330,110) -- (10,110) -- (10,70) -- (40,70) -- (40,90) -- (300,90) -- (300,70) -- cycle ;
+	%Shape: Rectangle [id:dp7293209428281849]
+	\draw  [fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=1 ] (10,50) -- (330,50) -- (330,70) -- (10,70) -- cycle ;
+	%Shape: Rectangle [id:dp8584212117739504]
+	\draw  [fill={rgb, 255:red, 74; green, 144; blue, 226 }  ,fill opacity=1 ] (112.05,31) -- (229.95,31) -- (229.95,51) -- (112.05,51) -- cycle ;
+	%Shape: Polygon [id:ds9961529541546873]
+	\draw  [fill={rgb, 255:red, 248; green, 231; blue, 28 }  ,fill opacity=1 ] (10,30) -- (10,50) -- (112.05,51) -- (112.05,31) -- (229.95,31) -- (229.95,51) -- (330,50) -- (330,30) -- (250,30) -- (250,10) -- (90,10) -- (90,30) -- cycle ;
+
+	% Text Node
+	\draw (136,34) node [anchor=north west][inner sep=0.75pt]  [font=\footnotesize,color={rgb, 255:red, 255; green, 255; blue, 255 }  ,opacity=1 ] [align=left] {\begin{minipage}[lt]{51.23pt}\setlength\topsep{0pt}
+			\begin{center}
+				{\fontfamily{pcr}\selectfont Top electrode}
+			\end{center}
+
+	\end{minipage}};
+	% Text Node
+	\draw (142,54) node [anchor=north west][inner sep=0.75pt]  [font=\footnotesize] [align=left] {\begin{minipage}[lt]{40.37pt}\setlength\topsep{0pt}
+			\begin{center}
+				{\fontfamily{pcr}\selectfont Membrane}
+			\end{center}
+
+	\end{minipage}};
+	% Text Node
+	\draw (131,94) node [anchor=north west][inner sep=0.75pt]  [font=\footnotesize] [align=left] {\begin{minipage}[lt]{58.04pt}\setlength\topsep{0pt}
+			\begin{center}
+				{\fontfamily{pcr}\selectfont Insulation layer}
+			\end{center}
+
+	\end{minipage}};
+	% Text Node
+	\draw (152,75) node [anchor=north west][inner sep=0.75pt]  [font=\footnotesize] [align=left] {\begin{minipage}[lt]{26.25pt}\setlength\topsep{0pt}
+			\begin{center}
+				{\fontfamily{pcr}\selectfont Cavity}
+			\end{center}
+
+	\end{minipage}};
+	% Text Node
+	\draw (121,126) node [anchor=north west][inner sep=0.75pt]  [font=\footnotesize] [align=left] {\begin{minipage}[lt]{69.77pt}\setlength\topsep{0pt}
+			\begin{center}
+				{\fontfamily{pcr}\selectfont \textcolor[rgb]{0.99,0.99,0.99}{Substrate}}\\{\fontfamily{pcr}\selectfont \textcolor[rgb]{0.99,0.99,0.99}{(bottom electrode)}}
+			\end{center}
+
+	\end{minipage}};
+	% Text Node
+	\draw (129,14) node [anchor=north west][inner sep=0.75pt]  [font=\footnotesize] [align=left] {\begin{minipage}[lt]{62.71pt}\setlength\topsep{0pt}
+			\begin{center}
+				{\fontfamily{pcr}\selectfont Passivation layer}
+			\end{center}
+
+	\end{minipage}};
+
+
+\end{tikzpicture}
