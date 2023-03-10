@@ -10,6 +10,13 @@
 %%                                                                        %%
 %%========================================================================%%
 \ifluatex % IF LUALATEX COMPILER
+% Localization
+%\usepackage[hangul]{kotex}			% Korean typesetting
+\usepackage{luatexko}
+\usepackage[bidi=default]{babel}
+\babelprovide[main, import]{english}
+\babelprovide[import=ko]{korean}
+\babelprovide[import=da]{danish}
 \directlua{pdf.setminorversion(7)}
 \usepackage[TS1,T1]{fontenc}
 \usepackage{mlmodern}
@@ -36,14 +43,6 @@
 %%                                                                        %%
 %%========================================================================%%
 \DeclareSIPrefix\micro{\text{\textmu}}{-6}
-
-% Localization
-%\usepackage[hangul]{kotex}			% Korean typesetting
-%\usepackage{luatexko}
-%\usepackage[bidi=default]{babel}
-%\babelprovide[main, import]{english}
-%\babelprovide[import=ko]{korean}
-%\babelprovide[import=da]{danish}
 
 % Basic thesis packages
 \usepackage{geometry}     % Package for changing page margins (before fancyhdr)
