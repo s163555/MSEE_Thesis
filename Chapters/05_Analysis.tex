@@ -330,7 +330,7 @@ upper quartile=46, upper whisker=47,
 		to [L, l_=$L_M$] (5,0);
 	\end{circuitikz}
 	\caption{The nodes short, V, R and L are presented here, but there a lot more}
-	\label{fig:circuitikz}
+	\label{fig:5-circ}
 \end{figure}
 
 
@@ -464,12 +464,6 @@ d_{step} = \sqrt{\frac{\delta}{\frac{dw}{dp_v}} \cdot t} =
 \SI{0.001766}{m} = \SI{1.766}{mm}
 \end{equation}
 
-\begin{equation*} % Equation without number
-    x = \mathtt{x}, \mathbf{x}, \mathit{x}, x_{1_{2_{3_{4}}}}^{1^{2^{3^{4}}}} \cdot hello * \text{hello world} \cdot \text{equation without number}
-\end{equation*}
-
-Notice how the \texttt{aligned} environment can be used to align the equilibrium arrows in \cref{eq:equilibrium}. Only one equation number is generated using this method. Alternatively if you want an equation number for each line see \crefrange{eq:align1}{eq:align2}.
-
 \begin{equation} \label{eq:equilibrium}
 \begin{aligned}
     CH_3COOH + OH^{-} &\rightleftharpoons CH_3COO^{-} + H_2O \\
@@ -484,27 +478,3 @@ Notice how the \texttt{aligned} environment can be used to align the equilibrium
     \label{eq:align2}
     g(x) + y &= 3x - \frac{1}{2} x^3
 \end{align}
-
-
-
-
-\section{Listings (code)}
-
-\Cref{lst:montecarlo} is a nicely formatted block of code. A listing will automatically continue on the next page if it encounters a page break. Many different programming languages can be highlighted. Check the \texttt{listings} package documentation for a list of supported programming languages.
-
-\begin{mintedc}
-%% Monte Carlo simulation, estimation of pi
-m=1E7;
-
-x=rand(m,1);
-y=rand(m,1);
-
-g = x.^2+y.^2-1;
-
-%dots outside
-Pf = sum((g)<=0)/m
-
-pi = 4*Pf
-\end{mintedc}
-
-
