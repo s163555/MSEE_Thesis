@@ -1,54 +1,54 @@
 \chapter{Production}
 \section{Control System}
-\begin{figure}[htbp]
-	\centering
-	\includegraphics[width=.8\textwidth]{Figures/4_advanced_timer1_diagram.pdf}
-	\caption{Configuration of \texttt{TIMER1}}
-	\label{fig:4_timer1}
-\end{figure}
-\begin{figure}[htbp]
-	\centering
-	\includegraphics[width=.8\textwidth]{Figures/4_advanced_timer2-5_diagram.pdf}
-	\caption{Configuration of \texttt{TIMER2--5}}
-	\label{fig:4_timer2-5}
-\end{figure}
-\begin{figure}[htbp]
-	\centering
-	\includegraphics[width=.8\textwidth]{Figures/4_advanced_timer9_diagram.pdf}
-	\caption{Configuration of \texttt{TIMER9}}
-	\label{fig:4_timer9}
-\end{figure}
 
-\section{Power Stage}
-\section{Transmit/Receive Switch}
+\section{Transmitter}
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=.8\textwidth]{Figures/4_transmitter_sim_out.eps}
+	\caption{LTspice simulation output of transmitter with level shifter and half-bridge power stage from \cref{fig:app_ltspice_transmitter}}
+	\label{fig:4_transmitter_sim}
+\end{figure}
+\section{TX/RX Switch}
 \section{Preamplifier}
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=.8\textwidth]{Figures/4_preamplifier_sim_out.eps}
-	\caption{Simulation output of preamplifier with OPA847 and AD8332 \gls{lna}/\gls{vga}}
-	\label{fig:4_preamplifier_out}
+	\caption{LTspice simulation output of preamplifier \gls{lna} and \gls{vga} from \cref{fig:app_ltspice_preamp}}
+	\label{fig:4_preamplifier_sim}
 \end{figure}
 \section{Demodulator}
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=.8\textwidth]{Figures/4_demod_sim_in.eps}
+	\caption{LTspice simulation demodulator input variables from \cref{fig:app_ltspice_demod}}
+	\label{fig:4_demod_sim_in}
+\end{figure}
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=.8\textwidth]{Figures/4_demod_sim_out.eps}
+	\caption{LTspice simulation demodulator output variables Q and I voltages from \cref{fig:app_ltspice_demod}}
+	\label{fig:4_demod_sim_out}
+\end{figure}
 \section{Pulse-Repetition and Wall Filter}
 \section{Digital Signal Processor}
-\begin{figure}[H]
-	\centering
-	\begin{circuitikz}[american voltages]
-		\draw
-		(0,0) to [short, *-] (6,0)
-		to [V, l_=$\mathrm{j}{\omega}_m \underline{\psi}^s_R$] (6,2)
-		to [R, l_=$R_R$] (6,4)
-		to [short, i_=$\underline{i}^s_R$] (5,4)
-		(0,0) to [open, v^>=$\underline{u}^s_s$] (0,4)
-		to [short, *- ,i=$\underline{i}^s_s$] (1,4)
-		to [R, l=$R_s$] (3,4)
-		to [L, l=$L_{\sigma}$] (5,4)
-		to [short, i_=$\underline{i}^s_M$] (5,3)
-		to [L, l_=$L_M$] (5,0);
-	\end{circuitikz}
-	\caption{The nodes short, V, R and L are presented here, but there a lot more}
-	\label{fig:circuitikz}
-\end{figure}
+%\begin{figure}[H]
+%	\centering
+%	\begin{circuitikz}[american voltages]
+%		\draw
+%		(0,0) to [short, *-] (6,0)
+%		to [V, l_=$\mathrm{j}{\omega}_m \underline{\psi}^s_R$] (6,2)
+%		to [R, l_=$R_R$] (6,4)
+%		to [short, i_=$\underline{i}^s_R$] (5,4)
+%		(0,0) to [open, v^>=$\underline{u}^s_s$] (0,4)
+%		to [short, *- ,i=$\underline{i}^s_s$] (1,4)
+%		to [R, l=$R_s$] (3,4)
+%		to [L, l=$L_{\sigma}$] (5,4)
+%		to [short, i_=$\underline{i}^s_M$] (5,3)
+%		to [L, l_=$L_M$] (5,0);
+%	\end{circuitikz}
+%	\caption{The nodes short, V, R and L are presented here, but there a lot more}
+%	\label{fig:circuitikz}
+%\end{figure}
 
 \section{Listings (code)}
 
