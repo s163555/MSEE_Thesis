@@ -475,10 +475,17 @@ And conversely, the maximum velocity is determined by the pulse repetition frequ
 		v_{\mathrm{max}} &= \frac{c}{2}\cdot \frac{f_{\mathrm{prf}}}{2f_{0}} \label{eq:2_estimation_highest_velocity_b}
 	\end{align}
 \end{subequations}
-However, this does not consider pulse bandwidth into account. In practice the maximum velocity $v_{\mathrm{max}}$ will be slightly lower.
+However, this does not consider pulse bandwidth into account. In practice, the maximum velocity $v_{\mathrm{max}}$ will be slightly lower.
 \subsection{One-Dimensional Velocity Estimation}
-
-
+If a pulsed sinusoidal signal, i.e. $p(t)= \cos \left( 2\pi f_{0} t \right)$, is emitted into an ultrasound field a number of times, the returned signal is sampled at a depth of interest, $d_{0}$. The sampled signal of a \gls{monochromatic wave} yields \cref{eq:2_monochromatic_wave}.
+\begin{equation} \label{eq:2_monochromatic_wave}
+	r \left(k, l \right) = \cos \left( 2\pi \left( \frac{f_{0}}{f_{s}} k - \frac{2v_{z}}{c} f_{0} l T_{\mathrm{prf}} \right) \right)
+\end{equation}
+Where $c$ is the speed of sound, $v_{z}$ is the blood velocity component along the axial beam, $f_{0}$ is the carrier frequency, $l$ is the emission times, $k$ is the sample depth, $T_{\mathrm{prf}}$ is the time between each pulse burst, $f_{s}$ is the sampling frequency, and $\varphi = 2\pi \sfrac{f_{0}}{f_{s}}$ is the phase factor for the depth of interest. The returned signal frequency is given by \cref{eq:2_frequency_return_signal} and is proportional to the axial blood velocity component.
+\begin{equation} \label{eq:2_frequency_return_signal}
+	\psi = -2\pi \frac{2v_{z}f_{0}}{f_{\mathrm{prf}c}}
+\end{equation}
+To find the
 \subsection{Sonography}
 \begin{figure}[htbp]
 	\centering
