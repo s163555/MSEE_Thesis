@@ -927,3 +927,31 @@ author = {Jacinta E. Browne},
 keywords = {Doppler ultrasound quality assurance, Doppler test devices, Flow phantoms, String phantoms and Doppler ultrasound performance},
 abstract = {In this paper, an overview of Doppler ultrasound quality assurance (QA) testing will be presented in three sections. The first section will review the different Doppler ultrasound parameters recommended by professional bodies for use in QA protocols. The second section will include an evaluation and critique of the main test devices used to assess Doppler performance, while the final section of this paper will discuss which of the wide range of test devices have been found to be most suitable for inclusion in Doppler QA programmes. Pulsed Wave Spectral Doppler, Colour Doppler Imaging QA test protocols have been recommended over the years by various professional bodies, including the UK's Institute of Physics and Engineering in Medicine (IPEM), the American Institute for Ultrasound in Medicine (AIUM), and the International Electrotechnical Commission (IEC). However, despite the existence of such recommended test protocols, very few commercial or research test devices exist which can measure the full range of both PW Doppler ultrasound and colour Doppler imaging performance parameters, particularly quality control measurements such as: (i) Doppler sensitivity (ii) colour Doppler spatial resolution (iii) colour Doppler temporal resolution (iv) colour Doppler velocity resolution (v) clutter filter performance and (vi) tissue movement artefact suppression. In this review, the merits of the various commercial and research test devices will be considered and a summary of results obtained from published studies which have made use of some of these Doppler test devices, such as the flow, string, rotating and belt phantom, will be presented.}
 }
+
+@article{Ricci2018,
+   abstract = {Pulse-Wave Doppler (PWD) ultrasound has been applied to the detection of blood flow for a long time; recently the same method was also proven effective in the monitoring of industrial fluids and suspensions flowing in pipes. In a PWD investigation, bursts of ultrasounds at 0.5&ndash;10 MHz are periodically transmitted in the medium under test. The received signal is amplified, sampled at tens of MHz, and digitally processed in a Field Programmable Gate Array (FPGA). First processing step is a coherent demodulation. Unfortunately, the weak echoes reflected from the fluid particles are received together with the echoes from the high-reflective pipe walls, whose amplitude can be 30&ndash;40 dB higher. This represents a challenge for the input dynamics of the system and the demodulator, which should clearly detect the weak fluid signal while not saturating at the pipe wall components. In this paper, a numerical demodulator architecture is presented capable of auto-tuning its internal dynamics to adapt to the feature of the actual input signal. The proposed demodulator is integrated into a system for the detection of the velocity profile of fluids flowing in pipes. Simulations and experiments with the system connected to a flow-rig show that the data-adaptive demodulator produces a noise reduction of at least of 20 dB with respect to different approaches, and recovers a correct velocity profile even when the input data are sampled at 8 bits only instead of the typical 12&ndash;16 bits.},
+   author = {Stefano Ricci and Valentino Meacci},
+   doi = {10.3390/ELECTRONICS7120434},
+   issn = {2079-9292},
+   issue = {12},
+   journal = {Electronics 2018, Vol. 7, Page 434},
+   keywords = {Cascaded,Comb (CIC) filter,FPGA,Integrator,data adaptive demodulator,fixed point math},
+   month = {12},
+   pages = {434},
+   publisher = {Multidisciplinary Digital Publishing Institute},
+   title = {Data-Adaptive Coherent Demodulator for High Dynamics Pulse-Wave Ultrasound Applications},
+   volume = {7},
+   url = {https://www.mdpi.com/2079-9292/7/12/434/htm https://www.mdpi.com/2079-9292/7/12/434},
+   year = {2018},
+}
+
+@incollection{Bessi1995,
+   abstract = {Operation of ultrasound Pulsed Wave (PW) f1owmeters is based on the emission of a burst of acoustic energy at a rate PRF1. Typically, the Radio-Frequency (RF) received echoes are synchronously demodulated on two quadrature channels, so that, for each depth of...},
+   author = {L. Bessi and F. Guidi and F. Gucci and C. Atzeni and P. Tortoli},
+   doi = {10.1007/978-1-4615-1943-0_34},
+   pages = {331-335},
+   publisher = {Springer, Boston, MA},
+   title = {Single-Channel Digital Demodulation of Ultrasound Bandpass Signals for Flow-Imaging Applications},
+   url = {http://link.springer.com/10.1007/978-1-4615-1943-0_34},
+   year = {1995},
+}
