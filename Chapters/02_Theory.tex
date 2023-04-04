@@ -412,6 +412,7 @@ Thus, if a sample is taken at the same depth for each line, resulting in a sinus
 \end{subequations}
 Where $f_{p}$ is expressed by \cref{eq:2_pw_receive_signal_fp}, $a(i)$ is the amplitude for the $i\textsuperscript{th}$ pulse, $f_{0}$ is the emitted frequency, and $\theta$ is the phase factor proportional to the depth of interest.
 \section{Blood Velocity Estimation}
+\todo{Separer CW og PW estimation}
 This section will explain the methodology of velocity estimation, assuming a pulsed-wave system signal is obtained from a back-scattered signal. There are variations of methods that can be applied, but only the implementation that will be used is discussed in this report.
 
 \subsection{Spectral Envelope}
@@ -485,7 +486,14 @@ Where $c$ is the speed of sound, $v_{z}$ is the blood velocity component along t
 \begin{equation} \label{eq:2_frequency_return_signal}
 	\psi = -2\pi \frac{2v_{z}f_{0}}{f_{\mathrm{prf}c}}
 \end{equation}
-To find the \cite{Pirnia_Thesis}
+To obtain positive and negative velocities, a one-sided spectrum should be used in the signal, which can be found with a Hilbert transform of the signal \cite{Pirnia_Thesis}. The sampled signal is expressed by \cref{eq:2_velocity_sampled_signal,eq:2_velocity_phi}.
+\begin{subequations}
+	\begin{align}
+		r_{q}(k,l) &= \mathrm{e}^{j \left( \Phi k + \phi l \right)} \label{eq:2_velocity_sampled_signal} \\
+		\Phi &= 2\pi \frac{f_{0}}{f_{s}} \label{eq:2_velocity_phi}
+	\end{align}
+\end{subequations}
+
 \subsection{Sonography}
 \begin{figure}[htbp]
 	\centering
