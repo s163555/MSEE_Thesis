@@ -1,13 +1,14 @@
 \chapter{Production}
 \section{Control System}
 
-\section{Transmitter}
+\section{Power Stage}
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=.8\textwidth]{Figures/4_transmitter_pcb_out.eps}
-	\caption[Measured input and output of transmitter PCB]{Measured input and output of transmitter PCB. (Above) Input to gate driver with dead-time (Below) Output of power stage}
-	\label{fig:4_transmitter_sim}
+	\caption[Measured input and output of power stage PCB]{Measured input and output of power stage PCB. (Above) Input to gate driver with dead-time (Below) Output of MOSFET half-bridge and the voltage across the load}
+	\label{fig:4_transmitter_meas}
 \end{figure}
+Seen in \cref{fig:4_transmitter_meas} are actual measured inputs and outputs of the power stage. On the input, there are two \qty{5}{\mega\hertz} signals with varying duty cycle to generate the desired dead-time. On the output, we see the rail-to-rail push-pull operation of the \gls{mosfet} half-bridge.
 \section{Transmit/Receive Switch}
 \section{Preamplifier}
 
