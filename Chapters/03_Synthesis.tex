@@ -102,7 +102,7 @@ In the context of a PW Doppler system, it is desired to generate 3 PWM signals:
 	\item \qty{20}{\mega\hertz} clock signal for the demodulation circuit in the receiver.
 \end{itemize}
 
-\section{Power Stage}
+\section{Transmitter}
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=\textwidth]{Figures/3_power_stage_block.pdf}
@@ -110,6 +110,12 @@ In the context of a PW Doppler system, it is desired to generate 3 PWM signals:
 	\caption{Block diagram of power stage \cite{MD1213DB1}}
 \end{figure}
 Several MOSFET drivers were considered, e.g. ISL55111\cite{ISL55111}, EL7104\cite{EL7104}, and MD1213\cite{MD1213}. The MD1213 has an advantage over the ISL55111 or EL7104 for ultrasound MOSFET drivers since it is specifically designed for high-voltage P-channel and N-channel MOSFETs in medical ultrasound and other applications needing a high output current for a capacitive load. It has a high-speed input stage with a logic interface that can function from \qtyrange{1.8}{5}{\volt} and an ideal operating input signal range of \qtyrange{1.8}{3.3}{\volt}. The DC-coupled adaptive threshold circuit sets the level translator switch threshold to the average of the input logic \gls{low} and logic \gls{high} levels. Consequentially, the MD1213 is designed primarily for driving MOSFETs in medical ultrasound applications, whereas the ISL55111 and EL7104 are more general-purpose drivers that may not perform as well in ultrasound applications. The MD1213's output stage has a distinguishing features in that the \gls{low} and \gls{high} levels of the output signal may be set independently of the rest of the circuit's supply voltages. The input logic levels, for example, might be \qty{0}{\volt} and \qty{1.8}{\volt}, whereas the control logic is powered by \qtyrange[retain-explicit-plus]{+5}{-5}{\volt}. The output \gls{low} and \gls{high} values, on the other hand, may be changed between \qtyrange[retain-explicit-plus]{-5}{+5}{\volt}. This gives you greater flexibility in adjusting the output signal levels to meet individual needs. The output stage may also provide peak currents of up to \qty{2}{\ampere}, depending on the load capacitance and supply voltages employed.
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=.8\textwidth]{Figures/3_transmitter_sim_out.eps}
+	\caption{LTspice simulation output of transmitter with level shifter and half-bridge power stage from \cref{fig:app_ltspice_transmitter}}
+	\label{fig:3_transmitter_sim}
+\end{figure}
 
 \section{Transmit/Receive Switch}
 \begin{figure}[htbp]
@@ -145,6 +151,13 @@ The module is designed with three usable channels, either three separate transdu
 \todo{This is wrong}
 The AD8332\cite{AD8332} is a fully integrated, single-chip amplifier designed for use in a wide range of RF and microwave applications. It is a low-noise, high-linearity amplifier that can be used in a variety of configurations, including as a stand-alone amplifier or as part of a larger system. The AD8332 is a current-feedback amplifier that can operate over a wide frequency range, from \qty{50}{\mega\hertz} to \qty{4}{\giga\hertz}. It has a high level of integration, with all active components on a single monolithic IC. This makes it suitable for use in small form factor applications where space is at a premium. The AD8332 has a number of features that make it well-suited for use in RF and microwave applications. It has a high level of linearity, which allows it to amplify signals without introducing significant distortion. It also has a low noise figure, which makes it well-suited for use in low-noise applications. Additionally, the AD8332 has a wide \gls{dynamic range}, which makes it capable of handling a wide range of input signals without clipping or saturating. Overall, the AD8332 is a versatile and reliable amplifier that can be used in a wide range of RF and microwave applications. It is well-suited for use in a variety of systems, including communication systems, radar systems, and instrumentation systems.
 
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=.8\textwidth]{Figures/4_preamplifier_sim_out.eps}
+	\caption{LTspice simulation output of preamplifier \gls{lna} and \gls{vga} from \cref{fig:app_ltspice_preamp}}
+	\label{fig:4_preamplifier_sim}
+\end{figure}
+
 \section{Demodulation}
 \begin{figure}[htbp]
 	\centering
@@ -155,6 +168,20 @@ The AD8332\cite{AD8332} is a fully integrated, single-chip amplifier designed fo
 
 To demodulate the received signal AD8333\cite{AD8333} can be used. It contains all the necessary circuitry to detect and extract the information contained in an AM signal. In AM, the information is encoded in the amplitude of the carrier wave, which is modulated or varied in some way to convey the information. The AD8333 is able to detect these variations in the carrier wave and extract the original information from the signal. To do this, the AD8333 uses a process called envelope detection. It rectifies the input signal, which removes the negative portions of the waveform, and then filters the resulting signal to remove any remaining high-frequency components. This leaves only the envelope of the original modulated signal, which contains the encoded information. The AD8333 also includes amplifier and buffer stages to amplify the detected envelope and prepare it for further processing or application. It is often used in radio communication systems, industrial control systems, and other applications where an AM signal needs to be demodulated and the information contained in the signal needs to be extracted.
 
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=.8\textwidth]{Figures/4_demod_sim_in.eps}
+	%	\includegraphics[width=.8\textwidth]{Figures/4_demod_sim_in_square.eps}
+	\caption{LTspice simulation demodulator input variables from \cref{fig:app_ltspice_demod}}
+	\label{fig:4_demod_sim_in}
+\end{figure}
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=.8\textwidth]{Figures/4_demod_sim_out.eps}
+	%	\includegraphics[width=.8\textwidth]{Figures/4_demod_sim_out_square.eps}
+	\caption{LTspice simulation demodulator output variables Q and I voltages from \cref{fig:app_ltspice_demod}}
+	\label{fig:4_demod_sim_out}
+\end{figure}
 \section{Sample and Hold}
 
 %\section{Pulse-Repetition and Wall Filter}
