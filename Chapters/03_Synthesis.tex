@@ -117,7 +117,7 @@ Several MOSFET drivers were considered, e.g. ISL55111\cite{ISL55111}, EL7104\cit
 	\caption{LTspice simulation output of transmitter with level shifter and half-bridge power stage from \cref{fig:app_ltspice_transmitter}}
 	\label{fig:3_transmitter_sim}
 \end{figure}
-Using a \gls{spice} macro model, an LTspice simulation of the power stage was implemented. The resulting waveforms are seen in \cref{fig:3_transmitter_sim}. In the top subplot, the input voltages \texttt{INA} and \texttt{INB} are seen with their dead-time visible on each overlapped on period. Since \texttt{INB} is driving an N-channel MOSFET, the driving pulse-train should be thought of having the opposite polarity. When looking at the middle subplot, it is noted that dead-time is visible as the time where the output voltage is zero. Thus, during that time neither \gls{fet} are allowing a current to pass, and therefore the voltage across the load is equal to zero. The lower subplot shows the maximum ideal power delivery using the peak pulse voltage, assuming the load is equal to \qty{50}{\ohm}. In reality, due to the equipment available for testing, the pulse peak voltage will be less than \qty{100}{\volt}.
+Using a \gls{spice} macro model, an LTspice simulation of the power stage was implemented. The resulting waveforms are seen in \cref{fig:3_transmitter_sim}. In the top subplot, the input voltages \texttt{INA} and \texttt{INB} are seen with their dead-time visible on each overlapped on period. Since \texttt{INB} is driving an N-channel \gls{mosfet}, the driving pulse-train should be thought of having the opposite polarity. When looking at the middle subplot, it is noted that dead-time is visible as the time where the output voltage is zero. Thus, during that time neither \gls{fet} are allowing a current to pass, and therefore the voltage across the load is equal to zero. The lower subplot shows the maximum ideal power delivery using the peak pulse voltage, assuming the load is equal to \qty{50}{\ohm}. In reality, due to the equipment available for testing, the pulse peak voltage will be less than \qty{100}{\volt}.
 
 \section{Transmit/Receive Switch}
 \begin{figure}[htbp]
@@ -155,7 +155,7 @@ The AD8332\cite{AD8332} is a fully integrated, single-chip amplifier designed fo
 
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=.8\textwidth]{Figures/4_preamplifier_sim_out.eps}
+	\includegraphics[width=.8\textwidth]{Figures/3_preamplifier_sim_out.eps}
 	\caption{LTspice simulation output of preamplifier \gls{lna} and \gls{vga} from \cref{fig:app_ltspice_preamp}}
 	\label{fig:4_preamplifier_sim}
 \end{figure}
@@ -172,14 +172,14 @@ To demodulate the received signal AD8333\cite{AD8333} can be used. It contains a
 
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=.8\textwidth]{Figures/4_demod_sim_in.eps}
+	\includegraphics[width=.8\textwidth]{Figures/3_demod_sim_in.eps}
 	%	\includegraphics[width=.8\textwidth]{Figures/4_demod_sim_in_square.eps}
 	\caption{LTspice simulation demodulator input variables from \cref{fig:app_ltspice_demod}}
 	\label{fig:4_demod_sim_in}
 \end{figure}
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=.8\textwidth]{Figures/4_demod_sim_out.eps}
+	\includegraphics[width=.8\textwidth]{Figures/3_demod_sim_out.eps}
 	%	\includegraphics[width=.8\textwidth]{Figures/4_demod_sim_out_square.eps}
 	\caption{LTspice simulation demodulator output variables Q and I voltages from \cref{fig:app_ltspice_demod}}
 	\label{fig:4_demod_sim_out}

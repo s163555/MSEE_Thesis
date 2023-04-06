@@ -18,6 +18,8 @@
 \glossaryentry{US?\glossentry{us}|setentrycounter[]{page}"\glsnumberformat}{5}
 \glossaryentry{US?\glossentry{us}|setentrycounter[]{page}"\glsnumberformat}{8}
 \glossaryentry{US?\glossentry{us}|setentrycounter[]{page}"\glsnumberformat}{8}
+\glossaryentry{PZT?\glossentry{pzt}|setentrycounter[]{page}"\glsnumberformat}{8}
+\glossaryentry{US?\glossentry{us}|setentrycounter[]{page}"\glsnumberformat}{8}
 \glossaryentry{PZT?\glossentry{pzt}|setentrycounter[]{page}"\glsnumberformat}{13}
 \glossaryentry{IC?\glossentry{ic}|setentrycounter[]{page}"\glsnumberformat}{14}
 \glossaryentry{US?\glossentry{us}|setentrycounter[]{page}"\glsnumberformat}{15}
@@ -54,7 +56,10 @@
 \glossaryentry{SoC?\glossentry{soc}|setentrycounter[]{page}"\glsnumberformat}{32}
 \glossaryentry{ELF?\glossentry{elf}|setentrycounter[]{page}"\glsnumberformat}{33}
 \glossaryentry{MCU?\glossentry{mcu}|setentrycounter[]{page}"\glsnumberformat}{33}
-\glossaryentry{AFE?\glossentry{afe}|setentrycounter[]{page}"\glsnumberformat}{36}
-\glossaryentry{CMUT?\glossentry{cmut}|setentrycounter[]{page}"\glsnumberformat}{36}
+\glossaryentry{MOSFET?\glossentry{mosfet}|setentrycounter[]{page}"\glsnumberformat}{34}
+\glossaryentry{FET?\glossentry{fet}|setentrycounter[]{page}"\glsnumberformat}{34}
+\glossaryentry{AFE?\glossentry{afe}|setentrycounter[]{page}"\glsnumberformat}{35}
+\glossaryentry{CMUT?\glossentry{cmut}|setentrycounter[]{page}"\glsnumberformat}{37}
 \glossaryentry{LNA?\glossentry{lna}|setentrycounter[]{page}"\glsnumberformat}{38}
 \glossaryentry{VGA?\glossentry{vga}|setentrycounter[]{page}"\glsnumberformat}{38}
+\glossaryentry{MOSFET?\glossentry{mosfet}|setentrycounter[]{page}"\glsnumberformat}{41}

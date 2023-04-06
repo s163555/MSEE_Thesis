@@ -5,7 +5,7 @@
 		\setentrycounter[]{page}\glsnumberformat{20}}}%
 \glossentry{afe}{\glossaryentrynumbers{\relax 
 		\setentrycounter[]{page}\glsnumberformat{3}\delimN 
-		\setentrycounter[]{page}\glsnumberformat{36}}}%
+		\setentrycounter[]{page}\glsnumberformat{35}}}%
 \glossentry{asic}{\glossaryentrynumbers{\relax 
 		\setentrycounter[]{page}\glsnumberformat{3}}}\glsgroupskip
 \glsgroupheading{B}\relax \glsresetentrylist %
@@ -15,7 +15,7 @@
 		\setentrycounter[]{page}\glsnumberformat{17}}}\glsgroupskip
 \glsgroupheading{C}\relax \glsresetentrylist %
 \glossentry{cmut}{\glossaryentrynumbers{\relax 
-		\setentrycounter[]{page}\glsnumberformat{36}}}%
+		\setentrycounter[]{page}\glsnumberformat{37}}}%
 \glossentry{cpu}{\glossaryentrynumbers{\relax 
 		\setentrycounter[]{page}\glsnumberformat{27}}}%
 \glossentry{ct}{\glossaryentrynumbers{\relax 
@@ -37,6 +37,8 @@
 \glossentry{elf}{\glossaryentrynumbers{\relax 
 		\setentrycounter[]{page}\glsnumberformat{33}}}\glsgroupskip
 \glsgroupheading{F}\relax \glsresetentrylist %
+\glossentry{fet}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsnumberformat{34}}}%
 \glossentry{fpga}{\glossaryentrynumbers{\relax 
 		\setentrycounter[]{page}\glsnumberformat{3}}}\glsgroupskip
 \glsgroupheading{I}\relax \glsresetentrylist %
@@ -61,6 +63,9 @@
 		\setentrycounter[]{page}\glsnumberformat{27}\delimN 
 		\setentrycounter[]{page}\glsnumberformat{29}\delimN 
 		\setentrycounter[]{page}\glsnumberformat{33}}}%
+\glossentry{mosfet}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsnumberformat{34}\delimN 
+		\setentrycounter[]{page}\glsnumberformat{41}}}%
 \glossentry{mri}{\glossaryentrynumbers{\relax 
 		\setentrycounter[]{page}\glsnumberformat{1}}}\glsgroupskip
 \glsgroupheading{P}\relax \glsresetentrylist %
@@ -72,6 +77,7 @@
 		\setentrycounter[]{page}\glsnumberformat{17}\delimN 
 		\setentrycounter[]{page}\glsnumberformat{19}}}%
 \glossentry{pzt}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsnumberformat{8}\delimN 
 		\setentrycounter[]{page}\glsnumberformat{13}}}\glsgroupskip
 \glsgroupheading{R}\relax \glsresetentrylist %
 \glossentry{ram}{\glossaryentrynumbers{\relax 
