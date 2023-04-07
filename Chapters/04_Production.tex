@@ -1,4 +1,5 @@
 \chapter{Production}
+In this chapter, the steps involved in turning a theoretical design into a tangible system will be outlined. Since the synthesis chapter dealt with a simulation of each module, with a subsequent evaluation of the outcomes, this chapter will focus on the creation of physical hardware setups and reproducing the desired results using lab experiments.
 \section{Control System}
 
 \section{Power Stage}
@@ -8,15 +9,21 @@
 	\caption[Measured input and output of power stage PCB]{Measured input and output of power stage PCB. (Above) Input to gate driver with dead-time (Below) Output of MOSFET half-bridge and the voltage across the load}
 	\label{fig:4_transmitter_meas}
 \end{figure}
-Seen in \cref{fig:4_transmitter_meas} are actual measured inputs and outputs of the power stage. On the input, there are two \qty{5}{\mega\hertz} signals with varying duty cycle to generate the desired dead-time. On the output, we see the rail-to-rail push-pull operation of the \gls{mosfet} half-bridge. The schematic of the transmitter can be found in the appendix in \cref{fig:appendix_md1213db1}.
+Seen in \cref{fig:4_transmitter_meas} are actual measured inputs and outputs of the power stage. On the input, there are two complementary \qty{5}{\mega\hertz} signals with varying duty cycle to generate the desired dead-time. On the output, we see the rail-to-rail push-pull operation of the \gls{mosfet} half-bridge. The schematic of the transmitter can be found in the appendix in \cref{fig:appendix_md1213db1}.
 \section{Transmit/Receive Switch}
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=.8\textwidth]{Figures/4_switch_pcb_pic.jpg}
+	\caption[Transmit/Receive Switch after assembly]{Transmit/Receive Switch after assembly}
+	\label{fig:4_txrx_pcb}
+\end{figure}
+The entire schematic of the transmit/receive switch can be found in the appendix in \cref{fig:appendix_ultrasoundswitch_a,fig:appendix_ultrasoundswitch_b}. As mentioned in the previous chapter, a PCB layout was made and a batch of 5 was ordered with an accompanying stencil for fast assembly.
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=.8\textwidth]{Figures/4_switch_pcb_meas.eps}
 	\caption[Measured transmit and receive on Transmit/Receive Switch PCB]{Measured transmit and receive on Transmit/Receive Switch PCB (Above) Measured transmit voltage (Below) Received reflected signal off water tank}
 	\label{fig:4_txrx_meas}
 \end{figure}
-The entire schematic of the transmit/receive switch can be found in the appendix in \cref{fig:appendix_ultrasoundswitch_a,fig:appendix_ultrasoundswitch_b}.
 \section{Preamplifier} \todo{Hvad er der galt med oscilloskopet?}
 \begin{figure}[htbp]
 	\centering
