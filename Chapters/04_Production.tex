@@ -1,8 +1,14 @@
 \chapter{Production}
-In this chapter, the steps involved in turning a theoretical design into a tangible system will be outlined. Since the synthesis chapter dealt with a simulation of each module, with a subsequent evaluation of the outcomes, this chapter will focus on the creation of physical hardware setups and reproducing the desired results using lab experiments.
+In this chapter, the steps involved in turning a theoretical design into a tangible system will be outlined. Since the synthesis chapter dealt with a simulation of each module, with a subsequent evaluation of the outcomes, this chapter will focus on the creation of physical hardware setups and reproducing the desired results using lab experiments. As such, each module will be tested independently to validate its function before a larger, more comprehensive experiment is conducted.
 \section{Control System}
 
 \section{Power Stage}
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=.8\textwidth]{Figures/4_transmitter_pcb_pic.jpg}
+	\caption{MD1213DB1 High Speed Pulser}
+	\label{fig:4_transmitter_pcb_pic}
+\end{figure}
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=.8\textwidth]{Figures/4_transmitter_pcb_out.eps}
@@ -27,18 +33,25 @@ The entire schematic of the transmit/receive switch can be found in the appendix
 \section{Preamplifier} \todo{Hvad er der galt med oscilloskopet?}
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=.8\textwidth]{Figures/4_preamplifier_pcb_in.eps}
-	\caption[Measured input of preamplifier PCB]{Measured input of preamplifier PCB, AC coupled input signal with amplitude \qty{100}{\milli\volt}}
+	\includegraphics[width=.8\textwidth]{Figures/4_preamplifier_pcb.eps}
+	\caption[Measured input of preamplifier PCB]{Measured input of preamplifier PCB, (Above) AC coupled input signal with amplitude \qty{1}{\volt} (Below Measured output of preamplifier PCB, Differential signal with DC coupling and $\times \qty{19}{\decibel}$ amplification)}
 	\label{fig:4_preamp_in}
 \end{figure}
-\begin{figure}[htbp]
-	\centering
-	\includegraphics[width=.8\textwidth]{Figures/4_preamplifier_pcb_out.eps}
-	\caption[Measured output of preamplifier PCB]{Measured output of preamplifier PCB, Differential signal with DC coupling and $\times \qty{19}{\decibel}$ amplification}
-	\label{fig:4_preamp_out}
-\end{figure}
+%\begin{figure}[htbp]
+%	\centering
+%	\includegraphics[width=.8\textwidth]{Figures/4_preamplifier_pcb_out.eps}
+%	\caption[Measured output of preamplifier PCB]{Measured output of preamplifier PCB, Differential signal with DC coupling and $\times \qty{19}{\decibel}$ amplification}
+%	\label{fig:4_preamp_out}
+%\end{figure}
 The entire schematic of the preamplifier can be found in the appendix in \cref{fig:appendix_ad8333}.
 \section{Demodulator}
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=.8\textwidth]{Figures/4_demod_pcb_pic.jpg}
+	\caption{Demodulator PCB AD8333-EVALZ}
+	\label{fig:4_demod_pcb_pic}
+\end{figure}
+
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=.8\textwidth]{Figures/4_demod_pcb_in.eps}
@@ -52,6 +65,14 @@ The entire schematic of the preamplifier can be found in the appendix in \cref{f
 	\label{fig:4_demod_out}
 \end{figure}
 The entire schematic of the demodulator can be found in the appendix in \cref{fig:appendix_ad8333}.
+\section{Sample and Hold}
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=.8\textwidth]{Figures/4_sampler_pcb.eps}
+	\caption{Measured input and output of Sample and Hold amplifier}
+	\label{fig:4_sample_hold_pcb}
+\end{figure}
+
 \section{Pulse-Repetition and Wall Filter}
 \section{Digital Signal Processor}
 %\begin{figure}[H]
