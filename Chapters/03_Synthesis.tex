@@ -141,7 +141,7 @@ The TX810 can switch the transmit and receive paths for up to 8 different transd
 	\caption{3D Render of PCB in Altium Designer}
 	\label{fig:3_ultrasoundswitch}
 \end{figure}
-The module is designed with three usable channels, either three separate transducers for multi-angle sonography, or a \gls{cmut} with three channels in a single angle.
+The module is designed with three usable channels, either three separate transducers for multi-angle sonography, or a \gls{cmut} with three channels in a single angle. However, the following experiments with the TX/RX switch, only one channel will be used for simplifying the data acquisition experiments.
 
 \section{Preamplifier}
 \begin{figure}[htbp]
@@ -150,7 +150,7 @@ The module is designed with three usable channels, either three separate transdu
 	\caption{Block diagram of preamplifier AD8332 \cite{AD8332}}
 	\label{fig:3_preamplifier_block}
 \end{figure}
-The AD8332 is a device that combines a dual-channel \gls{lna} and \gls{vga}, designed specifically for ultrasound systems. A diagram of its internal functional blocks can be seen in \cref{fig:3_preamplifier_block}. The AD8332  functions at frequencies up to \qty{120}{\mega\hertz}. Each channel includes an ultralow noise preamp (\gls{lna}), a \gls{vga} with \qty{48}{\decibel} of gain range, and a selectable gain postamp with adjustable output limiting. The LNA gain is \qty{19}{\decibel} with a single-ended input and differential outputs. To match the signal source without sacrificing noise performance, the LNA input impedance can be adjusted using a single resistor. The VGA has low output-referred noise, which is useful in driving high-speed differential ADCs. The gain of the postamp can be pin-selected to \qty{3.5}{\decibel} or \qty{15.5}{\decibel}, depending on the converter requirements. The output can be limited to a user-defined clamping level to avoid input overload to a subsequent \gls{adc}, with the clamping level adjusted using an external resistor. In this application, however, only the \gls{lna} is used, and the \gls{lna} is bypassed in the preamplifier configuration. A SPICE macromodel is provided by the vendor and the preamplification is succesfully simulated using LTspice, seen in \cref{fig:3_preamplifier_sim}
+The AD8332 is a device that combines a dual-channel \gls{lna} and \gls{vga}, designed specifically for ultrasound systems. A diagram of its internal functional blocks can be seen in \cref{fig:3_preamplifier_block}. The AD8332  functions at frequencies up to \qty{120}{\mega\hertz}. Each channel includes an ultralow noise preamp (\gls{lna}), a \gls{vga} with \qty{48}{\decibel} of gain range, and a selectable gain postamp with adjustable output limiting. The LNA gain is \qty{19}{\decibel} with a single-ended input and differential outputs. To match the signal source without sacrificing noise performance, the LNA input impedance can be adjusted using a single resistor. The VGA has low output-referred noise, which is useful in driving high-speed differential ADCs. The gain of the postamp can be pin-selected to \qty{3.5}{\decibel} or \qty{15.5}{\decibel}, depending on the converter requirements. The output can be limited to a user-defined clamping level to avoid input overload to a subsequent \gls{adc}, with the clamping level adjusted using an external resistor. In this application, however, only the \gls{lna} is used, and the \gls{lna} is bypassed in the preamplifier configuration. A SPICE macromodel is provided by the vendor and the preamplification is succesfully simulated using LTspice, seen in \cref{fig:3_preamplifier_sim}.
 
 \begin{figure}[htbp]
 	\centering
@@ -187,13 +187,17 @@ The AD8333\cite{AD8333} is a device that combines dual-phase shifting and I/Q de
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=.8\textwidth]{Figures/3_sample_hold_ad783.pdf}
-	\caption{AD783 Sample and Hold Amplifier functional block diagram}
+	\caption{AD783 Sample and Hold Amplifier functional block diagram \cite{AD783}}
 	\label{fig:3_sha_block}
 \end{figure}
+In this system, the sample-and-hold amplifier is necessary to keep values between each sample line. In chapter 2, it was described how the pulsed-wave flow-meter measures the movement of scatterers by sampling the back-scattered signal at a specific depth. Generally, the intended use for this part is in general data acquisition systems such as an \gls{adc}. In that application, the sample-and-hold amplifier captures an analog signal and retains it during certain operations, usually analog-to-digital conversion. Through a S/H input, two possible modes are selected, \textit{sample} or \textit{hold}. During the sample mode of operation, the output of the sample-and-hold amplifier follows the input. During the hold mode of operation, the output may not change by more than 1 \gls{lsb}. The typical usage of a SHA is to keep the ADC input constant throughout the conversion process. With some types of ADCs, but not all, the input cannot change by more than 1 \gls{lsb} during the conversion, or else the process will be compromised. This can either impose very low frequency limits on such ADCs or necessitate their use with a SHA to hold the input during each conversion. An internal capacitor forms the key component of the sample-and-hold amplifier, which serves as the energy storage device. The input amplifier buffers the input signal by presenting a high impedance to the signal source, while providing current gain to charge the hold capacitor. In the sample mode, the voltage on the hold capacitor follows the input signal, albeit with some delay and bandwidth limitations. In the hold mode, the switch is opened, and the capacitor retains the voltage present before being disconnected from the input buffer. The output buffer prevents the held voltage from discharging too soon by offering a high impedance to the hold capacitor. The switching circuit and its driver work together to enable the SHA to alternate between sample and hold modes.
+
+In the pulsed-wave flowmeter, the sample-and-hold amplifier is used to keep each sample value between each gate pulse. This is done for both the I and Q signals in parallel. A diagram of a sample-and-hold operation can be seen in \cref{fig:3_sha_function}.
+
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=.8\textwidth]{Figures/3_sample_hold_amplifier_quantization.pdf}
-	\caption{Sample and Hold function with input function $f(t)$ over time}
+	\caption{Sample and Hold function with input function $f(t)$ over time \cite{sha_pic}}
 	\label{fig:3_sha_function}
 \end{figure}
 %\section{Pulse-Repetition and Wall Filter}
