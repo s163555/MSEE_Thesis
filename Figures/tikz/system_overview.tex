@@ -12,7 +12,7 @@ align=center]
 \node[place]		(preamp)		[inner sep=1mm,rectangle,below=5mm of tr_switch]	{Preamplifier};
 \node[place]		(bpf)		[inner sep=1mm,rectangle,below=5mm of preamp]	{BPF};
 \node[place]		(demod)		[inner sep=1mm,rectangle,left=10mm of bpf]		{Demodulator};
-\node[place]		(prff)		[inner sep=1mm,rectangle,below=5mm of embed]		{PRF/Wall filter};
+\node[place]		(sha)		[inner sep=1mm,rectangle,below=5mm of embed]		{Sample and Hold};
 \node[place]		(lpf)		[inner sep=1mm,rectangle,below=5mm of prff]		{LPF};
 
 % Draw lines between nodes
@@ -25,8 +25,8 @@ align=center]
 \draw [->]			(preamp)		to		(bpf);
 \draw [->]			(bpf)		to		(demod);
 \draw [->]			(demod)		to		(lpf);
-\draw [->]			(lpf)		to		(prff);
-\draw [->]			(prff)		to		(embed);
+\draw [->]			(lpf)		to		(sha);
+\draw [->]			(sha)		to		(embed);
 
 % Draw rectangle
 \draw[draw=black,dashed,red] (13mm,8mm) rectangle ++(45mm,-15mm);
