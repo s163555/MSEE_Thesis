@@ -100,13 +100,13 @@ In the context of a PW Doppler system, it is desired to generate 3 PWM signals:
 	\item \qty{5}{\mega\hertz} complementary signal with dead-time for the pulsed burst during transmit mode.
 	\item \qty{10}{\kilo\hertz} signal as $f_{\mathrm{prf}}$ for the timing control of the transmit/receive switch.
 	\item \qty{20}{\mega\hertz} clock signal for the demodulation circuit in the receiver.
-	\item \qty{10}{\kilo\hertz} gating pulse for S/H control
+	\item \qty{10}{\kilo\hertz} gate pulse for S/H control with pulse length $t_{\mathrm{pulse}} = N_{\mathrm{pulse}} \times T_{\mathrm{prd}}$, where $T_{\mathrm{prd}} = \sfrac{1}{f_{\mathrm{pwm}}}$
 \end{itemize}
 
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=.9\textwidth]{Figures/3_wavedrom.pdf}
-	\caption{Timing diagram of various control signals}
+	\includegraphics[width=\textwidth]{Figures/3_wavedrom.pdf}
+	\caption{Timing diagram of various control signals for an arbitrary $n$ length pulse chain expressed by the second diagram gap}
 	\label{fig:3_pulse_timing_diagram}
 \end{figure}
 
@@ -124,7 +124,7 @@ Several MOSFET drivers were considered, e.g. ISL55111\cite{ISL55111}, EL7104\cit
 	\caption{LTspice simulation output of transmitter with level shifter and half-bridge power stage from \cref{fig:app_ltspice_transmitter}}
 	\label{fig:3_transmitter_sim}
 \end{figure}
-Using a \gls{spice} macro model, an LTspice simulation of the power stage was implemented. The resulting waveforms are seen in \cref{fig:3_transmitter_sim}. In the top subplot, the input voltages \texttt{INA} and \texttt{INB} are seen with their dead-time visible on each overlapped on period. Since \texttt{INB} is driving an N-channel \gls{mosfet}, the driving pulse-train should be thought of having the opposite polarity. When looking at the middle subplot, it is noted that dead-time is visible as the time where the output voltage is zero. Thus, during that time neither \gls{fet} are allowing a current to pass, and therefore the voltage across the load is equal to zero. The lower subplot shows the maximum ideal power delivery using the peak pulse voltage, assuming the load is equal to \qty{50}{\ohm}. In reality, due to the equipment available for testing, the pulse peak voltage will be less than \qty{100}{\volt}.
+Using a \gls{spice} macro model, an LTspice simulation of the power stage was implemented where the full model can be seen in \cref{fig:app_ltspice_transmitter}. The resulting waveforms are seen in \cref{fig:3_transmitter_sim}. In the top subplot, the input voltages \texttt{INA} and \texttt{INB} are seen with their dead-time visible on each overlapped on period. Since \texttt{INB} is driving an N-channel \gls{mosfet}, the driving pulse-train should be thought of having the opposite polarity. When looking at the middle subplot, it is noted that dead-time is visible as the time where the output voltage is zero. Thus, during that time neither \gls{fet} are allowing a current to pass, and therefore the voltage across the load is equal to zero. The lower subplot shows the maximum ideal power delivery using the peak pulse voltage, assuming the load is equal to \qty{50}{\ohm}. In reality, due to the equipment available for testing, the pulse peak voltage will be less than \qty{100}{\volt}.
 
 \section{Transmit/Receive Switch}
 \begin{figure}[htbp]
@@ -160,7 +160,7 @@ The module is designed with three usable channels, either three separate transdu
 	\caption{Block diagram of preamplifier AD8332 \cite{AD8332}}
 	\label{fig:3_preamplifier_block}
 \end{figure}
-The signal is still rather weak in amplitude, and therefore has to be amplified with the preamplifier circuit. This circuit is based on the integrated circuit from Analog Devices AD8332 \cite{AD8332}, which is a device that combines a dual-channel \gls{lna} and \gls{vga}, designed specifically for ultrasound systems. A diagram of its internal functional blocks can be seen in \cref{fig:3_preamplifier_block}. The AD8332  functions at frequencies up to \qty{120}{\mega\hertz}. Each channel includes an ultralow noise preamp (\gls{lna}), a \gls{vga} with \qty{48}{\decibel} of gain range, and a selectable gain postamp with adjustable output limiting. The LNA gain is \qty{19}{\decibel} with a single-ended input and differential outputs. To match the signal source without sacrificing noise performance, the LNA input impedance can be adjusted using a single resistor. The VGA has low output-referred noise, which is useful in driving high-speed differential ADCs. The gain of the postamp can be pin-selected to \qty{3.5}{\decibel} or \qty{15.5}{\decibel}, depending on the converter requirements. The output can be limited to a user-defined clamping level to avoid input overload to a subsequent \gls{adc}, with the clamping level adjusted using an external resistor. In this application, however, only the \gls{lna} is used, and the \gls{lna} is bypassed in the preamplifier configuration. A SPICE macromodel is provided by the vendor and the preamplification is succesfully simulated using LTspice, seen in \cref{fig:3_preamplifier_sim}.
+The signal is still rather weak in amplitude, and therefore has to be amplified with the preamplifier circuit. This circuit is based on the integrated circuit from Analog Devices AD8332 \cite{AD8332}, which is a device that combines a dual-channel \gls{lna} and \gls{vga}, designed specifically for ultrasound systems. A diagram of its internal functional blocks can be seen in \cref{fig:3_preamplifier_block}. The AD8332 functions at frequencies up to \qty{120}{\mega\hertz}. Each channel includes an ultralow noise preamp (\gls{lna}), a \gls{vga} with \qty{48}{\decibel} of gain range, and a selectable gain postamp with adjustable output limiting. The LNA gain is \qty{19}{\decibel} with a single-ended input and differential outputs. To match the signal source without sacrificing noise performance, the LNA input impedance can be adjusted using a single resistor. The VGA has low output-referred noise, which is useful in driving high-speed differential ADCs. The gain of the postamp can be pin-selected to \qty{3.5}{\decibel} or \qty{15.5}{\decibel}, depending on the converter requirements. The output can be limited to a user-defined clamping level to avoid input overload to a subsequent \gls{adc}, with the clamping level adjusted using an external resistor. In this application, however, only the \gls{lna} is used, and the \gls{lna} is bypassed in the preamplifier configuration. A SPICE macromodel is provided by the vendor and the preamplification is succesfully simulated using LTspice with the full LTspice model found in \cref{fig:app_ltspice_preamp}, and the probed inputs and outputs seen in \cref{fig:3_preamplifier_sim}.
 
 \begin{figure}[htbp]
 	\centering
