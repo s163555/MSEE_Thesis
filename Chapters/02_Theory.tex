@@ -109,7 +109,7 @@ Where $p(z=0)$ is the pressure in the point of origin and $\alpha$ is the attenu
 \begin{subequations} \label{eq:2_attenuation_coefficient}
 	\begin{align}
 		\ensuremath{\alpha &= \frac{1}{z} \ln \frac{p(z=0)}{p(z)} \\
-		\alpha( \si{\dB\per\centi\meter} ) &= 20 ( log_{10}e) \alpha ( \si{\neper\per\centi\meter}) = 8.68\alpha (\si{\neper\per\centi\meter})}
+		\alpha( \si{\dB\per\centi\meter} ) &= 20 ( \log_{10}e) \alpha ( \si{\neper\per\centi\meter}) = 8.68\alpha (\si{\neper\per\centi\meter})}
 	\end{align}
 \end{subequations}
 
@@ -168,7 +168,7 @@ If both source and observer are moving with the same velocity, $v$, assuming $c\
 
 If the velocity of the moving source is traveling with an incident angle $\theta$, the $v$ in \cref{eq:2_doppler_reduced} is replaced with $v (\cos\theta)$. This results in the expression found in \cref{eq:2_doppler_theta} and forms the basis for applied \gls{doppler} measurements.
 \begin{equation} \label{eq:2_doppler_theta}
-	f_{d} = \frac{2 v(\cos\theta) f}{c}
+	\boxed{f_{d} = \frac{2 v(\cos\theta) f}{c}}
 \end{equation}
 
 The Doppler effect is used in ultrasonic Doppler devices used to image blood flow \gls{transcutaneous}ly. An ultrasonic transducer in these devices sends ultrasonic waves into a blood artery, and the scattered radiation from moving red cells is measured by either the same transducer or a second transducer. The Doppler frequency, which is determined by the velocity of red blood cells, is extracted using modern electronic demodulation techniques which will be explored later.
