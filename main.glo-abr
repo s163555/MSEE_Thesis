@@ -67,12 +67,10 @@
 \glossaryentry{VGA?\glossentry{vga}|setentrycounter[]{page}"\glsnumberformat}{38}
 \glossaryentry{ADC?\glossentry{adc}|setentrycounter[]{page}"\glsnumberformat}{39}
 \glossaryentry{LNA?\glossentry{lna}|setentrycounter[]{page}"\glsnumberformat}{39}
-\glossaryentry{LNA?\glossentry{lna}|setentrycounter[]{page}"\glsnumberformat}{39}
-\glossaryentry{LNA?\glossentry{lna}|setentrycounter[]{page}"\glsnumberformat}{39}
 \glossaryentry{VGA?\glossentry{vga}|setentrycounter[]{page}"\glsnumberformat}{39}
-\glossaryentry{ADC?\glossentry{adc}|setentrycounter[]{page}"\glsnumberformat}{41}
-\glossaryentry{LSB?\glossentry{lsb}|setentrycounter[]{page}"\glsnumberformat}{41}
-\glossaryentry{LSB?\glossentry{lsb}|setentrycounter[]{page}"\glsnumberformat}{42}
+\glossaryentry{ADC?\glossentry{adc}|setentrycounter[]{page}"\glsnumberformat}{40}
+\glossaryentry{LSB?\glossentry{lsb}|setentrycounter[]{page}"\glsnumberformat}{40}
+\glossaryentry{LSB?\glossentry{lsb}|setentrycounter[]{page}"\glsnumberformat}{40}
 \glossaryentry{HP?\glossentry{hp}|setentrycounter[]{page}"\glsnumberformat}{42}
 \glossaryentry{PRF?\glossentry{prf}|setentrycounter[]{page}"\glsnumberformat}{42}
 \glossaryentry{ADC?\glossentry{adc}|setentrycounter[]{page}"\glsnumberformat}{42}
@@ -81,3 +79,5 @@
 \glossaryentry{PZT?\glossentry{pzt}|setentrycounter[]{page}"\glsnumberformat}{46}
 \glossaryentry{VNA?\glossentry{vna}|setentrycounter[]{page}"\glsnumberformat}{48}
 \glossaryentry{VNA?\glossentry{vna}|setentrycounter[]{page}"\glsnumberformat}{48}
+\glossaryentry{LNA?\glossentry{lna}|setentrycounter[]{page}"\glsnumberformat}{49}
+\glossaryentry{VGA?\glossentry{vga}|setentrycounter[]{page}"\glsnumberformat}{49}

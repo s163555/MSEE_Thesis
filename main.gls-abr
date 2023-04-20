@@ -3,8 +3,8 @@
 \glsgroupheading{A}\relax \glsresetentrylist %
 \glossentry{adc}{\glossaryentrynumbers{\relax 
 		\setentrycounter[]{page}\glsnumberformat{20}\delimN 
-		\setentrycounter[]{page}\glsnumberformat{39}\delimN 
-		\setentrycounter[]{page}\glsnumberformat{41\delimN 42}}}%
+		\setentrycounter[]{page}\glsnumberformat{39\delimN 40}\delimN 
+		\setentrycounter[]{page}\glsnumberformat{42}}}%
 \glossentry{afe}{\glossaryentrynumbers{\relax 
 		\setentrycounter[]{page}\glsnumberformat{3}\delimN 
 		\setentrycounter[]{page}\glsnumberformat{36}}}%
@@ -61,11 +61,12 @@
 \glsgroupheading{L}\relax \glsresetentrylist %
 \glossentry{lna}{\glossaryentrynumbers{\relax 
 		\setentrycounter[]{page}\glsnumberformat{38\delimN 39}\delimN 
+		\setentrycounter[]{page}\glsnumberformat{49}\delimN 
 		\setentrycounter[]{page}\glsnumberformat{IV}}}%
 \glossentry{low-res}{\glossaryentrynumbers{\relax 
 		\setentrycounter[]{page}\glsnumberformat{2}}}%
 \glossentry{lsb}{\glossaryentrynumbers{\relax 
-		\setentrycounter[]{page}\glsnumberformat{41\delimN 42}}}\glsgroupskip
+		\setentrycounter[]{page}\glsnumberformat{40}}}\glsgroupskip
 \glsgroupheading{M}\relax \glsresetentrylist %
 \glossentry{mcu}{\glossaryentrynumbers{\relax 
 		\setentrycounter[]{page}\glsnumberformat{27}\delimN 
@@ -108,6 +109,7 @@
 \glsgroupheading{V}\relax \glsresetentrylist %
 \glossentry{vga}{\glossaryentrynumbers{\relax 
 		\setentrycounter[]{page}\glsnumberformat{38\delimN 39}\delimN 
+		\setentrycounter[]{page}\glsnumberformat{49}\delimN 
 		\setentrycounter[]{page}\glsnumberformat{IV}}}%
 \glossentry{vna}{\glossaryentrynumbers{\relax 
 		\setentrycounter[]{page}\glsnumberformat{48}}}%
