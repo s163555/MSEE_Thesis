@@ -95,7 +95,7 @@ Finally, in \cref{fig:3_build6}, using \texttt{GNU objdump}, the completed kerne
 
 \section{Pulse Generator}
 Initially, a pulse generator was designed by using a programmable synthesizer circuit, but due to constraints within generating complementary PWM with dead-time when driving the half-bridge, a timer based PWM generation in the \gls{mcu} is preferable. In a half-bridge power stage, dead-time refers to the amount of time that elapses between the moment when one of the switches in the half-bridge (either the high-side or the low-side switch) turns off and the moment when the other switch turns on. During the dead-time, both switches in the half-bridge are off, which means that there is no current flowing through either switch in the half-bridge. A scenario where both switches are on, can cause problems if the output of the half-bridge is connected to a load, as it may cause the load to behave erratically or even be damaged. To avoid these problems, it is important to carefully consider the amount of dead-time in a half-bridge power stage. In general, a longer dead-time will reduce the risk of damage to the load, but it will also reduce the efficiency of the power stage, as energy will be lost during the dead-time. Therefore, it is important to carefully balance the trade-off between efficiency and safety in order to determine the optimal amount of dead-time for a given half-bridge power stage. Based on discussions during design review, it was decided to change approach and generate the two complementary PWM signals by configuring the PWM module of the microcontroller with the functionality though with a trade-off in resolution. However, for this application there is no need to amplitude modulate the output signal and therefore no downside.
-In the context of a PW Doppler system, it is desired to generate 3 PWM signals:
+In the context of a PW Doppler system, it is desired to generate 4 signals:
 \begin{itemize}
 	\item \qty{5}{\mega\hertz} complementary signal with dead-time for the pulsed burst during transmit mode.
 	\item \qty{10}{\kilo\hertz} signal as $f_{\mathrm{prf}}$ for the timing control of the transmit/receive switch.
@@ -105,12 +105,49 @@ In the context of a PW Doppler system, it is desired to generate 3 PWM signals:
 
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=\textwidth]{Figures/3_wavedrom.pdf}
+	\includegraphics[width=\textwidth]{Figures/3_wavedrom.eps}
 	\caption{Timing diagram of various control signals for an arbitrary $n$ length pulse chain expressed by the second diagram gap}
 	\label{fig:3_pulse_timing_diagram}
 \end{figure}
 
 \section{Power Stage}
+%\begin{figure}[htbp]
+%	\centering
+%	\resizebox{.6\textwidth}{!}{%
+%		\begin{circuitikz}
+%			\tikzstyle{every node}=[font=\LARGE]
+%			\draw (7,12) to[Tnmos] (7,14);
+%			\draw (6.15,13) to[short] (6,13);
+%			\draw (7,16) to[Tpmos] (7,18);
+%			\draw (6.15,17) to[short] (6,17);
+%			\draw (5.5,16.5) to[R,l={ \normalsize $R1$}] (5.5,17.75);
+%			\draw (5,16.5) to[empty Zener diode,l={ \normalsize $D1$}] (5,17.75);
+%			\draw (5,13) to[empty Zener diode,l={ \normalsize $D2$}] (5,11.75);
+%			\draw (5.5,13) to[R,l={ \normalsize $R2$}] (5.5,11.75);
+%			\draw [](5,17.75) to[short] (7,17.75);
+%			\draw [](7,17.75) to[short] (7,17.5);
+%			\draw[] (6,16.5) to[short] (5,16.5);
+%			\draw[] (6,13) to[short] (5,13);
+%			\draw [](7,12) to[short] (7,11.75);
+%			\draw[] (7,11.75) to[short] (5,11.75);
+%			\draw (5.5,13) to[short, -*] (5.5,13);
+%			\draw (5.5,11.75) to[short, -*] (5.5,11.75);
+%			\draw (5.5,17.75) to[short, -*] (5.5,17.75);
+%			\draw (5.5,16.5) to[short, -*] (5.5,16.5);
+%			\draw [ -Stealth] (7,17.75) -- (7,18.25);
+%			\draw [ -Stealth] (7,11.75) -- (7,11.25);
+%			\draw [](5,16.5) to[short, -o] (4.25,16.5);
+%			\draw [](5,13) to[short, -o] (4.25,13);
+%			\draw (7,15.5) to[D,l={ \normalsize $D3$}] (8.25,15.5);
+%			\draw (8.25,14) to[D,l={ \normalsize $D4$}] (7,14);
+%			\draw [](8.25,14.75) to[short, -o] (9.25,14.75);
+%			\draw [](8.25,14) to[short] (8.25,15.5);
+%			\draw (8.25,14.75) to[short, -*] (8.25,14.75);
+%		\end{circuitikz}
+%	}%
+%
+%	\label{fig:my_label}
+%\end{figure}
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=\textwidth]{Figures/3_power_stage_block.pdf}
@@ -249,7 +286,7 @@ In the pulsed-wave flowmeter, the sample-and-hold amplifier is used to keep each
 	\caption{Circuit diagram of \gls{hp} PRF and Wall filter}
 	\label{fig:3_prf_wall_diagram}
 \end{figure}
-Finally, the signal should be DC coupled for sampling. In the circuit diagram in \cref{fig:3_prf_wall_diagram}, a \gls{hp} filter is used as a combined \gls{prf} and Wall-filter in conjunction with a \qty{2}{\decibel} gain amplification to maximize dynamic range of the \gls{adc} measurements from \qtyrange{0}{3.3}{\volt}. In the diagram, $V_{DC}=\qty{1.65}{\volt}$, which is half of the \gls{adc} dynamic range of \qtyrange{0}{3.3}{\volt}. A SPICE simulation was implemented and can be seen in \cref{fig:app_ltspice_dc_coupler}. From this simulation model, a small signal analysis as well as a transient analysis was conducted. The resulting small signal analysis can be seen in \cref{fig:3_dccoupler_sim_ac} and the transient analysis can be seen in \cref{fig:3_dccoupler_sim_transient}.
+Finally, the signal should be DC coupled for sampling. In the circuit diagram in \cref{fig:3_prf_wall_diagram}, a \gls{hp} filter is used as a combined \gls{prf} and Wall-filter in conjunction with a \qty{2}{\decibel} gain amplification to maximize dynamic range of the \gls{adc} measurements from \qtyrange{0}{3.3}{\volt}. In the diagram, $V_{DC}=\qty{1.65}{\volt}$, which is half of the \gls{adc} dynamic range of \qtyrange{0}{3.3}{\volt}, and $v_{\mathrm{in}}$ is the input signal to the filter from the output of the sample-and-hold amplifier. A SPICE simulation was implemented and can be seen in \cref{fig:app_ltspice_dc_coupler}. From this simulation model, a small signal analysis as well as a transient analysis was conducted. The resulting small signal analysis can be seen in \cref{fig:3_dccoupler_sim_ac} and the transient analysis can be seen in \cref{fig:3_dccoupler_sim_transient}.
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=.8\textwidth]{Figures/3_dc_coupler_sim.eps}

@@ -36,6 +36,57 @@
 %% Draw rectangle
 %\draw[draw=black,dashed,red] (13mm,8mm) rectangle ++(45mm,-15mm);
 %\end{tikzpicture}
+%\begin{tikzpicture}
+%	[outer sep=0,
+%	>=latex,
+%	align=center,
+%	line width = 1pt,
+%	% on grid,
+%	start chain = going right,
+%	node distance = 5cm,
+%	%box/.style = {draw, rectangle, font=\huge, on chain},
+%	box/.style = {draw, rectangle, on chain},
+%	%L/.style = {draw, red, -{Stealth[scale=3,length=3,width=2]}},
+%	L/.style = {draw, -{Stealth[scale=3,length=3,width=2]}},
+%	%T/.style = {draw, red, rounded corners,
+%		T/.style = {draw, rounded corners,
+%			to path={-| (\tikztotarget)},
+%			-{Stealth[scale=3,length=3,width=2]}}]
+%
+%		% Draw nodes
+%		\node[place]		(human_in)	[draw=none]											{Control\\input};
+%		\node[place]		(embed)		[inner sep=1mm,rectangle,right=10mm of human_in]	{Control\\system};
+%		\node[place]		(wave_gen)		[inner sep=1mm,rectangle,right=5mm of embed]			{Pulse\\generator};
+%		\node[place]		(pwr_stg)	[inner sep=1mm,rectangle,right=5mm of wave_gen]	{Power\\stage};
+%		\node[place]		(tr_switch)	[inner sep=1mm,rectangle,right=5mm of pwr_stg]	{T/R\\switch};
+%		\node[place]		(transducer)		[inner sep=1mm,rectangle,right=8mm of tr_switch]	{Transducer};
+%		\node[place]		(preamp)		[inner sep=1mm,rectangle,below=5mm of tr_switch]	{Preamplifier};
+%		\node[place]		(bpf)		[inner sep=1mm,rectangle,below=5mm of preamp]	{BPF};
+%		\node[place]		(demod)		[inner sep=1mm,rectangle,left=10mm of bpf]		{Demodulator};
+%		\node[place]		(lpf2)		[inner sep=1mm,rectangle,above=5mm of demod]	{LPF 2};
+%		\node[place]		(lpf1)		[inner sep=1mm,rectangle,left=5mm of demod]		{LPF 1};
+%		\node[place]		(sha2)		[inner sep=1mm,rectangle,left=10mm of lpf2]		{SHA 2};
+%		\node[place]		(sha1)		[inner sep=1mm,rectangle,left=27.5mm of lpf2]		{SHA 1};
+%
+%		% Draw lines between nodes
+%		\draw [L,|->] 		(human_in) 		to 		(embed);
+%		\draw [L,->]			(embed)			to		(wave_gen);
+%		\draw [L,->]			(wave_gen)		to		(pwr_stg);
+%		\draw [L,->]			(pwr_stg)		to		(tr_switch);
+%		\draw [L,<->]			(tr_switch)		to		(transducer);
+%		\draw [L,->]			(tr_switch)		to		(preamp);
+%		\draw [L,->]			(preamp)		to		(bpf);
+%		\draw [L,->]			(bpf)		to		(demod);
+%		\draw [L,->]			(demod)		to		(lpf1);
+%		\draw [L,->]			(demod)		to		(lpf2);
+%		\draw [T,->]			(lpf1)		to		(sha1);
+%		\draw [L,->]			(lpf2)		to		(sha2);
+%		\draw [T,->]			(sha1)		to		(embed);
+%		\draw [T,->]			(sha2)		to		(embed);
+%
+%		% Draw rectangle
+%		%\draw[draw=black,dashed,red] (13mm,8mm) rectangle ++(45mm,-15mm);
+%	\end{tikzpicture}
 \begin{tikzpicture}
 	[outer sep=0,
 	>=latex,
@@ -59,14 +110,15 @@
 		\node[place]		(wave_gen)		[inner sep=1mm,rectangle,right=5mm of embed]			{Pulse\\generator};
 		\node[place]		(pwr_stg)	[inner sep=1mm,rectangle,right=5mm of wave_gen]	{Power\\stage};
 		\node[place]		(tr_switch)	[inner sep=1mm,rectangle,right=5mm of pwr_stg]	{T/R\\switch};
-		\node[place]		(transducer)		[inner sep=1mm,rectangle,right=8mm of tr_switch]	{Transducer};
+		\node[place]		(transducer)		[inner sep=1mm,rectangle,right=10mm of tr_switch]	{Transducer};
 		\node[place]		(preamp)		[inner sep=1mm,rectangle,below=5mm of tr_switch]	{Preamplifier};
 		\node[place]		(bpf)		[inner sep=1mm,rectangle,below=5mm of preamp]	{BPF};
-		\node[place]		(demod)		[inner sep=1mm,rectangle,left=10mm of bpf]		{Demodulator};
-		\node[place]		(lpf2)		[inner sep=1mm,rectangle,above=5mm of demod]	{LPF 2};
-		\node[place]		(lpf1)		[inner sep=1mm,rectangle,left=5mm of demod]		{LPF 1};
-		\node[place]		(sha2)		[inner sep=1mm,rectangle,left=10mm of lpf2]		{SHA 2};
-		\node[place]		(sha1)		[inner sep=1mm,rectangle,left=27.5mm of lpf2]		{SHA 1};
+		\node[place]		(demod)		[inner sep=1mm,rectangle,left=5mm of bpf]		{Demodulator};
+		%\node[place]		(lpf2)		[inner sep=1mm,rectangle,above=5mm of demod]	{LPF 2};
+		\node[place]		(lpf1)		[inner sep=1mm,rectangle,left=5mm of demod]		{LPF};
+		%\node[place]		(sha2)		[inner sep=1mm,rectangle,left=10mm of lpf2]		{SHA 2};
+		\node[place]		(sha1)		[inner sep=1mm,rectangle,left=5mm of lpf1]		{SHA};
+		\node[place]		(hpf)		[inner sep=1mm,rectangle,above=5mm of sha1]		{HPF};
 
 		% Draw lines between nodes
 		\draw [L,|->] 		(human_in) 		to 		(embed);
@@ -78,11 +130,12 @@
 		\draw [L,->]			(preamp)		to		(bpf);
 		\draw [L,->]			(bpf)		to		(demod);
 		\draw [L,->]			(demod)		to		(lpf1);
-		\draw [L,->]			(demod)		to		(lpf2);
-		\draw [T,->]			(lpf1)		to		(sha1);
-		\draw [L,->]			(lpf2)		to		(sha2);
-		\draw [T,->]			(sha1)		to		(embed);
-		\draw [T,->]			(sha2)		to		(embed);
+		%\draw [L,->]			(demod)		to		(lpf2);
+		\draw [L,->]			(lpf1)		to		(sha1);
+		%\draw [L,->]			(lpf2)		to		(sha2);
+		\draw [L,->]			(sha1)		to		(hpf);
+		%\draw [T,->]			(sha2)		to		(embed);
+		\draw [L,->]			(hpf)		to		(embed);
 
 		% Draw rectangle
 		%\draw[draw=black,dashed,red] (13mm,8mm) rectangle ++(45mm,-15mm);
