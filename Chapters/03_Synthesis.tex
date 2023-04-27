@@ -122,11 +122,11 @@ Among the design considerations for the transmit and receive switch were the TX8
 Seen in \cref{fig:3_switch_recovery} is the recovery time between transient states in the TX810 diode bridge where the red curve is the input and blue is the output signal. According to the specified output curve, it takes approximately \qty{15}{\micro\second} to recover from the transmitting pulse. Thus, back-calculating to find the minimum distance to reliably receive an undisturbed signal is proportional to \cref{eq:tx810_recovery}.
 \begin{subequations} \label{eq:tx810_recovery}
 \begin{align}
-	d &= v \cdot t \Longrightarrow \\
-	d &= \qty{1480}{\meter\per\second} \cdot \qty{15}{\micro\second} = \qty{11.55}{\milli\meter}
+	d &= \frac{c \cdot t}{2} \Longrightarrow \\
+	d &= \frac{\qty{1480}{\meter\per\second} \cdot \qty{15}{\micro\second}}{2} = \qty{11.55}{\milli\meter}
 \end{align}
 \end{subequations}
-This means that a distance of less than \qty{11.55}{\milli\meter} to a scatterer is likely to produce a compromised measurement. The ultrasound switch is designed to switch the transmit and receive paths at specific times, as determined by the the input signals. A PCB design was implemented in Altium Designer \cite{altium} utilising three channels of the maximum eight available channels in the IC. Seen in \cref{fig:3_ultrasoundswitch} is a 3D render of the designed PCB.
+Where $d$ is equal to the travel distance from the transducer to the scatterer, $c$ is the speed of sound in water (assumed to be \qty{1480}{\meter\per\second}), and $t$ is the recovery time as specified in  \cref{fig:3_switch_recovery}. The reason for dividing the distance by half is because the travel time is double the distance since the acoustic wave has to travel the distance from the transducer and the reflected wave has to travel back the equal distance. This means that a distance of less than \qty{11.55}{\milli\meter} to a scatterer is likely to produce an unreliable measurement. The ultrasound switch is designed to switch the transmit and receive paths at specific times, as determined by the the input signals. A PCB design was implemented in Altium Designer \cite{altium} utilising three channels of the maximum eight available channels in the IC. Seen in \cref{fig:3_ultrasoundswitch} is a 3D render of the designed PCB.
 
 \begin{figure}[htbp]
 	\centering
@@ -140,7 +140,7 @@ The module is designed with three usable channels, either three separate transdu
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=\textwidth]{Figures/3_bpf_specs.pdf}
-	\caption[Band-Pass Filter insertion loss and specifications]{Band-Pass Filter with (above) insertion loss showing a pass band of \qtyrange{2}{7}{\mega\hertz} of \qty{0.5}{\decibel} insertion loss and (below) electrical specifications showing the minimum stop band attenuation of \qty{20}{\decibel}}
+	\caption[Band-Pass Filter insertion loss and specifications]{Band-Pass Filter with (above) insertion loss showing a pass band of \qtyrange{2}{7}{\mega\hertz} of \qty{0.5}{\decibel} insertion loss and (below) electrical specifications showing the minimum stop band attenuation of \qty{20}{\decibel} \cite{BPF}}
 	\label{fig:3_bpf_specs}
 \end{figure}
 After the signal is received, it is filtered with a \gls{bp} filter to remove unwanted noise and interference from the received signal. The presence of these unwanted frequency components can distort the received signal and reduce the quality of the resulting imaging. The specs from the datasheet \cite{BPF} are seen in \cref{fig:3_bpf_specs}. Filtering the received signal through this device means that any signals produced by the transducer at frequencies outside the range of interest will be attenuated. An ultrasound receiver requires a band-pass filter to enable only the frequencies within a predetermined range to pass through, while blocking out frequencies outside that range.
