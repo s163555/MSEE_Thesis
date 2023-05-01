@@ -143,7 +143,14 @@ The module is designed with three usable channels, either three separate transdu
 	\caption[Band-Pass Filter insertion loss and specifications]{Band-Pass Filter with (above) insertion loss showing a pass band of \qtyrange{2}{7}{\mega\hertz} of \qty{0.5}{\decibel} insertion loss and (below) electrical specifications showing the minimum stop band attenuation of \qty{20}{\decibel} \cite{BPF}}
 	\label{fig:3_bpf_specs}
 \end{figure}
-After the signal is received, it is filtered with a \gls{bp} filter to remove unwanted noise and interference from the received signal. The presence of these unwanted frequency components can distort the received signal and reduce the quality of the resulting imaging. The specs from the datasheet \cite{BPF} are seen in \cref{fig:3_bpf_specs}. Filtering the received signal through this device means that any signals produced by the transducer at frequencies outside the range of interest will be attenuated. An ultrasound receiver requires a band-pass filter to enable only the frequencies within a predetermined range to pass through, while blocking out frequencies outside that range.
+After the signal is received, it is filtered with a \gls{bp} filter to remove unwanted noise and interference from the received signal. The presence of these unwanted frequency components can distort the received signal and reduce the quality of the resulting imaging. The specs from the datasheet \cite{BPF} are seen in \cref{fig:3_bpf_specs}. Filtering the received signal through this device means that any signals produced by the transducer at frequencies outside the range of interest will be attenuated. An ultrasound receiver requires a band-pass filter to enable only the frequencies within a predetermined range to pass through, while blocking out frequencies outside that range. Using the specs and S21 forward transmission coefficient data, a bode plot can be visualised in \cref{fig:3_bpf_s21_bode_plot}.
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=.6\textwidth]{Figures/3_bpf_s21_vals.eps}
+	\caption{Bode plot of S21 forward transmission coefficient of the active filter as specified by the manufacturer}
+	\label{fig:3_bpf_s21_bode_plot}
+\end{figure}
 
 \section{Preamplifier}
 \begin{figure}[htbp]
