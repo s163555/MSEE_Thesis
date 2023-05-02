@@ -95,7 +95,7 @@ Several MOSFET drivers were considered, e.g. ISL55111\cite{ISL55111}, EL7104\cit
 	\caption{LTspice simulation output of transmitter with level shifter and half-bridge power stage from \cref{fig:app_ltspice_transmitter}}
 	\label{fig:3_transmitter_sim}
 \end{figure}
-Using a \gls{spice} macro model, an LTspice simulation of the power stage was implemented where the full model can be seen in \cref{fig:app_ltspice_transmitter}. The resulting waveforms are seen in \cref{fig:3_transmitter_sim}. In the top subplot, the input voltages \texttt{INA} and \texttt{INB} are seen with their dead-time visible on each overlapped on period. Since \texttt{INB} is driving an N-channel \gls{mosfet}, the driving pulse train should be thought of as having the opposite polarity. When looking at the middle subplot, it is noted that dead time is visible as the time when the output voltage is zero. Thus, during that time neither \gls{fet} are allowing a current to pass, and therefore the voltage across the load is equal to zero. The lower subplot shows the maximum ideal power delivery using the peak pulse voltage, assuming the load is equal to \qty{50}{\ohm}. In reality, due to the equipment available for testing, the pulse peak voltage will be less than \qty{100}{\volt}.
+Using a \gls{spice} macro model, an LTspice simulation of the power stage was implemented where the full model can be seen in \cref{fig:app_ltspice_transmitter}. The resulting waveforms are seen in \cref{fig:3_transmitter_sim}. In the top subplot, the input voltages \texttt{INA} and \texttt{INB} are seen with their dead-time visible on each overlapped on period. Since \texttt{INB} is driving an N-channel \gls{mosfet}, the driving pulse train should be thought of as having the opposite polarity. When looking at the middle subplot, it is noted that dead time is visible as the time when the output voltage is zero. Thus, during that time neither \gls{fet} are allowing a current to pass, and therefore the voltage across the load is equal to zero. The lower subplot shows the maximum ideal power delivery using the peak pulse voltage, assuming the load is equal to \qty{50}{\ohm}. In reality, due to the laboratory instruments available for experiments, the pulse peak voltage will be less than $\pm \qty{100}{\volt}$.
 
 \section{Transmit/Receive Switch}
 \begin{figure}[htbp]
@@ -212,71 +212,73 @@ In the pulsed-wave flowmeter, the sample-and-hold amplifier is used to keep each
 	\centering
 	\begin{subfigure}[b]{0.49\textwidth}
 		\resizebox{\textwidth}{!}{%
-		\begin{circuitikz}
-			\draw (10,17) to[american,l={ \normalsize $V2$}] (10,15.75);
-			\draw (10,15.75) to (10,15.5) node[ground]{};
-			\draw [](10,17) to[short] (10,17.25);
-			\draw (10,17.25) to[short] (11,17.25);
-			\draw (13,17.25) to[C,l={ \normalsize $C2$}] (13,15.75);
-			\draw (14.25,17.25) to[C,l={ \normalsize $C3$}] (14.25,15.75);
-			\draw (11.75,17.25) to[R,l={ \normalsize $R2$}] (11.75,15.75);
-			\draw [](11.75,15.75) to[short] (14.25,15.75);
-			\draw (10,17.25) to[R,l={ \normalsize $R1$}] (11.75,17.25);
-			\draw [](11.75,17.25) to[short] (14.25,17.25);
-			\draw [](14.25,17.25) to[short] (15.25,17.25);
-			\draw [](15.25,16.25) to[short] (15.25,15.5);
-			\draw [](15.25,15.5) to[short] (17.75,15.5);
-			\draw [](17.75,15.5) to[short] (17.75,16.75);
-			\draw (16.75,16.75) node[op amp,scale=1, yscale=-1 ] (opamp2) {};
-			\draw (opamp2.+) to[short] (15.25,17.25);
-			\draw  (opamp2.-) to[short] (15.25,16.25);
-			\draw (17.95,16.75) to[short](18.25,16.75);
-			\draw (17.75,16.75) to[short, -*] (17.75,16.75);
-			\draw [](18.25,16.75) to[short, -o] (18.5,16.75);
-			\draw (17.75,15.5) to[C,l={ \normalsize $C4$}] (17.75,14.5);
-			\draw (17.75,14.5) to (17.75,14.25) node[ground]{};
-		\end{circuitikz}
-	}%
+			\begin{circuitikz}
+				\tikzstyle{every node}=[font=\normalsize]
+				\draw (13,17.25) to[C,l={ \normalsize $C_2$}] (13,15.75);
+				\draw (14.5,17.25) to[C,l={ \normalsize $C_3$}] (14.5,15.75);
+				\draw (11.75,17.25) to[R,l={ \normalsize $R_2$}] (11.75,15.75);
+				\draw [](11.75,17.25) to[short] (14.25,17.25);
+				\draw [](14.25,17.25) to[short] (15.25,17.25);
+				\draw [](15.25,16.25) to[short] (15.25,15.5);
+				\draw [](15.25,15.5) to[short] (17.75,15.5);
+				\draw [](17.75,15.5) to[short] (17.75,16.75);
+				\draw (16.75,16.75) node[op amp,scale=1, yscale=-1 ] (opamp2) {};
+				\draw (opamp2.+) to[short] (15.25,17.25);
+				\draw  (opamp2.-) to[short] (15.25,16.25);
+				\draw (17.95,16.75) to[short](18.25,16.75);
+				\draw (17.75,16.75) to[short, -*] (17.75,16.75);
+				\draw [](18.25,16.75) to[short, -o, l=$V_{\mathrm{bias}}$] (18.5,16.75);
+				\draw (17.75,15.5) to[C,l={ \normalsize $C_4$}] (17.75,14.5);
+				\draw (17.75,14.5) to (17.75,14.25) node[ground]{};
+				\draw (10,17.25) to[american voltage source,l={ \normalsize $V_1$}] (10,15.75);
+				\draw (10,15.75) to (10,15.5) node[ground]{};
+				\draw [](11.75,15.75) to[short] (14.5,15.75);
+				\draw (13,15.75) to (13,15.5) node[ground]{};
+				\draw (13,15.75) to[short, -*] (13,15.75);
+				\draw (10,17.25) to[R,l={ \normalsize $R_1$}] (11.75,17.25);
+				\draw (17.75,15.5) to[short, -*] (17.75,15.5);
+				\draw (11.75,17.25) to[short, -*] (11.75,17.25);
+				\draw (13,17.25) to[short, -*] (13,17.25);
+				\draw (14.5,17.25) to[short, -*] (14.5,17.25);
+			\end{circuitikz}
+		}%
 		\caption{Circuit diagram of DC bias circuit}
 		\label{fig:3_dc_bias_circuit}
 	\end{subfigure}%
 	\begin{subfigure}[b]{.49\textwidth}
 		\resizebox{\textwidth}{!}{%
 			\begin{circuitikz}
-				%\tikzstyle{every node}=[font=\LARGE]
-				\draw (12.5,14.25) node[op amp,scale=1, yscale=-1 ] (opamp2) {};
-				\draw (opamp2.+) to[short] (11,14.75);
-				\draw  (opamp2.-) to[short] (11,13.75);
-				\draw (13.7,14.25) to[short](14,14.25);
-				\draw (10,14.75) to[C,l={ \normalsize $C_1$}] (8,14.75);
-				\draw [](10,14.75) to[short] (11,14.75);
-				\draw (8,12.75) to (8,12.5) node[ground]{};
-				\draw (14,14.25) to[R,l={ \normalsize $R_2$}] (14,12.75);
-				\draw [] (14,12.75) to[short] (11,12.75);
-				\draw [](11,12.75) to[short] (11,13.75);
-				\draw (14,12.75) to[R,l={ \normalsize $R_3$}] (14,11.25);
-				\draw (14,11.25) to[C] (14,10.25);
-				\draw (14,10.25) to (14,10) node[ground]{};
-				\draw (8,14.75) to[sinusoidal voltage source, sources/symbol/rotate=auto,l_={ \normalsize $V_{\mathrm{in}}$}] (8,12.75);
-				\draw (14,12.75) to[short, -*] (14,12.75);
-				\draw [](14,14.25) to[short, -o] (15,14.25);
-				\draw (14,14.25) to[short, -*] (14,14.25);
-				\draw (11,14.75) to[short, -*] (11,14.75);
-				\draw (11,14.75) to (11,15) node[vcc]{\normalsize $V_{\mathrm{bias}}$};
+				\draw (9.75,15.75) to[sinusoidal voltage source, sources/symbol/rotate=auto,l={ \normalsize $V_{\mathrm{in}}$}] (9.75,17.75);
+				\draw (9.75,15.75) to (9.75,15.5) node[ground]{};
+				\draw (9.75,17.75) to[C,l={ \normalsize $C_1$}] (11.25,17.75);
+				\draw (12.75,17.25) node[op amp,scale=1, yscale=-1 ] (opamp2) {};
+				\draw (opamp2.+) to[short] (11.25,17.75);
+				\draw  (opamp2.-) to[short] (11.25,16.75);
+				\draw (13.95,17.25) to[short](14.25,17.25);
+				\draw (11.25,17.75) to[short, -*] (11.25,17.75);
+				\draw (14,17.25) to[R,l={ \normalsize $R_3$}] (14,16);
+				\draw[] (14,16) to[short] (11.25,16);
+				\draw [](11.25,16) to[short] (11.25,16.75);
+				\draw [](14.25,17.25) to[short, -o, l=$V_{\mathrm{out}}$] (14.5,17.25);
+				\draw [](14,16) to[short] (14,15.5);
+				\draw (14,15.5) to[R,l={ \normalsize $R_4$}] (12.75,15.5);
+				\draw (12.75,15.5) to[C,l={ \normalsize $C_5$}] (11.75,15.5);
+				\draw (11.75,15.5) to (11.5,15.5) node[ground]{};
+				\draw (14,17.25) to[short, -*] (14,17.25);
+				\draw [](11.25,17.75) to (11.25,18) node[vcc]{\normalsize $V_{\mathrm{bias}}$};
 			\end{circuitikz}
 		}%
 		\caption{Circuit diagram of \gls{hp}, \gls{prf} and Wall filter}
 		\label{fig:3_prf_wall_diagram}
 	\end{subfigure}
-
 \end{figure}
-Finally, the signal should be DC coupled for sampling. In the circuit diagram in \cref{fig:3_prf_wall_diagram}, a \gls{hp} filter is used as a combined \gls{prf} and Wall-filter in conjunction with a \qty{2}{\decibel} gain amplification to maximize the dynamic range of the \gls{adc} measurements from \qtyrange{0}{3.3}{\volt}. In the diagram, $V_{bias}=\qty{1.65}{\volt}$, which is half of the \gls{adc} dynamic range of \qtyrange{0}{3.3}{\volt}, and $v_{\mathrm{in}}$ is the input signal to the filter from the output of the sample-and-hold amplifier. To get a \qty{1.65}{\volt} DC-bias, a voltage-follower op-amp configuration is used with a voltage divider input on the supply voltage of \qty{5}{\volt}, outlined in \cref{eq:3_dc_couple_voltage}
+Finally, the signal should be DC coupled for sampling. For generating a DC bias voltage, the circuit in \cref{fig:3_dc_bias_circuit} is used. Here, a voltage divider is coupled with some stabilising capacitors and a voltage follower to output a stable output. In the circuit diagram in \cref{fig:3_prf_wall_diagram}, a \gls{hp} filter is used as a combined \gls{prf} and Wall-filter in conjunction with a \qty{2}{\decibel} gain amplification to maximize the dynamic range of the \gls{adc} measurements from \qtyrange{0}{3.3}{\volt}. In the diagram, $V_{bias}=\qty{1.65}{\volt}$, which is half of the \gls{adc} dynamic range of \qtyrange{0}{3.3}{\volt}, and $v_{\mathrm{in}}$ is the input signal to the filter from the output of the sample-and-hold amplifier. To get a \qty{1.65}{\volt} DC-bias, a voltage-follower op-amp configuration is used with a voltage divider input on the supply voltage of \qty{5}{\volt}, outlined in \cref{eq:3_dc_couple_voltage}.
 \begin{equation} \label{eq:3_dc_couple_voltage}
 	V_{\mathrm{dc}}= V_{\mathrm{cc}} \cdot \frac{R_{2}}{R_{1}+R_{2}} = \qty{5}{\volt} \cdot \frac{\qty{5}{\kilo\ohm}}{\qty{10}{\kilo\ohm}+\qty{5}{\kilo\ohm}} = \qty{1.66}{\volt}
 \end{equation}
 For the \qty{2}{\decibel} gain, a non-inverting amplifier configuration is used, expressed by \cref{eq:3_dc_couple_gain}.
 \begin{equation} \label{eq:3_dc_couple_gain}
-	G_{\unit{\decibel}} = \frac{V_{\mathrm{out}}}{V_{\mathrm{in}}} = 20\cdot \log_{10} \left(1 + \frac{R_2}{R_3} \right) = 20\cdot \log_{10} \left( 1 + \frac{\qty{40}{\kilo\ohm}}{\qty{150}{\kilo\ohm}} \right) = \qty{2.05}{\decibel}
+	G_{\unit{\decibel}} = \frac{V_{\mathrm{out}}}{V_{\mathrm{in}}} = 20\cdot \log_{10} \left(1 + \frac{R_3}{R_4} \right) = 20\cdot \log_{10} \left( 1 + \frac{\qty{40}{\kilo\ohm}}{\qty{150}{\kilo\ohm}} \right) = \qty{2.05}{\decibel}
 \end{equation}
 A SPICE simulation was implemented and can be seen in \cref{fig:app_ltspice_dc_coupler}. From this simulation model, a small signal analysis as well as a transient analysis was conducted. The resulting small signal analysis can be seen in \cref{fig:3_dccoupler_sim_ac} and the transient analysis can be seen in \cref{fig:3_dccoupler_sim_transient} and confirms the expected result.
 \begin{figure}[htbp]
