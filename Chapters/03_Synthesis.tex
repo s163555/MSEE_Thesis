@@ -87,7 +87,7 @@ In the context of a PW Doppler system, it is desired to generate 4 signals:
 	\centering
 	\includegraphics[width=\textwidth]{Figures/3_power_stage_block.pdf}
 	\label{fig:3_power_stage}
-	\caption{Block diagram of power stage \cite{MD1213DB1}}
+	\caption[Block diagram of power stage]{Block diagram of power stage \cite{MD1213DB1}}
 \end{figure}
 Several MOSFET drivers were considered, e.g. ISL55111\cite{ISL55111}, EL7104\cite{EL7104}, and MD1213\cite{MD1213}. The MD1213 has an advantage over the ISL55111 or EL7104 for ultrasound MOSFET drivers since it is specifically designed for high-voltage P-channel and N-channel MOSFETs in medical ultrasound and other applications needing a high output current for a capacitive load. It has a high-speed input stage with a logic interface that can function from \qtyrange{1.8}{5}{\volt} and an ideal operating input signal range of \qtyrange{1.8}{3.3}{\volt}. The DC-coupled adaptive threshold circuit sets the level translator switch threshold to the average of the input logic \gls{low} and logic \gls{high} levels. Consequentially, the MD1213 is designed primarily for driving MOSFETs in medical ultrasound applications, whereas the ISL55111 and EL7104 are more general-purpose drivers that may not perform as well in ultrasound applications. The MD1213's output stage has a distinguishing feature in that the \gls{low} and \gls{high} levels of the output signal may be set independently of the rest of the circuit's supply voltages. The input logic levels, for example, might be \qty{0}{\volt} and \qty{1.8}{\volt}, whereas the control logic is powered by \qtyrange[retain-explicit-plus]{+5}{-5}{\volt}. The output \gls{low} and \gls{high} values, on the other hand, may be changed between \qtyrange[retain-explicit-plus]{-5}{+5}{\volt}. This gives you greater flexibility in adjusting the output signal levels to meet individual needs. The output stage may also provide peak currents of up to \qty{2}{\ampere}, depending on the load capacitance and supply voltages employed. Seen in \cref{fig:3_power_stage} is the circuit diagram of the power stage with the gate driver on the left side and the half-bridge on the right side.
 \begin{figure}[htbp]
@@ -103,7 +103,7 @@ Using a \gls{spice} macro model, an LTspice simulation of the power stage was im
 	\centering
 %	\includegraphics[width=.8\textwidth]{circuits/switch.pdf}
 	\includegraphics[width=.8\textwidth]{Figures/3_switch_tx810_block.pdf}
-	\caption{Block diagram of TX/RX switching circuit where the inputs D1 through D6 are binary decoded from inputs $B_1$, $B_2$, $B_3$ \cite{TX810}}
+	\caption[Block diagram of TX/RX switching circuit]{Block diagram of TX/RX switching circuit where the inputs D1 through D6 are binary decoded from inputs $B_1$, $B_2$, $B_3$ \cite{TX810}}
 	\label{fig:3_switch}
 \end{figure}
 Among the design considerations for the transmit and receive switch were the TX810\cite{TX810} and MD0101\cite{MD0101}. Both ICs are acceptable choices, however, the MD0101 is a newer and generally better choice since it has a lower insertion loss, which means that less of the ultrasound signal is lost as it passes through the switch. This results in a higher-quality image with a better signal-to-noise ratio. Additionally, MD0101 has a wider bandwidth, which means that it can transmit and receive ultrasound signals over a broader range of frequencies. However, since the TX810 is in stock and is also acceptable, it was chosen for the design. TX810 is an IC from Texas Instruments that can be used to switch transmit and receive paths of an ultrasound system. The IC fundamentally works by having a 3-bit programmable pin interface that will open and close the switch with a variable bias current. See \cref{fig:3_tx810_timing} for a visualisation of the switching operation, where \texttt{INPUT} is the incoming Doppler waveform being picked up from the transducer, \texttt{B3/B2/B1} is the switching signal closing the switch and thereby going in receive mode, and \texttt{OUTPUT} is the received signal seen in the \gls{afe}. When high-voltage transmitter signals are applied to the input, the internal diodes limit the output voltage. While in receive mode, the TX810's insertion loss is minimized. The TX810 features a 3-bit interface that may be used to program bias current from \qty{7}{\milli\ampere} to \qty{0}{\milli\ampere} for varying performance and power requirements, unlike conventional T/R switches. The device is put up in power-down mode when the TX810 bias current is set to \qty{0}{\milli\ampere} (high-impedance mode). The TX810 does not put a significant load on high-voltage transmitters when operating in the high-impedance mode.
@@ -149,7 +149,7 @@ After the signal is received, it is filtered with a \gls{bp} filter to remove un
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=.8\textwidth]{Figures/3_bpf_s21_vals.eps}
-	\caption{Bode plot of BPF-C4R5+ S21 forward transmission coefficient of the active filter as specified by the manufacturer}
+	\caption[Bode plot of bandpass filter]{Bode plot of BPF-C4R5+ S21 forward transmission coefficient of the active filter as specified by the manufacturer}
 	\label{fig:3_bpf_s21_bode_plot}
 \end{figure}
 
@@ -157,7 +157,7 @@ After the signal is received, it is filtered with a \gls{bp} filter to remove un
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=.8\textwidth]{Figures/3_ad8332_block.pdf}
-	\caption{Block diagram of preamplifier AD8332 \cite{AD8332}}
+	\caption[Block diagram of preamplifier AD8332]{Block diagram of preamplifier AD8332 \cite{AD8332}}
 	\label{fig:3_preamplifier_block}
 \end{figure}
 The isolated signal is still rather weak to be measured using digital circuits, and therefore the amplitude must be increased with the preamplifier circuit. This circuit is based on the integrated circuit from Analog Devices AD8332 \cite{AD8332}, which is a device that combines a dual-channel \gls{lna} and \gls{vga}, designed specifically for ultrasound systems. A diagram of its internal functional blocks can be seen in \cref{fig:3_preamplifier_block}. The AD8332 functions at frequencies up to \qty{120}{\mega\hertz}. Each channel includes an ultralow noise preamp (\gls{lna}), a \gls{vga} with \qty{48}{\decibel} of gain range, and a selectable gain post amp with adjustable output limiting. The LNA gain is \qty{19}{\decibel} with a single-ended input and differential outputs. To match the signal source without sacrificing noise performance, the LNA input impedance can be adjusted using a single resistor. The VGA has low output-referred noise, which is useful in driving high-speed differential ADCs. The gain of the post amp can be pin-selected to \qty{3.5}{\decibel} or \qty{15.5}{\decibel}, depending on the converter requirements. The output can be limited to a user-defined clamping level to avoid input overload to a subsequent \gls{adc}, with the clamping level adjusted using an external resistor. A SPICE macro model is provided by the vendor and the preamplification is successfully simulated using LTspice with the full LTspice model found in \cref{fig:app_ltspice_preamp}, and the probed inputs and outputs seen in \cref{fig:3_preamplifier_sim}.
@@ -165,7 +165,7 @@ The isolated signal is still rather weak to be measured using digital circuits, 
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=.8\textwidth]{Figures/3_preamplifier_sim_out.eps}
-	\caption{LTspice simulation output of preamplifier \gls{lna} and \gls{vga} from \cref{fig:app_ltspice_preamp}}
+	\caption[LTspice simulation output of preamplifier]{LTspice simulation output of preamplifier \gls{lna} and \gls{vga} from \cref{fig:app_ltspice_preamp}}
 	\label{fig:3_preamplifier_sim}
 \end{figure}
 
@@ -173,7 +173,7 @@ The isolated signal is still rather weak to be measured using digital circuits, 
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=.8\textwidth]{Figures/3_ad8333_block.pdf}
-	\caption{Block diagram of demodulator AD8333 \cite{AD8333}}
+	\caption[Block diagram of demodulator AD8333]{Block diagram of demodulator AD8333 \cite{AD8333}}
 	\label{fig:3_demodulator_block}
 \end{figure}
 After the preamplifier, the amplified signal must be demodulated to prepare it for sampling. The device used for quadrature demodulation is an integrated circuit from Analog Devices AD8333 \cite{AD8333} I/Q demodulator. A diagram of the internal functional blocks can be seen in \cref{fig:3_demodulator_block} where the primary inputs are \texttt{RFIP} and \texttt{RFIN}, which are the two differential RF signals from the preamplifier. The RF inputs connect directly to the outputs of the LNA of the preamplifier. The internal \qty{0}{\degree} and \qty{90}{\degree} phases of the local oscillator (LO) are generated by a divide-by-4 circuit that drives the mixers of a matched I/Q demodulator pair. The I and Q outputs are presented as currents, making summation possible. The summed current outputs are then converted to voltages by a high dynamic range, current-to-voltage (I-V) converter, such as the AD8021 \cite{AD8021}, which functions as a trans-impedance amplifier. A SPICE macro model is provided by the vendor and the I/Q demodulation is successfully simulated using LTspice using the LTspice model found in appendix \cref{fig:app_ltspice_demod}, with the probed inputs and outputs seen in \cref{fig:3_demod_sim_in,fig:3_demod_sim_out}.
@@ -181,20 +181,20 @@ After the preamplifier, the amplified signal must be demodulated to prepare it f
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=.8\textwidth]{Figures/3_demod_sim_in.eps}
-	\caption{LTspice simulation demodulator input variables from \cref{fig:app_ltspice_demod}}
+	\caption[LTspice simulation demodulator input variables]{LTspice simulation demodulator input variables from \cref{fig:app_ltspice_demod}}
 	\label{fig:3_demod_sim_in}
 \end{figure}
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=.8\textwidth]{Figures/3_demod_sim_out.eps}
-	\caption{LTspice simulation demodulator output variables Q and I voltages from \cref{fig:app_ltspice_demod}}
+	\caption[LTspice simulation demodulator output variables]{LTspice simulation demodulator output variables Q and I voltages from \cref{fig:app_ltspice_demod}}
 	\label{fig:3_demod_sim_out}
 \end{figure}
 \section{Sample and Hold}
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=.8\textwidth]{Figures/3_sample_hold_ad783.pdf}
-	\caption{AD783 Sample and Hold Amplifier functional block diagram \cite{AD783}}
+	\caption[AD783 Sample and Hold amplifier block diagram]{AD783 Sample and Hold Amplifier functional block diagram \cite{AD783}}
 	\label{fig:3_sha_block}
 \end{figure}
 In this system, the sample-and-hold amplifier is necessary to keep values between each sample line. In chapter 2, it was described how the pulsed-wave flow-meter measures the movement of scatterers by sampling the back-scattered signal at a specific depth. Generally, the intended use for this part is in general data acquisition systems such as an \gls{adc}. In that application, the sample-and-hold amplifier captures an analogue signal and retains it during certain operations, usually analogue-to-digital conversion. Through a S/H input, two possible modes are selected, \textit{sample} or \textit{hold}. During the sample mode of operation, the output of the sample-and-hold amplifier follows the input. During the hold mode of operation, the output may not change by more than 1 \gls{lsb}. The typical usage of a SHA is to keep the ADC input constant throughout the conversion process. With some types of ADCs, but not all, the input cannot change by more than 1 \gls{lsb} during the conversion, or else the process will be compromised. This can either impose very low-frequency limits on such ADCs or necessitate their use with a SHA to hold the input during each conversion. An internal capacitor forms the key component of the sample-and-hold amplifier, which serves as the energy storage device. The input amplifier buffers the input signal by presenting a high impedance to the signal source while providing current gain to charge the hold capacitor. In the sample mode, the voltage on the hold capacitor follows the input signal, albeit with some delay and bandwidth limitations. In the hold mode, the switch is opened, and the capacitor retains the voltage present before being disconnected from the input buffer. The output buffer prevents the held voltage from discharging too soon by offering a high impedance to the hold capacitor. The switching circuit and its driver work together to enable the SHA to alternate between sample and hold modes.
