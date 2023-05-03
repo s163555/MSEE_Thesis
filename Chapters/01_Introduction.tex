@@ -1,12 +1,12 @@
 \chapter{Introduction} \label{cha:introduction} %\thispagestyle{main}
-The progress of diagnostic imaging has advanced significantly during the \nth{20} century. As the cost of high-speed computational systems has grown increasingly accessible, so has the use of medical imaging become prominent. Millions of people have potentially been spared painful exploratory surgery through non-invasive diagnostic imaging. Thus, lives can be saved by early diagnosis and intervention through medical imaging. Advancements in scientific visualisation have in turn generated more complex data-sets of increased size and quality. The four major technologies used are \gls{us}, X-ray, \gls{ct}, and \gls{mri}. Each technology has distinct advantages and disadvantages in biomedical imaging, and thus each is still relevant for modern medicine. \Cref{tab:imagingmodalities} contains a comparison and summary of the various fundamental diagnostic imaging modalities.
+The progress of diagnostic imaging has advanced significantly during the \nth{20} century. As the cost of high-speed computational systems has grown increasingly accessible, so has the use of medical imaging become prominent. Millions of people have potentially been spared painful exploratory surgery through non-invasive diagnostic imaging. Thus, lives can be saved by early diagnosis and intervention through medical imaging. Advancements in scientific visualisation have in turn generated more complex data-sets of increased size and quality. The four major technologies used are \gls{us}, X-ray, \gls{ct}, and \gls{mri}. Each technology has distinct advantages and disadvantages in biomedical imaging, and thus each is still relevant for modern medicine. \Cref{tab:1_imagingmodalities} contains a comparison and summary of the various fundamental diagnostic imaging modalities.
 
 \begin{table}[htbp]
 	\centering
 	\begin{talltblr}[
 	caption = {Comparison of medical imaging modalities \cite{Szabo_UltrasoundBook_2}},
 	entry = {Comparison of medical imaging modalities},
-	label = {tab:imagingmodalities},
+	label = {tab:1_imagingmodalities},
 	note{a} = {Frequency and axially dependent.},
 	note{b} = {Frequency dependent.},
 	note{c} = {Fluoroscopy limited.},
@@ -45,6 +45,51 @@ The cardiovascular system, which transports oxygen and nutrients to tissue, prod
 A systematic review was conducted using PubMed, Google Scholar, Elsevier, DTU FindIt and IEEE Xplore with the search terms \enquote{pulsed-wave Doppler ultrasound}, \enquote{blood velocity estimation}, and \enquote{ultrasound flow-meter}. The search was limited to English-language articles. The literature search yielded more than 50 papers, of which 37 were included \cite{Satomura_CW,Baker1970,Shung1976,Schlindwein1988,Hall_Wall_Filter,Jensen_Analysis_PW_1996,Wells1998,PWDesignParameters,Jansson_Estimation_Perfusion,Hoskins_Review_Blood_Velocity,Fish_Ultrasonic,Jensen_Algorithms,cmut_array_shape,Williams2006,Tsang2009,Matsuoka_Doppler_Rabbit,Hoskins2010,PICpulser,Advances_BloodFlow_Velocity,Overview_Emerging_Imaging,Huang_Smartphone_2012,DesignDocument,Winckler2012,Sagdiev2014,Jacinta_string_phantom,500Vpulser,Wang2016,Govindan2016,Wang2019,JanaSmartphone2020,Ding_PW_Pmut,DingPMUTs,Winder2021,Omura2022,2023_review,Ricci2018,Bessi1995}. In addition, textbooks \cite{JensenUltrasoundBook,ShungUltrasound_Book,Szabo_UltrasoundBook_2} were used in the preparation and study of the theoretical principles of biomedical imaging and ultrasound.
 
 Among these works are some of the earliest papers that outlined the field as it was emerging. Other articles study the possibilities of improvements in algorithms and experimental parameters. Overall, the results indicate that the Doppler flow meter is a reliable method for estimating blood flow velocity in various parts of the body. Studies include in-vitro and in-vivo on humans and animals alike. Some of the review articles have compared Doppler flow-meters to other imaging techniques for this application, such as magnetic resonance imaging and computed tomography angiography, and have shown that the Doppler flow-meter is a cost-effective, portable and non-invasive choice.
+%
+%\begin{table}[htbp]
+%	\centering
+%	\begin{adjustbox}{max width=\textwidth}
+%	\begin{talltblr}[
+%		caption={Comparison of papers in literature study},
+%		entry={Comparison of papers in literature study},
+%		label={tab:1_papercomparison}]{
+%			row{1} = {guard, m, font=\small\bfseries},
+%		}
+%		\toprule
+%		Author & Architecture & Type & Power & System Components & DSP & Metrics & Output & Validation \\
+%		\midrule
+%		\citeauthor{Huang_Smartphone_2012} \cite{Huang_Smartphone_2012} & {\gls{pw},\\\qty{10}{\mega\hertz}} & Smartphone & \qty{12}{\volt} & {\gls{prf} timer, bipolar\\pulser, quadrature\\demodulation, \gls{sha}} & 512 point \gls{fft} & Doppler spectrogram & Microphone auxiliary signal to smartphone & In-vivo animal experiment \\
+%		\citeauthor{JanaSmartphone2020} \cite{JanaSmartphone2020} & {\gls{cw},\\\qty{8}{\mega\hertz}} & {Portable\\device} & \qty{12}{\volt} & \gls{rf} amplifier, envelope detection, \gls{lp} filter, preamplifier, \gls{adc} & 512 point \gls{fft} & \gls{ml} performance estimator on humans \\
+%		\citeauthor{DingPMUTs} \cite{DingPMUTs} & {\gls{pw},\\\qty{3.7}{\mega\hertz}} & Smartphone & {Details not\\available} & {Function generator, \gls{rf}\\amplifier, quadrature demodulation,\\\gls{sha}, \gls{bp} filter,\\\gls{daq} module, LabVIEW} & {\gls{fft} size\\not mentioned} & {Physiological simulation\\using blood mimicking fluid\\in pumped tubing system} \\
+%		\bottomrule
+%	\end{talltblr}
+%	\end{adjustbox}%
+%\end{table}
+
+\begin{table}
+	\centering
+	\begin{adjustbox}{max width=\textwidth}
+		\begin{talltblr}[
+			caption={Comparison of papers in literature study},
+			entry={Comparison of papers in literature study},
+			label={tab:1_papercomparison}]{
+				row{1} = {guard, m, font=\small\bfseries},
+			}
+			\toprule
+			& \citeauthor{Huang_Smartphone_2012}\cite{Huang_Smartphone_2012} & \citeauthor{JanaSmartphone2020}\cite{JanaSmartphone2020} & \citeauthor{DingPMUTs}\cite{DingPMUTs} \\
+			\midrule
+			Architecture & \gls{pw} \qty{10}{\mega\hertz} & \gls{cw} \qty{8}{\mega\hertz} & \gls{pw} \qty{3.7}{\mega\hertz} \\
+			Type & Smartphone & Portable device & Computer \\
+			Power & 12 V & 12 V & Details not available \\
+%			Components & {\gls{prf} timer, bipolar pulser,\\quadrature demodulation,\\\gls{sha}} & {\gls{rf} amplifier,\\envelope detection,\\\gls{lp} filter, preamplifier, \gls{adc}} & {\gls{afg}, \gls{rf} amplifier,\\quadrature demodulation,\\\gls{sha}, \gls{bp} filter}\\
+			DSP & 512 pt \gls{fft} & 512 pt \gls{fft} & \gls{fft} size not mentioned \\
+			Metrics & Doppler spectrogram & \gls{haemodynamic} parameters & Doppler spectrogram \\
+			Output & Auxiliary microphone signal & Bluetooth & \gls{daq} input signal \\
+			%Validation & In-vivo animal experiment & \gls{ml} evaluation using humans & Physiological simulator \\
+			\bottomrule
+		\end{talltblr}
+	\end{adjustbox}%
+\end{table}
 
 Based on the literature review, a gap is identified in the acquisition method of the signal chain. A number of articles study and develop the algorithms for blood flow estimation and imaging, but do not have an \gls{afe} and use offline data acquisition methods which are not usable for clinicians. A few of the articles feature online data acquisition but use \gls{fpga} or \gls{asic} technology in the design, which are practical but less cost-effective. This high cost of parts resembles a limitation to its use. To improve the current state of ultrasound Doppler imaging there is potential to decrease cost and retain effectiveness using modern low-cost electronics.
 
