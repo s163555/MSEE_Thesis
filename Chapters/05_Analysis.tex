@@ -1,12 +1,10 @@
 \chapter{Analysis}
-In the following a bunch of examples of figures and tables have been made. There are advantages to using \texttt{tikZ} diagrams over excel diagrams. 1) the font and font size perfectly matches the document 2) the styling and colours are pre-defined to follow the design guide 3) the plots uses vector graphics which reduces the file size, reduces the compile time and looks sharp when zooming in. The possibilities are endless, look at the \texttt{pgfplots} gallery for inspiration: \url{http://pgfplots.sourceforge.net/gallery.html}.
-However there are still cases where I would recommend to insert a plot as a picture. For example if the plot contains a lot of data: a line graph with 1000 points takes a long time to compile.
+In the previous chapter every module was discussed in isolation and experiments were conducted to validate their function. In this chapter various test setups will be discussed for the purpose of making multi-module experiments in the AFE and control system to evaluate their performance and compatibility.
 
-Some tips if you want good looking diagrams or graphs which will be inserted as pictures (e.g. in a figure environment with \textbackslash includegraphics): The main font is Arial. Use DTU colours as described in. Use high quality pictures. Try to scale the diagram (picture) so the text size of the axis legends match the text size in this document.
+\section{Pulse Generator and Power Stage}
 
-Remember to change the label of your figures so there are no duplicate labels. A label should be placed below a caption or after a heading (fx after a \textbackslash chapter).
 
-\section{Graphs and charts}
+\section{Doppler String Phantom Experiment}
 The CIRS A043 Doppler String Phantom is a device used to evaluate the performance of Doppler ultrasound imaging systems. The phantom consists of a set of strings that move in a controlled manner when exposed to ultrasound waves. The strings are made of nylon monofilament and are arranged in a parallel array.
 
 When the phantom is scanned with a Doppler ultrasound probe, the strings vibrate in response to the sound waves, producing a Doppler signal. The phantom includes a set of control strings that vibrate at a known frequency, allowing the user to calibrate the system and determine its accuracy. The string is driven by a motor that can be programmed to move at different speeds and directions, and it is also designed to create turbulence, which mimics the flow of blood in diseased vessels.
