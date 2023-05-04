@@ -1,3 +1,4 @@
+\glossaryentry{DC?\glossentry{dc}|setentrycounter[]{page}"\glsnumberformat}{VII}
 \glossaryentry{US?\glossentry{us}|setentrycounter[]{page}"\glsnumberformat}{1}
 \glossaryentry{CT?\glossentry{ct}|setentrycounter[]{page}"\glsnumberformat}{1}
 \glossaryentry{MRI?\glossentry{mri}|setentrycounter[]{page}"\glsnumberformat}{1}
@@ -69,9 +70,12 @@
 \glossaryentry{SoC?\glossentry{soc}|setentrycounter[]{page}"\glsnumberformat}{43}
 \glossaryentry{FPGA?\glossentry{fpga}|setentrycounter[]{page}"\glsnumberformat}{43}
 \glossaryentry{PZT?\glossentry{pzt}|setentrycounter[]{page}"\glsnumberformat}{44}
-\glossaryentry{MOSFET?\glossentry{mosfet}|setentrycounter[]{page}"\glsnumberformat}{44}
-\glossaryentry{PZT?\glossentry{pzt}|setentrycounter[]{page}"\glsnumberformat}{44}
-\glossaryentry{VNA?\glossentry{vna}|setentrycounter[]{page}"\glsnumberformat}{47}
-\glossaryentry{VNA?\glossentry{vna}|setentrycounter[]{page}"\glsnumberformat}{47}
-\glossaryentry{LNA?\glossentry{lna}|setentrycounter[]{page}"\glsnumberformat}{47}
-\glossaryentry{VGA?\glossentry{vga}|setentrycounter[]{page}"\glsnumberformat}{47}
+\glossaryentry{BP?\glossentry{bp}|setentrycounter[]{page}"\glsnumberformat}{45}
+\glossaryentry{MOSFET?\glossentry{mosfet}|setentrycounter[]{page}"\glsnumberformat}{47}
+\glossaryentry{PZT?\glossentry{pzt}|setentrycounter[]{page}"\glsnumberformat}{47}
+\glossaryentry{VNA?\glossentry{vna}|setentrycounter[]{page}"\glsnumberformat}{49}
+\glossaryentry{VNA?\glossentry{vna}|setentrycounter[]{page}"\glsnumberformat}{49}
+\glossaryentry{LNA?\glossentry{lna}|setentrycounter[]{page}"\glsnumberformat}{49}
+\glossaryentry{VGA?\glossentry{vga}|setentrycounter[]{page}"\glsnumberformat}{49}
+\glossaryentry{DCPS?\glossentry{dcps}|setentrycounter[]{page}"\glsnumberformat}{51}
+\glossaryentry{DC?\glossentry{dc}|setentrycounter[]{page}"\glsnumberformat}{51}
