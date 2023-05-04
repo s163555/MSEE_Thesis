@@ -1,8 +1,17 @@
 \chapter{Analysis}
-In the previous chapter every module was discussed in isolation and experiments were conducted to validate their function. In this chapter various test setups will be discussed for the purpose of making multi-module experiments in the AFE and control system to evaluate their performance and compatibility.
+In the previous chapter every module was discussed in isolation and single-module experiments were conducted to validate their function. In this chapter various test setups will be discussed for the purpose of making multi-module experiments in the AFE and control system to evaluate their performance and compatibility.
 
 \section{Pulse Generator and Power Stage}
+Using the pulse generator and the power stage, an experiment is performed where the complementary PWM signals are generated and output to the gate driver of the power stage. In turn, the gate driver will drive the MOSFET pair and output a high-power output than the pulse generator can supply on its own through its GPIO.
 
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=.8\textwidth]{Figures/5_controlsystem_fpga_pwm.png}
+	\caption{Complementary PWM output from the pulse generator and bipolar high power pulses}
+	\label{fig:5_pulse_generator_experiment}
+\end{figure}
+
+Seen in \cref{fig:5_pulse_generator_experiment} are the measurements obtained from the pulse generator and power stage experiment. The measurements show the ability of the Pynq Z1 as a pulse generator is functioning as expected. As the power stage half-bridge is rail-to-rail, the output pulse voltages depend on the power supply voltage. In this case, the experiment is using a \qty{30}{\volt} maximum \gls{dcps}, and the output peak pulse voltages are $\pm \qty{30}{\volt}$. However, the power stage itself is specified for operating voltages up to $\pm \qty{100}{\volt}$.
 
 \section{Doppler String Phantom Experiment}
 The CIRS A043 Doppler String Phantom is a device used to evaluate the performance of Doppler ultrasound imaging systems. The phantom consists of a set of strings that move in a controlled manner when exposed to ultrasound waves. The strings are made of nylon monofilament and are arranged in a parallel array.
