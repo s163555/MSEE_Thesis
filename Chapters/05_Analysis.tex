@@ -21,6 +21,20 @@ Seen in \cref{fig:4_transmitter_meas} are actual measured inputs and outputs of 
 	\label{fig:4_transmitter_meas}
 \end{figure}
 
+\subsection{Transmit/Receive Switch}
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=.8\textwidth]{Figures/4_switch_meas_pic.jpg}
+	\caption{TX/RX Switch reflection experiment with water tank}
+	\label{fig:4_switch_meas_pic}
+\end{figure}
+For validating the TX/RX switch, an experiment is conducted with a \gls{pzt} transducer, water tank, function generator and an oscilloscope. Using two input signals, $f_{\mathrm{prf}}=\qty{10}{\kilo\hertz}$ switch signal, and $f_{0}=\qty{5}{\mega\hertz}$ burst mode transmit signal, the switch is configured to transmit and receive. A picture of the submerged transducer with a reflector can be seen in \cref{fig:4_switch_meas_pic}. After submerging the transducer in distilled water and measuring on the receiver side of the TX/RX switch, a reflected signal from the tank can be observed in \cref{fig:4_txrx_meas}.
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=.8\textwidth]{Figures/4_switch_pcb_meas.eps}
+	\caption[Measured transmit and receive on Transmit/Receive Switch PCB]{Measured transmit and receive on Transmit/Receive Switch PCB (Above) Measured transmit voltage (Below) Received reflected signal off water tank}
+	\label{fig:4_txrx_meas}
+
 \section{Pulse Generator and Power Stage}
 Using the pulse generator and the power stage, an experiment is performed where the complementary PWM signals are generated and output to the gate driver of the power stage. In turn, the gate driver will drive the MOSFET pair and output a high-power output than the pulse generator can supply on its own through its GPIO.
 
