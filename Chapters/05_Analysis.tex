@@ -35,6 +35,49 @@ For validating the TX/RX switch, an experiment is conducted with a \gls{pzt} tra
 	\caption[Measured transmit and receive on Transmit/Receive Switch PCB]{Measured transmit and receive on Transmit/Receive Switch PCB (Above) Measured transmit voltage (Below) Received reflected signal off water tank}
 	\label{fig:4_txrx_meas}
 
+\subsection{Bandpass Filter}
+it is desired to validate its frequency response to determine if it functions as desired. To obtain the frequency response, a bode plot of the magnitude and phase is measured from \qty{300}{\kilo\hertz} until \qty{20}{\mega\hertz} using a \gls{vna} in a S21 configuration, meaning a measurement of the output in respect to the input. This measurement determines the difference in magnitude and phase of the output in comparison with the input signal. Observed in \cref{fig:4_bpf_measurement} is the frequency response of the band-pass filter measured on a \gls{vna}. It is noted that the pass band frequencies are mostly as expected with \qty{-0.5}{\decibel} frequencies at \qty{1.5}{\mega\hertz} and \qty{7}{\mega\hertz}. Though, the roll-off in the higher stop band appears somewhat lower than in the lower stop band. That would mean that it is plausible that higher frequency noise components are retained in the output than in the lower stop band. For the phase, it seems to have a significant phase delay, going from around \qty{100}{\degree} to \qty{250}{\degree} from the start to the end of the pass band.
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=.8\textwidth]{Figures/4_bpf_measurement_vna.eps}
+	\caption[Band-pass filter bode plot]{Band-pass Filter bode plot from \qtyrange{0.3}{14}{\mega\hertz} with (above) magnitude and (below) phase}
+	\label{fig:4_bpf_measurement}
+\end{figure}
+
+\subsection{Preamplifier}
+Seen in \cref{fig:4_preamp_in} are measurements of the preamplifier circuits showing a \qty{70}{\milli\volt} input signal and a \qty{300}{\milli\volt} output signal with a \qty{2.5}{\volt} DC bias. In this application, however, only the \gls{lna} is used, and the \gls{vga} is bypassed in the hardware preamplifier configuration. The schematic of the preamplifier circuit is part of the demodulation schematic and can be found in the appendix in \cref{fig:appendix_ad8333}.
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=.8\textwidth]{Figures/4_preamplifier_pcb.eps}
+	\caption[Measured input and output of preamplifier PCB]{Measured input of preamplifier PCB, (Above) AC coupled input signal with amplitude \qty{1}{\volt} (Below Measured output of preamplifier PCB, Differential signal with DC coupling and $\times \qty{19}{\decibel}$ amplification)}
+	\label{fig:4_preamp_in}
+\end{figure}
+
+\subsection{Demodulator}
+Seen in \cref{fig:4_demod_in} are the input signals, differential signals of \qty{5.001}{\mega\hertz} and \qty{20}{\mega\hertz} local oscillator signal. Seen in \cref{fig:4_demod_out} are the differential input signals $A$ and $B$ and the demodulated output signals $I$ and $Q$, where the phase between $I$ and $Q$ denotes the Doppler shift direction, or rather, the direction of flow of the scatterer. It is noted that the differential signal is so high frequency compared to the timescale so there has to be a zoomed in subplot where the waveform is visible to show the waveform. This highlights the significant frequency difference, which is one of the key functions of the demodulator.
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=.8\textwidth]{Figures/4_demod_pcb_in.eps}
+	\caption[Measured input of demodulator PCB]{Measured input of demodulator PCB (Above) Input from received signal (Below) Input from local oscillator ($f_{0}\cdot4$)}
+	\label{fig:4_demod_in}
+\end{figure}
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=.8\textwidth]{Figures/4_demod_pcb_out.eps}
+	\caption[Measured output of demodulator PCB]{Measured output of demodulator PCB}
+	\label{fig:4_demod_out}
+\end{figure}
+
+\subsection{Sample and Hold Amplifier}
+Seen in \cref{fig:4_sample_hold_pcb} is the measured inputs and outputs of the circuit during the experiment. Above is the I-Q input and in the middle is the sample gating, and below is the output signal. On the output signal, it is noted the corresponding voltage transients for every pulse in the gate input.
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=.8\textwidth]{Figures/4_sampler_pcb.eps}
+	\caption{Measured input and output of Sample and Hold amplifier}
+	\label{fig:4_sample_hold_pcb}
+\end{figure}
+
 \section{Pulse Generator and Power Stage}
 Using the pulse generator and the power stage, an experiment is performed where the complementary PWM signals are generated and output to the gate driver of the power stage. In turn, the gate driver will drive the MOSFET pair and output a high-power output than the pulse generator can supply on its own through its GPIO.
 
