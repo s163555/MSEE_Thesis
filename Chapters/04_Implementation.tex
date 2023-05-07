@@ -7,7 +7,16 @@ In this chapter, the steps involved in turning a theoretical design into a tangi
 	\caption{STM32 Zephyr RTOS pulser output}
 	\label{fig:4_stm32_zephyr_pulser}
 \end{figure}
-During the initial implementation stage of the control system, a bring-up of the STM32F411RE board and several pulse signals were succesfully generated. In \cref{fig:4_stm32_zephyr_pulser}, two pulse signals can be seen. In Channel 2, \qty{5}{\mega\hertz} ultrasound pulse can be seen. In Channel 3, the \qty{10}{\kilo\hertz} PRF signal can be seen. Unfortunately, soon thereafter it was discovered a limitation of the API in Zephyr is not mature enough developed for power systems such as the half-bridge in the transmitter circuit. In more practical terms, it was not possible to generate two complementary signals with dead-time using the existing Zephyr PWM API. To continue with that solution, a new PWM driver would have to be written from scratch, which is no trivial task. Alternative solutions were investigated. Another option was to use the \gls{hal} provided by the manufacturer of the microcontroller. However, it was decided to try an alternative system known as PYNQ Z1, which is a development board by Agilent. On the PYNQ Z1 board is a Zynq 7000 \gls{soc}. Inside the Zynq 7000 SoC there are both an \gls{fpga} and Arm based processor.
+During the initial implementation stage of the control system, a bring-up of the STM32F411RE board and several pulse signals were succesfully generated. In \cref{fig:4_stm32_zephyr_pulser}, two pulse signals can be seen. In Channel 2, \qty{5}{\mega\hertz} ultrasound pulse can be seen. In Channel 3, the \qty{10}{\kilo\hertz} PRF signal can be seen. Unfortunately, soon thereafter it was discovered a limitation of the API in Zephyr is not mature enough developed for power systems such as the half-bridge in the transmitter circuit. In more practical terms, it was not possible to generate two complementary signals with dead-time using the existing Zephyr PWM API. To continue with that solution, a new PWM driver would have to be written from scratch, which is no trivial task. Alternative solutions were investigated. Another option was to use the \gls{hal} provided by the manufacturer of the microcontroller, but this would also mean an increased amount of development time for the control system since the \gls{hal} is rudimentary in implementation and has little abstraction. However, it was decided to try an alternative system known as PYNQ Z1, which is a development board by Agilent. On the PYNQ Z1 board is a Zynq 7000 \gls{soc}. Inside the Zynq 7000 SoC there are both an \gls{fpga} and Arm based processor. PYNQ is an open-source framework that runs on Xilinx compute platforms where higher levels of abstraction enable faster productivity.
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=.8\textwidth]{Figures/4_pynq_z1_pcb_pic.png}
+	\caption{PYNQ-Z1 development board}
+	\label{fig:4_pynq_z1_pcb}
+\end{figure}
+
+Seen in \cref{fig:4_pynq_z1_pcb} is the development board with its peripherals. The development of a prototype pulser system will be done by implementating an FPGA project in Vivado and then generating the \gls{bitstream}. After this, the FPGA artifacts are generated as a \texttt{.bit} and \texttt{.hwh} file. These two files are used in the JupyterLab environment as an overlay to configure the logic of the FPGA as an overlay.
 
 \section{Power Stage}
 \begin{figure}[htbp]
