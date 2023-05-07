@@ -38,24 +38,45 @@ The entire schematic of the transmit/receive switch can be found in the appendix
 
 
 \section{Band-Pass Filter}
-Since the \gls{bp} filter is comprised of a module component in a bespoke form factor, a circuit is implemented on a prototyping board. With the BPF-C4R5+ mounted in the center, input and output connectors are placed on either side with SMA connectors. Since the filter is passive, no power connectors are needed.
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=.8\textwidth]{Figures/4_bpf_pcb_pic.jpg}
+	\caption{Prototype board of the Band-Pass filter}
+	\label{fig:4_bpf_pcb_pic}
+\end{figure}
+Since the \gls{bp} filter is comprised of a module component in a bespoke form factor, a circuit is implemented on a prototyping board. With the BPF-C4R5+ mounted in the center, input and output connectors are placed on either side with SMA connectors. Since the filter is passive, no power connectors are needed. The prototype board of the \gls{bp} filter can be seen in \cref{fig:4_bpf_pcb_pic}.
 
 \section{Preamplifier}
-Before the signal can be demodulated, it must be DC-biased and amplified. This is what the preamplifier is for. For the preamplifier, the circuit is validated using an experiment where a function generator is transmitting a low amplitude sine with ac-coupling and measure the amplified dc-coupled output.
+Before the signal can be demodulated, it must be DC-biased and amplified. This is what the preamplifier is for. For the preamplifier, the circuit is validated using an experiment where a function generator is transmitting a low amplitude sine with ac-coupling and measure the amplified dc-coupled output. Using the AD8332 built-in \gls{lna} and bypassing the \gls{vga} in the circuit, it feeds the amplified output to the next subcircuit Quadrature Demodulator. The preamplifier is part of the same board as the quadrature demodulator in \cref{sec:implementation_demodulator}.
 
-\section{Quadrature Demodulator}
+\section{Quadrature Demodulator} \label{sec:implementation_demodulator}
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=.8\textwidth]{Figures/4_demod_pcb_pic.jpg}
 	\caption{Demodulator PCB AD8333-EVALZ}
 	\label{fig:4_demod_pcb_pic}
 \end{figure}
-As described in the previous chapter, the demodulator use an I/Q quadrature demodulation scheme to take two differential RF signals and a quadruple frequency signal, in this case, \qty{5}{\mega\hertz} and \qty{20}{\mega\hertz}, respectively, and determines the frequency difference between the fundamental frequency and the Doppler frequency on the output.
-The entire schematic of the demodulator can be found in the appendix in \cref{fig:appendix_ad8333}.
-\section{Sample and Hold}
-After each demodulated burst is sampled, between each sample line pulse repetition it is desired to hold the voltage, so the analogue-to-digital conversion that may be running asynchronously does not sample zero-values between the bursts. Therefore, an experiment is conducted with the sample-and-hold amplifier to verify the functionality. A low-frequency I-Q simulated signal is created from the function generator with a sample gating pulse train to control the sample-and-hold function.
+As described in the previous chapter, the demodulator use an I/Q quadrature demodulation scheme to take two differential RF signals and a quadruple frequency signal, in this case, \qty{5}{\mega\hertz} and \qty{20}{\mega\hertz}, respectively, and determines the frequency difference between the fundamental frequency and the Doppler frequency on the output. After the differential signal from the preamplifier is demodulated, it is output as a current. Next, it is converted using the AD8021 current-to-voltage amplifier coupled with an active \gls{lp} filter to remove the summed demodulated frequency component. What remains are the low-frequency $I$ and $Q$ signals in the \unit{\kilo\hertz} range. The entire schematic of the demodulator can be found in the appendix in \cref{fig:appendix_ad8333}.
 
-\section{Pulse-Repetition and Wall Filter}
+\section{Sample and Hold}
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=.8\textwidth]{Figures/4_sha_pcb_pic.jpg}
+	\caption{Prototype board of the Sample and Hold amplifier}
+	\label{fig:4_sha_pcb_pic}
+\end{figure}
+
+After each demodulated burst is sampled, between each sample line pulse repetition it is desired to hold the voltage, so the analogue-to-digital conversion that may be running asynchronously does not sample zero-values between the bursts. After the low-frequency signals are output from the quadrature demodulator, they are sampled using the \texttt{GATE} signal output from the control system. This \texttt{GATE} signal is a delayed pulse equal to the length of the pulse train and determines the sampling depth of the \gls{afe}. The prototype board of the sample and hold amplifier can be seen in \cref{fig:4_sha_pcb_pic}.
+
+\section{Active Filter, DC-Coupler}
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=.8\textwidth]{Figures/4_dccoupler_filter_pcb_pic.jpg}
+	\caption{Prototype board of the active filter and \gls{dc}-coupler}
+	\label{fig:4_dccoupler_pcb_pic}
+\end{figure}
+Finally, before the signal is digitally quantized by the \gls{adc}, it has to pass through a \gls{hp} filter to remove undesired \gls{prf} or Wall frequency components. The implementation is done on a prototyping board and can be seen in \cref{fig:4_dccoupler_pcb_pic}.
+
 \section{Digital Signal Processor}
 
 
