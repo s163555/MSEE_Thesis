@@ -16,7 +16,7 @@ During the initial implementation stage of the control system, a bring-up of the
 	\label{fig:4_controlsystem_pynq_z1_pcb}
 \end{figure}
 
-Seen in \cref{fig:4_controlsystem_pynq_z1_pcb} is the development board with its peripherals. The development of a prototype pulser system will be done by implementating an FPGA project in Vivado and then generating the \gls{bitstream}. After this, the FPGA artifacts are generated as a \texttt{.bit} and \texttt{.hwh} file. These two files are used in the JupyterLab environment as an overlay to configure the logic of the FPGA.
+Seen in \cref{fig:4_controlsystem_pynq_z1_pcb} is the development board with its peripherals. The development of a prototype pulser system will be done by implementating an FPGA project in Vivado and then generating the \gls{bitstream}. After this, the FPGA artifacts are generated as a \texttt{.bit} and \texttt{.hwh} file. These two files are used in the JupyterLab environment as an overlay to configure the logic of the FPGA and output signals on the PMOD-A connector.
 
 \begin{figure}[htbp]
 	\centering
@@ -25,7 +25,7 @@ Seen in \cref{fig:4_controlsystem_pynq_z1_pcb} is the development board with its
 	\label{fig:4_controlsystem_pynq_z1_pmod}
 \end{figure}
 
-After creating the
+On the PYNQ-Z1 board, the PMOD ports are 12-pin female connectors with 0.1 inch spacing that connect to normal 12-pin headers. As illustrated in \cref{fig:4_controlsystem_pynq_z1_pmod}, each 12-pin PMOD port offers two 3.3V VCC signals (pins 6 and 12), two GND signals (pins 5 and 11), and eight logic signals.
 
 \begin{figure}[htbp]
 	\centering
