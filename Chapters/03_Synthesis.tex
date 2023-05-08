@@ -38,7 +38,7 @@ Initially, a pulse generator was designed by using a programmable synthesizer ci
 In the context of a PW Doppler system, it is desired to generate 4 signals:
 \begin{itemize}
 	\item \qty{5}{\mega\hertz} complementary signal \texttt{PWM} with dead-time for the pulsed burst during transmit mode.
-	\item \qty{5}{\mega\hertz} complementary signal \texttt{PWMN} with opposite phase and inverted from \texttt{PWM}.
+	\item \qty{5}{\mega\hertz} complementary signal \texttt{PWMN} with dead-time and opposite phase from \texttt{PWM}.
 	\item \qty{10}{\kilo\hertz} signal \texttt{PRF} for the timing control of the transmit/receive switch.
 	\item \qty{20}{\mega\hertz} clock signal \texttt{CLK} for the demodulation circuit in the receiver.
 	\item \texttt{PULSE} and \texttt{GATE} controlled by \texttt{PRF} for S/H control with pulse length $t_{\mathrm{pulse}} = N_{\mathrm{pulse}} \times T_{\mathrm{prd}}$, where $T_{\mathrm{prd}} = \sfrac{1}{f_{\mathrm{pwm}}}$. \texttt{GATE} is delayed from pulse by \texttt{sample depth}.
