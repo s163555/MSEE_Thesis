@@ -239,58 +239,58 @@ Where $P_{1}$ and $P_{2}$ are the blood pressures measured at each end of the bl
 	\end{adjustbox}
 \end{table}
 
-\section{Transducer}
-Various \gls{transducer} types are used during the testing of this project. Initially, commercially available transducers were used in order to validate the experimental process of the pulse-echo and Doppler measurements. Commercially available transducers in this context mean \gls{pzt} \gls{piezoelectric} transducers. PZT is a piezoelectric material that deforms when an electrical voltage is applied and generates an electrical signal when it is mechanically deformed. PZT transducers are widely used for medical imaging due to their high piezoelectric efficiency, high bandwidth and durability.
-
-At a later stage during the project, CMUTs are used. CMUT, is a newer technology that uses capacitance to convert between electrical and mechanical energy. The transducer consists of a flexible membrane that moves in response to an applied voltage, producing ultrasound signals. CMUTs have advantages in terms of their small size, high frequency, and ability to operate in a broad range of conditions, making them ideal for use in portable and high-resolution imaging devices. They can be produced in large quantities using micro-machining processes that ensure tight parameter specifications, which is difficult to achieve with piezoelectric transducers. Fabricating CMUTs is also simpler than piezoelectric transducers, and batch processing allows for the creation of transducer arrays with various geometries and operating frequencies on a single wafer. The use of standard IC processes also makes it convenient to integrate CMUT arrays with supporting electronics. Additionally, CMUTs can operate over a wider temperature range than piezoelectric devices. Over the last decade, results have demonstrated that CMUTs optimized with regard to design parameters such as device size, membrane radius, thickness, shape, gap height, and operating mode can compare favourably to piezoelectric transducers in terms of bandwidth (\qty{170}{\percent}), frequency range (\qtyrange[scientific-notation = engineering]{0.1}{70}{\mega\hertz}) \todo{Ret til med korrekt enhed}, dynamic range (\qty{130}{\decibel\per\volt}), maximum output pressure (\qty{35}{\kilo\pascal\per\volt}), and receive sensitivity (\qty{50}{\decibel\per\pascal\per\hertz}). There are two types of CMUTs used:
-
-\subsubsection{Rigid CMUTs:}
-\begin{itemize}
-	\item Advantages:
-	\begin{itemize}
-		\item Higher mechanical stability, leading to less noise and improved image quality
-		\item Can handle higher pressures, making them suitable for deeper imaging applications
-		\item Can have a larger surface area, providing higher sensitivity
-	\end{itemize}
-	\item Disadvantages:
-	\begin{itemize}
-		\item Less flexible, limiting their use in applications with complex geometries or limited access
-		\item Higher stiffness, leading to increased power consumption and difficulty in producing high-frequency signals
-	\end{itemize}
-\end{itemize}
-\subsubsection{Flexible CMUTs:}
-\begin{itemize}
-	\item Advantages:
-	\begin{itemize}
-		\item More flexible, allowing them to conform to complex geometries or be used in applications with limited access
-		\item Can be made thinner and lighter, making them suitable for portable or handheld imaging devices
-		\item Can be integrated into wearable devices or implanted into the body, enabling new imaging modalities
-	\end{itemize}
-	\item Disadvantages:
-	\begin{itemize}
-		\item Lower mechanical stability, leading to increased noise and reduced image quality
-		\item Lower maximum operating pressure, limiting their use in deep imaging applications
-		\item Smaller surface area, resulting in reduced sensitivity
-	\end{itemize}
-\end{itemize}
-In summary, the choice between rigid and flexible CMUTs depends on the specific requirements of the application and the trade-off between flexibility, sensitivity, and image quality. For this project, a wearable transducer is desired and therefore the flexible CMUT is preferred.
-
-\subsubsection{Structure}
-\begin{figure}[htbp]
-	\centering
-	%		\input{Figures/3_cmut_structure.tikz}
-	\includegraphics[width=.6\textwidth]{Figures/3_cmut_structure.pdf}
-	\caption{Basic CMUT structure}
-	\label{fig:3_cmut_structure}
-\end{figure}
-The key components of the structure are the cavity, membrane, and electrode. CMUT transducers are fabricated using standard \gls{ic} fabrication processes, resulting in a capacitor cell that consists of a metallized membrane (top electrode) suspended above a heavily doped silicon substrate (bottom electrode), as depicted in \cref{fig:3_cmut_structure}. An insulating layer is included to prevent the two electrodes from making contact and shorting. A single transducer element consists of multiple small capacitor cells connected in parallel. By arranging transducer elements in various geometries, any array shape can be achieved, as demonstrated in \cref{fig:3_cmut_array_shape}. In (a), circular membranes with a diameter of \qty{24}{\micro\meter} have approximately \qty{50}{\percent} active area coverage. In (b), circular membranes with a diameter of \qty{80}{\micro\meter} have \qty{72}{\percent} active area coverage. (c) displays hexagonal membranes with a diameter of \qty{80}{\micro\meter} that have \qty{86}{\percent} active area coverage. Finally, (d) demonstrates tented membranes in which the etch holes are located on the post, providing over \qty{90}{\percent} active area coverage.
-
-\begin{figure}[htbp]
-	\centering
-	\includegraphics[width=.6\textwidth]{Figures/3_cmut_array_shapes.jpg}
-	\caption[Optical images of various cMUT elements with different membrane shapes]{Optical images of various cMUT elements with different membrane shapes and sizes are shown to illustrate their relationship to active area coverage \cite{cmut_array_shape}}
-	\label{fig:3_cmut_array_shape}
-\end{figure}
+%\section{Transducer}
+%Various \gls{transducer} types are used during the testing of this project. Initially, commercially available transducers were used in order to validate the experimental process of the pulse-echo and Doppler measurements. Commercially available transducers in this context mean \gls{pzt} \gls{piezoelectric} transducers. PZT is a piezoelectric material that deforms when an electrical voltage is applied and generates an electrical signal when it is mechanically deformed. PZT transducers are widely used for medical imaging due to their high piezoelectric efficiency, high bandwidth and durability.
+%
+%At a later stage during the project, CMUTs are used. CMUT, is a newer technology that uses capacitance to convert between electrical and mechanical energy. The transducer consists of a flexible membrane that moves in response to an applied voltage, producing ultrasound signals. CMUTs have advantages in terms of their small size, high frequency, and ability to operate in a broad range of conditions, making them ideal for use in portable and high-resolution imaging devices. They can be produced in large quantities using micro-machining processes that ensure tight parameter specifications, which is difficult to achieve with piezoelectric transducers. Fabricating CMUTs is also simpler than piezoelectric transducers, and batch processing allows for the creation of transducer arrays with various geometries and operating frequencies on a single wafer. The use of standard IC processes also makes it convenient to integrate CMUT arrays with supporting electronics. Additionally, CMUTs can operate over a wider temperature range than piezoelectric devices. Over the last decade, results have demonstrated that CMUTs optimized with regard to design parameters such as device size, membrane radius, thickness, shape, gap height, and operating mode can compare favourably to piezoelectric transducers in terms of bandwidth (\qty{170}{\percent}), frequency range (\qtyrange[scientific-notation = engineering]{0.1}{70}{\mega\hertz}) \todo{Ret til med korrekt enhed}, dynamic range (\qty{130}{\decibel\per\volt}), maximum output pressure (\qty{35}{\kilo\pascal\per\volt}), and receive sensitivity (\qty{50}{\decibel\per\pascal\per\hertz}). There are two types of CMUTs used:
+%
+%\subsubsection{Rigid CMUTs:}
+%\begin{itemize}
+%	\item Advantages:
+%	\begin{itemize}
+%		\item Higher mechanical stability, leading to less noise and improved image quality
+%		\item Can handle higher pressures, making them suitable for deeper imaging applications
+%		\item Can have a larger surface area, providing higher sensitivity
+%	\end{itemize}
+%	\item Disadvantages:
+%	\begin{itemize}
+%		\item Less flexible, limiting their use in applications with complex geometries or limited access
+%		\item Higher stiffness, leading to increased power consumption and difficulty in producing high-frequency signals
+%	\end{itemize}
+%\end{itemize}
+%\subsubsection{Flexible CMUTs:}
+%\begin{itemize}
+%	\item Advantages:
+%	\begin{itemize}
+%		\item More flexible, allowing them to conform to complex geometries or be used in applications with limited access
+%		\item Can be made thinner and lighter, making them suitable for portable or handheld imaging devices
+%		\item Can be integrated into wearable devices or implanted into the body, enabling new imaging modalities
+%	\end{itemize}
+%	\item Disadvantages:
+%	\begin{itemize}
+%		\item Lower mechanical stability, leading to increased noise and reduced image quality
+%		\item Lower maximum operating pressure, limiting their use in deep imaging applications
+%		\item Smaller surface area, resulting in reduced sensitivity
+%	\end{itemize}
+%\end{itemize}
+%In summary, the choice between rigid and flexible CMUTs depends on the specific requirements of the application and the trade-off between flexibility, sensitivity, and image quality. For this project, a wearable transducer is desired and therefore the flexible CMUT is preferred.
+%
+%\subsubsection{Structure}
+%\begin{figure}[htbp]
+%	\centering
+%	%		\input{Figures/3_cmut_structure.tikz}
+%	\includegraphics[width=.6\textwidth]{Figures/3_cmut_structure.pdf}
+%	\caption{Basic CMUT structure}
+%	\label{fig:3_cmut_structure}
+%\end{figure}
+%The key components of the structure are the cavity, membrane, and electrode. CMUT transducers are fabricated using standard \gls{ic} fabrication processes, resulting in a capacitor cell that consists of a metallized membrane (top electrode) suspended above a heavily doped silicon substrate (bottom electrode), as depicted in \cref{fig:3_cmut_structure}. An insulating layer is included to prevent the two electrodes from making contact and shorting. A single transducer element consists of multiple small capacitor cells connected in parallel. By arranging transducer elements in various geometries, any array shape can be achieved, as demonstrated in \cref{fig:3_cmut_array_shape}. In (a), circular membranes with a diameter of \qty{24}{\micro\meter} have approximately \qty{50}{\percent} active area coverage. In (b), circular membranes with a diameter of \qty{80}{\micro\meter} have \qty{72}{\percent} active area coverage. (c) displays hexagonal membranes with a diameter of \qty{80}{\micro\meter} that have \qty{86}{\percent} active area coverage. Finally, (d) demonstrates tented membranes in which the etch holes are located on the post, providing over \qty{90}{\percent} active area coverage.
+%
+%\begin{figure}[htbp]
+%	\centering
+%	\includegraphics[width=.6\textwidth]{Figures/3_cmut_array_shapes.jpg}
+%	\caption[Optical images of various cMUT elements with different membrane shapes]{Optical images of various cMUT elements with different membrane shapes and sizes are shown to illustrate their relationship to active area coverage \cite{cmut_array_shape}}
+%	\label{fig:3_cmut_array_shape}
+%\end{figure}
 
 %\subsection{Impedance matching}
 %Impedance matching refers to the adjustment of the output impedance of the transducer to match the input impedance of the receiving system, such as the ultrasound machine or amplifier. This ensures maximum transfer of energy from the transducer to the receiving system, leading to improved signal strength and reduced noise in the final image. In ultrasound imaging, the transducer is used to both transmit and receive ultrasound signals. The impedance of the transducer must be carefully matched to the environment it is operating in, to ensure efficient transfer of energy both ways. If the impedance of the transducer and the receiving system does not match, a portion of the transmitted energy will be reflected back to the transducer, leading to reduced signal strength and increased noise in the final image. This can also result in increased power consumption and reduced battery life in portable or handheld imaging devices.
