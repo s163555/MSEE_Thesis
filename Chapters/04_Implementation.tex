@@ -27,7 +27,7 @@ Seen in \cref{fig:4_controlsystem_pynq_z1_pcb} is the development board with its
 
 On the PYNQ-Z1 board, the PMOD ports are 12-pin female connectors with 0.1 inch spacing that connect to normal 12-pin headers. As illustrated in \cref{fig:4_controlsystem_pynq_z1_pmod}, each 12-pin PMOD port offers two 3.3V VCC signals (pins 6 and 12), two GND signals (pins 5 and 11), and eight logic signals. Each PMOD port on a PYNQ board is classified as normal, MIO linked, XADC, or high-speed. The PYNQ-Z1 features two PMOD ports, both of which are high-speed. For maximal switching rates, the High-speed PMOD ports route their data signals as impedance matched differential pairs. For further protection, they feature pads for loading resistors, however the PYNQ-Z1 ships with these loaded as 0-Ohm shunts. With the series resistors shunted, these PMOD ports provide no short-circuit protection but allow for substantially quicker switching rates. Pins 1 and 2, pins 3 and 4, pins 7 and 8, and pins 9 and 10 are coupled to neighboring signals in the same row. Traces are routed in a \qty{100}{\ohm} ($\pm\qty{10}{\percent}$) differential configuration. Coupled pairs may produce crosstalk if pins on this port are utilized as single-ended signals. Because it is being used as a single-ended signal in this application, one of the pins is grounded and its pair is utilized for the single-ended signal. Because the High-Speed PMOD ports employ 0-ohm shunts instead of protection resistors, the user must exercise caution to avoid shorts.
 
-\begin{mintedvhdl}
+\begin{mintedvhdl} \label{lst:4_controlsystem_constraints}
 	set_property IOSTANDARD LVCMOS33 [get_ports PULSE]
 	set_property IOSTANDARD LVCMOS33 [get_ports PWM]
 	set_property IOSTANDARD LVCMOS33 [get_ports PWMN]
@@ -50,6 +50,8 @@ On the PYNQ-Z1 board, the PMOD ports are 12-pin female connectors with 0.1 inch 
 	set_property PACKAGE_PIN N16 [get_ports {LEDs[2]}]
 	set_property PACKAGE_PIN M14 [get_ports {LEDs[3]}]
 \end{mintedvhdl}
+
+When programming an FPGA with software like as Xilinx's Vivado, it becomes necessary to inform the system which physical pins on the FPGA correspond to the FPGA ports defined in the VHDL code. This is quite similar to putting a register high or low on a microcontroller to turn an LED on or off, operate a clock, or function as a data line. However, with a microcontroller, many of these pins are "hard-wired" in the sense that they cannot be relocated to a physically different pin on the microcontroller. In general, it's just not an option. This is not the case with an FPGA; instead, the hardware interface is established in VHDL and then the appropriate inputs and outputs on that interface are constrained to whichever pins on the FPGA are required, making FPGAs incredibly versatile for complicated and bespoke designs. In \cref{lst:4_controlsystem_constraints}, the constraints can be seen setting the port names to a certain \texttt{IOSTANDARD} and voltage level and the pin name \texttt{PACKAGE_PIN}. All the described pins are \gls{io} available on the PMOD port of the PYNQ-Z1.
 
 \begin{figure}[htbp]
 	\centering
