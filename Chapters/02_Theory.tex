@@ -7,23 +7,23 @@ This chapter explains the overall theory that forms the fundamental principles o
 	\caption[Particle displacement for a propagating ultrasound wave]{Particle displacement for a propagating ultrasound wave \cite{JensenUltrasoundBook}}
 	\label{fig:2_planewave_jensen}
 \end{figure}
-\gls{us} is a technology that transmits sound wave with frequencies above the audible range (\qtyrange[range-units = single]{20}{20e3}{\hertz}) to mechanically vibrate matter. The particles in the medium would be at rest and distributed uniformly before any disturbance. The wave propagates as a disturbance and the particles oscillate around their mean position due to the presence of the ultrasonic wave. Typically, the \gls{us} frequency-band used in clinical settings are from \qtyrange[range-units = single]{1}{15}{\mega\hertz} \cite{Szabo_UltrasoundBook_2}. Certain specialist applications, such as eye, skin, and small animal imaging may use ultrasound frequencies at or above \qty{20}{\mega\hertz.} \cite{Winckler2012}. The trade-off with very high-frequency ultrasound balances increased resolution with reduction in penetration depth. For blood velocity estimation or echocardiography, moderate penetration is more important than resolution. Thus, the frequency used is most often at \qty{10}{\mega\hertz} or less. \Cref{fig:2_planewave_jensen} visualizes the propagation of a plane wave in matter. The oscillation occurs parallel to the wave's direction, making it longitudinal, and the disturbance will propagate with the variable $c$, which is determined by the medium and is given by \cref{eq:2_velocity_c}.
+Ultrasound is a technology that transmits sound wave with frequencies above the audible range (\qtyrange[range-units = single]{20}{20e3}{\hertz}) to mechanically vibrate matter. The particles in the medium would be at rest and distributed uniformly before any disturbance. The wave propagates as a disturbance and the particles oscillate around their mean position due to the presence of the ultrasonic wave. Typically, the \gls{us} frequency-band used in clinical settings are from \qtyrange[range-units = single]{1}{15}{\mega\hertz} \cite{Szabo_UltrasoundBook_2}. Certain specialist applications, such as eye, skin, and small animal imaging may use ultrasound frequencies at or above \qty{20}{\mega\hertz.} \cite{Winckler2012}. The trade-off with very high-frequency ultrasound balances increased resolution with reduction in penetration depth. For blood velocity estimation or echocardiography, moderate penetration is more important than resolution. Thus, the frequency used is most often at \qty{10}{\mega\hertz} or less. \Cref{fig:2_planewave_jensen} visualizes the propagation of a plane wave in matter. The oscillation occurs parallel to the wave's direction, making it longitudinal, and the disturbance will propagate with the variable $c$, which is determined by the medium and is given by \cref{eq:2_velocity_c}.
 \begin{equation} \label{eq:2_velocity_c}
 	c = \sqrt{\frac{1}{\rho_{0} \kappa_{S}}}
 \end{equation}
-Where $\rho_{0}$ is the mean density (\unit{\kilogram\per\meter\cubed}) and $\kappa_{S}$ is the \gls{adiabatic} compressibility (\unit{\meter\squared\per\newton}). Since in the majority of cases, the propagation of ultrasound is linear, it is assumed in this work. The acoustic pressure of the harmonic plane wave is expressed by \cref{eq:2_acoustic_pressure}. \raggedbottom
+where $\rho_{0}$ is the mean density (\unit{\kilogram\per\meter\cubed}) and $\kappa_{S}$ is the \gls{adiabatic} compressibility (\unit{\meter\squared\per\newton}). Since in the majority of cases, the propagation of ultrasound is linear, the linear propogation is assumed in this work. The acoustic pressure of the harmonic plane wave is expressed by \cref{eq:2_acoustic_pressure} and propagates along the $z$-axis. \raggedbottom
 \begin{equation} \label{eq:2_acoustic_pressure}
 	p(t,z)=p_{0} e^{j(\omega t - k z)}
 \end{equation}
-And propagates along the $z$-axis. $\omega$ is the angular frequency, $k$ is the wave number and is expressed by $k=\sfrac{\omega}{c}=\sfrac{2\pi}{\lambda}$, and $_{0}$ is the acoustic pressure amplitude. A spherical wave is expressed by \cref{eq:2_spherical_wave}
+where $\omega$ is the angular frequency, $k$ is the wave number and is expressed by $k=\sfrac{\omega}{c}=\sfrac{2\pi}{\lambda}$, and $_{0}$ is the acoustic pressure amplitude. A spherical wave is expressed by \cref{eq:2_spherical_wave}.
 \begin{equation} \label{eq:2_spherical_wave}
 	p(t,r)=p_{0} e^{j(\omega t - k r)}
 \end{equation}
-Where $r$ is radial distance and is defined in a polar coordinate system. For each time instance, the acoustic pressure $p(t,r)$ is constant over a fixed radial position. In this scenario, the pressure amplitude is given by $p_{0}(r) = \sfrac{k_{p}}{r}$, where $k_{p}$ is a constant since the energy of the outgoing wave must be constant.  Particle speed $u$ is dependent on the pressure caused by a wave expressed by \cref{eq:2_particle_speed}
+where $r$ is radial distance and is defined in a polar coordinate system. For each time instance, the acoustic pressure $p(t,r)$ is constant over a fixed radial position. In this scenario, the pressure amplitude is given by $p_{0}(r) = \sfrac{k_{p}}{r}$, where $k_{p}$ is a constant since the energy of the outgoing wave must be constant.  Particle speed $u$ is dependent on the pressure caused by a wave expressed by \cref{eq:2_particle_speed}.
 \begin{equation} \label{eq:2_particle_speed}
 	u = \frac{p}{Z}
 \end{equation}
-Where $Z$ is the characteristic acoustic impedance, defined as the ratio of acoustic pressure to particle speed at a given position in the medium and is expressed by \cref{eq:2_acoustic_impedance}.
+where $Z$ is the characteristic acoustic impedance, defined as the ratio of acoustic pressure to particle speed at a given position in the medium and is expressed by \cref{eq:2_acoustic_impedance}.
 \begin{equation} \label{eq:2_acoustic_impedance}
 	Z = \rho_{0} c
 \end{equation}
@@ -62,19 +62,19 @@ A wave propagating through a medium continues in the same direction until it enc
 \begin{equation} \label{eq:2_scatter_power}
 	P_{s} = I_{i} \sigma_{s c}
 \end{equation}
-Where $\sigma_{s c}$ is the scattering cross-section in square meters. The backscattering cross section is material dependant and determines the intensity of the scattering. If the dispersed energy is evenly emitted in all directions, the scattered intensity is given by \cref {eq:2_scatter_intensity}.
+where $\sigma_{s c}$ is the scattering cross-section in square meters. The backscattering cross section is material dependant and determines the intensity of the scattering. If the dispersed energy is evenly emitted in all directions, the scattered intensity is given by \cref {eq:2_scatter_intensity}.
 \begin{equation} \label{eq:2_scatter_intensity}
 	I_{s} = \frac{P_{s}}{4 \pi R^{2}} = \frac{\sigma_{sc}}{4 \pi R^{2}} \cdot I_{i}
 \end{equation}
-Where $R$ is the distance to the scattering region \cite{JensenUltrasoundBook}. This results in a spherical wave. A transducer with radius $r$ gives the power $P_{r}$, presuming the attenuation and focus are neglected, and is expressed by \cref{eq:2_transducer_r_power}.
+where $R$ is the distance to the scattering region \cite{JensenUltrasoundBook}. This results in a spherical wave. A transducer with radius $r$ gives the power $P_{r}$, presuming the attenuation and focus are neglected, and is expressed by \cref{eq:2_transducer_r_power}.
 \begin{equation} \label{eq:2_transducer_r_power}
 	P_{r} = I_{s} \pi r^{2} = \sigma_{s c} \frac{r^{2}}{4 R^{2}} \cdot I_{i}
 \end{equation}
 
-The backscattering coefficient, which characterizes scattering from a volume of scatterers, is another measure of scattering strength. It is defined as the average received power per steradian volume of scatterers when flooded with plane waves of unit amplitude and the unit is \unit{1\per\centi\meter\steradian}. Back-scattering coefficients in the blood are significantly lower than the backscattering coefficients from various tissue types. This poses a challenge when estimating blood flow close to tissue vessel walls \cite{ShungScattering1992,JensenUltrasoundBook}.
+The backscattering coefficient, which defines the characteristics from its volume, is another measure of scattering strength. It is defined as the average received power per steradian volume of scatterers when flooded with plane waves of unit amplitude and the unit is \unit{1\per\centi\meter\steradian}. Back-scattering coefficients in the blood are significantly lower than the backscattering coefficients from various tissue types. This poses a challenge when estimating blood flow close to tissue vessel walls \cite{ShungScattering1992,JensenUltrasoundBook}.
 
 \subsection{Attenuation}
-The ultrasonic wave will be reduced as it propagates through the tissue due to absorption and scattering. The attenuation in tissue is frequency dependent, with greater attenuation with increasing frequency. Because of absorption and dispersion, the ultrasonic wave will be attenuated as it travels through the tissue. The relationship between attenuation, distance travelled, and frequency is often linear. Attenuation in the tissue occurs as a result of both dispersion, which spreads energy in all directions, and absorption, which turns it into thermal energy. A table of approximate attenuation values can be seen in \cref{tab:2_tissue_attenuation}.
+The ultrasonic wave will be reduced as it propagates through the tissue due to absorption and scattering. The attenuation in tissue is \todo{fix attenuation} frequency dependent, with greater attenuation with increasing frequency. Because of absorption and dispersion, the ultrasonic wave will be attenuated as it travels through the tissue. The relationship between attenuation, distance travelled, and frequency is often linear. Attenuation in the tissue occurs as a result of both dispersion, which spreads energy in all directions, and absorption, which turns it into thermal energy. A table of approximate attenuation values can be seen in \cref{tab:2_tissue_attenuation}.
 
 \begin{table}[htbp]
 	\centering
@@ -100,11 +100,11 @@ The ultrasonic wave will be reduced as it propagates through the tissue due to a
 	\end{tblr}
 \end{table}
 
-The pressure of a wave propagating in $z$-direction decreases exponentially expressed by \cref{eq:2_attenuation_pressure}
+\Cref{eq:2_attenuation_pressure} expresses the the exponential decrease of pressure of a wave propagating in $z$-direction.
 \begin{equation} \label{eq:2_attenuation_pressure}
 	p(z) = p(z=0) e^{-\alpha z}
 \end{equation}
-Where $p(z=0)$ is the pressure in the point of origin and $\alpha$ is the attenuation coefficient. The attenuation coefficient unit is \si{\neper\per\centi\meter} and, alternatively, \si{\dB\per\centi\meter} with the relationship described in \cref{eq:2_attenuation_coefficient}.
+In \cref{eq:2_attenuation_pressure}, $p(z=0)$ is the pressure in the point of origin and $\alpha$ is the attenuation coefficient. The attenuation coefficient unit is \si{\neper\per\centi\meter} and, alternatively, \si{\dB\per\centi\meter} with the relationship described in \cref{eq:2_attenuation_coefficient}.
 
 \begin{subequations} \label{eq:2_attenuation_coefficient}
 	\begin{align}
@@ -203,7 +203,7 @@ Blood flow is the amount of blood that goes through a blood vessel in a particul
 \begin{equation} \label{eq:2_flow_ohms_law}
 	F = \frac{\Delta P}{R}
 \end{equation}
-Where $\Delta P$ is the pressure difference across the blood vessel and $R$ is the vascular resistance. The pressure difference $\Delta P$ is calculated with \cref{eq:2_pressure_diff}.
+where $\Delta P$ is the pressure difference across the blood vessel and $R$ is the vascular resistance. The pressure difference $\Delta P$ is calculated with \cref{eq:2_pressure_diff}.
 \begin{equation} \label{eq:2_pressure_diff}
 	\Delta P = P_{1}-P_{2}
 \end{equation}
