@@ -25,7 +25,31 @@ Seen in \cref{fig:4_controlsystem_pynq_z1_pcb} is the development board with its
 	\label{fig:4_controlsystem_pynq_z1_pmod}
 \end{figure}
 
-On the PYNQ-Z1 board, the PMOD ports are 12-pin female connectors with 0.1 inch spacing that connect to normal 12-pin headers. As illustrated in \cref{fig:4_controlsystem_pynq_z1_pmod}, each 12-pin PMOD port offers two 3.3V VCC signals (pins 6 and 12), two GND signals (pins 5 and 11), and eight logic signals.
+On the PYNQ-Z1 board, the PMOD ports are 12-pin female connectors with 0.1 inch spacing that connect to normal 12-pin headers. As illustrated in \cref{fig:4_controlsystem_pynq_z1_pmod}, each 12-pin PMOD port offers two 3.3V VCC signals (pins 6 and 12), two GND signals (pins 5 and 11), and eight logic signals. Each PMOD port on a PYNQ board is classified as normal, MIO linked, XADC, or high-speed. The PYNQ-Z1 features two PMOD ports, both of which are high-speed. For maximal switching rates, the High-speed PMOD ports route their data signals as impedance matched differential pairs. For further protection, they feature pads for loading resistors, however the PYNQ-Z1 ships with these loaded as 0-Ohm shunts. With the series resistors shunted, these PMOD ports provide no short-circuit protection but allow for substantially quicker switching rates. Pins 1 and 2, pins 3 and 4, pins 7 and 8, and pins 9 and 10 are coupled to neighboring signals in the same row. Traces are routed in a \qty{100}{\ohm} ($\pm\qty{10}{\percent}$) differential configuration. Coupled pairs may produce crosstalk if pins on this port are utilized as single-ended signals. Because it is being used as a single-ended signal in this application, one of the pins is grounded and its pair is utilized for the single-ended signal. Because the High-Speed PMOD ports employ 0-ohm shunts instead of protection resistors, the user must exercise caution to avoid shorts.
+
+\begin{mintedvhdl}
+	set_property IOSTANDARD LVCMOS33 [get_ports PULSE]
+	set_property IOSTANDARD LVCMOS33 [get_ports PWM]
+	set_property IOSTANDARD LVCMOS33 [get_ports PWMN]
+	set_property IOSTANDARD LVCMOS33 [get_ports GATE]
+	set_property IOSTANDARD LVCMOS33 [get_ports PRF]
+	set_property IOSTANDARD LVCMOS33 [get_ports CLK]
+	set_property PACKAGE_PIN Y16 [get_ports PULSE]
+	set_property PACKAGE_PIN Y18 [get_ports PWM]
+	set_property PACKAGE_PIN Y19 [get_ports PWMN]
+	set_property PACKAGE_PIN Y17 [get_ports GATE]
+	set_property PACKAGE_PIN U18 [get_ports PRF]
+	set_property PACKAGE_PIN U19 [get_ports CLK]
+
+	set_property IOSTANDARD LVCMOS33 [get_ports {LEDs[3]}]
+	set_property IOSTANDARD LVCMOS33 [get_ports {LEDs[2]}]
+	set_property IOSTANDARD LVCMOS33 [get_ports {LEDs[1]}]
+	set_property IOSTANDARD LVCMOS33 [get_ports {LEDs[0]}]
+	set_property PACKAGE_PIN R14 [get_ports {LEDs[0]}]
+	set_property PACKAGE_PIN P14 [get_ports {LEDs[1]}]
+	set_property PACKAGE_PIN N16 [get_ports {LEDs[2]}]
+	set_property PACKAGE_PIN M14 [get_ports {LEDs[3]}]
+\end{mintedvhdl}
 
 \begin{figure}[htbp]
 	\centering
