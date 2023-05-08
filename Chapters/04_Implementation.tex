@@ -71,6 +71,46 @@ When programming an FPGA with software like as Xilinx's Vivado, it becomes neces
 	\label{fig:4_controlsystem_top_bd}
 \end{figure}
 
+\begin{listing}[htbp]
+	\caption{PWM Pulse Generator Descriptor}
+	\label{lst:4_controlsystem_pulser}
+	\begin{mintedvhdl}
+architecture arch of Pwm is
+	signal timer_r       : natural range 0 to 2**duty_i'length-1;
+	begin
+		clocked: process(clk_i)
+		begin
+			if rising_edge(clk_i) then
+			-- sync reset
+			if n_reset_i = '0' then
+				pwmA_o   <= LO;
+				pwmB_o   <= LO;
+				timer_r <= 0;
+			else
+			-- timer
+				timer_r <= timer_r + 1;
+				pwmA_o   <= LO;
+				pwmB_o   <= LO;
+				if enable_i = '0' then
+					pwmB_o   <= HI;
+					timer_r <= 0;
+				else
+					-- output a
+					if timer_r <= unsigned(duty_i) and timer_r >= unsigned(band_i)  then
+						pwmA_o <= HI;
+					end if;
+					-- output b
+					if timer_r > to_integer(unsigned(band_i)) + to_integer(unsigned(duty_i)) then
+						pwmB_o <= HI;
+					end if;
+				end if; -- enable
+			end if; -- sync reset
+		end if; -- rising_edge
+	end process clocked;
+end architecture;
+	\end{mintedvhdl}
+\end{listing}
+
 \section{Power Stage}
 \begin{figure}[htbp]
 	\centering
