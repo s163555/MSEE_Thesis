@@ -13,22 +13,32 @@ During the initial implementation stage of the control system, a bring-up of the
 	\centering
 	\includegraphics[width=.8\textwidth]{Figures/4_pynq_z1_pcb_pic.png}
 	\caption{PYNQ-Z1 development board}
-	\label{fig:4_pynq_z1_pcb}
+	\label{fig:4_controlsystem_pynq_z1_pcb}
 \end{figure}
 
-Seen in \cref{fig:4_pynq_z1_pcb} is the development board with its peripherals. The development of a prototype pulser system will be done by implementating an FPGA project in Vivado and then generating the \gls{bitstream}. After this, the FPGA artifacts are generated as a \texttt{.bit} and \texttt{.hwh} file. These two files are used in the JupyterLab environment as an overlay to configure the logic of the FPGA.
+Seen in \cref{fig:4_controlsystem_pynq_z1_pcb} is the development board with its peripherals. The development of a prototype pulser system will be done by implementating an FPGA project in Vivado and then generating the \gls{bitstream}. After this, the FPGA artifacts are generated as a \texttt{.bit} and \texttt{.hwh} file. These two files are used in the JupyterLab environment as an overlay to configure the logic of the FPGA.
 
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=.8\textwidth]{Figures/4_pynq-z1-pmod.pdf}
 	\caption[PYNQ Z1 PMOD port diagram]{PYNQ Z1 PMOD port diagram \cite{pynqrm}}
-	\label{fig:4_pynq_z1_pmod}
+	\label{fig:4_controlsystem_pynq_z1_pmod}
 \end{figure}
 
 After creating the
 
 \begin{figure}[htbp]
-	content...
+	\centering
+	\includegraphics[width=.8\linewidth]{Figures/4_controlsystem_pulser.pdf}
+	\caption{PWM pulser and signal controller as a block diagram with inputs and outputs}
+	\label{fig:4_controlsystem_pulser}
+\end{figure}
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=\linewidth]{Figures/4_controlsystem_top_bd.pdf}
+	\caption{Top level block diagram of the FPGA overlay with AXI interconnects and registers}
+	\label{fig:4_controlsystem_top_bd}
 \end{figure}
 
 \section{Power Stage}
