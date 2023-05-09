@@ -7,15 +7,15 @@
 \begin{document}
 \selectlanguage{english}
 \pagenumbering{gobble}
-%\input{Frontmatter/Frontpage.tex}
+\input{Frontmatter/Frontpage.tex}
 \pagecolor{white}
 \newgeometry{top=2.81cm, bottom=2.75cm, outer=2.5cm, inner=3.5cm}
 \pagestyle{empty}
-%\cleardoublepage
+\cleardoublepage
 \input{Frontmatter/Copyright.tex}
 \clearpage
-%\input{Frontmatter/Abstract.tex}
-%\clearpage
+\input{Frontmatter/Abstract.tex}
+\clearpage
 \input{Frontmatter/Approval.tex}
 \clearpage
 \input{Frontmatter/Acknowledgements.tex}
@@ -52,7 +52,7 @@
 \input{Chapters/02_Theory.tex}
 \cleardoublepage
 \input{Chapters/03_Synthesis.tex}
-cleardoublepage
+\cleardoublepage
 \input{Chapters/04_Implementation.tex}
 \cleardoublepage
 \input{Chapters/05_Analysis.tex}
@@ -61,11 +61,11 @@ cleardoublepage
 \cleardoublepage
 %%%%%%%%%%%%%%%%%%%%%%Backmatter%%%%%%%%%%%%%%%%%%%%%%%
 \printbibliography[heading=bibintoc,title={Bibliography}]
-%\clearpage
+\clearpage
 \appendix
 \renewcommand\chaptername{Appendix}
 \input{Backmatter/Appendix.tex}
 \cleartoleftpage
-%\input{Backmatter/Backpage.tex}
+\input{Backmatter/Backpage.tex}
 
 \end{document}
