@@ -13,8 +13,6 @@
 #include <zephyr/device.h>
 #include <zephyr/drivers/pwm.h>
 
-#include <spinner/drivers/svpwm.h>
-
 static const struct pwm_dt_spec pwm_t1 = PWM_DT_SPEC_GET(DT_ALIAS(pwmch1));
 //static const struct pwm_dt_spec pwm_ch1n = PWM_DT_SPEC_GET(DT_ALIAS(pwmch1n));
 static const struct pwm_dt_spec pwm_t2 = PWM_DT_SPEC_GET(DT_ALIAS(pwmch2));
@@ -52,7 +50,7 @@ void main(void)
 	}*/
 	printk("Entering while loop\r\n");
 	while (1) {
-		
+
 		error = pwm_set_pulse_dt(&pwm_t1, pulse_width_t1);
 		if (error) {
 			printk("Error ch1 %d: failed to set pulse width\n", error);
