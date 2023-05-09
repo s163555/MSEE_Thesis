@@ -1,5 +1,5 @@
 \chapter{Implementation}
-In this chapter, the steps involved in turning a theoretical design into a tangible system will be outlined. Since the synthesis chapter dealt with an explanation of the functions of each module and simulations, with a subsequent evaluation of the outcomes, this chapter will focus on the creation of physical hardware setups and reproducing the desired results using lab experiments. As such, each module will be tested independently to validate its function before a larger, more comprehensive experiment is conducted. All figures in this chapter show measurements performed on physical hardware.
+In this chapter, the steps involved in turning a theoretical design into a tangible system will be outlined. Since the synthesis chapter dealt with an explanation of the functions of each module and simulations, with a subsequent evaluation of the outcomes, this chapter will focus on the creation of physical hardware implementations and reproducing the expected results.
 \section{Control System}
 \begin{figure}[htbp]
 	\centering
@@ -57,7 +57,37 @@ set_property PACKAGE_PIN M14 [get_ports {LEDs[3]}]
 
 When programming an FPGA with software like as Xilinx's Vivado, it becomes necessary to inform the system which physical pins on the FPGA correspond to the FPGA ports defined in the VHDL code. This is quite similar to putting a register high or low on a microcontroller to turn an LED on or off, operate a clock, or function as a data line. However, with a microcontroller, many of these pins are \enquote{hard-wired} in the sense that they cannot be relocated to a physically different pin on the microcontroller. In general, it's just not an option. This is not the case with an FPGA; instead, the hardware interface is established in VHDL and then the appropriate inputs and outputs on that interface are constrained to whichever pins on the FPGA are required, making FPGAs incredibly versatile for complicated and bespoke designs. In \cref{lst:4_controlsystem_constraints}, the constraints can be seen setting the port names to a certain \texttt{IOSTANDARD} and voltage level and the pin name \texttt{PACKAGE\_PIN}. All the described pins are \gls{io} available on the PMOD port of the PYNQ-Z1.
 
-Based on inspiration found on tutorials for PWM generators on PYNQ platforms \cite{jan_cumps}
+Based on inspiration found on tutorials for PWM generators on PYNQ platforms \cite{jan_cumps}, a prototype of an ultrasound pulser is developed by implementing a \gls{pwm} generator for the complementary PWM output and a signal controller to control pulse timings. A block diagram of the ultrasound pulser system can be seen in \cref{fig:4_controlsystem_pulser}. After that, an interface is developed to enable the control system to take input from a programmable Arm processor.
+
+\begin{figure}[htbp]
+	\centering
+	\begin{adjustbox}{width=\textwidth}
+		\begin{tikzpicture}[
+			node distance = 5cm,
+			]
+			\node[state, initial, accepting] (q1) {ready};
+			\node[state, right of=q1] (q2) {delay};
+			\node[state, right of=q2] (q3) {pulse};
+			\node[state, below of=q3] (q4) {gatedelay};
+			\node[state, left of=q4] (q5) {gate};
+			\node[state, left of=q5] (q6) {done};
+			\draw (q1) edge[loop above] node{$\mathrm{fire}=0$} (q1)
+			(q1) edge[above] node{$\mathrm{fire}=1$} (q2)
+			(q2) edge[loop above] node{$\mathrm{counter<delay}$} (q2)
+			(q2) edge[above] node{$\mathrm{counter}\ge \mathrm{delay}$} (q3)
+			(q2) edge[loop above] node{$\mathrm{counter<delay}$} (q2)
+			(q3) edge[loop above] node{$\mathrm{counter<pulselen}$} (q3)
+			(q3) edge[above] node[rotate=90]{$\mathrm{counter}\ge\mathrm{pulselen}$} (q4)
+			(q4) edge[loop below] node{$\mathrm{counter<gatedelay}$} (q4)
+			(q4) edge[above] node{$\mathrm{counter}\ge\mathrm{gatedelay}$} (q5)
+			(q5) edge[loop below] node{$\mathrm{counter<pulselen}$} (q5)
+			(q5) edge[above] node{$\mathrm{counter}\ge\mathrm{pulselen}$} (q6)
+			(q6) edge[loop below] node{$\mathrm{fire}=0, \mathrm{prime}=0$} (q6)
+			(q6) edge[above] node[rotate=-90]{$\mathrm{fire}=1, \mathrm{prime}=1$} (q1);
+		\end{tikzpicture}
+	\end{adjustbox}%
+\end{figure}
+
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=.8\linewidth]{Figures/4_controlsystem_pulser.pdf}
