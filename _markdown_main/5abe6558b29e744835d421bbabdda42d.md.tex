@@ -1,0 +1,114 @@
+\markdownRendererDocumentBegin
+\markdownRendererSectionBegin
+\markdownRendererHeadingOne{PWM with generic dead band and duty cycle resolution}\markdownRendererInterblockSeparator
+{}```python from pynq import Overlay ol=Overlay("pwm\markdownRendererEmphasis{ultrasound}pulser.bit")\markdownRendererInterblockSeparator
+{}from pynq import MMIO RANGE = 8 \markdownRendererHash{} Number of bytes; 8/4 = 2x 32-bit locations which is all we need for this example\markdownRendererInterblockSeparator
+{}duty\markdownRendererEmphasis{address = ol.ip}dict['axi\markdownRendererEmphasis{gpio}duty']['phys\markdownRendererUnderscore{}addr'] duty\markdownRendererEmphasis{register = MMIO(duty}address, RANGE) \markdownRendererInterblockSeparator
+{}
+\markdownRendererSectionEnd \markdownRendererSectionBegin
+\markdownRendererHeadingOne{Write 0x00 to the tri-state register at offset 0x4 to configure the IO as outputs.}\markdownRendererInterblockSeparator
+{}duty\markdownRendererUnderscore{}register.write(0x4, 0x0) \markdownRendererHash{} Write 0x0 to location 0x4; Set tri-state to output\markdownRendererInterblockSeparator
+{}band\markdownRendererEmphasis{address = ol.ip}dict['axi\markdownRendererEmphasis{gpio}band']['phys\markdownRendererUnderscore{}addr'] band\markdownRendererEmphasis{register = MMIO(band}address, RANGE) \markdownRendererInterblockSeparator
+{}
+\markdownRendererSectionEnd \markdownRendererSectionBegin
+\markdownRendererHeadingOne{Write 0x00 to the tri-state register at offset 0x4 to configure the IO as outputs.}\markdownRendererInterblockSeparator
+{}band\markdownRendererUnderscore{}register.write(0x4, 0x0) \markdownRendererHash{} Write 0x0 to location 0x4; Set tri-state to output\markdownRendererInterblockSeparator
+{}flags\markdownRendererEmphasis{address = ol.ip}dict['axi\markdownRendererEmphasis{gpio}flags']['phys\markdownRendererUnderscore{}addr'] flags\markdownRendererEmphasis{register = MMIO(flags}address, RANGE) \markdownRendererInterblockSeparator
+{}
+\markdownRendererSectionEnd \markdownRendererSectionBegin
+\markdownRendererHeadingOne{Write 0x00 to the tri-state register at offset 0x4 to configure the IO as outputs.}\markdownRendererInterblockSeparator
+{}flags\markdownRendererUnderscore{}register.write(0x4, 0x0) \markdownRendererHash{} Write 0x0 to location 0x4; Set tri-state to output\markdownRendererInterblockSeparator
+{}start\markdownRendererEmphasis{delay}address = ol.ip\markdownRendererEmphasis{dict['axi\markdownRendererEmphasis{gpio}start\markdownRendererUnderscore{}delay']['phys\markdownRendererUnderscore{}addr'] start}delay\markdownRendererEmphasis{register = MMIO(start}delay\markdownRendererUnderscore{}address, RANGE) \markdownRendererInterblockSeparator
+{}
+\markdownRendererSectionEnd \markdownRendererSectionBegin
+\markdownRendererHeadingOne{Write 0x00 to the tri-state register at offset 0x4 to configure the IO as outputs.}\markdownRendererInterblockSeparator
+{}start\markdownRendererEmphasis{delay}register.write(0x4, 0x0) \markdownRendererHash{} Write 0x0 to location 0x4; Set tri-state to output\markdownRendererInterblockSeparator
+{}train\markdownRendererEmphasis{length}address = ol.ip\markdownRendererEmphasis{dict['axi\markdownRendererEmphasis{gpio}train\markdownRendererUnderscore{}length']['phys\markdownRendererUnderscore{}addr'] train}length\markdownRendererEmphasis{register = MMIO(train}length\markdownRendererUnderscore{}address, RANGE) \markdownRendererInterblockSeparator
+{}
+\markdownRendererSectionEnd \markdownRendererSectionBegin
+\markdownRendererHeadingOne{Write 0x00 to the tri-state register at offset 0x4 to configure the IO as outputs.}\markdownRendererInterblockSeparator
+{}train\markdownRendererEmphasis{length}register.write(0x4, 0x0) \markdownRendererHash{} Write 0x0 to location 0x4; Set tri-state to output\markdownRendererInterblockSeparator
+{}gate\markdownRendererEmphasis{delay}address = ol.ip\markdownRendererEmphasis{dict['axi\markdownRendererEmphasis{gpio}gate\markdownRendererUnderscore{}delay']['phys\markdownRendererUnderscore{}addr'] gate}delay\markdownRendererEmphasis{register = MMIO(gate}delay\markdownRendererUnderscore{}address, RANGE) \markdownRendererInterblockSeparator
+{}
+\markdownRendererSectionEnd \markdownRendererSectionBegin
+\markdownRendererHeadingOne{Write 0x00 to the tri-state register at offset 0x4 to configure the IO as outputs.}\markdownRendererInterblockSeparator
+{}gate\markdownRendererEmphasis{delay}register.write(0x4, 0x0) \markdownRendererHash{} Write 0x0 to location 0x4; Set tri-state to output\markdownRendererInterblockSeparator
+{}def duty(duty): duty\markdownRendererUnderscore{}register.write(0x00, duty)\markdownRendererInterblockSeparator
+{}def band(band): band\markdownRendererUnderscore{}register.write(0x00, band)\markdownRendererInterblockSeparator
+{}def dutypct(duty): duty\markdownRendererUnderscore{}register.write(0x00, round((0x1F*2)/(100/duty)))\markdownRendererInterblockSeparator
+{}def fire(): flags\markdownRendererEmphasis{register.write(0x00, 1) \markdownRendererHash{} bit 0 flags}register.write(0x00, 0)\markdownRendererInterblockSeparator
+{}def prime(): flags\markdownRendererEmphasis{register.write(0x00, 2) \markdownRendererHash{} bit 1 flags}register.write(0x00, 0)\markdownRendererInterblockSeparator
+{}def startdelay(startdelay): start\markdownRendererEmphasis{delay}register.write(0x0, startdelay);\markdownRendererInterblockSeparator
+{}def trainlength(trainlength): train\markdownRendererEmphasis{length}register.write(0x0, trainlength);\markdownRendererInterblockSeparator
+{}def gatedelay(gatedelay): gate\markdownRendererEmphasis{delay}register.write(0x0, gatedelay);\markdownRendererInterblockSeparator
+{}```\markdownRendererInterblockSeparator
+{}\markdownRendererCodeSpan{python
+duty(0x1F)
+}\markdownRendererInterblockSeparator
+{}\markdownRendererCodeSpan{python
+dutypct(50)
+}\markdownRendererInterblockSeparator
+{}\markdownRendererCodeSpan{python
+band(4)
+}\markdownRendererInterblockSeparator
+{}\markdownRendererCodeSpan{python
+startdelay(20)
+}\markdownRendererInterblockSeparator
+{}\markdownRendererCodeSpan{python
+trainlength(127)
+}\markdownRendererInterblockSeparator
+{}\markdownRendererCodeSpan{python
+gatedelay(20)
+}\markdownRendererInterblockSeparator
+{}\markdownRendererCodeSpan{python
+prime()
+}\markdownRendererInterblockSeparator
+{}\markdownRendererCodeSpan{python
+fire()
+}\markdownRendererInterblockSeparator
+{}\markdownRendererCodeSpan{python
+band(0)
+startdelay(20)
+trainlength(96)
+gatedelay(20)
+prime()
+fire()
+}\markdownRendererInterblockSeparator
+{}\markdownRendererCodeSpan{python
+band(2)
+startdelay(20)
+trainlength(98)
+gatedelay(20)
+prime()
+fire()
+}\markdownRendererInterblockSeparator
+{}\markdownRendererCodeSpan{python
+band(2)
+startdelay(40)
+trainlength(291)
+prime()
+fire()
+}\markdownRendererInterblockSeparator
+{}\markdownRendererCodeSpan{python
+band(5)
+startdelay(200)
+trainlength(580)
+gatedelay(200)
+prime()
+fire()
+}\markdownRendererInterblockSeparator
+{}\markdownRendererCodeSpan{python
+band(10)
+startdelay(1000)
+trainlength(294)
+gatedelay(500)
+try:
+    while True:
+        prime()
+        fire()
+except KeyboardInterrupt:
+    pass
+}\markdownRendererInterblockSeparator
+{}```python\markdownRendererInterblockSeparator
+{}```
+\markdownRendererSectionEnd \markdownRendererDocumentEnd
