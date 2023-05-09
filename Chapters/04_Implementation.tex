@@ -77,13 +77,13 @@ Based on inspiration found on tutorials for PWM generators on PYNQ platforms \ci
 			(q2) edge[above] node{$\mathrm{counter}\ge \mathrm{delay}$} (q3)
 			(q2) edge[loop above] node{$\mathrm{counter<delay}$} (q2)
 			(q3) edge[loop above] node{$\mathrm{counter<pulselen}$} (q3)
-			(q3) edge[above] node[rotate=90]{$\mathrm{counter}\ge\mathrm{pulselen}$} (q4)
+			(q3) edge[above] node[rotate=-90]{$\mathrm{counter}\ge\mathrm{pulselen}$} (q4)
 			(q4) edge[loop below] node{$\mathrm{counter<gatedelay}$} (q4)
-			(q4) edge[above] node{$\mathrm{counter}\ge\mathrm{gatedelay}$} (q5)
+			(q4) edge[below] node{$\mathrm{counter}\ge\mathrm{gatedelay}$} (q5)
 			(q5) edge[loop below] node{$\mathrm{counter<pulselen}$} (q5)
-			(q5) edge[above] node{$\mathrm{counter}\ge\mathrm{pulselen}$} (q6)
+			(q5) edge[below] node{$\mathrm{counter}\ge\mathrm{pulselen}$} (q6)
 			(q6) edge[loop below] node{$\mathrm{fire}=0, \mathrm{prime}=0$} (q6)
-			(q6) edge[above] node[rotate=-90]{$\mathrm{fire}=1, \mathrm{prime}=1$} (q1);
+			(q6) edge[above] node[rotate=90]{$\mathrm{fire}=1, \mathrm{prime}=1$} (q1);
 		\end{tikzpicture}
 	\end{adjustbox}%
 \end{figure}
