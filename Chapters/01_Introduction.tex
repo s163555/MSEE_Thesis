@@ -76,16 +76,16 @@ Among these works are some of the earliest papers that outlined the field as it 
 				row{1} = {guard, m, font=\small\bfseries},
 			}
 			\toprule
-			& \citeauthor{Huang_Smartphone_2012} \cite{Huang_Smartphone_2012} & \citeauthor{JanaSmartphone2020} \cite{JanaSmartphone2020} & \citeauthor{DingPMUTs} \cite{DingPMUTs} \\
+			& \citeauthor{Huang_Smartphone_2012} \cite{Huang_Smartphone_2012} & \citeauthor{JanaSmartphone2020} \cite{JanaSmartphone2020} & \citeauthor{DingPMUTs} \cite{DingPMUTs} & \citeauthor{Song_Wireless_PW} \cite{Song_Wireless_PW} \\
 			\midrule
-			Architecture & {PW \qty{10}{\mega\hertz}} & {CW \qty{8}{\mega\hertz}} & {PW \qty{3.7}{\mega\hertz}} \\
-			Type & Smartphone & Portable device & Computer \\
-			Power & 12 V & 12 V & Details not available \\
-			Components & {PRF timer,\\bipolar pulser,\\quadrature demodulation,\\SHA} & {RF amplifier,\\envelope detection,\\LP filter, FPGA,\\preamplifier, ADC} & {AFG, RF amplifier,\\quadrature demodulation,\\SHA, BP filter}\\
-			DSP & 512 pt FFT & 512 pt FFT & FFT size not mentioned \\
-			Metrics & Doppler spectrogram & Haemodynamic parameters & Doppler spectrogram \\
-			Output & Aux microphone signal & Bluetooth & {DAQ input signal \\ (LabVIEW)} \\
-			Validation & In-vivo animal experiment & ML evaluation on humans & Physiological simulator \\
+			Architecture & {PW \qty{10}{\mega\hertz}} & {CW \qty{8}{\mega\hertz}} & {PW \qty{3.7}{\mega\hertz}} & PW \qty{2.5}{\mega\hertz} \\
+			Type & Smartphone & Portable device & Computer & Portable device \\
+			Power & 12 V & 12 V & Details not available & Batteries 2S \qty{3.7}{\volt} \\
+			Components & {Timing controller,\\bipolar pulser,\\quadrature demodulation,\\SHA} & {RF amplifier,\\envelope detection,\\LP filter, FPGA,\\preamplifier, ADC} & {AFG, RF amplifier,\\quadrature demodulation,\\SHA, BP filter} & {LNA, ADC,\\FPGA demodulator and filter} \\
+			DSP & 512 pt FFT & 512 pt FFT & FFT size not mentioned & 128 pt \\
+			Metrics & Doppler spectrogram & Haemodynamic parameters & Doppler spectrogram & Doppler spectrogram \\
+			Output & Aux microphone signal & Bluetooth & {DAQ input signal \\ (LabVIEW)} & Bluetooth wireless \\
+			Validation & Animal experiment & ML evaluation on humans & Physiological simulator & Physiological simulator \\
 			\bottomrule
 		\end{talltblr}
 	\end{adjustbox}%
