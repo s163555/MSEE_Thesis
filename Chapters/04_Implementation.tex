@@ -166,7 +166,7 @@ when delay =>
 	end if;
 when pulse =>
 	enable_o <= '1';
-	prf_o <= '0'; -- let the pulse change sync with last edge of PWM
+	prf_o <= '0'; -- sync with last edge of PWM
 	if counter < to_integer(unsigned(train_length_i)) - 1 then
 		pulse_o <= '1';
 	elsif counter = to_integer(unsigned(train_length_i)) - 1 then
@@ -183,12 +183,12 @@ when gate =>
 	gate_o <= '1';
 	if counter = to_integer(unsigned(train_length_i)) - 1 then
 		counter <= 0;
-		state <= done;  -- todo implement
+		state <= done;
 	end if;
 when done =>
-	-- check if the caller has reset the fire bit
+	-- check if fire bit reset
 	if fire_i = '0' then
-		-- if yes, prime if the prime_bit is set.
+		-- prime if prime flag set
 		if prime_i = '1' then
 			counter <= 0;
 			state <= ready;
