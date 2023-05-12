@@ -62,7 +62,7 @@ Based on inspiration found on tutorials for PWM generators on PYNQ platforms \ci
 \begin{figure}[htbp]
 	\centering
 	\begin{tikzpicture}[
-		node distance = 8cm,
+		node distance = 6cm,
 		]
 		\node[state, initial, accepting] (q1) {\textit{ready}};
 		\node[state, right of=q1] (q2) {\textit{delay}};
@@ -81,7 +81,7 @@ Based on inspiration found on tutorials for PWM generators on PYNQ platforms \ci
 		(q4) edge[below] node{$\texttt{counter}\ge\texttt{gatedelay}$} (q5)
 		(q5) edge[loop below] node{$\texttt{counter}<\texttt{pulselen}$} (q5)
 		(q5) edge[below] node{$\texttt{counter}\ge\texttt{pulselen}$} (q6)
-		(q6) edge[loop below] node{$\texttt{fire}=0, \texttt{prime}=0$} (q6)
+		(q6) edge[loop below] node{$\texttt{prime}=0$} (q6)
 		(q6) edge[above] node[rotate=90]{$\texttt{prime}=1$} (q1);
 	\end{tikzpicture}
 	\caption{\gls{fsm} diagram of ultrasound pulser signal controller}
