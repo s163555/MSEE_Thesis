@@ -87,6 +87,7 @@ Based on inspiration found on tutorials for PWM generators on PYNQ platforms \ci
 	\caption{\gls{fsm} diagram of ultrasound pulser signal controller}
 	\label{fig:4_controlsystem_fsm_diagram}
 \end{figure}
+In \cref{fig:4_controlsystem_fsm_diagram} is a diagram of the states in the finite state machine of the signal controller. The signal controller incorporates a few flags that are set when triggering the ultrasound pulser. The signal controller begins in the \textit{ready} state. Each of the parameters, \texttt{delay}, \texttt{pulselen}, and \texttt{gatedelay}, have been preset by the control system in the front-end interface. Upon getting the \texttt{fire} flag, the state changes to \textit{delay} and starts counting clock cycles until the counter is equal to the \texttt{delay} parameter. When $\texttt{counter}\ge\texttt{delay}$, the state changes to \textit{pulse}, \texttt{counter} is reset, and begins pulsing. Next, the counter keeps counting cycles. When $\texttt{counter}\ge\texttt{pulselen}$ the pulsing stops, and the state changes to \textit{gatedelay}. The \texttt{counter} is reset again and keeps counting until $\texttt{counter}\ge\texttt{gatedelay}$, when the state changes to \textit{gate} and \texttt{counter} is reset. Next, the \texttt{GATE} pulse starts and continues until $\texttt{counter}\ge\texttt{pulselen}$, where the \texttt{GATE} pulse ends. Finally, the state changes to \textit{done} and remains there until the \texttt{prime} flag is set.
 
 \begin{figure}[htbp]
 	\centering
@@ -143,9 +144,9 @@ end architecture;
 \end{listing}
 
 \begin{listing}[htbp]
-	\caption{Signal controller}
-	\label{lst:4_controlsystem_signalcontroller_code}
-	\begin{mintedvhdl}
+\caption{Signal controller}
+\label{lst:4_controlsystem_signalcontroller_code}
+\begin{mintedvhdl}
 case State is
 	when ready =>  -- start a pulse group as soon as the fire bit is set
 	leds_o <= (0 => '1', others => '0');
@@ -200,7 +201,7 @@ when done =>
 		end if;
 	end if;
 end case;
-	\end{mintedvhdl}
+\end{mintedvhdl}
 \end{listing}
 
 \section{Power Stage}
