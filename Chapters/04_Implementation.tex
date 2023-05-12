@@ -150,10 +150,9 @@ end architecture;
 \label{lst:4_controlsystem_signalcontroller_code}
 \begin{mintedvhdl}
 case State is
-	when ready =>  -- start a pulse group as soon as the fire bit is set
-	if prime_i = '0' then -- check if the caller has reset the prime bit
-		-- if yes, start if the fire bit is set.
-		if fire_i = '1' then
+	when ready =>
+	if prime_i = '0' then -- check if caller prime bit reset
+		if fire_i = '1' then -- then check fire bit to start
 			counter <= 0;
 			state <= delay;
 		end if;
