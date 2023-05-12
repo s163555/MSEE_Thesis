@@ -61,35 +61,11 @@ Based on inspiration found on tutorials for PWM generators on PYNQ platforms \ci
 
 \begin{figure}[htbp]
 	\centering
-	\begin{adjustbox}{width=\textwidth}%
-	\begin{tikzpicture}[
-		node distance = 5.5cm,
-		]
-		\node[state, initial, accepting] (q1) {\textit{ready}};
-		\node[state, right of=q1] (q2) {\textit{delay}};
-		\node[state, right of=q2] (q3) {\textit{pulse}};
-		\node[state, below of=q3] (q4) {\textit{gatedelay}};
-		\node[state, left of=q4] (q5) {\textit{gate}};
-		\node[state, left of=q5] (q6) {\textit{done}};
-		\draw [->] (q1) edge[loop above] node{$\texttt{fire}=0$} (q1)
-		(q1) edge[above] node{$\texttt{fire}=1$} (q2)
-		(q2) edge[loop above] node{$\texttt{counter}<\texttt{delay}$} (q2)
-		(q2) edge[above] node{$\texttt{counter}\ge \texttt{delay}$} (q3)
-		(q2) edge[loop above] node{$\texttt{counter}<\texttt{delay}$} (q2)
-		(q3) edge[loop above] node{$\texttt{counter}<\texttt{pulselen}$} (q3)
-		(q3) edge[above] node[rotate=-90]{$\texttt{counter}\ge\texttt{pulselen}$} (q4)
-		(q4) edge[loop below] node{$\texttt{counter}<\texttt{gatedelay}$} (q4)
-		(q4) edge[below] node{$\texttt{counter}\ge\texttt{gatedelay}$} (q5)
-		(q5) edge[loop below] node{$\texttt{counter}<\texttt{pulselen}$} (q5)
-		(q5) edge[below] node{$\texttt{counter}\ge\texttt{pulselen}$} (q6)
-		(q6) edge[loop below] node{$\texttt{prime}=0$} (q6)
-		(q6) edge[above] node[rotate=90]{$\texttt{prime}=1$} (q1);
-	\end{tikzpicture}
-\end{adjustbox}%
-	\caption{\gls{fsm} diagram of ultrasound pulser signal controller}
-	\label{fig:4_controlsystem_fsm_diagram}
+	\includegraphics[width=\linewidth]{Figures/4_controlsystem_top_bd.pdf}
+	\caption{Top level block diagram of the FPGA overlay with AXI interconnects and registers}
+	\label{fig:4_controlsystem_top_bd}
 \end{figure}
-In \cref{fig:4_controlsystem_fsm_diagram} is a diagram of the states in the finite state machine of the signal controller. The signal controller incorporates a few flags that are set when triggering the ultrasound pulser. The signal controller begins in the \textit{ready} state. Each of the parameters, \texttt{delay}, \texttt{pulselen}, and \texttt{gatedelay}, have been preset by the control system in the front-end interface. Upon getting the \texttt{fire} flag, the state changes to \textit{delay} and starts counting clock cycles until the counter is equal to the \texttt{delay} parameter. When $\texttt{counter}\ge\texttt{delay}$, the state changes to \textit{pulse}, \texttt{counter} is reset, and begins pulsing. Next, the counter keeps counting cycles. When $\texttt{counter}\ge\texttt{pulselen}$ the pulsing stops, and the state changes to \textit{gatedelay}. The \texttt{counter} is reset again and keeps counting until $\texttt{counter}\ge\texttt{gatedelay}$, when the state changes to \textit{gate} and \texttt{counter} is reset. Next, the \texttt{GATE} pulse starts and continues until $\texttt{counter}\ge\texttt{pulselen}$, where the \texttt{GATE} pulse ends. Finally, the state changes to \textit{done} and remains there until the \texttt{prime} flag is set. The state flow is a loop that runs continuously until system operation ends.
+In \cref{fig:4_controlsystem_top_bd}, the block diagram of the entire FPGA system is seen with its AXI interconnects that make up the interface between the ultrasound pulser and the Arm microprocessor taking inputs from the user. Also visible is the clock generator, setting the \qty{20}{\mega\hertz} demodulation clock in the analogue front-end and the \qty{320}{\mega\hertz} pulser clock responsible for the resolution of the dead-time and length of pulses.
 
 \begin{figure}[htbp]
 	\centering
@@ -97,16 +73,10 @@ In \cref{fig:4_controlsystem_fsm_diagram} is a diagram of the states in the fini
 	\caption{PWM pulser and signal controller as a block diagram with inputs and outputs}
 	\label{fig:4_controlsystem_pulser}
 \end{figure}
-
-\begin{figure}[htbp]
-	\centering
-	\includegraphics[width=\linewidth]{Figures/4_controlsystem_top_bd.pdf}
-	\caption{Top level block diagram of the FPGA overlay with AXI interconnects and registers}
-	\label{fig:4_controlsystem_top_bd}
-\end{figure}
+In \cref{fig:4_controlsystem_pulser}, the block diagram of the ultrasound pulse generator can be seen with its two sub-components, the signal controller and the PWM generator. The primary purpose of the PWM generator is the control of the two complementary PWM outputs and setting the dead-time between them. Its operation is inherently controlled through the enable input set from the signal controller. The signal controller is responsible for setting the outputs depending on the inputs received and its current state.
 
 \begin{listing}[htbp]
-	\caption{PWM Pulse Generator Descriptor}
+	\caption{Snippet of VHDL code from pulse generator}
 	\label{lst:4_controlsystem_pulser_code}
 	\begin{mintedvhdl}
 architecture arch of Pwm is
@@ -144,9 +114,10 @@ architecture arch of Pwm is
 end architecture;
 	\end{mintedvhdl}
 \end{listing}
+Looking at \cref{lst:4_controlsystem_pulser_code}, the code is run as a clocked process on the \qty{320}{\mega\hertz} clock. As long as \texttt{enable} is \gls{high}, the pulser will output pulses \texttt{PWM} and \texttt{PWMN}.
 
 \begin{listing}[htbp]
-\caption{Signal controller}
+\caption{Snippet of code from state machine in signal controller}
 \label{lst:4_controlsystem_signalcontroller_code}
 \begin{mintedvhdl}
 case State is
@@ -197,6 +168,38 @@ when done =>
 end case;
 \end{mintedvhdl}
 \end{listing}
+In \cref{lst:4_controlsystem_signalcontroller_code}, the state machine code of the signal controller is seen. The signal controller incorporates a few flags that are set when triggering the ultrasound pulser. The signal controller begins in the \textit{ready} state. Each of the parameters, \texttt{delay}, \texttt{pulselen}, and \texttt{gatedelay}, have been preset by the control system in the front-end interface. Upon getting the \texttt{fire} flag, the state changes to \textit{delay} and starts counting clock cycles until the counter is equal to the \texttt{delay} parameter. When $\texttt{counter}\ge\texttt{delay}$, the state changes to \textit{pulse}, \texttt{counter} is reset, and begins pulsing. Next, the counter keeps counting cycles. When $\texttt{counter}\ge\texttt{pulselen}$ the pulsing stops, and the state changes to \textit{gatedelay}. The \texttt{counter} is reset again and keeps counting until $\texttt{counter}\ge\texttt{gatedelay}$, when the state changes to \textit{gate} and \texttt{counter} is reset. Next, the \texttt{GATE} pulse starts and continues until $\texttt{counter}\ge\texttt{pulselen}$, where the \texttt{GATE} pulse ends. Finally, the state changes to \textit{done} and remains there until the \texttt{prime} flag is set. The state flow is a loop that runs continuously until system operation ends. In \cref{fig:4_controlsystem_fsm_diagram} is a diagram of the states in the finite state machine of the signal controller.
+
+\begin{figure}[htbp]
+	\centering
+	\begin{adjustbox}{width=\textwidth}%
+		\begin{tikzpicture}[
+			node distance = 5.5cm,
+			]
+			\node[state, initial, accepting] (q1) {\textit{ready}};
+			\node[state, right of=q1] (q2) {\textit{delay}};
+			\node[state, right of=q2] (q3) {\textit{pulse}};
+			\node[state, below of=q3] (q4) {\textit{gatedelay}};
+			\node[state, left of=q4] (q5) {\textit{gate}};
+			\node[state, left of=q5] (q6) {\textit{done}};
+			\draw [->] (q1) edge[loop above] node{$\texttt{fire}=0$} (q1)
+			(q1) edge[above] node{$\texttt{fire}=1$} (q2)
+			(q2) edge[loop above] node{$\texttt{counter}<\texttt{delay}$} (q2)
+			(q2) edge[above] node{$\texttt{counter}\ge \texttt{delay}$} (q3)
+			(q2) edge[loop above] node{$\texttt{counter}<\texttt{delay}$} (q2)
+			(q3) edge[loop above] node{$\texttt{counter}<\texttt{pulselen}$} (q3)
+			(q3) edge[above] node[rotate=-90]{$\texttt{counter}\ge\texttt{pulselen}$} (q4)
+			(q4) edge[loop below] node{$\texttt{counter}<\texttt{gatedelay}$} (q4)
+			(q4) edge[below] node{$\texttt{counter}\ge\texttt{gatedelay}$} (q5)
+			(q5) edge[loop below] node{$\texttt{counter}<\texttt{pulselen}$} (q5)
+			(q5) edge[below] node{$\texttt{counter}\ge\texttt{pulselen}$} (q6)
+			(q6) edge[loop below] node{$\texttt{prime}=0$} (q6)
+			(q6) edge[above] node[rotate=90]{$\texttt{prime}=1$} (q1);
+		\end{tikzpicture}
+	\end{adjustbox}%
+	\caption{\gls{fsm} diagram of ultrasound pulser signal controller}
+	\label{fig:4_controlsystem_fsm_diagram}
+\end{figure}
 
 \section{Power Stage}
 \begin{figure}[htbp]
