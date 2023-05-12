@@ -114,7 +114,7 @@ architecture arch of Pwm is
 end architecture;
 	\end{mintedvhdl}
 \end{listing}
-Looking at \cref{lst:4_controlsystem_pulser_code}, the code is run as a clocked process on the \qty{320}{\mega\hertz} clock. As long as \texttt{enable} is \gls{high}, the pulser will output pulses \texttt{PWM} and \texttt{PWMN}.
+Looking at \cref{lst:4_controlsystem_pulser_code}, the code is run as a clocked process on the \qty{320}{\mega\hertz} clock. As long as \texttt{enable} is \gls{high}, the pulser will output pulses \texttt{PWM} and \texttt{PWMN}. If the \texttt{enable} input is \gls{low}, the pulse generator makes sure that \texttt{PWMN} is \gls{high} during the time pulses are not transmitted. If the \texttt{enable} input is \gls{high}, a timer controls the output level of \texttt{PWM} and \texttt{PWMN} and creates the pulses.
 
 \begin{listing}[htbp]
 \caption{Snippet of code from state machine in signal controller}
