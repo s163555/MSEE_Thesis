@@ -68,7 +68,7 @@ Among these works are some of the earliest papers that outlined the field as it 
 %\begin{landscape}
 \begin{table}
 	\centering
-	%\begin{adjustbox}{max width=\textwidth}
+	\begin{adjustbox}{max width=\textwidth}
 		\begin{talltblr}[
 			caption={Comparison of papers in literature study},
 			entry={Comparison of papers in literature study},
@@ -78,8 +78,8 @@ Among these works are some of the earliest papers that outlined the field as it 
 			\toprule
 			& \citeauthor{Huang_Smartphone_2012} \cite{Huang_Smartphone_2012} & \citeauthor{JanaSmartphone2020} \cite{JanaSmartphone2020} & \citeauthor{DingPMUTs} \cite{DingPMUTs} & \citeauthor{Song_Wireless_PW} \cite{Song_Wireless_PW} \\
 			\midrule
-			Architecture & {PW \qty{10}{\mega\hertz}} & {CW \qty{8}{\mega\hertz}} & {PW \qty{3.7}{\mega\hertz}} & PW \qty{2.5}{\mega\hertz} \\
-			Type & Smartphone & Portable device & Computer & Portable device \\
+			Type & {PW \qty{10}{\mega\hertz}} & {CW \qty{8}{\mega\hertz}} & {PW \qty{3.7}{\mega\hertz}} & PW \qty{2.5}{\mega\hertz} \\
+			Display & Smartphone & Smartphone & Computer & Smartphone \\
 			Power & 12 V & 12 V & Details not available & Batteries 2S \qty{3.7}{\volt} \\
 			Components & {Timing controller,\\bipolar pulser,\\quadrature demodulation,\\SHA} & {RF amplifier,\\envelope detection,\\LP filter, FPGA,\\preamplifier, ADC} & {AFG, RF amplifier,\\quadrature demodulation,\\SHA, BP filter} & {LNA, ADC,\\FPGA demodulator\\and filter} \\
 			DSP & 512 pt FFT & 512 pt FFT & FFT size not mentioned & 128 pt \\
@@ -88,7 +88,7 @@ Among these works are some of the earliest papers that outlined the field as it 
 			Validation & Animal experiment & ML evaluation on humans & Physiological simulator & Physiological simulator \\
 			\bottomrule
 		\end{talltblr}
-	%\end{adjustbox}%
+	\end{adjustbox}%
 \end{table}
 %\end{landscape}
 Of the selected papers studied in this project, three papers are distinctly relevant for the design and implementation of a blood velocity estimation system. A comparison between these three papers can be seen in \cref{tab:1_papercomparison}. Based on the literature review, a gap is identified in the acquisition method of the signal chain. A number of articles studied and developed the algorithms for blood flow estimation and imaging, but do did have an \gls{afe} and used offline data acquisition methods which are not usable for clinicians. The selected three articles all feature an online data acquisition method using various methods of data capture. There is a potential to using selected features from all three articles in a combination to achieve a positive result. For instance, the \gls{afe} in \citeauthor{Huang_Smartphone_2012} is better documented than both other papers, and feature a \gls{pw} design that could be useful. On the other hand, their solution for the pulser is dated and use inflexible discrete timer \gls{ic}s. \citeauthor{JanaSmartphone2020} use a \gls{cw} based design and thus most details are on the receiver. However, it features an \gls{fpga} \gls{soft microprocessor} design to the \gls{fft} engine. \citeauthor{DingPMUTs} feature a \gls{pw} design, and use an \gls{afg} as the primary signal generator for the pulser as well as the demodulation clock. In that paper, there are some good figures for studying the pulse-echo waveforms of the \gls{pw} type system.
