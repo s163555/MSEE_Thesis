@@ -256,7 +256,7 @@ def gatedelay(gatedelay):
 	gate_delay_register.write(0x0, gatedelay);
 	\end{mintedpython}
 \end{listing}
-In \cref{lst:4_controlsystem_jupyter_registers}, the code for setting up the registers in JupyterLab can be seen. The code defines the lookup addresses for each register and then defines a Python function to write these registers.
+In \cref{lst:4_controlsystem_jupyter_registers}, the code for setting up the registers in JupyterLab can be seen. The code defines the lookup addresses for each register and then defines a Python function to write these registers. For \texttt{duty}, \texttt{band}, \texttt{dutypct}, \texttt{startdelay}, \texttt{trainlength}, and \texttt{gatedelay}, the JupyterLab notebook writes numeric values to each corresponding register. For \texttt{prime} and \texttt{fire}, these are flags that are either set to \textit{true} or \textit{false}.
 
 \begin{listing}[htbp]
 	\centering
@@ -271,6 +271,7 @@ prime()
 fire()
 	\end{mintedpython}
 \end{listing}
+In \cref{lst:4_controlsystem_jupyter_cmds}, the commands to write to the pulse registers.
 
 \section{Power Stage}
 \begin{figure}[htbp]
