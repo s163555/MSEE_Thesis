@@ -323,7 +323,7 @@ As described in the previous chapter, the demodulator use an I/Q quadrature demo
 
 After each demodulated burst is sampled, between each sample line pulse repetition it is desired to hold the voltage, so the analogue-to-digital conversion that may be running asynchronously does not sample zero-values between the bursts. After the low-frequency signals are output from the quadrature demodulator, they are sampled using the \texttt{GATE} signal output from the control system. This \texttt{GATE} signal is a delayed pulse equal to the length of the pulse train and determines the sampling depth of the \gls{afe}. The prototype board of the sample and hold amplifier can be seen in \cref{fig:4_sha_pcb_pic}.
 
-\section{Active Filter, DC-Coupler}
+\section{Active Filter}
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=.8\textwidth]{Figures/4_dccoupler_filter_pcb_pic.jpg}
