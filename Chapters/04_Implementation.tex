@@ -25,7 +25,7 @@ Seen in \cref{fig:4_controlsystem_pynq_z1_pcb} is the development board with its
 	\label{fig:4_controlsystem_pynq_z1_pmod}
 \end{figure}
 
-On the PYNQ-Z1 board, the PMOD ports are 12-pin female connectors with 0.1 inch spacing that connect to normal 12-pin headers. As illustrated in \cref{fig:4_controlsystem_pynq_z1_pmod}, each 12-pin PMOD port offers two 3.3V VCC signals (pins 6 and 12), two GND signals (pins 5 and 11), and eight logic signals. Each PMOD port on a PYNQ board is classified as normal, MIO linked, XADC, or high-speed. The PYNQ-Z1 features two PMOD ports, both of which are high-speed. For maximal switching rates, the High-speed PMOD ports route their data signals as impedance matched differential pairs. For further protection, they feature pads for loading resistors, however the PYNQ-Z1 ships with these loaded as \qty{0}{\ohm} shunts. With the series resistors shunted, these PMOD ports provide no short-circuit protection but allow for substantially quicker switching rates. Pins 1 and 2, pins 3 and 4, pins 7 and 8, and pins 9 and 10 are coupled to neighboring signals in the same row. Traces are routed in a \qty{100}{\ohm} ($\pm\qty{10}{\percent}$) differential configuration. Coupled pairs may produce crosstalk if pins on this port are utilized as single-ended signals. Because it is being used as a single-ended signal in this application, one of the pins is grounded and its pair is utilized for the single-ended signal.
+On the PYNQ-Z1 board, the PMOD ports are 12-pin female connectors with 0.1 inch spacing that connect to normal 12-pin headers. As illustrated in \cref{fig:4_controlsystem_pynq_z1_pmod}, each 12-pin PMOD port offers two 3.3V VCC signals (pins 6 and 12), two GND signals (pins 5 and 11), and eight logic signals. Each PMOD port on a PYNQ board is classified as normal, MIO linked, XADC, or high-speed. The PYNQ-Z1 features two PMOD ports, both of which are high-speed. For maximal switching rates, the High-speed PMOD ports route their data signals as impedance matched differential pairs. For further protection, they feature pads for loading resistors, however the PYNQ-Z1 ships with these loaded as \qty{0}{\ohm} shunts. With the series resistors shunted, these PMOD ports provide no short-circuit protection but allow for substantially quicker switching rates. Pins 1 and 2, pins 3 and 4, pins 7 and 8, and pins 9 and 10 are coupled to neighboring signals in the same row. Traces are routed in a \qty{100}{\ohm} ($\pm\qty{10}{\percent}$) differential configuration. In this application however, the pins will be used in a single-ended configuration.
 
 \begin{listing}[htbp]
 	\caption{Constraints on Pulse Generator and Control System}
@@ -200,6 +200,62 @@ In \cref{lst:4_controlsystem_signalcontroller_code}, the state machine code of t
 	\caption{\gls{fsm} diagram of ultrasound pulser signal controller}
 	\label{fig:4_controlsystem_fsm_diagram}
 \end{figure}
+
+\begin{listing}[htbp]
+	\centering
+	\caption{Snippet from JupyterLab setting up the registers}
+	\label{lst:4_controlsystem_jupyter_registers}
+	\begin{mintedpython}
+from pynq import Overlay
+ol=Overlay("pwm_ultrasound_pulser.bit")
+from pynq import MMIO
+RANGE = 8 # Number of bytes; 8/4 = 2x 32-bit locations which is all we need for this example
+
+duty_address = ol.ip_dict['axi_gpio_duty']['phys_addr']
+duty_register = MMIO(duty_address, RANGE)
+# Write 0x00 to the tri-state register at offset 0x4 to configure the IO as outputs.
+duty_register.write(0x4, 0x0) # Write 0x0 to location 0x4; Set tri-state to output
+band_address = ol.ip_dict['axi_gpio_band']['phys_addr']
+band_register = MMIO(band_address, RANGE)
+# Write 0x00 to the tri-state register at offset 0x4 to configure the IO as outputs.
+band_register.write(0x4, 0x0) # Write 0x0 to location 0x4; Set tri-state to output
+flags_address = ol.ip_dict['axi_gpio_flags']['phys_addr']
+flags_register = MMIO(flags_address, RANGE)
+# Write 0x00 to the tri-state register at offset 0x4 to configure the IO as outputs.
+flags_register.write(0x4, 0x0) # Write 0x0 to location 0x4; Set tri-state to output
+start_delay_address = ol.ip_dict['axi_gpio_start_delay']['phys_addr']
+start_delay_register = MMIO(start_delay_address, RANGE)
+# Write 0x00 to the tri-state register at offset 0x4 to configure the IO as outputs.
+start_delay_register.write(0x4, 0x0) # Write 0x0 to location 0x4; Set tri-state to output
+train_length_address = ol.ip_dict['axi_gpio_train_length']['phys_addr']
+train_length_register = MMIO(train_length_address, RANGE)
+# Write 0x00 to the tri-state register at offset 0x4 to configure the IO as outputs.
+train_length_register.write(0x4, 0x0) # Write 0x0 to location 0x4; Set tri-state to output
+gate_delay_address = ol.ip_dict['axi_gpio_gate_delay']['phys_addr']
+gate_delay_register = MMIO(gate_delay_address, RANGE)
+# Write 0x00 to the tri-state register at offset 0x4 to configure the IO as outputs.
+gate_delay_register.write(0x4, 0x0) # Write 0x0 to location 0x4; Set tri-state to output
+
+def duty(duty):
+	duty_register.write(0x00, duty)
+def band(band):
+	band_register.write(0x00, band)
+def dutypct(duty):
+	duty_register.write(0x00, round((0x1F*2)/(100/duty)))
+def fire():
+	flags_register.write(0x00, 1) # bit 0
+	flags_register.write(0x00, 0)
+def prime():
+	flags_register.write(0x00, 2) # bit 1
+	flags_register.write(0x00, 0)
+def startdelay(startdelay):
+	start_delay_register.write(0x0, startdelay);
+def trainlength(trainlength):
+	train_length_register.write(0x0, trainlength);
+def gatedelay(gatedelay):
+	gate_delay_register.write(0x0, gatedelay);
+	\end{mintedpython}
+\end{listing}
 
 \section{Power Stage}
 \begin{figure}[htbp]
