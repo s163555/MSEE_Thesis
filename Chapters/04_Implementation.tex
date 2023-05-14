@@ -256,6 +256,21 @@ def gatedelay(gatedelay):
 	gate_delay_register.write(0x0, gatedelay);
 	\end{mintedpython}
 \end{listing}
+In \cref{lst:4_controlsystem_jupyter_registers}, the code for setting up the registers in JupyterLab can be seen. The code defines the lookup addresses for each register and then defines a Python function to write these registers.
+
+\begin{listing}[htbp]
+	\centering
+	\caption{Snippet from JupyterLab showing the commands to set up a single pulse transmission}
+	\label{lst:4_controlsystem_jupyter_cmds}
+	\begin{mintedpython}
+band(10)
+startdelay(200)
+trainlength(294)
+gatedelay(200)
+prime()
+fire()
+	\end{mintedpython}
+\end{listing}
 
 \section{Power Stage}
 \begin{figure}[htbp]
