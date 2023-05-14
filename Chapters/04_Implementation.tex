@@ -271,7 +271,7 @@ prime()
 fire()
 	\end{mintedpython}
 \end{listing}
-In \cref{lst:4_controlsystem_jupyter_cmds}, the commands to write to the pulse registers. The dead-time is configured for $\sfrac{10}{\qty{320}{\mega\hertz}}=\qty{31.16}{\nano\second}$. For the start delay, meaning the time from the \texttt{PRF} goes \gls{low} to the beginning of the first PWM pulse, is set to \qty{625}{\nano\second}. The \texttt{trainlength} is set to \qty{919}{\nano\second}, or $\approx4$ pulses. The \texttt{gatedelay}, also called sample depth, is set to \qty{3.125}{\micro\second}, or in terms of depth, for speed of sound in water $c=\qty{1480}{\meter\per\second}$, $\mathrm{d}_{\mathrm{depth}}=\frac{\sfrac{\qty{1480}{\meter\per\second}}{\qty{320}{\mega\hertz}}\cdot1000}{2}=\qty{2.31}{\milli\meter}$. Lastly, \textit{prime}, and \texttt{fire} starts the pulsing.
+In \cref{lst:4_controlsystem_jupyter_cmds}, the commands to write to the pulse registers. The dead-time is configured for $\sfrac{10}{\qty{320}{\mega\hertz}}=\qty{31.16}{\nano\second}$. For the start delay, meaning the time from the \texttt{PRF} goes \gls{low} to the beginning of the first PWM pulse, is set to \qty{625}{\nano\second}. The \texttt{trainlength} is set to \qty{919}{\nano\second}, or $\approx4$ pulses. The \texttt{gatedelay}, also called sample depth, is set to \qty{3.125}{\micro\second}, or in terms of depth, for speed of sound in water $c=\qty{1480}{\meter\per\second}$, $\mathrm{d}_{\mathrm{sample}}=\frac{\sfrac{\qty{1480}{\meter\per\second}}{\qty{320}{\mega\hertz}}\cdot1000}{2}=\qty{2.31}{\milli\meter}$. Lastly, \texttt{prime}, and \texttt{fire} starts the pulsing.
 
 \section{Power Stage}
 \begin{figure}[htbp]
