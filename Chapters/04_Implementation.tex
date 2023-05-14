@@ -266,12 +266,12 @@ In \cref{lst:4_controlsystem_jupyter_registers}, the code for setting up the reg
 band(10)
 startdelay(200)
 trainlength(294)
-gatedelay(200)
+gatedelay(1000)
 prime()
 fire()
 	\end{mintedpython}
 \end{listing}
-In \cref{lst:4_controlsystem_jupyter_cmds}, the commands to write to the pulse registers.
+In \cref{lst:4_controlsystem_jupyter_cmds}, the commands to write to the pulse registers. The dead-time is configured for $\sfrac{10}{\qty{320}{\mega\hertz}}=\qty{31.16}{\nano\second}$. For the start delay, meaning the time from the \texttt{PRF} goes \gls{low} to the beginning of the first PWM PULSE, is set to \qty{625}{\nano\second}. The \texttt{trainlength} is set to \qty{919}{\nano\second}, or $\approx4$ pulses. The \texttt{gatedelay}, also called sample depth, is set to \qty{3.125}{\micro\second}, or in terms of depth, for $c=\qty{1480}{\meter\per\second}$, $\mathrm{d}_{\mathrm{depth}}=\sfrac{\qty{1480}{\meter\per\second}\cdot\sfrac{1}{\qty{320}{\mega\hertz}}\cdot1000}{2}=\qty{2.31}{\milli\meter}$.
 
 \section{Power Stage}
 \begin{figure}[htbp]
