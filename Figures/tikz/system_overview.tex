@@ -107,18 +107,18 @@
 		% Draw nodes
 		\node[place]		(human_in)	[draw=none]											{Control\\input};
 		\node[place]		(embed)		[inner sep=1mm,rectangle,right=10mm of human_in]	{Control\\system};
-		\node[place]		(wave_gen)		[inner sep=1mm,rectangle,right=5mm of embed]			{Pulse\\generator};
+		\node[place]		(wave_gen)		[inner sep=1mm,rectangle,right=10mm of embed]			{Pulse\\generator};
 		\node[place]		(pwr_stg)	[inner sep=1mm,rectangle,right=5mm of wave_gen]	{Power\\stage};
 		\node[place]		(tr_switch)	[inner sep=1mm,rectangle,right=5mm of pwr_stg]	{T/R\\switch};
 		\node[place]		(transducer)		[inner sep=1mm,rectangle,right=10mm of tr_switch]	{Transducer};
-		\node[place]		(preamp)		[inner sep=1mm,rectangle,below=5mm of tr_switch]	{Preamplifier};
-		\node[place]		(bpf)		[inner sep=1mm,rectangle,below=5mm of preamp]	{BPF};
+		\node[place]		(preamp)		[inner sep=1mm,rectangle,below=5mm of tr_switch]	{BPF};
+		\node[place]		(bpf)		[inner sep=1mm,rectangle,below=5mm of preamp]	{Preamplifier};
 		\node[place]		(demod)		[inner sep=1mm,rectangle,left=5mm of bpf]		{Demodulator};
 		%\node[place]		(lpf2)		[inner sep=1mm,rectangle,above=5mm of demod]	{LPF 2};
 		\node[place]		(lpf1)		[inner sep=1mm,rectangle,left=5mm of demod]		{LPF};
 		%\node[place]		(sha2)		[inner sep=1mm,rectangle,left=10mm of lpf2]		{SHA 2};
-		\node[place]		(sha1)		[inner sep=1mm,rectangle,left=5mm of lpf1]		{SHA};
-		\node[place]		(hpf)		[inner sep=1mm,rectangle,above=5mm of sha1]		{HPF};
+		\node[place]		(hpf)		[inner sep=1mm,rectangle,below=5mm of embed]		{Active filter};
+		\node[place]		(sha1)		[inner sep=1mm,rectangle,below=5mm of hpf]		{SHA};
 
 		% Draw lines between nodes
 		\draw [L,|->] 		(human_in) 		to 		(embed);

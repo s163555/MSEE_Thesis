@@ -1,4 +1,4 @@
-\chapter{Implementation}
+\chapter{Implementation} \label{cha:Implementation} \glsresetall
 In this chapter, the steps involved in turning a theoretical design into a tangible system will be outlined. Since the synthesis chapter dealt with an explanation of the functions of each module and simulations, with a subsequent evaluation of the outcomes, this chapter will focus on the creation of physical hardware implementations and reproducing the expected results.
 \section{Control System}
 \begin{figure}[htbp]
@@ -25,7 +25,7 @@ Seen in \cref{fig:4_controlsystem_pynq_z1_pcb} is the development board with its
 	\label{fig:4_controlsystem_pynq_z1_pmod}
 \end{figure}
 
-On the PYNQ-Z1 board, the PMOD ports are 12-pin female connectors with 0.1 inch spacing that connect to normal 12-pin headers. As illustrated in \cref{fig:4_controlsystem_pynq_z1_pmod}, each 12-pin PMOD port offers two 3.3V VCC signals (pins 6 and 12), two GND signals (pins 5 and 11), and eight logic signals. Each PMOD port on a PYNQ board is classified as normal, MIO linked, XADC, or high-speed. The PYNQ-Z1 features two PMOD ports, both of which are high-speed. For maximal switching rates, the High-speed PMOD ports route their data signals as impedance matched differential pairs. For further protection, they feature pads for loading resistors, however the PYNQ-Z1 ships with these loaded as \qty{0}{\ohm} shunts. With the series resistors shunted, these PMOD ports provide no short-circuit protection but allow for substantially quicker switching rates. Pins 1 and 2, pins 3 and 4, pins 7 and 8, and pins 9 and 10 are coupled to neighboring signals in the same row. Traces are routed in a \qty{100}{\ohm} ($\pm\qty{10}{\percent}$) differential configuration. Coupled pairs may produce crosstalk if pins on this port are utilized as single-ended signals. Because it is being used as a single-ended signal in this application, one of the pins is grounded and its pair is utilized for the single-ended signal.
+On the PYNQ-Z1 board, the PMOD ports are 12-pin female connectors with 0.1 inch spacing that connect to normal 12-pin headers. As illustrated in \cref{fig:4_controlsystem_pynq_z1_pmod}, each 12-pin PMOD port offers two 3.3V VCC signals (pins 6 and 12), two GND signals (pins 5 and 11), and eight logic signals. Each PMOD port on a PYNQ board is classified as normal, MIO linked, XADC, or high-speed. The PYNQ-Z1 features two PMOD ports, both of which are high-speed. For maximal switching rates, the High-speed PMOD ports route their data signals as impedance matched differential pairs. For further protection, they feature pads for loading resistors, however the PYNQ-Z1 is assembled with these loaded as \qty{0}{\ohm} shunts. With the series resistors shunted, these PMOD ports provide no short-circuit protection but allow for substantially quicker switching rates. Pins 1 and 2, pins 3 and 4, pins 7 and 8, and pins 9 and 10 are coupled to neighboring signals in the same row. Traces are routed in a \qty{100}{\ohm} ($\pm\qty{10}{\percent}$) differential configuration. In this application however, the pins will be used in a single-ended configuration.
 
 \begin{listing}[htbp]
 	\caption{Constraints on Pulse Generator and Control System}
@@ -55,45 +55,9 @@ set_property PACKAGE_PIN M14 [get_ports {LEDs[3]}]
 	\end{mintedvhdl}
 \end{listing}
 
-When programming an FPGA with software like as Xilinx's Vivado, it becomes necessary to inform the system which physical pins on the FPGA correspond to the FPGA ports defined in the VHDL code. This is quite similar to putting a register high or low on a microcontroller to turn an LED on or off, operate a clock, or function as a data line. However, with a microcontroller, many of these pins are \enquote{hard-wired} in the sense that they cannot be relocated to a physically different pin on the microcontroller. In general, it's just not an option. This is not the case with an FPGA; instead, the hardware interface is established in VHDL and then the appropriate inputs and outputs on that interface are constrained to whichever pins on the FPGA are required, making FPGAs incredibly versatile for complicated and bespoke designs. In \cref{lst:4_controlsystem_constraints}, the constraints can be seen setting the port names to a certain \texttt{IOSTANDARD} and voltage level and the pin name \texttt{PACKAGE\_PIN}. All the described pins are \gls{io} available on the PMOD port of the PYNQ-Z1.
+When programming an FPGA with software like as Xilinx's Vivado, it becomes necessary to inform the system which physical pins on the FPGA correspond to the FPGA ports defined in the VHDL code. This is quite similar to putting a register high or low on a microcontroller to turn an LED on or off, operate a clock, or function as a data line. However, with a microcontroller, many of these pins are \enquote{hard-wired} in the sense that they cannot be relocated to a physically different pin on the microcontroller. In general, it is not an option. This is not the case with an FPGA; instead, the hardware interface is established in VHDL and then the appropriate inputs and outputs on that interface are constrained to whichever pins on the FPGA are required, making FPGAs incredibly versatile for complicated and bespoke designs. In \cref{lst:4_controlsystem_constraints}, the constraints can be seen setting the port names to a certain \texttt{IOSTANDARD} and voltage level and the pin name \texttt{PACKAGE\_PIN}. All the described pins are \gls{io} available on the PMOD port of the PYNQ-Z1.
 
 Based on inspiration found on tutorials for PWM generators on PYNQ platforms \cite{jan_cumps,vhdl_pwm_gen}, a prototype of an ultrasound pulser is developed by implementing a \gls{pwm} generator for the complementary PWM output and a signal controller to control pulse timings. A block diagram of the ultrasound pulser system can be seen in \cref{fig:4_controlsystem_pulser}. After that, an interface is developed to enable the control system to take input from a programmable Arm processor.
-
-\begin{figure}[htbp]
-	\centering
-	\begin{tikzpicture}[
-		node distance = 5cm,
-		]
-		\node[state, initial, accepting] (q1) {ready};
-		\node[state, right of=q1] (q2) {delay};
-		\node[state, right of=q2] (q3) {pulse};
-		\node[state, below of=q3] (q4) {gatedelay};
-		\node[state, left of=q4] (q5) {gate};
-		\node[state, left of=q5] (q6) {done};
-		\draw [->] (q1) edge[loop above] node{$\mathrm{fire}=0$} (q1)
-		(q1) edge[above] node{$\mathrm{fire}=1$} (q2)
-		(q2) edge[loop above] node{$\mathrm{counter<delay}$} (q2)
-		(q2) edge[above] node{$\mathrm{counter}\ge \mathrm{delay}$} (q3)
-		(q2) edge[loop above] node{$\mathrm{counter<delay}$} (q2)
-		(q3) edge[loop above] node{$\mathrm{counter<pulselen}$} (q3)
-		(q3) edge[above] node[rotate=-90]{$\mathrm{counter}\ge\mathrm{pulselen}$} (q4)
-		(q4) edge[loop below] node{$\mathrm{counter<gatedelay}$} (q4)
-		(q4) edge[below] node{$\mathrm{counter}\ge\mathrm{gatedelay}$} (q5)
-		(q5) edge[loop below] node{$\mathrm{counter<pulselen}$} (q5)
-		(q5) edge[below] node{$\mathrm{counter}\ge\mathrm{pulselen}$} (q6)
-		(q6) edge[loop below] node{$\mathrm{fire}=0, \mathrm{prime}=0$} (q6)
-		(q6) edge[above] node[rotate=90]{$\mathrm{fire}=1, \mathrm{prime}=1$} (q1);
-	\end{tikzpicture}
-	\caption{\gls{fsm} diagram of ultrasound pulser signal controller}
-	\label{fig:4_controlsystem_fsm_diagram}
-\end{figure}
-
-\begin{figure}[htbp]
-	\centering
-	\includegraphics[width=.8\linewidth]{Figures/4_controlsystem_pulser.pdf}
-	\caption{PWM pulser and signal controller as a block diagram with inputs and outputs}
-	\label{fig:4_controlsystem_pulser}
-\end{figure}
 
 \begin{figure}[htbp]
 	\centering
@@ -101,10 +65,19 @@ Based on inspiration found on tutorials for PWM generators on PYNQ platforms \ci
 	\caption{Top level block diagram of the FPGA overlay with AXI interconnects and registers}
 	\label{fig:4_controlsystem_top_bd}
 \end{figure}
+In \cref{fig:4_controlsystem_top_bd}, the block diagram of the entire FPGA system is seen with its AXI interconnects that make up the interface between the ultrasound pulser and the Arm microprocessor taking inputs from the user. Also visible is the clock generator, setting the \qty{20}{\mega\hertz} demodulation clock in the analogue front-end and the \qty{320}{\mega\hertz} pulser clock responsible for the resolution of the dead-time and length of pulses.
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=.8\linewidth]{Figures/4_controlsystem_pulser.pdf}
+	\caption{PWM pulser and signal controller as a block diagram with inputs and outputs}
+	\label{fig:4_controlsystem_pulser}
+\end{figure}
+In \cref{fig:4_controlsystem_pulser}, the block diagram of the ultrasound pulse generator can be seen with its two sub-components, the signal controller and the PWM generator. The primary purpose of the PWM generator is the control of the two complementary PWM outputs and setting the dead-time between them. Its operation is inherently controlled through the enable input set from the signal controller. The signal controller is responsible for setting the outputs depending on the inputs received and its current state.
 
 \begin{listing}[htbp]
-	\caption{PWM Pulse Generator Descriptor}
-	\label{lst:4_controlsystem_pulser}
+	\caption{Snippet of VHDL code from pulse generator}
+	\label{lst:4_controlsystem_pulser_code}
 	\begin{mintedvhdl}
 architecture arch of Pwm is
 	signal timer_r       : natural range 0 to 2**duty_i'length-1;
@@ -141,7 +114,164 @@ architecture arch of Pwm is
 end architecture;
 	\end{mintedvhdl}
 \end{listing}
+Looking at \cref{lst:4_controlsystem_pulser_code}, the code is run as a clocked process on the \qty{320}{\mega\hertz} clock. As long as \texttt{enable} is \gls{high}, the pulser will output pulses \texttt{PWM} and \texttt{PWMN}. If the \texttt{enable} input is \gls{low}, the pulse generator makes sure that \texttt{PWMN} is \gls{high} during the time pulses are not transmitted. If the \texttt{enable} input is \gls{high}, a timer controls the output level of \texttt{PWM} and \texttt{PWMN} and creates the pulses.
 
+\begin{listing}[htbp]
+\caption{Snippet of code from state machine in signal controller}
+\label{lst:4_controlsystem_signalcontroller_code}
+\begin{mintedvhdl}
+case State is
+	when ready =>
+	if prime_i = '0' then -- check if caller prime bit reset
+		if fire_i = '1' then -- then check fire bit to start
+			counter <= 0;
+			state <= delay;
+		end if;
+	end if;
+when delay =>
+	prf_o <= '0';
+	if counter >= to_integer(unsigned(start_delay_i)) - 1 then
+		counter <= 0;
+		enable_o <= '1';
+		state <= pulse;
+	end if;
+when pulse =>
+	enable_o <= '1';
+	prf_o <= '0'; -- sync with last edge of PWM
+	if counter < to_integer(unsigned(train_length_i)) - 1 then
+		pulse_o <= '1';
+	elsif counter = to_integer(unsigned(train_length_i)) - 1 then
+		pulse_o <= '1';
+		counter <= 0;
+		state <= gate_delay;
+	end if;
+when gate_delay =>
+	if counter >= to_integer(unsigned(gate_delay_i)) - 1 then
+		counter <= 0;
+		state <= gate;
+	end if;
+when gate =>
+	gate_o <= '1';
+	if counter = to_integer(unsigned(train_length_i)) - 1 then
+		counter <= 0;
+		state <= done;
+	end if;
+when done =>
+	-- check if fire bit reset
+	if fire_i = '0' then
+		-- prime if prime flag set
+		if prime_i = '1' then
+			counter <= 0;
+			state <= ready;
+		end if;
+	end if;
+end case;
+\end{mintedvhdl}
+\end{listing}
+In \cref{lst:4_controlsystem_signalcontroller_code}, the state machine code of the signal controller is seen. The signal controller incorporates a few flags that are set when triggering the ultrasound pulser. The signal controller begins in the \textit{ready} state. Each of the parameters, \texttt{delay}, \texttt{pulselen}, and \texttt{gatedelay}, have been preset by the control system in the front-end interface. Upon getting the \texttt{fire} flag, the state changes to \textit{delay} and starts counting clock cycles until the counter is equal to the \texttt{delay} parameter. When $\texttt{counter}\ge\texttt{delay}$, the state changes to \textit{pulse}, \texttt{counter} is reset, and begins pulsing. Next, the counter keeps counting cycles. When $\texttt{counter}\ge\texttt{pulselen}$ the pulsing stops, and the state changes to \textit{gatedelay}. The \texttt{counter} is reset again and keeps counting until $\texttt{counter}\ge\texttt{gatedelay}$, when the state changes to \textit{gate} and \texttt{counter} is reset. Next, the \texttt{GATE} pulse starts and continues until $\texttt{counter}\ge\texttt{pulselen}$, where the \texttt{GATE} pulse ends. Finally, the state changes to \textit{done} and remains there until the \texttt{prime} flag is set. The state flow is a loop that runs continuously until system operation ends. In \cref{fig:4_controlsystem_fsm_diagram} is a diagram of the states in the finite state machine of the signal controller.
+
+\begin{figure}[htbp]
+	\centering
+	\begin{adjustbox}{width=\textwidth}%
+		\begin{tikzpicture}[
+			node distance = 5.5cm,
+			]
+			\node[state, initial, accepting] (q1) {\textit{ready}};
+			\node[state, right of=q1] (q2) {\textit{delay}};
+			\node[state, right of=q2] (q3) {\textit{pulse}};
+			\node[state, below of=q3] (q4) {\textit{gatedelay}};
+			\node[state, left of=q4] (q5) {\textit{gate}};
+			\node[state, left of=q5] (q6) {\textit{done}};
+			\draw [->] (q1) edge[loop above] node{$\texttt{fire}=0$} (q1)
+			(q1) edge[above] node{$\texttt{fire}=1$} (q2)
+			(q2) edge[loop above] node{$\texttt{counter}<\texttt{delay}$} (q2)
+			(q2) edge[above] node{$\texttt{counter}\ge \texttt{delay}$} (q3)
+			(q2) edge[loop above] node{$\texttt{counter}<\texttt{delay}$} (q2)
+			(q3) edge[loop above] node{$\texttt{counter}<\texttt{pulselen}$} (q3)
+			(q3) edge[above] node[rotate=-90]{$\texttt{counter}\ge\texttt{pulselen}$} (q4)
+			(q4) edge[loop below] node{$\texttt{counter}<\texttt{gatedelay}$} (q4)
+			(q4) edge[below] node{$\texttt{counter}\ge\texttt{gatedelay}$} (q5)
+			(q5) edge[loop below] node{$\texttt{counter}<\texttt{pulselen}$} (q5)
+			(q5) edge[below] node{$\texttt{counter}\ge\texttt{pulselen}$} (q6)
+			(q6) edge[loop below] node{$\texttt{prime}=0$} (q6)
+			(q6) edge[above] node[rotate=90]{$\texttt{prime}=1$} (q1);
+		\end{tikzpicture}
+	\end{adjustbox}%
+	\caption{\gls{fsm} diagram of ultrasound pulser signal controller}
+	\label{fig:4_controlsystem_fsm_diagram}
+\end{figure}
+
+\begin{listing}[htbp]
+	\centering
+	\caption{Snippet from JupyterLab setting up the registers}
+	\label{lst:4_controlsystem_jupyter_registers}
+	\begin{mintedpython}
+from pynq import Overlay
+ol=Overlay("pwm_ultrasound_pulser.bit")
+from pynq import MMIO
+RANGE = 8 # Number of bytes; 8/4 = 2x 32-bit locations which is all we need for this example
+
+duty_address = ol.ip_dict['axi_gpio_duty']['phys_addr']
+duty_register = MMIO(duty_address, RANGE)
+# Write 0x00 to the tri-state register at offset 0x4 to configure the IO as outputs.
+duty_register.write(0x4, 0x0) # Write 0x0 to location 0x4; Set tri-state to output
+band_address = ol.ip_dict['axi_gpio_band']['phys_addr']
+band_register = MMIO(band_address, RANGE)
+# Write 0x00 to the tri-state register at offset 0x4 to configure the IO as outputs.
+band_register.write(0x4, 0x0) # Write 0x0 to location 0x4; Set tri-state to output
+flags_address = ol.ip_dict['axi_gpio_flags']['phys_addr']
+flags_register = MMIO(flags_address, RANGE)
+# Write 0x00 to the tri-state register at offset 0x4 to configure the IO as outputs.
+flags_register.write(0x4, 0x0) # Write 0x0 to location 0x4; Set tri-state to output
+start_delay_address = ol.ip_dict['axi_gpio_start_delay']['phys_addr']
+start_delay_register = MMIO(start_delay_address, RANGE)
+# Write 0x00 to the tri-state register at offset 0x4 to configure the IO as outputs.
+start_delay_register.write(0x4, 0x0) # Write 0x0 to location 0x4; Set tri-state to output
+train_length_address = ol.ip_dict['axi_gpio_train_length']['phys_addr']
+train_length_register = MMIO(train_length_address, RANGE)
+# Write 0x00 to the tri-state register at offset 0x4 to configure the IO as outputs.
+train_length_register.write(0x4, 0x0) # Write 0x0 to location 0x4; Set tri-state to output
+gate_delay_address = ol.ip_dict['axi_gpio_gate_delay']['phys_addr']
+gate_delay_register = MMIO(gate_delay_address, RANGE)
+# Write 0x00 to the tri-state register at offset 0x4 to configure the IO as outputs.
+gate_delay_register.write(0x4, 0x0) # Write 0x0 to location 0x4; Set tri-state to output
+
+def duty(duty):
+	duty_register.write(0x00, duty)
+def band(band):
+	band_register.write(0x00, band)
+def dutypct(duty):
+	duty_register.write(0x00, round((0x1F*2)/(100/duty)))
+def fire():
+	flags_register.write(0x00, 1) # bit 0
+	flags_register.write(0x00, 0)
+def prime():
+	flags_register.write(0x00, 2) # bit 1
+	flags_register.write(0x00, 0)
+def startdelay(startdelay):
+	start_delay_register.write(0x0, startdelay);
+def trainlength(trainlength):
+	train_length_register.write(0x0, trainlength);
+def gatedelay(gatedelay):
+	gate_delay_register.write(0x0, gatedelay);
+	\end{mintedpython}
+\end{listing}
+In \cref{lst:4_controlsystem_jupyter_registers}, the code for setting up the registers in JupyterLab can be seen. The code defines the lookup addresses for each register and then defines a Python function to write these registers. For \texttt{duty}, \texttt{band}, \texttt{dutypct}, \texttt{startdelay}, \texttt{trainlength}, and \texttt{gatedelay}, the JupyterLab notebook writes numeric values to each corresponding register. For \texttt{prime} and \texttt{fire}, these are flags that are either set to \textit{true} or \textit{false}.
+
+\begin{listing}[htbp]
+	\centering
+	\caption{Snippet from JupyterLab showing the commands to set up a single pulse transmission}
+	\label{lst:4_controlsystem_jupyter_cmds}
+	\begin{mintedpython}
+band(10)
+startdelay(200)
+trainlength(294)
+gatedelay(1000)
+prime()
+fire()
+	\end{mintedpython}
+\end{listing}
+In \cref{lst:4_controlsystem_jupyter_cmds}, the commands to write to the pulse registers. The dead-time is configured for $\sfrac{10}{\qty{320}{\mega\hertz}}=\qty{31.16}{\nano\second}$. For the start delay, meaning the time from the \texttt{PRF} goes \gls{low} to the beginning of the first PWM pulse, is set to \qty{625}{\nano\second}. The \texttt{trainlength} is set to \qty{919}{\nano\second}, or $\approx4$ pulses. The \texttt{gatedelay}, also called sample depth, is set to \qty{3.125}{\micro\second}, or in terms of depth, for speed of sound in water $c=\qty{1480}{\meter\per\second}$, $d_{\mathrm{sample}}=\frac{\sfrac{\qty{1480}{\meter\per\second}}{\qty{320}{\mega\hertz}}\cdot1000}{2}=\qty{2.31}{\milli\meter}$. Lastly, \texttt{prime}, and \texttt{fire} starts the pulsing.
 
 \section{Power Stage}
 \begin{figure}[htbp]
@@ -150,7 +280,7 @@ end architecture;
 	\caption{MD1213DB1 High Speed Pulser}
 	\label{fig:4_transmitter_pcb_pic}
 \end{figure}
-A picture of the power stage PCB can be seen in \cref{fig:4_transmitter_pcb_pic}. An experiment is conducted to validate the function of the power stage. Using the jumpers, the PCB is configured without its onboard load, and a \gls{pzt} transducer is attached with a splitter adapter to connect the other side to an oscilloscope for data acquisition.
+A picture of the power stage PCB can be seen in \cref{fig:4_transmitter_pcb_pic}. For purpose of evaluating the power stage, a development board \textit{MD1213DB1} is used. Seen in \cref{fig:4_transmitter_pcb_pic} is a picture of the development board. However, as the power connector use MOLEX headers for power inputs, and the power delivery comes from a laboratory \gls{dcps}, two breakout boards are needed to attach \qty{4}{\milli\meter} test leads to J1 and J2. An SMA connector is mounted to J6. On the pulse input connector J3, a shunt short is mounted on the \gls{oe} input. INA and INB are connected using jumper wires to the pulser.
 
 \section{Transmit/Receive Switch}
 \begin{figure}[htbp]
@@ -193,7 +323,7 @@ As described in the previous chapter, the demodulator use an I/Q quadrature demo
 
 After each demodulated burst is sampled, between each sample line pulse repetition it is desired to hold the voltage, so the analogue-to-digital conversion that may be running asynchronously does not sample zero-values between the bursts. After the low-frequency signals are output from the quadrature demodulator, they are sampled using the \texttt{GATE} signal output from the control system. This \texttt{GATE} signal is a delayed pulse equal to the length of the pulse train and determines the sampling depth of the \gls{afe}. The prototype board of the sample and hold amplifier can be seen in \cref{fig:4_sha_pcb_pic}.
 
-\section{Active Filter, DC-Coupler}
+\section{Active Filter}
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=.8\textwidth]{Figures/4_dccoupler_filter_pcb_pic.jpg}

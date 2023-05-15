@@ -61,12 +61,8 @@ architecture arch of signal_controller is
     signal state  : states;
 
 begin
-
-
     clocked: process(clk_i)
-
     begin
-
         if rising_edge(clk_i) then
             -- sync reset
             if n_reset_i = '0' then
@@ -88,7 +84,6 @@ begin
                 leds_o <= (others => '0');
 
                 case State is
-
                     when ready =>  -- start a pulse group as soon as the fire bit is set
                         leds_o <= (0 => '1', others => '0');
                         -- check if the caller has reset the prime bit
@@ -133,7 +128,7 @@ begin
                         gate_o <= '1';
                         if counter = to_integer(unsigned(train_length_i)) - 1 then
                             counter <= 0;
-                            state <= done;  -- todo implement
+                            state <= done;
                         end if;
 
                     when done =>
@@ -146,9 +141,7 @@ begin
                                 state <= ready;
                             end if;
                         end if;
-
                 end case;
-
             end if; -- sync reset
         end if; -- rising_edge
 

@@ -1,4 +1,4 @@
-\chapter{Theory} \label{cha:theory} %\thispagestyle{main}
+\chapter{Theory} \label{cha:theory} \glsresetall
 This chapter explains the overall theory that forms the fundamental principles of this project. Initially, the characteristics of ultrasound will be explained from an acoustics standpoint. Then, a brief overview of systemic circulation is explained in vivo. Lastly, the various types of flow meters are outlined with their strengths and weaknesses.
 \section{Ultrasound}
 \begin{figure}[htbp]
@@ -15,7 +15,7 @@ where $\rho_{0}$ is the mean density (\unit{\kilogram\per\meter\cubed}) and $\ka
 \begin{equation} \label{eq:2_acoustic_pressure}
 	p(t,z)=p_{0} e^{j(\omega t - k z)}
 \end{equation}
-where $\omega$ is the angular frequency, $k$ is the wave number and is expressed by $k=\sfrac{\omega}{c}=\sfrac{2\pi}{\lambda}$, and $_{0}$ is the acoustic pressure amplitude. A spherical wave is expressed by \cref{eq:2_spherical_wave}.
+where $\omega$ is the angular frequency, $k$ is the wave number and is expressed by $k=\sfrac{\omega}{c}=\sfrac{2\pi}{\lambda}$, and $p_{0}$ is the acoustic pressure amplitude. A spherical wave is expressed by \cref{eq:2_spherical_wave}.
 \begin{equation} \label{eq:2_spherical_wave}
 	p(t,r)=p_{0} e^{j(\omega t - k r)}
 \end{equation}
@@ -141,7 +141,7 @@ A typical layperson considers items such as speakers and microphones in the cont
 	\label{fig:2_doppler_effect}
 \end{figure}
 
-The Doppler effect is a phenomenon in which an observer perceives a shift in the frequency of sound emitted from a source when either the source or the observer is moving, or both are moving. The reason for the perceived change in frequency is visualised in \cref{fig:2_doppler_effect}. In diagram (a), the source $S_{p}$ is stationary and produces a spherical distribution pattern of the wave with the perceived frequency of the observer is given by $f=\sfrac{c}{\lambda}$, where $c$ is the velocity of the wave in the medium and $\lambda$ is the wavelength. In diagram (b), the sound source is moving towards the right with a velocity $v$. The locomotion of the source changes the distribution pattern and causes a longer wavelength on the left, indicating a lower perceived frequency, and a shorter wavelength on the right, indicating a higher perceived frequency, both denoted as $\lambda^{\prime}$ in the diagram. In the case of the observer on the right side, the perceived frequency becomes \cref{eq:2_doppler_effect}.
+The Doppler effect is a phenomenon in which an observer perceives a shift in the frequency of sound emitted from a source when either the source or the observer is moving, or both are moving. The reason for the perceived change in frequency is visualised in \cref{fig:2_doppler_effect}. In diagram (a), the source $S_{p}$ is stationary and produces a spherical distribution pattern of the wave with the perceived frequency of the observer is given by $f=\sfrac{c}{\lambda}$, where $c$ is the velocity of the wave in the medium and $\lambda$ is the wavelength. In diagram (b), the sound source is moving towards the right with a velocity $v$. The locomotion of the source changes the distribution pattern and causes a longer wavelength on the left, thus resulting a lower perceived frequency, and a shorter wavelength on the right, indicating a higher perceived frequency, both denoted as $\lambda^{\prime}$ in the diagram. In the case of the observer on the right side, the perceived frequency becomes \cref{eq:2_doppler_effect}.
 
 \begin{equation} \label{eq:2_doppler_effect}
 	f^{\prime} = \frac{c}{\lambda} = \frac{c}{\lambda - v T} = \frac{c}{(c-v)T} = \frac{c}{c-v}\cdot f_{0}
@@ -180,16 +180,16 @@ The Doppler effect is used in ultrasonic Doppler devices used to image blood flo
 	\label{fig:2_circulatory_system}
 \end{figure}
 
-The flow physics of the human circulatory system are sophisticated, and numerous non-stationary flow patterns are observed. The human circulatory system takes care of transporting oxygen and nutrients to organs, as well as disposing of waste products produced by metabolism. It is possible because the blood within the circulatory system contains several smaller sub-components, such as plasma and formed cellular elements that perform these vital functions. Initially, blood is discharged from the left ventricle of the heart through the aorta and travels to all areas of the body through multiple branches of the arterial tree. When blood flows through the arteries, it enters smaller channels known as arterioles. These arterioles lead to a network of tiny capillaries through which nutrients and waste materials are exchanged between the blood and the organs. The capillaries connect to form a network of venulae, which supply the veins and deliver blood back to the heart. This system, in its entirety, is called systemic circulation. A diagram of the circulatory system as described above can be seen in \cref{fig:2_circulatory_system}. In summary, when examining the elements that comprise the circulatory system, it consists of several components:
+The flow physics of the human circulatory system is sophisticated, and numerous non-stationary flow patterns are observed. The human circulatory system takes care of transporting oxygen and nutrients to organs, as well as disposing of waste products produced by metabolism. It is possible because the blood within the circulatory system contains several smaller sub-components, such as plasma and formed cellular elements that perform these vital functions. Initially, blood is discharged from the left ventricle of the heart through the aorta and travels to all areas of the body through multiple branches of the arterial tree. When blood flows through the arteries, it enters smaller channels known as arterioles. These arterioles lead to a network of tiny capillaries through which nutrients and waste materials are exchanged between the blood and the organs. The capillaries connect to form a network of venulae, which supply the veins and deliver blood back to the heart. This system, in its entirety, is called systemic circulation. A diagram of the circulatory system as described above can be seen in \cref{fig:2_circulatory_system}. In summary, when examining the elements that comprise the circulatory system, it consists of several components:
 \begin{itemize}
-	\item Heart, the primary organ of the circulatory system that maintains blood pressure and controls blood velocity.
-	\item Blood, and its sub-components
+	\item The heart, the primary organ of the circulatory system that maintains blood pressure and controls blood velocity.
+	\item The blood, and its sub-components
 	\begin{itemize}
 		\item Plasma, which forms the primary volume, contains nutrients and formed cellular elements.
 		\item Red and white blood cells, which carry oxygen and fight off infections, respectively.
 		\item Platelets, which are also known as thrombocytes, have the function of clotting during blood vessel injury.
 	\end{itemize}
-	\item Blood vessels
+	\item The blood vessels
 	\begin{itemize}
 		\item Arteries (and arterioles), transport oxygenated blood to organs and tissues at high pressure and velocity.
 		\item Capillaries are thin but wide-ranging blood vessels that perform the exchange of matter between the circulatory system and tissue.
@@ -206,7 +206,7 @@ where $\Delta P$ is the pressure difference across the blood vessel and $R$ is t
 \begin{equation} \label{eq:2_pressure_diff}
 	\Delta P = P_{1}-P_{2}
 \end{equation}
-Where $P_{1}$ and $P_{2}$ are the blood pressures measured at each end of the blood vessel. Pressure has significant importance on blood flow because an increase in arterial pressure not only increases the force that pushes blood through the capillaries but also expands the vessels, lowering vascular resistance. Selected dimensions and flow characteristics can be seen in \cref{tab:2_dimensions_flow_vessels}.
+Where $P_{1}$ and $P_{2}$ are the blood pressures measured at each end of the blood vessel. Pressure has significant influence on blood flow because an increase in arterial pressure not only increases the force that pushes blood through the capillaries but also expands the vessels, lowering vascular resistance. Selected dimensions and flow characteristics can be seen in \cref{tab:2_dimensions_flow_vessels}.
 
 \begin{table}[htbp]
 	\centering
