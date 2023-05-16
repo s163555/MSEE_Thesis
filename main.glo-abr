@@ -1,4 +1,3 @@
-\glossaryentry{FSM?\glossentry{fsm}|setentrycounter[]{page}"\glsnumberformat}{IV}
 \glossaryentry{DC?\glossentry{dc}|setentrycounter[]{page}"\glsnumberformat}{IV}
 \glossaryentry{DC?\glossentry{dc}|setentrycounter[]{page}"\glsnumberformat}{VII}
 \glossaryentry{I/O?\glossentry{io}|setentrycounter[]{page}"\glsnumberformat}{VII}
@@ -111,7 +110,7 @@
 \glossaryentry{MOSFET?\glossentry{mosfet}|setentrycounter[]{page}"\glsnumberformat}{55}
 \glossaryentry{PZT?\glossentry{pzt}|setentrycounter[]{page}"\glsnumberformat}{55}
 \glossaryentry{VNA?\glossentry{vna}|setentrycounter[]{page}"\glsnumberformat}{55}
-\glossaryentry{VNA?\glossentry{vna}|setentrycounter[]{page}"\glsnumberformat}{55}
+\glossaryentry{VNA?\glossentry{vna}|setentrycounter[]{page}"\glsnumberformat}{57}
 \glossaryentry{LNA?\glossentry{lna}|setentrycounter[]{page}"\glsnumberformat}{57}
 \glossaryentry{VGA?\glossentry{vga}|setentrycounter[]{page}"\glsnumberformat}{57}
 \glossaryentry{AC?\glossentry{ac}|setentrycounter[]{page}"\glsnumberformat}{59}
@@ -120,3 +119,4 @@
 \glossaryentry{I/O?\glossentry{io}|setentrycounter[]{page}"\glsnumberformat}{59}
 \glossaryentry{DCPS?\glossentry{dcps}|setentrycounter[]{page}"\glsnumberformat}{59}
 \glossaryentry{DC?\glossentry{dc}|setentrycounter[]{page}"\glsnumberformat}{59}
+\glossaryentry{PSD?\glossentry{psd}|setentrycounter[]{page}"\glsnumberformat}{62}
