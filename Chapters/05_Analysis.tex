@@ -95,7 +95,7 @@ Seen in \cref{fig:4_sample_hold_pcb} is the measured inputs and outputs of the c
 	\caption{Measured input and output of Active filter and DC Coupler}
 	\label{fig:5_dccoupler_measured}
 \end{figure}
-Seen in \cref{fig:5_dccoupler_measured} is the measured input and output of the DC coupler and active filter. The dashed line is the \gls{ac} coupled input signal with \qty{1}{\volt} amplitude and the solid line is the amplified \gls{dc} coupled output signal.
+A \qty{1}{\kilo\hertz} input signal is received on the input SMA connector from a function generator and probed with an oscilloscope. $\pm\qty{5}{\volt}$ is supplied to the power terminals. Next, the output SMA connector is probed with an oscilloscope and the data is recorded. The dashed line is the \gls{ac} coupled input signal with \qty{1}{\volt} amplitude and the solid line is the amplified \gls{dc} coupled output signal. Seen in \cref{fig:5_dccoupler_measured} is the measured input and output of the DC coupler and active filter. This measurement confirms its operation as expected when comparing to the simulation shown earlier in the report.
 
 \section{Pulse Generator and Power Stage}
 Using the pulse generator and the power stage, an experiment is performed where the complementary PWM signals are generated and output to the gate driver of the power stage. In turn, the gate driver will drive the MOSFET pair and output a high-power output than the pulse generator can supply on its own through its \gls{gpio}.
