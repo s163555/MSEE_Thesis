@@ -107,25 +107,24 @@ Using the pulse generator and the power stage, an experiment is performed where 
 	\label{fig:5_pulse_generator_experiment}
 \end{figure}
 
-Seen in \cref{fig:5_pulse_generator_experiment} are the measurements obtained from the pulse generator and power stage experiment. The measurements show the ability of the Pynq Z1 as a pulse generator is functioning as expected. As the power stage half-bridge is rail-to-rail, the output pulse voltages depend on the power supply voltage. In this case, the experiment is using a \qty{30}{\volt} maximum \gls{dcps}, and the output peak pulse voltages are $\pm \qty{30}{\volt}$. However, the power stage itself is specified for operating voltages up to $\pm \qty{100}{\volt}$.
+Seen in \cref{fig:5_pulse_generator_experiment} are the measurements obtained from the pulse generator and power stage experiment. The measurements show the ability of the Pynq Z1 as a pulse generator is functioning as expected. As the power stage half-bridge is rail-to-rail, the output pulse voltages depend on the power supply voltage. In this case, the experiment is using a \qty{30}{\volt} maximum \gls{dcps}, and the output peak pulse voltages are $\pm \qty{30}{\volt}$. However, the power stage itself is specified for bipolar operating voltages up to $\pm \qty{100}{\volt}$, or unipolar voltages $\pm \qty{200}{\volt}$.
 
 \section{Doppler String Phantom Experiment}
-The CIRS A043 Doppler String Phantom is a device used to evaluate the performance of Doppler ultrasound imaging systems. The phantom consists of a set of strings that move in a controlled manner when exposed to ultrasound waves. The strings are made of nylon monofilament and are arranged in a parallel array.
-
-When the phantom is scanned with a Doppler ultrasound probe, the strings vibrate in response to the sound waves, producing a Doppler signal. The phantom includes a set of control strings that vibrate at a known frequency, allowing the user to calibrate the system and determine its accuracy. The string is driven by a motor that can be programmed to move at different speeds and directions, and it is also designed to create turbulence, which mimics the flow of blood in diseased vessels.
-
-The phantom also includes a set of strings that move in a complex, non-linear pattern, simulating blood flow in vessels with turbulent flow. This allows the user to test the system's ability to accurately detect and measure turbulent blood flow, which is an important diagnostic feature for conditions such as stenosis or arterial occlusion.
-
-By evaluating the system's performance on the known frequencies of the control strings and the complex patterns of the turbulence strings, the user can assess the accuracy and reliability of the Doppler ultrasound system. The CIRS A043 Doppler String Phantom is widely used in research, development, and quality assurance of Doppler ultrasound equipment.
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=.8\textwidth]{Figures/5_cirs_043a_image.jpg}
 	\caption[CIRS Model 043A Doppler String Phantom]{CIRS Model 043A Doppler String Phantom with (left) motor controller and (right) tank and string loop}
+	\label{fig:5_doppler_string_phantom}
 \end{figure}
-
+Seen in \cref{fig:5_doppler_string_phantom} is the CIRS A043 Doppler String Phantom is a device used to evaluate the performance of Doppler ultrasound imaging systems. The phantom consists of a string that is driven by a motor. The motor can be programmed to move at different speeds and directions, and can also be configured to drive the string with physiological waveforms, such as a carotid artery for validation purposes. A Doppler string phantom validation technique is widely used in research, development, and quality assurance of Doppler ultrasound equipment.
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=.8\textwidth]{Figures/5_doppler_string_phantom_experiment.pdf}
 	\caption{Doppler String Phantom experiment diagram (not to scale)}
 	\label{fig:5_doppler_string_experiment}
 \end{figure}
+In \cref{fig:5_doppler_string_experiment} is a diagram of the experiment to be performed with the analogue front-end to evaluate the performance of the system. The ultrasound system is being controlled by the ultrasound pulser running on the PYNQ-Z1 board. The transducer used in the experiment is a piezoelectric \qty{5}{\mega\hertz} commercial transducer. The entire system operates at a \texttt{PRF} frequency of \qty{15}{\kilo\hertz}. First, the string is mounted in the string phantom loop. Next, the transducer is mounted on a movable arm and submerged in the water. When the ultrasound waves strike the moving string, the frequency of the reflected waves is shifted due to the Doppler effect. This frequency shift provides information about the velocity and direction of the simulated blood flow. Here, the ultrasound system measures the frequency shift and this can in turn be calculated into a velocity. This data can be analyzed to assess the accuracy and performance of the Doppler ultrasound system. The phantom allows for calibration of the system and evaluation of factors such as velocity sensitivity, and spectral Doppler analysis when looking at the \gls{psd} over time. Unfortunately, when conducting the experiment, a design review indicated that the pulser required a modification to the output of the power stage to ensure the potential across the transducer is bled off during rest. However, this must be carefully balanced to ensure that an increased load is not attenuating the received signal. Two solutions were proposed:
+\begin{enumerate}
+	\item A resistor to reference voltage in parallel with the transducer
+	\item A second ultrasound switch, functionally inverse of the primary ultrasound switch to ensure received signal does not get attenuated by pulser circuit
+\end{enumerate}
