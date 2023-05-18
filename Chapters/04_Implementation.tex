@@ -333,57 +333,93 @@ After each demodulated burst is sampled, between each sample line pulse repetiti
 Before the signal is digitally quantized by the \gls{adc}, it has to pass through a \gls{hp} filter to remove undesired \gls{prf} or Wall frequency components. The implementation is done on a prototyping board and can be seen in \cref{fig:4_dccoupler_pcb_pic}.
 
 \section{Digital Signal Processor}
-Finally, the signal can be measured with
-\begin{equation}
+Finally, the signal can be measured with the control system running the base overlay on the XADC interface.
+\begin{listing}[htbp]
+	\centering
+	\caption{Snippet of code running the ADC for \qty{1}{\second} and saving the samples into a 1-dimensional table}
+	\label{lst:4_xadc_sampling}
+\begin{mintedpython}
+import time
+from pynq.overlays.base import BaseOverlay
+base = BaseOverlay("base.bit")
+from pynq.lib.arduino import Arduino_Analog
+from pynq.lib.arduino import ARDUINO_GROVE_A1
+analog0 = Arduino_Analog(base.ARDUINO,ARDUINO_GROVE_A1)
+a = []
+t_start = time.time()
+t_end = time.time() + 1
+while time.time() < t_end:
+a.append(analog0.read()[0])
+\end{mintedpython}
+\end{listing}
+In \cref{lst:4_xadc_sampling}, the code that samples the input signal on the XADC interface can be seen.
+
+\begin{listing}[htbp]
+	\centering
+	\caption{Snippet of code that plots the recorded input signal, plots all frequency components, and two periods of the signal}
+	\label{lst:4_xadc_fft_frequencies}
+	\begin{mintedpython}
+import numpy as np
+import matplotlib.pyplot as plt
+fs = round(1/((t_end-t_start)/len(a)))
+print(f"Calculated samplerate fs = {fs} kS/s")
+t = np.linspace(0, t_end-t_start, len(a))
+
+fig, ax = plt.subplots(3, 1)
+ax = ax.flatten()
+ax[0].plot(t, a)
+ax[0].set_title("Original signal")
+ax[0].set_xlabel("Time [s]")
+ax[0].set_ylabel("Voltage [V]")
+plt.tight_layout()
+plt.grid()
+plt.minorticks_on()
+
+a_fft = np.fft.fft(a)           # Original FFT
+a_fft = a_fft[1:]                 # Delete DC component
+a_fft = a_fft[:round(len(t)/2)] # First half ( pos freqs )
+a_fft = np.abs(a_fft)           # Absolute value of magnitudes
+a_fft = a_fft/max(a_fft)        # Normalized so max = 1
+
+freq_x_axis = np.linspace(1, fs/2, len(a_fft))
+ax[1].plot(freq_x_axis, a_fft, "o-")
+ax[1].set_title("Frequency magnitudes")
+ax[1].set_xlabel("Frequency [Hz]")
+ax[1].set_ylabel("Magnitude")
+f_loc = np.argmax(a_fft) # Finds the index of the max
+f_val = freq_x_axis[f_loc] # The strongest frequency value
+samplenums = round(2*(1/f_val)*fs)
+ax[2].plot(t[0:samplenums],a[0:samplenums])
+ax[2].set_title("Two periods")
+ax[2].set_xlabel("Time [s]")
+ax[2].set_ylabel("Voltage [V]")
+plt.show()
+
+print(f"The largest frequency component is f = {f_val}")
+	\end{mintedpython}
+\end{listing}
+In \cref{lst:4_xadc_fft_frequencies}, the code that plots the discrete Fourier transform of the input signal can be seen. The largest frequency component is programmatically identified.
+
+\begin{equation} \label{eq:numpy_dft_formula}
 	A_{k} = \sum_{m=0}^{n-1} a_{m} e^{\left( -2\pi i \frac{mk}{n}\right)}, \quad k=0,...,n-1
 \end{equation}
 
-%\begin{figure}[H]
-%	\centering
-%	\begin{circuitikz}[american voltages]
-%		\draw
-%		(0,0) to [short, *-] (6,0)
-%		to [V, l_=$\mathrm{j}{\omega}_m \underline{\psi}^s_R$] (6,2)
-%		to [R, l_=$R_R$] (6,4)
-%		to [short, i_=$\underline{i}^s_R$] (5,4)
-%		(0,0) to [open, v^>=$\underline{u}^s_s$] (0,4)
-%		to [short, *- ,i=$\underline{i}^s_s$] (1,4)
-%		to [R, l=$R_s$] (3,4)
-%		to [L, l=$L_{\sigma}$] (5,4)
-%		to [short, i_=$\underline{i}^s_M$] (5,3)
-%		to [L, l_=$L_M$] (5,0);
-%	\end{circuitikz}
-%	\caption{The nodes short, V, R and L are presented here, but there a lot more}
-%	\label{fig:circuitikz}
-%\end{figure}
-%
-%\section{Listings (code)}
-%
-%\Cref{lst:helloworld} is a nicely formatted block of code. A listing will automatically continue on the next page if it encounters a page break. Many different programming languages can be highlighted. Check the \texttt{listings} package documentation for a list of supported programming languages.
+\begin{listing}[htbp]
+	\centering
+	\caption{Snippet of code that estimates the velocity based on the largest frequency component of the input signal}
+	\label{lst:4_xadc_velocity}
+	\begin{mintedpython}
+f0=5e6
+f_d=200
+theta=60*np.pi/180
+c=1480
+v=((f_val)*c)/(2*np.cos(theta)*f0)
+print(f"The estimated velocity is v = {v}")
+	\end{mintedpython}
+\end{listing}
+In \cref{lst:4_xadc_velocity} is the code that obtains the velocity from the largest frequency component of the input signal to the \gls{dsp}.
 
-%\begin{listing}[htbp]
-%\begin{mintedc}
-%#include <stdio.h>
-%int main()
-%{
-%	printf("Hello, World!"); /*printf() outputs the quoted string*/
-%	if (n == 0 || n == 1){
-%		return n;
-%	}
-%	j = 0;
-%	for (i = 0; i < n-1; i++){
-%		if (arr[i] != arr[i+1]){
-%			arr[j] = arr[i];
-%			j++;
-%		}
-%	}
-%	arr[j++] = arr[n-1];
-%	return 0;
-%}
-%\end{mintedc}
-%	\caption{Hello world in C}
-%	\label{lst:helloworld}
-%\end{listing}
+
 
 
 
