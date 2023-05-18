@@ -105,14 +105,14 @@ A function generator is configured to transmit a \qty{100}{\hertz} sinusoidal si
 	\caption{Velocity estimation with XADC and Jupyter}
 	\label{fig:5_velocity_estimation_output}
 \end{figure}
-After processing the data, a total of three plots are generated and can be seen in \cref{fig:5_velocity_estimation_output}. In the top plot, the whole buffer is plotted over time. In the middle plot, the spectrum of the recorded measurements are plotted. In the lower plot, two periods of the largest frequency components are plotted.
+After processing the data, a total of three plots are generated and can be seen in \cref{fig:5_velocity_estimation_output}. In the top plot, the whole buffer is plotted over time. In the middle plot, the spectrum of the recorded measurements are plotted. In the lower plot, two periods of the largest frequency components are plotted. In the measurement, with a \qty{103}{\hertz} signal being measured on the input of the XADC system, a velocity is estimated to be \qty{30.78}{\centi\meter\per\second}.
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=.8\textwidth]{Figures/5_velocity_estimation_limit.eps}
 	\caption{Velocity estimator with sample rate limitation}
 	\label{fig:5_dsp_samplerate_limit}
 \end{figure}
-Since the maximum sample rate with the XADC implementation used was determined, it is desired to know the limitations of the Doppler velocity estimation. Based on the Nyquist limit, a with 0.5 cycle/sample results in distortion known as aliasing. In principle, it means that when the same rate was determined to be 4422 samples per second, that means the Nyquist frequency for this system is equal to \qty{2211}{\hertz}. In the application of a velocity estimator, that means that a velocity of over \qty{60}{\centi\meter\per\second} will result in high distortion and unreliable measurements.
+Since the maximum sample rate with the XADC implementation used was determined, it is desired to know the limitations of the Doppler velocity estimation. Based on the Nyquist limit, a with 0.5 cycle/sample results in distortion known as aliasing. In principle, it means that when the same rate was determined to be 4422 samples per second, that means the Nyquist frequency for this system is equal to \qty{2211}{\hertz}. In the application of a velocity estimator, that means that a velocity of over \qty{60}{\centi\meter\per\second} will result in high distortion and unreliable measurements. This is visualised in \cref{fig:5_dsp_samplerate_limit} where the velocity curve intersects the sample rate limitation.
 
 \section{Pulse Generator and Power Stage}
 Using the pulse generator and the power stage, an experiment is performed where the complementary PWM signals are generated and output to the gate driver of the power stage. In turn, the gate driver will drive the MOSFET pair and output a high-power output than the pulse generator can supply on its own through its \gls{gpio}.
