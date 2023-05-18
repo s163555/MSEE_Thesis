@@ -379,7 +379,7 @@ a_fft = np.fft.fft(a)           # Original FFT
 a_fft = a_fft[1:]                 # Delete DC component
 a_fft = a_fft[:round(len(t)/2)] # First half ( pos freqs )
 a_fft = np.abs(a_fft)           # Absolute value of magnitudes
-a_fft = a_fft/max(a_fft)        # Normalized so max = 1
+a_fft = a_fft/max(a_fft)        # Normalised so max = 1
 
 freq_x_axis = np.linspace(1, fs/2, len(a_fft))
 ax[1].plot(freq_x_axis, a_fft, "o-")
@@ -398,12 +398,11 @@ plt.show()
 print(f"The largest frequency component is f = {f_val}")
 	\end{mintedpython}
 \end{listing}
-In \cref{lst:4_xadc_fft_frequencies}, the code that plots the discrete Fourier transform of the input signal can be seen. The largest frequency component is programmatically identified.
-
+In \cref{lst:4_xadc_fft_frequencies}, the code that performs the discrete Fourier transform of the input signal can be seen. In essence, Fourier analysis is a technique used to represent a function as a combination of periodic elements. When the function and its Fourier transform are replaced with discrete versions (as is the case of sampled datapoints), it is referred to as the discrete Fourier transform (DFT). The DFT has gained popularity in numerical computing primarily due to an efficient computational methodology called the Fast Fourier Transform (FFT).  It effectively divides the input into discrete frequency components. In this context, the input that undergoes discretization and transformation is commonly referred to as a signal, existing in the time domain. On the other hand, the resulting output, known as a spectrum exists in the frequency domain. In the code, the output of the FFT is normalised, so the maximum frequency component is scaled to 1. In Numpy, the implementation of discrete Fourier transform is expressed by \cref{eq:numpy_dft_formula}.
 \begin{equation} \label{eq:numpy_dft_formula}
 	A_{k} = \sum_{m=0}^{n-1} a_{m} e^{\left( -2\pi i \frac{mk}{n}\right)}, \quad k=0,...,n-1
 \end{equation}
-
+After the Doppler frequency is succesfully obtained, it is possible to determine the velocity using the expression described in \cref{eq:2_doppler_theta}. In practical terms, the implementation is shown below.
 \begin{listing}[htbp]
 	\centering
 	\caption{Snippet of code that estimates the velocity based on the largest frequency component of the input signal}
@@ -418,8 +417,3 @@ print(f"The estimated velocity is v = {v}")
 	\end{mintedpython}
 \end{listing}
 In \cref{lst:4_xadc_velocity} is the code that obtains the velocity from the largest frequency component of the input signal to the \gls{dsp}.
-
-
-
-
-
