@@ -1,0 +1,120 @@
+
+
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+	%uncomment if require: \path (0,244); %set diagram left start at 0, and has height of 244
+
+	%Shape: Rectangle [id:dp6722494395467095]
+	\draw  [fill={rgb, 255:red, 74; green, 144; blue, 226 }  ,fill opacity=0.43 ][dash pattern={on 0.84pt off 2.51pt}] (40,120) -- (260,120) -- (260,200) -- (40,200) -- cycle ;
+	%Shape: Rectangle [id:dp07000140128396126]
+	\draw  [fill={rgb, 255:red, 74; green, 74; blue, 74 }  ,fill opacity=1 ] (140,40) -- (200,40) -- (200,80) -- (140,80) -- cycle ;
+	%Shape: Circle [id:dp1435775000611489]
+	\draw  [fill={rgb, 255:red, 128; green, 128; blue, 128 }  ,fill opacity=1 ] (240,190) .. controls (240,184.48) and (244.48,180) .. (250,180) .. controls (255.52,180) and (260,184.48) .. (260,190) .. controls (260,195.52) and (255.52,200) .. (250,200) .. controls (244.48,200) and (240,195.52) .. (240,190) -- cycle ;
+	%Straight Lines [id:da5994952267655665]
+	\draw    (50,70) -- (50,150) (54,80) -- (46,80)(54,90) -- (46,90)(54,100) -- (46,100)(54,110) -- (46,110)(54,120) -- (46,120)(54,130) -- (46,130)(54,140) -- (46,140) ;
+	%Shape: Rectangle [id:dp7130303275600529]
+	\draw  [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=1 ][fill={rgb, 255:red, 128; green, 128; blue, 128 }  ,fill opacity=1 ] (40,60) -- (60,60) -- (60,80) -- (40,80) -- cycle ;
+	%Shape: Circle [id:dp883251536454338]
+	\draw  [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ,fill opacity=1 ] (45,162.5) .. controls (45,152.84) and (52.84,145) .. (62.5,145) .. controls (72.16,145) and (80,152.84) .. (80,162.5) .. controls (80,172.16) and (72.16,180) .. (62.5,180) .. controls (52.84,180) and (45,172.16) .. (45,162.5) -- cycle ;
+	%Shape: Rectangle [id:dp3769942512437483]
+	\draw   (40,160) -- (60,160) -- (60,180) -- (40,180) -- cycle ;
+	%Shape: Circle [id:dp8079321779320666]
+	\draw  [dash pattern={on 3.75pt off 3pt on 7.5pt off 1.5pt}] (240,190) .. controls (240,184.48) and (244.48,180) .. (250,180) .. controls (255.52,180) and (260,184.48) .. (260,190) .. controls (260,195.52) and (255.52,200) .. (250,200) .. controls (244.48,200) and (240,195.52) .. (240,190) -- cycle ;
+	%Straight Lines [id:da7273832971820673]
+	\draw    (60,180) -- (250,200) (70.36,177.07) -- (69.53,185.02)(80.31,178.12) -- (79.47,186.07)(90.25,179.16) -- (89.42,187.12)(100.2,180.21) -- (99.36,188.17)(110.14,181.26) -- (109.31,189.21)(120.09,182.3) -- (119.25,190.26)(130.03,183.35) -- (129.2,191.31)(139.98,184.4) -- (139.14,192.35)(149.92,185.44) -- (149.09,193.4)(159.87,186.49) -- (159.03,194.45)(169.81,187.54) -- (168.98,195.49)(179.76,188.58) -- (178.92,196.54)(189.7,189.63) -- (188.87,197.59)(199.65,190.68) -- (198.81,198.63)(209.59,191.72) -- (208.76,199.68)(219.54,192.77) -- (218.7,200.73)(229.48,193.82) -- (228.65,201.77)(239.43,194.87) -- (238.59,202.82)(249.37,195.91) -- (248.54,203.87) ;
+	%Straight Lines [id:da05910308874228931]
+	\draw    (70,160) -- (250,180) (80.38,157.13) -- (79.5,165.08)(90.32,158.23) -- (89.44,166.18)(100.26,159.34) -- (99.37,167.29)(110.2,160.44) -- (109.31,168.39)(120.14,161.55) -- (119.25,169.5)(130.07,162.65) -- (129.19,170.6)(140.01,163.75) -- (139.13,171.71)(149.95,164.86) -- (149.07,172.81)(159.89,165.96) -- (159.01,173.91)(169.83,167.07) -- (168.95,175.02)(179.77,168.17) -- (178.89,176.12)(189.71,169.28) -- (188.82,177.23)(199.65,170.38) -- (198.76,178.33)(209.59,171.48) -- (208.7,179.44)(219.52,172.59) -- (218.64,180.54)(229.46,173.69) -- (228.58,181.64)(239.4,174.8) -- (238.52,182.75)(249.34,175.9) -- (248.46,183.85) ;
+	%Straight Lines [id:da12196496059097228]
+	\draw [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ,fill opacity=1 ]   (70,70) -- (70,160) (74,80) -- (66,80)(74,90) -- (66,90)(74,100) -- (66,100)(74,110) -- (66,110)(74,120) -- (66,120)(74,130) -- (66,130)(74,140) -- (66,140)(74,150) -- (66,150) ;
+	%Curve Lines [id:da7394389878662597]
+	\draw  [dash pattern={on 0.75pt off 0.75pt}]  (160,140) .. controls (162.22,141.07) and (162.72,142.66) .. (161.49,144.77) .. controls (159.76,145.92) and (159.25,147.46) .. (159.97,149.41) .. controls (159.98,151.75) and (158.86,152.97) .. (156.59,153.07) .. controls (154.34,154.26) and (153.98,155.87) .. (155.53,157.88) -- (155.94,160.34) -- (158.75,167.6) ;
+	\draw [shift={(160,170)}, rotate = 241.56] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (10.72,-5.15) -- (0,0) -- (10.72,5.15) -- (7.12,0) -- cycle    ;
+	%Curve Lines [id:da9786153302440782]
+	\draw  [dash pattern={on 0.75pt off 0.75pt}]  (175.5,170) .. controls (173.28,168.93) and (172.78,167.34) .. (174,165.23) .. controls (175.74,164.08) and (176.25,162.54) .. (175.53,160.59) .. controls (175.52,158.25) and (176.64,157.03) .. (178.91,156.93) .. controls (181.16,155.74) and (181.51,154.13) .. (179.97,152.12) -- (179.56,149.66) -- (176.74,142.4) ;
+	\draw [shift={(175.5,140)}, rotate = 61.56] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (10.72,-5.15) -- (0,0) -- (10.72,5.15) -- (7.12,0) -- cycle    ;
+	%Straight Lines [id:da7205891380538312]
+	\draw [color={rgb, 255:red, 128; green, 128; blue, 128 }  ,draw opacity=1 ]   (80,90) -- (80,117) ;
+	\draw [shift={(80,120)}, rotate = 270] [fill={rgb, 255:red, 128; green, 128; blue, 128 }  ,fill opacity=1 ][line width=0.08]  [draw opacity=0] (8.93,-4.29) -- (0,0) -- (8.93,4.29) -- cycle    ;
+	%Straight Lines [id:da631680111682684]
+	\draw [color={rgb, 255:red, 128; green, 128; blue, 128 }  ,draw opacity=1 ]   (60,93) -- (60,120) ;
+	\draw [shift={(60,90)}, rotate = 90] [fill={rgb, 255:red, 128; green, 128; blue, 128 }  ,fill opacity=1 ][line width=0.08]  [draw opacity=0] (8.93,-4.29) -- (0,0) -- (8.93,4.29) -- cycle    ;
+	%Shape: Polygon [id:ds5396773368746502]
+	\draw  [fill={rgb, 255:red, 255; green, 255; blue, 255 }  ,fill opacity=1 ] (40,60) -- (40,200) -- (260,200) -- (260,100) -- (280,100) -- (280,220) -- (20,220) -- (20,60) -- cycle ;
+	%Shape: Circle [id:dp9531409722820131]
+	\draw  [fill={rgb, 255:red, 155; green, 155; blue, 155 }  ,fill opacity=1 ] (50,70) .. controls (50,61.72) and (56.72,55) .. (65,55) .. controls (73.28,55) and (80,61.72) .. (80,70) .. controls (80,78.28) and (73.28,85) .. (65,85) .. controls (56.72,85) and (50,78.28) .. (50,70) -- cycle ;
+	%Straight Lines [id:da9454073791401769]
+	\draw [fill={rgb, 255:red, 255; green, 255; blue, 255 }  ,fill opacity=1 ]   (280,150) -- (280,100) -- (220,40) -- (140,40) -- (140,30) -- (230,30) -- (280,80) -- (300,80) -- (300,150) -- cycle ;
+
+	% Text Node
+	\draw  [fill={rgb, 255:red, 255; green, 255; blue, 255 }  ,fill opacity=1 ]  (156.5,58.5) -- (182.5,58.5) -- (182.5,139.5) -- (156.5,139.5) -- cycle  ;
+	\draw (169.5,99) node  [rotate=-270] [align=left] {{\fontfamily{pcr}\selectfont Transducer}};
+	% Text Node
+	\draw  [fill={rgb, 255:red, 255; green, 255; blue, 255 }  ,fill opacity=1 ]  (361,18) -- (442,18) -- (442,65) -- (361,65) -- cycle  ;
+	\draw (401.5,41.5) node   [align=left] {\begin{minipage}[lt]{52.33pt}\setlength\topsep{0pt}
+			\begin{center}
+				{\fontfamily{pcr}\selectfont Ultrasound}\\{\fontfamily{pcr}\selectfont Switch}
+			\end{center}
+
+	\end{minipage}};
+	% Text Node
+	\draw  [fill={rgb, 255:red, 255; green, 255; blue, 255 }  ,fill opacity=1 ]  (478,18) -- (526,18) -- (526,65) -- (478,65) -- cycle  ;
+	\draw (502,41.5) node   [align=left] {\begin{minipage}[lt]{29.8pt}\setlength\topsep{0pt}
+			\begin{center}
+				{\fontfamily{pcr}\selectfont Power}\\{\fontfamily{pcr}\selectfont Stage}
+			\end{center}
+
+	\end{minipage}};
+	% Text Node
+	\draw  [fill={rgb, 255:red, 255; green, 255; blue, 255 }  ,fill opacity=1 ]  (566.5,17.5) -- (647.5,17.5) -- (647.5,64.5) -- (566.5,64.5) -- cycle  ;
+	\draw (607,41) node   [align=left] {\begin{minipage}[lt]{52.33pt}\setlength\topsep{0pt}
+			\begin{center}
+				{\fontfamily{pcr}\selectfont Ultrasound}\\{\fontfamily{pcr}\selectfont Pulser}
+			\end{center}
+
+	\end{minipage}};
+	% Text Node
+	\draw  [fill={rgb, 255:red, 255; green, 255; blue, 255 }  ,fill opacity=1 ]  (358,98) -- (446,98) -- (446,124) -- (358,124) -- cycle  ;
+	\draw (402,111) node   [align=left] {\begin{minipage}[lt]{57.26pt}\setlength\topsep{0pt}
+			\begin{center}
+				{\fontfamily{pcr}\selectfont Preamplifier}
+			\end{center}
+
+	\end{minipage}};
+	% Text Node
+	\draw  [fill={rgb, 255:red, 255; green, 255; blue, 255 }  ,fill opacity=1 ]  (478,98) -- (572,98) -- (572,124) -- (478,124) -- cycle  ;
+	\draw (525,111) node   [align=left] {\begin{minipage}[lt]{61.2pt}\setlength\topsep{0pt}
+			\begin{center}
+				{\fontfamily{pcr}\selectfont Demodulator}
+			\end{center}
+
+	\end{minipage}};
+	% Text Node
+	\draw  [fill={rgb, 255:red, 255; green, 255; blue, 255 }  ,fill opacity=1 ]  (604,98) -- (692,98) -- (692,124) -- (604,124) -- cycle  ;
+	\draw (648,111) node   [align=left] {\begin{minipage}[lt]{56.9pt}\setlength\topsep{0pt}
+			\begin{center}
+				{\fontfamily{pcr}\selectfont Oscilloscope}
+			\end{center}
+
+	\end{minipage}};
+	% Connection
+	\draw    (478,41.5) -- (444,41.5) ;
+	\draw [shift={(442,41.5)}, rotate = 360] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+	% Connection
+	\draw    (566.5,41.19) -- (528,41.38) ;
+	\draw [shift={(526,41.39)}, rotate = 359.73] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+	% Connection
+	\draw    (401.67,65) -- (401.89,96) ;
+	\draw [shift={(401.91,98)}, rotate = 269.59] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+	% Connection
+	\draw    (446,111) -- (476,111) ;
+	\draw [shift={(478,111)}, rotate = 180] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+	% Connection
+	\draw    (572,111) -- (602,111) ;
+	\draw [shift={(604,111)}, rotate = 180] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+	% Connection
+	\draw    (357.41,49.38) .. controls (312.15,51.65) and (308.79,102.38) .. (184.38,99.26) ;
+	\draw [shift={(182.5,99.21)}, rotate = 1.67] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (8.93,-4.29) -- (0,0) -- (8.93,4.29) -- cycle    ;
+	\draw [shift={(361,49.3)}, rotate = 180.36] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (8.93,-4.29) -- (0,0) -- (8.93,4.29) -- cycle    ;
+
+\end{tikzpicture}
