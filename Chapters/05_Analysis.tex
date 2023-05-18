@@ -99,6 +99,12 @@ A \qty{1}{\kilo\hertz} input signal is received on the input SMA connector from 
 
 \subsection{Digital Signal Processor}
 
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=.8\textwidth]{Figures/5_velocity_estimation_limit.eps}
+	\caption{Velocity estimator with sample rate limitation}
+	\label{fig:5_dsp_samplerate_limit}
+\end{figure}
 
 \section{Pulse Generator and Power Stage}
 Using the pulse generator and the power stage, an experiment is performed where the complementary PWM signals are generated and output to the gate driver of the power stage. In turn, the gate driver will drive the MOSFET pair and output a high-power output than the pulse generator can supply on its own through its \gls{gpio}.
@@ -125,7 +131,7 @@ Seen in \cref{fig:5_doppler_string_phantom} is the CIRS A043 Doppler String Phan
 %	\begin{adjustbox}{width=\textwidth}%
 %		\input{Figures/5_doppler_string_phantom_experiment.tikz}
 %	\end{adjustbox}%
-	\includegraphics[width=.8\textwidth]{Figures/5_doppler_string_phantom_experiment.pdf}
+	\includegraphics[width=\textwidth]{Figures/5_doppler_string_phantom_experiment.pdf}
 	\caption{Doppler String Phantom experiment diagram (not to scale)}
 	\label{fig:5_doppler_string_experiment}
 \end{figure}
