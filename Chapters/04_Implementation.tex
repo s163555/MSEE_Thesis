@@ -402,7 +402,7 @@ In \cref{lst:4_xadc_fft_frequencies}, the code that performs the discrete Fourie
 \begin{equation} \label{eq:numpy_dft_formula}
 	A_{k} = \sum_{m=0}^{n-1} a_{m} e^{\left( -2\pi i \frac{mk}{n}\right)}, \quad k=0,...,n-1
 \end{equation}
-This is defined for complex inputs and outputs, and a frequency element at frequency $f$ is expressed by a complex exponential $a_{m}=\exp{\left(2\pi i f m \Delta t\right)}$, where $\Delta t=\frac{1}{f_{\mathrm{sample}}}$, or the sample interval. After the Doppler frequency is succesfully obtained, it is possible to determine the velocity using the expression described in \cref{eq:2_doppler_theta}. In practical terms, the implementation is shown below.
+This is defined for complex inputs and outputs, and a frequency element at frequency $f$ is expressed by a complex exponential $a_{m}=\exp{\left(2\pi i f m \Delta t\right)}$, where $\Delta t=\frac{1}{f_{\mathrm{sample}}}$, or the sample interval. After the Doppler frequency is succesfully obtained, it is possible to determine the velocity using the expression described in \cref{eq:2_doppler_theta}. In practical terms, the implementation is shown in \cref{lst:4_xadc_velocity}.
 \begin{listing}[htbp]
 	\centering
 	\caption{Snippet of code that estimates the velocity based on the largest frequency component of the input signal}
@@ -416,4 +416,3 @@ v=((f_val)*c)/(2*np.cos(theta)*f0)
 print(f"The estimated velocity is v = {v}")
 	\end{mintedpython}
 \end{listing}
-In \cref{lst:4_xadc_velocity} is the code that obtains the velocity from the largest frequency component of the input signal to the \gls{dsp}.
