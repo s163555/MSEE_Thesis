@@ -80,7 +80,7 @@ An experiment is conducted with the sample-and-hold amplifier to verify the func
 \end{figure}
 
 \subsection{Sample and Hold Amplifier}
-Seen in \cref{fig:4_sample_hold_pcb} is the measured inputs and outputs of the circuit during the experiment. Above is the I-Q input and in the middle is the sample gating, and below is the output signal. On the output signal, it is noted the corresponding voltage transients for every pulse in the gate input.
+An \gls{afg} is configured to simulate the output signal of the quadrature demodulator. Next, the ultrasound pulser \texttt{GATE} signal is connected to the sample and hold amplifier. Seen in \cref{fig:4_sample_hold_pcb} is the measured inputs and outputs of the circuit during the experiment. Above is the I-Q input and in the middle is the sample gating, and below is the output signal. On the output signal, it is noted the corresponding voltage transients for every pulse in the gate input.
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=.8\textwidth]{Figures/4_sampler_pcb.eps}
@@ -101,18 +101,18 @@ A \qty{1}{\kilo\hertz} input signal is received on the input SMA connector from 
 A function generator is configured to transmit a \qty{100}{\hertz} sinusoidal signal with a \qty{0.5}{\volt} offset and a \qty{1}{\volt} peak-peak amplitude. This signal is then measured by the DSP XADC and saved for processing. A peak samplerate is determined by recording the maximum amount of samples possible but limiting the collection time to one second. Then, the samplerate is identical to the number of samples collected. After one second of sampling, a record of 4422 samples were stored in the buffer.
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=.8\textwidth]{Figures/5_velocity_estimation_measured.pdf}
+	\includegraphics[width=\textwidth]{Figures/5_velocity_estimation_measured.pdf}
 	\caption{Velocity estimation with XADC and Jupyter}
 	\label{fig:5_velocity_estimation_output}
 \end{figure}
-After processing the data, a total of three plots are generated and can be seen in \cref{fig:5_velocity_estimation_output}. In the top plot, the whole buffer is plotted over time. In the middle plot, the spectrum of the recorded measurements are plotted. In the lower plot, two periods of the largest frequency components are plotted. In the measurement, with a \qty{103}{\hertz} signal being measured on the input of the XADC system, a velocity is estimated to be \qty{30.78}{\centi\meter\per\second}.
+After processing the data, a total of three plots are generated and can be seen in \cref{fig:5_velocity_estimation_output}. In the top plot, the whole buffer is plotted over time. In the middle plot, the spectrum of the recorded measurements are plotted. In the lower plot, two periods of the largest frequency components are plotted. In the measurement, with a \qty{103}{\hertz} signal being measured on the input of the XADC system, a velocity is estimated to be \qty{3.1}{\centi\meter\per\second}.
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=.8\textwidth]{Figures/5_velocity_estimation_limit.eps}
 	\caption{Velocity estimator with sample rate limitation}
 	\label{fig:5_dsp_samplerate_limit}
 \end{figure}
-Since the maximum sample rate with the XADC implementation used was determined, it is desired to know the limitations of the Doppler velocity estimation. Based on the Nyquist limit, a with 0.5 cycle/sample results in distortion known as aliasing. In principle, it means that when the same rate was determined to be 4422 samples per second, that means the Nyquist frequency for this system is equal to \qty{2211}{\hertz}. In the application of a velocity estimator, that means that a velocity of over \qty{60}{\centi\meter\per\second} will result in high distortion and unreliable measurements. This is visualised in \cref{fig:5_dsp_samplerate_limit} where the velocity curve intersects the sample rate limitation.
+Since the maximum sample rate with the XADC implementation used was determined, it is desired to know the limitations of the Doppler velocity estimation. Based on the Nyquist limit, a with 0.5 cycle/sample results in distortion known as aliasing. In principle, it means that when the same rate was determined to be \qty{4.422}{kS\per\second} that means the Nyquist frequency for this system is equal to \qty{2.211}{\kilo\hertz}. In the application of a velocity estimator, that means that a velocity of over \qty{60}{\centi\meter\per\second} will result in high distortion and unreliable measurements. This is visualised in \cref{fig:5_dsp_samplerate_limit} where the velocity curve intersects the sample rate limitation.
 
 \section{Pulse Generator and Power Stage}
 Using the pulse generator and the power stage, an experiment is performed where the complementary PWM signals are generated and output to the gate driver of the power stage. In turn, the gate driver will drive the MOSFET pair and output a high-power output than the pulse generator can supply on its own through its \gls{gpio}.
@@ -148,3 +148,4 @@ In \cref{fig:5_doppler_string_experiment} is a diagram of the experiment to be p
 	\item A resistor to reference voltage in parallel with the transducer
 	\item A second ultrasound switch, functionally inverse of the primary ultrasound switch to ensure received signal does not get attenuated by pulser circuit
 \end{enumerate}
+Unfortunately, the deadline for submitting the project had been reached at this point, and ongoing experimentation with the transmitter and String Phantom had to be discontinued to finalise the report.
