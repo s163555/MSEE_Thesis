@@ -104,6 +104,19 @@ nowarn,
 \usepackage{hyphenat}			% Prevent hyphenation by \nohyphens{text}
 \usepackage{pgfgantt}
 
+% mathtools configuration
+% Swap the definition of \abs* and \norm*, so that \abs
+% and \norm resizes the size of the brackets, and the
+% starred version does not.
+\makeatletter
+\let\oldabs\abs
+\def\abs{\@ifstar{\oldabs}{\oldabs*}}
+%
+\let\oldnorm\norm
+\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+\makeatother
+
+
 \input{Setup/Statics.tex}
 \input{Setup/Glossaries_List.tex}
 
