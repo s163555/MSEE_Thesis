@@ -422,9 +422,9 @@ This section will explain the methodology of velocity estimation, assuming a pul
 \end{figure}
 \Cref{fig:2_rf_sampling_simulated} displays a signal where the scatterers in the sampled depth $d_{0}$ move away from the transducer, and the shift in the pulsed signal is present. The measurement is created by taking one sample at a specific depth ($d_0$) for each RF line. The sampling is performed at a frequency of $f_{\mathrm{prf}}$, as indicated by the dotted line in the figure. Due to the slow movement of the received signals past the sample volume, there is a gradual change in the sampled signal over time. As a result of the slow movement of the signals, the frequency of the sampled signal is much lower than that of the RF signal. It's worth noting that the received signal not only shifts in time from pulse to pulse, but its shape also changes. This is because the signal is constructed by adding up responses from many scatterers that move at different speeds. A stationary structure will result in an identical sample value for all segmented RF lines. The spectrum of this stationary signal is shown in \cref{eq:2_stationary_rf_spectrum}.
 
-%\begin{equation} \label{eq:2_stationary_rf_spectrum}
-%	\abs{H_{s}(f)} = \abs{a \frac{\sin (\pi f N T_{\mathrm{prf}})}{\sin (\pi f T_{\mathrm{prf}})}}
-%\end{equation}
+\begin{equation} \label{eq:2_stationary_rf_spectrum}
+	\abs{H_{s}(f)} = \abs{a \frac{\sin (\pi f N T_{\mathrm{prf}})}{\sin (\pi f T_{\mathrm{prf}})}}
+\end{equation}
 which for $f = 0$ is equal to $aN$ and has its first zero at $\sfrac{f_{\mathrm{prf}}}{N}$. The signal spectrum based on \cref{eq:2_stationary_rf_spectrum} is shown in \cref{fig:2_rf_spectrum_stationary}.
 
 \begin{figure}[htbp]
