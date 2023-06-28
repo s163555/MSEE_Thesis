@@ -44,6 +44,78 @@
 % 추가로 필요한 패키지가 있다면 주석을 풀고 적어넣으십시오,
 %\usepackage{...}
 
+\usepackage{parskip}        % Package to tweak paragraph skipping (instead of indents a small skip is added after every paragraph)
+\usepackage{titlesec}
+%\usepackage{tikz}           % Package for drawing
+\usepackage{pgfplots}       % Package for creating graphs and charts
+\usepackage{xcolor}         % Package for defining DTU colours to be used
+\selectcolormodel{natural}
+\usepackage{ninecolors}
+\selectcolormodel{rgb}
+\usepackage{amsmath}        % For aligning equations among other
+\usepackage{mathtools}		% Extensible symbols, brackets, arrows, etc
+
+%\usepackage{sectsty}
+%\usepackage{sfmath}			% Sans serif math
+%\usepackage{nicefrac}		% Neat inline fractions
+\usepackage{xfrac}			% More modern than nicefrac
+%\usepackage{markdown}		% To include .md files in report
+\usepackage{listings}       % Package for inserting code, (before cleveref)
+\usepackage[chapter]{minted}
+%\setminted{autogobble,linenos=true,breaklines,labelposition=all}
+\usepackage[most, minted]{tcolorbox}
+%\usepackage[most]{tcolorbox}
+%\tcbuselibrary{listings, breakable, skins}
+\PassOptionsToPackage{hyphens}{url} % Ability to line break urls at hyphens
+\usepackage{hyperref}       % Package for cross referencing (also loads url package)
+\usepackage{cleveref}       % improved cross referencing
+\usepackage{textcomp}       % \textdegree = °C and other useful symbols
+\usepackage{caption}        % better captions
+\usepackage{subcaption}     % for subfigures
+\usepackage[autostyle=true]{csquotes}       % For biblatex with babel
+%\usepackage[backend=biber,style=numeric,sorting=none]{biblatex} % Package for bibliography (citing)
+\usepackage[backend=biber,style=ieee,abbreviate=true,dateabbrev=false,alldates=long,sorting=ynt,dashed=false,block=space,mincitenames=1,maxcitenames=1,maxbibnames=9,backref=false]{biblatex} % Package for bibliography (citing)
+\bibliography{bib_bibertool.bib}
+
+% Tables
+\usepackage{float}          % floating figures in correct places
+\usepackage{adjustbox}				% Adjust table widths (?)
+\usepackage{nth}			% 1st, 2nd, etc
+\usepackage{tabularray}		% latex3 tables
+\UseTblrLibrary{booktabs,siunitx,varwidth}
+
+% Extras
+\let\ordinal\relax          % Remove warning from ordinal definition (datetime package)
+\usepackage{datetime}		% For dates and time functions
+\usepackage[automake=immediate,toc, % Abbreviations and glossary lists
+abbreviations,
+postdot,
+hyperfirst=true,
+nopostdot=true,
+nonumberlist=true,
+nowarn,
+]{glossaries-extra}
+\usepackage{glossary-longextra} % Long booktabs table style
+\usepackage[numbib]{tocbibind} % Lists of... in toc
+%\usepackage{tocloft}		% Customising toc
+%\usepackage{calc}           % Adds ability for latex to calculate (3pt+2pt)
+\usepackage{blindtext}
+\usepackage{graphicx}
+\graphicspath{{Figures/}} %Setting the graphicspath
+\usepackage{svg}
+\usepackage[colorinlistoftodos]{todonotes} % Margin coloured todonotes
+\usepackage{pdflscape}
+% Drawing
+\usepackage{tikz}					% Create graphics
+\usetikzlibrary{arrows.meta,chains,backgrounds,positioning,fit,petri,automata,quotes}
+\usepackage{xstring}				% For manipulating strings. Required by CircuiTikZ
+\usepackage[american,arrowmos,nooldvoltagedirection]{circuitikz}	% Create circuit graphics (using TikZ)
+
+\usepackage[verbose=silent,protrusion=true,expansion=true,final,babel]{microtype} % Better text appearance
+\usepackage{hyphenat}			% Prevent hyphenation by \nohyphens{text}
+\usepackage{pgfgantt}
+
+
 % @command title 논문 제목(title of thesis)
 % @options [default: (none)]
 % - korean: 한글제목(korean title) | english: 영문제목(english title)
