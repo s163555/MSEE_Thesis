@@ -116,6 +116,92 @@ nowarn,
 \def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
 \makeatother
 
+\newtcblisting{mintedc}{%
+	listing engine=minted,
+	minted language=c,
+	listing only,
+	breakable,
+	enhanced,
+	minted options = {
+		linenos,
+		breaklines=true,
+		breakbefore=.,
+		fontsize=\footnotesize,
+		numbersep=2mm
+	},
+	overlay={%
+		\begin{tcbclipinterior}
+			\fill[gray!25] (frame.south west) rectangle ([xshift=4mm]frame.north west);
+		\end{tcbclipinterior}
+	}
+}
+
+\newtcblisting{mintedmatlab}{%
+	listing engine=minted,
+	minted language=matlab,
+	listing only,
+	breakable,
+	enhanced,
+	minted options = {
+		linenos,
+		breaklines=true,
+		breakbefore=.,
+		fontsize=\footnotesize,
+		numbersep=2mm
+	},
+	overlay={%
+		\begin{tcbclipinterior}
+			\fill[gray!25] (frame.south west) rectangle ([xshift=4mm]frame.north west);
+		\end{tcbclipinterior}
+	}
+}
+
+\newtcblisting{mintedvhdl}{%
+	listing engine=minted,
+	minted language=vhdl,
+	listing only,
+	%	breakable,
+	%	enhanced,
+	minted options = {
+		linenos,
+		breaklines=true,
+		%		breakbefore=.,
+		fontsize=\footnotesize,
+		numbersep=2mm
+	},
+	overlay={%
+		\begin{tcbclipinterior}
+			\fill[gray!25] (frame.south west) rectangle ([xshift=4mm]frame.north west);
+		\end{tcbclipinterior}
+	}
+}
+
+\newtcblisting{mintedpython}{%
+	listing engine=minted,
+	minted language=python,
+	listing only,
+	%	breakable,
+	%	enhanced,
+	minted options = {
+		linenos,
+		breaklines=true,
+		%		breakbefore=.,
+		fontsize=\footnotesize,
+		numbersep=2mm
+	},
+	overlay={%
+		\begin{tcbclipinterior}
+			\fill[gray!25] (frame.south west) rectangle ([xshift=4mm]frame.north west);
+		\end{tcbclipinterior}
+	}
+}
+
+\BeforeBeginEnvironment{minted}
+{ \begin{tcolorbox}[breakable, enhanced] }
+
+	\AfterEndEnvironment{minted}
+	{ \end{tcolorbox} }
+
 
 \input{Setup/Statics.tex}
 \input{Setup/Glossaries_List.tex}
