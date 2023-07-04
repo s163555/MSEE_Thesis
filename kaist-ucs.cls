@@ -162,24 +162,25 @@ urlcolor=black,          %cyan
 \newcommand{\@kaist}{Korea Advanced Institute of Science and Technology}
 
 %% pagestyle
-%\def\ps@kaist{\let\@mkboth\@gobbletwo
-%	\let\@oddhead\@empty
-%	\def\@oddfoot{\reset@font\hfil--\ \thepage\ --
-%		\hfil}%
-%	\let\@evenhead\@empty\let\@evenfoot\@oddfoot
-%}
-%
-%\pagestyle{kaist}
-
 \usepackage{fancyhdr}       % Package to change header and footer
-\fancypagestyle{main}{% All normal pages
-	\fancyhead{}
-	\fancyfoot{}
-	\fancyhead[RE,LO]{\footnotesize \MakeUppercase \leftmark} % - \rightmark
-	\fancyhead[LE,RO]{\footnotesize \MakeUppercase \rightmark}
-	\fancyfoot[RE,LO]{\footnotesize \thepage}
-	\fancyfoot[LE,RO]{\footnotesize \MakeUppercase \thesistitle}
-	\fancyhfoffset[E,O]{0pt}
+\def\ps@kaist{\let\@mkboth\@gobbletwo
+	\let\@oddhead\@empty
+	\def\@oddfoot{\reset@font\hfil--\ \thepage\ --
+		\hfil}%
+	\let\@evenhead\@empty\let\@evenfoot\@oddfoot
+}
+
+\pagestyle{kaist}
+
+
+%\fancypagestyle{main}{% All normal pages
+%	\fancyhead{}
+%	\fancyfoot{}
+%	\fancyhead[RE,LO]{\footnotesize \MakeUppercase \leftmark} % - \rightmark
+%	\fancyhead[LE,RO]{\footnotesize \MakeUppercase \rightmark}
+%	\fancyfoot[RE,LO]{\footnotesize \thepage}
+%	\fancyfoot[LE,RO]{\footnotesize \MakeUppercase \thesistitle}
+%	\fancyhfoffset[E,O]{0pt}
 %%
 %% 문서 정보 변수 정의
 %%
