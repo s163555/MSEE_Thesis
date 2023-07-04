@@ -123,6 +123,7 @@ citecolor=darkgreen,        %green
 filecolor=darkmagenta,      %magenta
 menucolor=darkred,      %red
 urlcolor=black,          %cyan
+hidelinks,
 ]{hyperref}
 \fi
 
