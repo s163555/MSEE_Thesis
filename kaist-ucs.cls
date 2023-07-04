@@ -167,7 +167,8 @@ hidelinks,
 %% pagestyle
 \def\ps@kaist{\let\@mkboth\@gobbletwo
 	\let\@oddhead\@empty
-	\def\@oddfoot{\reset@font\hfil\-- \thepage \--\hfil}%
+	\def\@oddfoot{\reset@font\hfil--\ \thepage\ --
+		\hfil}%
 	\let\@evenhead\@empty\let\@evenfoot\@oddfoot
 }
 
