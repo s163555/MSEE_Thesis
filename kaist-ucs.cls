@@ -162,7 +162,7 @@ urlcolor=black,          %cyan
 \newcommand{\@kaist}{Korea Advanced Institute of Science and Technology}
 
 %% pagestyle
-\usepackage{fancyhdr}       % Package to change header and footer
+%\usepackage{fancyhdr}       % Package to change header and footer
 \def\ps@kaist{\let\@mkboth\@gobbletwo
 	\let\@oddhead\@empty
 	\def\@oddfoot{\reset@font\hfil--\ \thepage\ --
@@ -170,7 +170,7 @@ urlcolor=black,          %cyan
 	\let\@evenhead\@empty\let\@evenfoot\@oddfoot
 }
 
-\pagestyle{kaist}
+%\pagestyle{kaist}
 
 
 %\fancypagestyle{main}{% All normal pages
