@@ -173,10 +173,10 @@ urlcolor=black,          %cyan
 %\pagestyle{kaist}
 
 
-%\fancypagestyle{kaist}{% All normal pages
-%	\fancyhead{}
-%	\fancyfoot{}
-%	\fancyfoot[C]{\thepage} % except the center
+\fancypagestyle{fancy}{% All normal pages
+	\fancyhead{}
+	\fancyfoot{}
+	\fancyfoot[C]{\thepage} % except the center
 %%
 %% 문서 정보 변수 정의
 %%
