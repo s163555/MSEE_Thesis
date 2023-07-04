@@ -107,11 +107,11 @@ nowarn,
 \usepackage[numbib]{tocbibind} % Lists of... in toc
 %\usepackage{tocloft}		% Customising toc
 %\usepackage{calc}           % Adds ability for latex to calculate (3pt+2pt)
-\usepackage{blindtext}
+%\usepackage{blindtext}
 \usepackage{graphicx}
 \graphicspath{{Figures/}} %Setting the graphicspath
 \usepackage{svg}
-\usepackage[colorinlistoftodos]{todonotes} % Margin coloured todonotes
+%\usepackage[colorinlistoftodos]{todonotes} % Margin coloured todonotes
 \usepackage{pdflscape}
 % Drawing
 \usepackage{tikz}					% Create graphics
@@ -120,7 +120,7 @@ nowarn,
 \usepackage[american,arrowmos,nooldvoltagedirection]{circuitikz}	% Create circuit graphics (using TikZ)
 
 \usepackage[verbose=silent,protrusion=true,expansion=true,final,babel]{microtype} % Better text appearance
-\usepackage{hyphenat}			% Prevent hyphenation by \nohyphens{text}
+%\usepackage{hyphenat}			% Prevent hyphenation by \nohyphens{text}
 \usepackage{pgfgantt}
 
 % mathtools configuration
@@ -376,7 +376,7 @@ nowarn,
 	%% 하지만 part는 사용하지 못하도록 제거하였으므로, chapter가 문서 내의
 	%% 최상위 분류 단위가 됩니다.
 	%% You cannot use 'part'
-
+	\pagestyle{kaist}
 	\input{Chapters/01_Introduction.tex}
 	\input{Chapters/02_Theory.tex}
 	\input{Chapters/03_Synthesis.tex}
