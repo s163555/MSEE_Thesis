@@ -122,7 +122,7 @@ anchorcolor=black,      %black
 citecolor=darkgreen,        %green
 filecolor=darkmagenta,      %magenta
 menucolor=darkred,      %red
-urlcolor=darkcyan,          %cyan
+urlcolor=black,          %cyan
 ]{hyperref}
 \fi
 
