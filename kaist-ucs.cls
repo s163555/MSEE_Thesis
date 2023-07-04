@@ -109,7 +109,7 @@ anchorcolor=black,      %black
 citecolor=darkgreen,        %green
 filecolor=darkmagenta,      %magenta
 menucolor=darkred,      %red
-urlcolor=black,          %cyan
+urlcolor=darkcyan,          %cyan
 ]{hyperref}
 \else
 \RequirePackage[unicode,%
